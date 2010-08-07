@@ -1,0 +1,443 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: DC Tuner 0.8\n"
+"Report-Msgid-Bugs-To: dc.kastel@gmail.com\n"
+"POT-Creation-Date: 2010-08-07 00:01+0200\n"
+"PO-Revision-Date: 2010-08-07 00:55+0100\n"
+"Last-Translator: Davide Castellone <kastel88@email.it>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: 2\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: Italy\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: /home/davide/Projects/dctuner\n"
+"X-Poedit-SearchPath-0: src\n"
+
+#: src/wxfbtunerframe.h:101
+msgid "NOOT Instrument tuner"
+msgstr "NOOT Instrument tuner"
+
+#: src/wxfbtunerframe.cpp:21
+msgid "Select &input device..."
+msgstr "Seleziona dispositivo di &ingresso..."
+
+#: src/wxfbtunerframe.cpp:25
+msgid "Select &output device..."
+msgstr "Seleziona dispositivo di &uscita..."
+
+#: src/wxfbtunerframe.cpp:32
+msgid "&Exit"
+msgstr "&Esci"
+
+#: src/wxfbtunerframe.cpp:35
+msgid "&Devices"
+msgstr "&Dispositivi"
+
+#: src/wxfbtunerframe.cpp:39
+msgid "&Table of contents"
+msgstr "&Indice"
+
+#: src/wxfbtunerframe.cpp:43
+msgid "Context help"
+msgstr "Aiuto contestuale"
+
+#: src/wxfbtunerframe.cpp:50
+msgid "&About..."
+msgstr "&Informazioni su..."
+
+#: src/wxfbtunerframe.cpp:53
+msgid "&Help"
+msgstr "&Aiuto"
+
+#: src/wxfbtunerframe.cpp:61
+msgid "Note"
+msgstr "Nota"
+
+#: src/wxfbtunerframe.cpp:66
+msgid "Start/Stop"
+msgstr "Start/Stop"
+
+#: src/wxfbtunerframe.cpp:72
+msgid "Tuning indicator: the gauge should be under the black line"
+msgstr "Indicatore di accordatura: la lancetta dovrebbe trovarsi sotto la linea nera"
+
+#: src/wxfbtunerframe.cpp:89
+#: src/wxfbtunerframe.cpp:91
+msgid "Detected note"
+msgstr "Nota rilevata"
+
+#: src/wxfbtunerframe.cpp:96
+msgid "Offset"
+msgstr "Scostamento"
+
+#: src/wxfbtunerframe.cpp:98
+msgid "Difference between detected and expected frequency (in cents)"
+msgstr "Differenza tra la frequenza trovata e quella prevista (in cent)"
+
+#: src/wxfbtunerframe.cpp:103
+msgid "Frequency"
+msgstr "Frequenza"
+
+#: src/wxfbtunerframe.cpp:105
+msgid "Detected frequency"
+msgstr "Frequenza rilevata"
+
+#: src/wxfbtunerframe.cpp:109
+#: src/wxfbtunerframe.cpp:115
+#: src/wxfbtunerframe.cpp:121
+msgid "--"
+msgstr "--"
+
+#: src/wxfbtunerframe.cpp:132
+msgid "Tuning options"
+msgstr "Opzioni di accordatura"
+
+#: src/wxfbtunerframe.cpp:138
+msgid "&Octave"
+msgstr "&Ottava"
+
+#: src/wxfbtunerframe.cpp:140
+msgid "Select an octave to optimize note detection"
+msgstr "Selezionare un'ottava per ottimizzare il rilevamento della nota"
+
+#: src/wxfbtunerframe.cpp:144
+#: src/wxfbtunerframe.cpp:163
+#: src/wxfbtunerframe.cpp:236
+msgid "Auto"
+msgstr "Auto"
+
+#: src/wxfbtunerframe.cpp:144
+msgid "-1"
+msgstr "-1"
+
+#: src/wxfbtunerframe.cpp:144
+#: src/wxfbtunerframe.cpp:214
+msgid "0"
+msgstr "0"
+
+#: src/wxfbtunerframe.cpp:144
+msgid "1"
+msgstr "1"
+
+#: src/wxfbtunerframe.cpp:144
+#: src/wxfbtunerframe.cpp:148
+msgid "2"
+msgstr "2"
+
+#: src/wxfbtunerframe.cpp:144
+#: src/wxfbtunerframe.cpp:167
+#: src/wxfbtunerframe.cpp:178
+msgid "3"
+msgstr "3"
+
+#: src/wxfbtunerframe.cpp:144
+#: src/wxfbtunerframe.cpp:201
+msgid "4"
+msgstr "4"
+
+#: src/wxfbtunerframe.cpp:144
+#: src/wxfbtunerframe.cpp:217
+msgid "5"
+msgstr "5"
+
+#: src/wxfbtunerframe.cpp:144
+#: src/wxfbtunerframe.cpp:241
+msgid "6"
+msgstr "6"
+
+#: src/wxfbtunerframe.cpp:144
+#: src/wxfbtunerframe.cpp:256
+msgid "7"
+msgstr "7"
+
+#: src/wxfbtunerframe.cpp:157
+msgid "&Note"
+msgstr "&Nota"
+
+#: src/wxfbtunerframe.cpp:159
+msgid "Select a note if you already know it"
+msgstr "Selezionare una nota, se già la si conosce"
+
+#: src/wxfbtunerframe.cpp:163
+#: src/tunerframe.cpp:32
+msgid "C"
+msgstr "Do"
+
+#: src/wxfbtunerframe.cpp:163
+msgid "C# / Db"
+msgstr "Do# / Reb"
+
+#: src/wxfbtunerframe.cpp:163
+#: src/tunerframe.cpp:32
+msgid "D"
+msgstr "Re"
+
+#: src/wxfbtunerframe.cpp:163
+msgid "D# / Eb"
+msgstr "Re# / Mib"
+
+#: src/wxfbtunerframe.cpp:163
+#: src/tunerframe.cpp:32
+msgid "E"
+msgstr "Mi"
+
+#: src/wxfbtunerframe.cpp:163
+#: src/tunerframe.cpp:32
+msgid "F"
+msgstr "Fa"
+
+#: src/wxfbtunerframe.cpp:163
+msgid "F# / Gb"
+msgstr "Fa# / Solb"
+
+#: src/wxfbtunerframe.cpp:163
+#: src/tunerframe.cpp:33
+msgid "G"
+msgstr "Sol"
+
+#: src/wxfbtunerframe.cpp:163
+msgid "G# / Ab"
+msgstr "Sol# / Lab"
+
+#: src/wxfbtunerframe.cpp:163
+#: src/tunerframe.cpp:33
+msgid "A"
+msgstr "La"
+
+#: src/wxfbtunerframe.cpp:163
+msgid "A# / Bb"
+msgstr "La# / Sib"
+
+#: src/wxfbtunerframe.cpp:163
+#: src/tunerframe.cpp:33
+msgid "B"
+msgstr "Si"
+
+#: src/wxfbtunerframe.cpp:175
+msgid "&Listen"
+msgstr "Asco&lta"
+
+#: src/wxfbtunerframe.cpp:177
+msgid "Click here to listen to the selected note"
+msgstr "Cliccare qui per ascoltare la nota selezionata"
+
+#: src/wxfbtunerframe.cpp:192
+msgid "&Temperament"
+msgstr "&Temperamento"
+
+#: src/wxfbtunerframe.cpp:196
+msgid "Equal Temperament"
+msgstr "Temperamento equabile"
+
+#: src/wxfbtunerframe.cpp:196
+msgid "Pythagorean"
+msgstr "Pitagorico"
+
+#: src/wxfbtunerframe.cpp:196
+msgid "Just Intonation"
+msgstr "Intonazione giusta"
+
+#: src/wxfbtunerframe.cpp:196
+msgid "Bach (Klais)"
+msgstr "Bach (Klais)"
+
+#: src/wxfbtunerframe.cpp:196
+msgid "Kimberger III"
+msgstr "Kimberger III"
+
+#: src/wxfbtunerframe.cpp:196
+msgid "Werckmeister III"
+msgstr "Werckmeister III"
+
+#: src/wxfbtunerframe.cpp:196
+msgid "Werckmeister VI"
+msgstr "Werckmeister VI"
+
+#: src/wxfbtunerframe.cpp:196
+msgid "Rameau (syntonic)"
+msgstr "Rameau (syntonic)"
+
+#: src/wxfbtunerframe.cpp:196
+msgid "Just (Barbour)"
+msgstr "Just (Barbour)"
+
+#: src/wxfbtunerframe.cpp:196
+msgid "Meantone"
+msgstr "Meantone"
+
+#: src/wxfbtunerframe.cpp:200
+msgid "The expected frequency of a note depends on the temperament choosen"
+msgstr "La frequenza prevista di ogni nota dipende dal temperamento selezionato"
+
+#: src/wxfbtunerframe.cpp:210
+msgid "T&ranspose (semitones)"
+msgstr "T&rasponi (semitoni)"
+
+#: src/wxfbtunerframe.cpp:216
+msgid ""
+"The detected note will be shifted by this number of semitones\n"
+"(it can be a decimal number)"
+msgstr ""
+"La nota selezionata sarà trasposta da questo numero di semitoni\n"
+"(non necessariamente intero)"
+
+#: src/wxfbtunerframe.cpp:226
+msgid "Pitch recognition options"
+msgstr "Opzioni di riconoscimento della frequenza"
+
+#: src/wxfbtunerframe.cpp:232
+msgid "Window &size (samples)"
+msgstr "Dimen&sione finestra (campioni)"
+
+#: src/wxfbtunerframe.cpp:236
+msgid "512"
+msgstr "512"
+
+#: src/wxfbtunerframe.cpp:236
+msgid "1024"
+msgstr "1024"
+
+#: src/wxfbtunerframe.cpp:236
+msgid "2048"
+msgstr "2048"
+
+#: src/wxfbtunerframe.cpp:236
+msgid "4096"
+msgstr "4096"
+
+#: src/wxfbtunerframe.cpp:236
+msgid "8192"
+msgstr "8192"
+
+#: src/wxfbtunerframe.cpp:236
+msgid "16384"
+msgstr "16384"
+
+#: src/wxfbtunerframe.cpp:240
+msgid ""
+"Window size affects speed and quality of frequency detection.\n"
+"Normally you should leave this to \"Auto\""
+msgstr ""
+"La dimensione della finestra condiziona la velocità e la qualità della misura.\n"
+"Normalmente si può lasciare su \"Auto\""
+
+#: src/wxfbtunerframe.cpp:250
+msgid "T&hreshold (dB)"
+msgstr "Sogli&a (dB)"
+
+#: src/wxfbtunerframe.cpp:255
+msgid ""
+"Threshold for starting note detection.\n"
+"Detection starts only if the input is loud\n"
+"enough (this is to avoid trying to detect\n"
+"the frequency of the noise)."
+msgstr ""
+"Il rilevamento inizierà solo se la potenza dell'ingresso\n"
+"supera la soglia (per evitare di misurare il rumore)"
+
+#: src/wxfbtunerframe.cpp:270
+msgid "&Expected precision (cents)"
+msgstr "Pr&ecisione prevista (cents)"
+
+#: src/wxfbtunerframe.cpp:275
+msgid "This value is used only Window sise is set to 'Auto'"
+msgstr "Questo valore è usato solo se la dimensione della finestra è impostata su \"Auto\""
+
+#: src/wxfbtunerframe.cpp:276
+msgid "9"
+msgstr "9"
+
+#: src/wxfbtunerframe.cpp:285
+msgid "Frame rate (fps)"
+msgstr "Frequenza di aggiornamento (fps)"
+
+#: src/wxfbtunerframe.cpp:290
+msgid "Set the update frequency for this window"
+msgstr "Imposta la frequenza di aggiornamento per questa finestra"
+
+#: src/wxfbtunerframe.cpp:291
+msgid "10"
+msgstr "10"
+
+#: src/deviceselector.cpp:31
+#: src/deviceselector.cpp:69
+msgid "No audio device found"
+msgstr "Nessun dispositivo di input trovato"
+
+#: src/deviceselector.cpp:54
+msgid "Choose an input device"
+msgstr "Seleziona un dispositivo di ingresso"
+
+#: src/deviceselector.cpp:54
+#: src/deviceselector.cpp:92
+#: src/tunerframe.cpp:338
+msgid "DC Tuner"
+msgstr "DC Tuner"
+
+#: src/deviceselector.cpp:92
+msgid "Choose an output device"
+msgstr "Scegli un dispositivo di ingresso"
+
+#: src/tunerframe.cpp:32
+msgid "C#"
+msgstr "Do#"
+
+#: src/tunerframe.cpp:32
+msgid "D#"
+msgstr "Re#"
+
+#: src/tunerframe.cpp:33
+msgid "F#"
+msgstr "Fa#"
+
+#: src/tunerframe.cpp:33
+msgid "G#"
+msgstr "Sol#"
+
+#: src/tunerframe.cpp:33
+msgid "A#"
+msgstr "La#"
+
+#: src/tunerframe.cpp:149
+#, c-format
+msgid "Invalid number: %s"
+msgstr "Numero non valido: %s"
+
+#: src/tunerframe.cpp:292
+msgid "Cannot find help file"
+msgstr "Impossibile trovare il file della guida"
+
+#: src/tunerframe.cpp:336
+#, c-format
+msgid ""
+"%s %s.\n"
+"%s\n"
+"\n"
+"By %s"
+msgstr ""
+"%s %s.\n"
+"%s\n"
+"\n"
+"By %s"
+
+#: src/tunerframe.cpp:337
+#: src/tunerframe.cpp:344
+msgid "A full-featured instrument tuner"
+msgstr "Accordatore per strumenti"
+
+#: src/audio_portaudio.cpp:69
+#, c-format
+msgid "%s"
+msgstr "%s"
+
+#: src/audio_portaudio.cpp:92
+msgid "No input device found"
+msgstr "Nessun dispositivo di input trovato"
+
+#: src/audio_portaudio.cpp:235
+msgid "No output device found"
+msgstr "Nessun dispositivo di output trovato"
+

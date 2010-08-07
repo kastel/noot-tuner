@@ -1,0 +1,108 @@
+AC_INIT(src/noot-tuner.cpp, 0.1.0, [dc.kastel@gmail.com])
+    AM_INIT_AUTOMAKE(noot-tuner, 0.1.0)
+
+AC_PROG_CXX
+AC_PROG_INSTALL
+AC_LIBTOOL_DLOPEN
+AC_PROG_LIBTOOL
+AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_FILES([version.h])
+
+AM_GNU_GETTEXT([external])
+
+CFLAGS="-Wall -O3 -g0 -fexceptions $CFLAGS"
+CXXFLAGS="-Wall -O3 -g0 -fexceptions $CXXFLAGS"
+
+AC_ARG_ENABLE(wxdebug,
+[[  --enable-wxdebug    Enable debugging and link against wxWidgets-dbg]],
+[WXDEBUG=--debug=yes; CXXFLAGS="$CXXFLAGS $CXXDEBUG"; CFLAGS="$CFLAGS $CDEBUG"],
+[WXDEBUG=--debug=no])
+
+WXCONFIG=wx-config
+AC_ARG_WITH(wx-config,
+[[  --with-wx-config=FILE     Use the given path to wx-config when determining
+                            wxWidgets configuration; defaults to "wx-config"]],
+[
+    if test "$withval" != "yes" -a "$withval" != ""; then
+        WXCONFIG=$withval
+    fi
+])
+
+AC_CHECK_HEADER([portaudio.h], ,
+	[AC_MSG_ERROR([Portaudio v19 is required to compile this program])])
+AC_CHECK_LIB([portaudio],[Pa_GetDefaultInputDevice],,
+	[AC_MSG_ERROR([Portaudio v19 is required to compile this program])])
+
+AC_CHECK_HEADER([fftw3.h],,
+	[AC_MSG_ERROR([FFTW3 is required to compile this program])])
+AC_CHECK_LIB([fftw3],[fftw_cleanup],,
+	[AC_MSG_ERROR([Portaudio v19 is required to compile this program])])
+
+wxversion=0
+
+AC_CHECK_TOOL(WINDRES, [windres])
+
+AM_CONDITIONAL(HAVE_WINDRES, [test $WINDRES])
+
+#NOTE: forcing wxHTML help on Windows to avoid using ugly hhc.exe
+
+#check if we are compiling with mingw
+if $GREP mingw <<< $host > /dev/null; then
+#  HELPEXTENSION=chm;
+#  OPTLIBS=core,base;
+  HELPEXTENSION=htb;
+  OPTLIBS=core,base,html,adv;
+else
+  HELPEXTENSION=htb;
+  OPTLIBS=core,base,html,adv;
+fi
+
+AC_SUBST(HELPEXTENSION)
+AC_SUBST(WINDRES)
+
+
+AC_DEFUN([WXTEST],
+[
+	AC_REQUIRE([AC_PROG_AWK])
+	AC_MSG_CHECKING([wxWidgets version])
+	if wxversion=`$WXCONFIG --version`; then
+		AC_MSG_RESULT([$wxversion])
+	else
+		AC_MSG_RESULT([not found])
+		AC_MSG_ERROR([wxWidgets is required. Try --with-wx-config.])
+	fi])
+
+# Call WXTEST func
+WXTEST
+
+# Verify minimus requires
+vers=`echo $wxversion | $AWK 'BEGIN { FS = "."; } { printf "% d", ($1 * 1000 + $2) * 1000 + $3;}'`
+if test -n "$vers" && test "$vers" -ge 2008008; then
+	WX_CPPFLAGS="`$WXCONFIG --cppflags`"
+	WX_CXXFLAGS="`$WXCONFIG --cxxflags | sed -e 's/-fno-exceptions//'`"
+	WX_LIBS="`$WXCONFIG --libs $OPTLIBS`"
+else
+	AC_MSG_ERROR([wxWidgets 2.8.8 or newer is required])
+fi
+
+
+CPPFLAGS="$WX_CPPFLAGS $CPPFLAGS"
+CXXFLAGS="$WX_CPPFLAGS $CXXFLAGS"
+
+[VERSION_MAJOR=`echo $VERSION | sed "s/^\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\).*$/\\1/"`]
+[VERSION_MINOR=`echo $VERSION | sed "s/^\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\).*$/\\2/"`]
+[VERSION_BUILD=`echo $VERSION | sed "s/^\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\).*$/\\3/"`]
+
+AC_SUBST(VERSION_MAJOR)
+AC_SUBST(VERSION_MINOR)
+AC_SUBST(VERSION_BUILD)
+
+AC_SUBST(WX_LIBS)
+
+AC_CHECK_PROG([ZIP], [zip], [zip], [])
+
+if test x$ZIP == x; then
+	AC_MSG_WARN(['zip' program not found. May not be able to build documentation]);
+fi
+
+AC_OUTPUT(Makefile po/Makefile.in po/Makefile src/Makefile doc/Makefile doc/en/Makefile)

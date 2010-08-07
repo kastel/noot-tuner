@@ -1,0 +1,25 @@
+startstop|noot-tuner_mainwindow.html|Start/Stop button
+mainwindow|noot-tuner_mainwindow.html|The main window
+mainwindow|noot-tuner_mainwindow.html|main window
+windowsize|noot-tuner_mainwindow.html|Window size
+windowsize|noot-tuner_mainwindow.html|FFT
+temperament|noot-tuner_mainwindow.html|Temperament selector
+detectednote|noot-tuner_mainwindow.html|'Detected note' box
+detectednote|noot-tuner_mainwindow.html|note
+detectednote|noot-tuner_mainwindow.html|offset
+detectednote|noot-tuner_mainwindow.html|frequency
+introduction|noot-tuner_introduction.html|Introduction
+requirements|noot-tuner_requirements.html|Minimum requirements
+note|noot-tuner_mainwindow.html|Note selector
+note|noot-tuner_mainwindow.html|note
+gettingstarted|noot-tuner_gettingstarted.html|Using NOOT INSTRUMENT TUNER
+octave|noot-tuner_mainwindow.html|Octave selector
+octave|noot-tuner_mainwindow.html|octave
+listen|noot-tuner_mainwindow.html|'Listen' button
+expectedprecision|noot-tuner_mainwindow.html|Expected precision
+expectedprecision|noot-tuner_mainwindow.html|precision
+changelog|noot-tuner_changelog.html|Changelog
+framerate|noot-tuner_mainwindow.html|Frame rate
+threshold|noot-tuner_mainwindow.html|Threshold
+threshold|noot-tuner_mainwindow.html|noise
+transpose|noot-tuner_mainwindow.html|Transpose

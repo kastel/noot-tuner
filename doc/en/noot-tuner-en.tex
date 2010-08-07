@@ -1,0 +1,154 @@
+\documentstyle[makeidx,texhelp]{report}
+\newcommand{\noun}[1]{\textsc{#1}}
+
+\makeindex
+
+\begin{document}
+\author{Davide Castellone}
+\title{NOOT Instrument Tuner}
+\date{February 2009}
+\maketitle
+\tableofcontents
+
+\pagestyle{fancyplain}%
+
+\chapter{Introduction}\label{introduction}
+
+\noun{Never-out-of-tune Instrument Tuner} simulates a full-featured instrument tuner. It may
+be used to tune musical instruments (guitars, pianos) or whatever
+implies the detection of a sound frequency between 20 and 4000 Hz with a cent precision.
+
+\section{Minimum requirements}\label{requirements}
+
+\begin{itemize}
+\item CPU clock frequency: at least 500 MHz
+\item An audio card with a configured microphone
+\item About 10 MB of RAM memory
+\item About 7 MB of disk space
+\item
+\end{itemize}
+
+\section{Changelog}\label{changelog}
+
+Version 0.1:
+
+\itemize{\item First published version}
+
+\chapter{Using \noun{NOOT Instrument Tuner}}\label{gettingstarted}
+
+Before starting, you need to configure your input device.
+Usually this means choosing the input device and adjusting
+its volume in the mixer.
+
+After doing that, start \noun{NOOT}. Usually there is
+no need for changing the default options.
+
+Click on the \tt{Start/Stop} button to start the tuner.
+
+If you already know the note you are tuning and do not need to
+discover it, you should set the \helpref{note}{note} and
+\helpref{octave}{octave} option.
+This will make note detection easier.
+
+\section{The main window}\label{mainwindow}
+
+$$\image{}{pictures/mainwindow.gif}$$
+\index{main window}
+\caption{The main window}
+
+Here is an explanation of all the controls in the main window.
+
+\subsection{Start/Stop button}\label{startstop}
+
+This button will start or stop the note detection. If another
+application need to open the input device, you can temporarily
+stop \noun{NOOT} and restart it later, without closing its
+window.
+
+\subsection{'Detected note' box}\label{detectednote}\index{note}
+
+This box is made of two parts. The tuning indicator will show
+how much the detected note is far from the expected note. Its
+colour varies according to whether the pitch is higher (blue)
+lower (red) or quite right (green). If the note is perfectly
+tuned, the indicator should be under the black line.
+
+The lower part of the box shows the following information:
+\begin{itemize}
+\item[Note] \index{note}The detected note. This value depends on whether you
+have set the note and the octave in the control panel below. If
+they are note set to \tt{Auto}, the note displayed will be exactly
+the choosen one.
+\item[Offset] \index{offset}The offset from the expected pitch, in cents (1 cent = 
+0.01 semitones)
+\item[Frequency] \index{frequency}The detected frequency in Hertz. This information is
+useless to most of the users.
+\end{itemize}
+
+\subsection{Octave selector}\label{octave}\index{octave}
+
+Selecting the right octaves often improves the precision of the
+detection algorithm. When the octave is set to \tt{Auto}, the program
+guesses it, sometimes leading to a little accurate measure.
+
+With the standard used the middle C is in octave 3.
+
+Sometimes the right octave is not the best, since every instrument
+produces more than one harmonic. If the detection is not precise
+enough (i.e. the indicator glitches too much) you can safely select
+an octave lower or higher than the original one.
+Remember that if you set the octave in the control panel, the detected
+octave may not correspond to that of the note.
+
+\subsection{Note selector}\label{note}\index{note}
+
+Like for the octave, specifying the note oftens improves the precision,
+but in most cases you should not need it.
+
+\subsection{'Listen' button}\label{listen}
+
+Click on this button to listen to the frequency of the note selected.
+
+\subsection{Temperament selector}\label{temperament}
+
+With \noun{NOOT Instrument Tuner} you can choose among a variety of temperaments.
+The explanation of the temperaments listed is not a subject of this
+manual.
+
+\subsection{Transpose}\label{transpose}
+
+Use this control to transpose the input. It can be a decimal number.
+
+The frequency displayed above will not be altered.
+
+\subsection{Window size}\label{windowsize}\index{FFT}
+
+This option affects the note detection algorithm. It represents the number
+of samples on which the FFT and autocorrelation are performed.
+
+It should be set to a reasonable value (usually 4096).
+If too low, the precision constraint may not be satisfied. If too high,
+it may slow down the computer or even make the detection less precise.
+
+\subsection{Threshold}\label{threshold}\index{noise}
+
+This option is used to start the detection only if the input is loud enough,
+in order to avoid glitches due to the background noise.
+
+A threshold of 0 dB means that the detection will never start, while a threshold
+of 90 dB (-90 dB, actually) will allow any input to be processed.
+
+\subsection{Expected precision}\label{expectedprecision}\index{precision}
+
+The lower is this number, the higher will be the precision. It represents the
+theoretical error in cents on the detected frequency.
+
+You can set this option to a higher value than 1 (the minimum value)
+if you want to speed up the detection, at the cost of a slight loss of precision.
+
+\subsection{Frame rate}\label{framerate}
+
+This number represents the average number of updates per second. If it is set to 
+a too high value, the program might hang.
+
+\end{document}

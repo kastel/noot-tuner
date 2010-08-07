@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<head>
+<meta name="GENERATOR" content="tex2rtf">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+ <param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#startstop">
+  <param name="Name" value="Start/Stop button">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#mainwindow">
+  <param name="Name" value="The main window">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#mainwindow">
+  <param name="Name" value="main window">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#windowsize">
+  <param name="Name" value="Window size">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#windowsize">
+  <param name="Name" value="FFT">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#temperament">
+  <param name="Name" value="Temperament selector">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#detectednote">
+  <param name="Name" value="'Detected note' box">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#detectednote">
+  <param name="Name" value="note">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#detectednote">
+  <param name="Name" value="offset">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#detectednote">
+  <param name="Name" value="frequency">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_introduction.html#introduction">
+  <param name="Name" value="Introduction">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_requirements.html#requirements">
+  <param name="Name" value="Minimum requirements">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#note">
+  <param name="Name" value="Note selector">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#note">
+  <param name="Name" value="note">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_gettingstarted.html#gettingstarted">
+  <param name="Name" value="Using NOOT INSTRUMENT TUNER">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#octave">
+  <param name="Name" value="Octave selector">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#octave">
+  <param name="Name" value="octave">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#listen">
+  <param name="Name" value="'Listen' button">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#expectedprecision">
+  <param name="Name" value="Expected precision">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#expectedprecision">
+  <param name="Name" value="precision">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_changelog.html#changelog">
+  <param name="Name" value="Changelog">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#framerate">
+  <param name="Name" value="Frame rate">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#threshold">
+  <param name="Name" value="Threshold">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#threshold">
+  <param name="Name" value="noise">
+  </OBJECT>
+ <LI> <OBJECT type="text/sitemap">
+  <param name="Local" value="noot-tuner_mainwindow.html#transpose">
+  <param name="Name" value="Transpose">
+  </OBJECT>
+</UL>

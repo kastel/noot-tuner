@@ -1,0 +1,138 @@
+<HTML>
+<head><title>The main window</title></head>
+
+<BODY BGCOLOR=#FFFFFF>
+<A NAME="mainwindow"></A><CENTER>
+<A HREF="noot-tuner_contents.html">Contents</A> <A HREF="noot-tuner_gettingstarted.html#gettingstarted">Up</A> <A HREF="noot-tuner_gettingstarted.html#gettingstarted">&lt;&lt;</A> &gt;&gt; </CENTER><HR>
+
+<H2>The main window</H2>
+<P>
+<CENTER></CENTER><img src="mainwindow.gif"><CENTER></CENTER>
+
+Table 2.2: The main window<P>
+Here is an explanation of all the controls in the main window.<P>
+<A HREF="#startstop">Start/Stop button</A><BR>
+<A HREF="#detectednote">'Detected note' box</A><BR>
+<A HREF="#octave">Octave selector</A><BR>
+<A HREF="#note">Note selector</A><BR>
+<A HREF="#listen">'Listen' button</A><BR>
+<A HREF="#temperament">Temperament selector</A><BR>
+<A HREF="#transpose">Transpose</A><BR>
+<A HREF="#windowsize">Window size</A><BR>
+<A HREF="#threshold">Threshold</A><BR>
+<A HREF="#expectedprecision">Expected precision</A><BR>
+<A HREF="#framerate">Frame rate</A><BR>
+<P>
+
+<HR>
+<A NAME="startstop"></A>
+<H3>Start/Stop button</H3>
+<P>
+This button will start or stop the note detection. If another
+application need to open the input device, you can temporarily
+stop NOOT and restart it later, without closing its
+window.<P>
+
+<HR>
+<A NAME="detectednote"></A>
+<H3>'Detected note' box</H3>
+<P>
+This box is made of two parts. The tuning indicator will show
+how much the detected note is far from the expected note. Its
+colour varies according to whether the pitch is higher (blue)
+lower (red) or quite right (green). If the note is perfectly
+tuned, the indicator should be under the black line.<P>
+The lower part of the box shows the following information:
+<UL>
+
+<LI> The detected note. This value depends on whether you
+have set the note and the octave in the control panel below. If
+they are note set to <TT>Auto</TT>, the note displayed will be exactly
+the choosen one.
+<LI> The offset from the expected pitch, in cents (1 cent = 
+0.01 semitones)
+<LI> The detected frequency in Hertz. This information is
+useless to most of the users.
+</UL>
+<P>
+
+<HR>
+<A NAME="octave"></A>
+<H3>Octave selector</H3>
+<P>
+Selecting the right octaves often improves the precision of the
+detection algorithm. When the octave is set to <TT>Auto</TT>, the program
+guesses it, sometimes leading to a little accurate measure.<P>
+With the standard used the middle C is in octave 3.<P>
+Sometimes the right octave is not the best, since every instrument
+produces more than one harmonic. If the detection is not precise
+enough (i.e. the indicator glitches too much) you can safely select
+an octave lower or higher than the original one.
+Remember that if you set the octave in the control panel, the detected
+octave may not correspond to that of the note.<P>
+
+<HR>
+<A NAME="note"></A>
+<H3>Note selector</H3>
+<P>
+Like for the octave, specifying the note oftens improves the precision,
+but in most cases you should not need it.<P>
+
+<HR>
+<A NAME="listen"></A>
+<H3>'Listen' button</H3>
+<P>
+Click on this button to listen to the frequency of the note selected.<P>
+
+<HR>
+<A NAME="temperament"></A>
+<H3>Temperament selector</H3>
+<P>
+With NOOT INSTRUMENT TUNER you can choose among a variety of temperaments.
+The explanation of the temperaments listed is not a subject of this
+manual.<P>
+
+<HR>
+<A NAME="transpose"></A>
+<H3>Transpose</H3>
+<P>
+Use this control to transpose the input. It can be a decimal number.<P>
+The frequency displayed above will not be altered.<P>
+
+<HR>
+<A NAME="windowsize"></A>
+<H3>Window size</H3>
+<P>
+This option affects the note detection algorithm. It represents the number
+of samples on which the FFT and autocorrelation are performed.<P>
+It should be set to a reasonable value (usually 4096).
+If too low, the precision constraint may not be satisfied. If too high,
+it may slow down the computer or even make the detection less precise.<P>
+
+<HR>
+<A NAME="threshold"></A>
+<H3>Threshold</H3>
+<P>
+This option is used to start the detection only if the input is loud enough,
+in order to avoid glitches due to the background noise.<P>
+A threshold of 0 dB means that the detection will never start, while a threshold
+of 90 dB (-90 dB, actually) will allow any input to be processed.<P>
+
+<HR>
+<A NAME="expectedprecision"></A>
+<H3>Expected precision</H3>
+<P>
+The lower is this number, the higher will be the precision. It represents the
+theoretical error in cents on the detected frequency.<P>
+You can set this option to a higher value than 1 (the minimum value)
+if you want to speed up the detection, at the cost of a slight loss of precision.<P>
+
+<HR>
+<A NAME="framerate"></A>
+<H3>Frame rate</H3>
+<P>
+This number represents the average number of updates per second. If it is set to 
+a too high value, the program might hang.<P>
+
+
+</FONT></BODY></HTML>

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=DC Tuner
+Exec=dctuner -caption "%c" %i %m %u
+Comment=Precision instrument tuner
+Icon=music_natur
+MimeTypes=
+Terminal=false
