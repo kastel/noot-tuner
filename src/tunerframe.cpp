@@ -352,6 +352,8 @@ void TunerFrame::OnHelpAbout(wxCommandEvent &)
 
     info.SetLicence(_("Licensed under the GNU General Public License v. 3\n"
         "http://www.gnu.org/copyleft/gpl.html"));
+
+    info.SetWebSite(wxT("http://code.google.com/p/noot-tuner/"));
 	
 	wxAboutBox(info);
 //#endif
