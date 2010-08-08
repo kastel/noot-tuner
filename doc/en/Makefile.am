@@ -1,6 +1,6 @@
 helpdir = $(datadir)/$(PACKAGE)
 
-EXTRA_DIST = noot-tuner-en.tex texhelp.sty makeidx.sty noot-tuner.chm tex2rtf.ini html pictures
+EXTRA_DIST = noot-tuner-en.tex texhelp.sty makeidx.sty tex2rtf.ini html pictures
 
 dist_help_DATA = noot-tuner.$(HELPEXTENSION)
 
