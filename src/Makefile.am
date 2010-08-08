@@ -25,3 +25,6 @@ noot_tuner_LDFLAGS = $(WX_LIBS) -lfftw3 -lportaudio
 
 .rc.o:
 	$(WINDRES) $(CPPFLAGS) -I.. -o $@ $<
+
+Applicationsdir = $(datadir)/applications
+Applications_DATA = noot-tuner.desktop
