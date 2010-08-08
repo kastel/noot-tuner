@@ -47,6 +47,17 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	wxMenuItem* m_separator2;
 	m_separator2 = mnuHelp->AppendSeparator();
 	
+	wxMenuItem* mnuHelpWebsite;
+	mnuHelpWebsite = new wxMenuItem( mnuHelp, ID_HELP_WEBSITE, wxString( _("Project website") ) , wxEmptyString, wxITEM_NORMAL );
+	mnuHelp->Append( mnuHelpWebsite );
+	
+	wxMenuItem* mnuHelpBug;
+	mnuHelpBug = new wxMenuItem( mnuHelp, ID_HELP_BUG, wxString( _("Report a bug...") ) , wxEmptyString, wxITEM_NORMAL );
+	mnuHelp->Append( mnuHelpBug );
+	
+	wxMenuItem* m_separator3;
+	m_separator3 = mnuHelp->AppendSeparator();
+	
 	wxMenuItem* mnuHelpAbout;
 	mnuHelpAbout = new wxMenuItem( mnuHelp, wxID_ABOUT, wxString( _("&About...") ) , wxEmptyString, wxITEM_NORMAL );
 	mnuHelp->Append( mnuHelpAbout );
@@ -307,6 +318,8 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	this->Connect( mnuDevicesExit->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnMenuExit ) );
 	this->Connect( mnuHelpTOC->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpTOC ) );
 	this->Connect( mnuHelpContext->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpContext ) );
+	this->Connect( mnuHelpWebsite->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpWebsite ) );
+	this->Connect( mnuHelpBug->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpBug ) );
 	this->Connect( mnuHelpAbout->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpAbout ) );
 	tbStartStop->Connect( wxEVT_COMMAND_TOGGLEBUTTON_CLICKED, wxCommandEventHandler( wxfbTunerFrame::OnStartStop ), NULL, this );
 	chOctave->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnOctave ), NULL, this );
@@ -332,6 +345,8 @@ wxfbTunerFrame::~wxfbTunerFrame()
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnMenuExit ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpTOC ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpContext ) );
+	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpWebsite ) );
+	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpBug ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpAbout ) );
 	tbStartStop->Disconnect( wxEVT_COMMAND_TOGGLEBUTTON_CLICKED, wxCommandEventHandler( wxfbTunerFrame::OnStartStop ), NULL, this );
 	chOctave->Disconnect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnOctave ), NULL, this );

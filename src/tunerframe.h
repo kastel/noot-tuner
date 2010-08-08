@@ -58,6 +58,8 @@ protected:
 	
 	void OnHelpTOC( wxCommandEvent& );
 	void OnHelpAbout( wxCommandEvent& );
+    void OnHelpBug(wxCommandEvent& );
+    void OnHelpWebsite(wxCommandEvent&);
 	
 	void OnHelp( wxHelpEvent& );
 	void OnHelpContext ( wxCommandEvent& );

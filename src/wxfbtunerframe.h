@@ -37,17 +37,19 @@ namespace noot
 {
 	#define ID_MNUDEVICESINPUT 1000
 	#define ID_MNUDEVICESOUTPUT 1001
-	#define ID_TBSTARTSTOP 1002
-	#define ID_PNGAUGE 1003
-	#define ID_OCTAVE 1004
-	#define ID_NOTE 1005
-	#define ID_LISTEN 1006
-	#define ID_TEMPERAMENT 1007
-	#define ID_TRANSPOSE 1008
-	#define ID_WINDOWSIZE 1009
-	#define ID_THRESHOLD 1010
-	#define ID_EXPECTEDPRECISION 1011
-	#define ID_FRAMERATE 1012
+	#define ID_HELP_WEBSITE 1002
+	#define ID_HELP_BUG 1003
+	#define ID_TBSTARTSTOP 1004
+	#define ID_PNGAUGE 1005
+	#define ID_OCTAVE 1006
+	#define ID_NOTE 1007
+	#define ID_LISTEN 1008
+	#define ID_TEMPERAMENT 1009
+	#define ID_TRANSPOSE 1010
+	#define ID_WINDOWSIZE 1011
+	#define ID_THRESHOLD 1012
+	#define ID_EXPECTEDPRECISION 1013
+	#define ID_FRAMERATE 1014
 	
 	///////////////////////////////////////////////////////////////////////////////
 	/// Class wxfbTunerFrame
@@ -81,6 +83,8 @@ namespace noot
 			virtual void OnMenuExit( wxCommandEvent& event ) { event.Skip(); }
 			virtual void OnHelpTOC( wxCommandEvent& event ) { event.Skip(); }
 			virtual void OnHelpContext( wxCommandEvent& event ) { event.Skip(); }
+			virtual void OnHelpWebsite( wxCommandEvent& event ) { event.Skip(); }
+			virtual void OnHelpBug( wxCommandEvent& event ) { event.Skip(); }
 			virtual void OnHelpAbout( wxCommandEvent& event ) { event.Skip(); }
 			virtual void OnStartStop( wxCommandEvent& event ) { event.Skip(); }
 			virtual void OnOctave( wxCommandEvent& event ) { event.Skip(); }

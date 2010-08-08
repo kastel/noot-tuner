@@ -385,4 +385,16 @@ void TunerFrame::OnMenuExit(wxCommandEvent &)
 	Destroy();
 }
 
+void TunerFrame::OnHelpBug(wxCommandEvent&) {
+    if (!wxLaunchDefaultBrowser(wxT("http://code.google.com/p/noot-tuner/issues/entry")))
+        wxMessageBox(_("Unable to launch the default browser"), _("NOOT Instrument Tuner"),
+            wxOK|wxCENTRE, this);
+}
+
+void TunerFrame::OnHelpWebsite(wxCommandEvent&) {
+    if (!wxLaunchDefaultBrowser(wxT("http://code.google.com/p/noot-tuner")))
+        wxMessageBox(_("Unable to launch the default browser"), _("NOOT Instrument Tuner"),
+            wxOK|wxCENTRE, this);
+}
+
 } //namespace
