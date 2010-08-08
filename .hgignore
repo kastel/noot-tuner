@@ -1,3 +1,4 @@
+/\.directory$
 ^debug/
 ^autom4te.cache/
 ^m4/
@@ -24,3 +25,17 @@
 ^missing$
 ^configure$
 ^aclocal\.m4$
+^debian/noot-tuner\.substvars$
+^debian/preinst\.ex$
+^debian/manpage\.1\.ex$
+^debian/noot-tuner\.doc-base\.EX$
+^debian/watch\.ex$
+^debian/manpage\.sgml\.ex$
+^debian/noot-tuner\.postrm\.debhelper$
+^debian/prerm\.ex$
+^debian/files$
+^debian/manpage\.xml\.ex$
+^debian/postinst\.ex$
+^debian/postrm\.ex$
+^debian/noot-tuner\.debhelper\.log$
+^debian/noot-tuner\.postinst\.debhelper$
