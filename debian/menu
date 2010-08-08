@@ -1,0 +1,2 @@
+?package(noot-tuner):needs="X11" section="Applications/Sound"\
+  title="NOOT Instrument Tuner" command="/usr/bin/noot-tuner"
