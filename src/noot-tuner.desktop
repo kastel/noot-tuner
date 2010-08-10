@@ -6,4 +6,4 @@ Exec=noot-tuner
 Comment=Precision instrument tuner
 Comment[it]=Accordatore di precisione per strumenti musicali
 Terminal=false
-Categories=Audio;Sound;Multimedia
+Categories=Application;AudioVideo;Audio
