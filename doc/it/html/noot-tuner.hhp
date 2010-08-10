@@ -6,7 +6,7 @@ Compiled file=noot-tuner.chm
 Default Window=noot-tunerHelp
 Default topic=noot-tuner_contents.html
 Index file=noot-tuner.hhk
-Title=NOOT Instrument Tuner
+Title=Accordatore NOOT
 
 [WINDOWS]
 noot-tunerHelp=,"noot-tuner.hhc","noot-tuner.hhk","noot-tuner_contents.html",,,,,,0x2420,,0x380e,,,,,0,,,

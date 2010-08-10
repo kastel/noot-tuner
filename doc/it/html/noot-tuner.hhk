@@ -10,11 +10,11 @@
 <UL>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#startstop">
-  <param name="Name" value="Start/Stop button">
+  <param name="Name" value="Pulsante Start/Stop">
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#mainwindow">
-  <param name="Name" value="The main window">
+  <param name="Name" value="La finestra principale">
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#mainwindow">
@@ -22,7 +22,7 @@
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#windowsize">
-  <param name="Name" value="Window size">
+  <param name="Name" value="Dimensione finestra">
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#windowsize">
@@ -30,15 +30,15 @@
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_howitworks.html#howitworks">
-  <param name="Name" value="How it works">
+  <param name="Name" value="Come funziona">
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#temperament">
-  <param name="Name" value="Temperament selector">
+  <param name="Name" value="Selezione del temperamento">
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#detectednote">
-  <param name="Name" value="'Detected note' box">
+  <param name="Name" value="Riquadro "nota rilevata"">
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#detectednote">
@@ -58,11 +58,11 @@
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_introduction.html#introduction">
-  <param name="Name" value="Introduction">
+  <param name="Name" value="Introduzione">
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_requirements.html#requirements">
-  <param name="Name" value="Minimum requirements">
+  <param name="Name" value="Requisiti minimi">
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_license-gplv3.html#license-apply">
@@ -74,7 +74,7 @@
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#note">
-  <param name="Name" value="Note selector">
+  <param name="Name" value="Nota">
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#note">
@@ -82,7 +82,7 @@
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_using.html#using">
-  <param name="Name" value="Using NOOT INSTRUMENT TUNER">
+  <param name="Name" value="Come si usa">
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_license-gplv3.html#license-preamble">
@@ -90,7 +90,7 @@
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#octave">
-  <param name="Name" value="Octave selector">
+  <param name="Name" value="Ottava">
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#octave">
@@ -98,19 +98,19 @@
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#listen">
-  <param name="Name" value="'Listen' button">
+  <param name="Name" value="Pulsante "ascolta"">
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_license.html#license">
-  <param name="Name" value="License">
+  <param name="Name" value="Licenza">
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_credits.html#credits">
-  <param name="Name" value="Credits">
+  <param name="Name" value="Riconoscimenti">
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#expectedprecision">
-  <param name="Name" value="Expected precision">
+  <param name="Name" value="Precisione prevista">
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#expectedprecision">
@@ -118,7 +118,7 @@
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_features.html#features">
-  <param name="Name" value="Features">
+  <param name="Name" value="Caratteristiche">
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_changelog.html#changelog">
@@ -130,7 +130,7 @@
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#threshold">
-  <param name="Name" value="Threshold">
+  <param name="Name" value="Soglia">
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#threshold">
@@ -138,6 +138,6 @@
   </OBJECT>
  <LI> <OBJECT type="text/sitemap">
   <param name="Local" value="noot-tuner_mainwindow.html#transpose">
-  <param name="Name" value="Transpose">
+  <param name="Name" value="Trasponi">
   </OBJECT>
 </UL>

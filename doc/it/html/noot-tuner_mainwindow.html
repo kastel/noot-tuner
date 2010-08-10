@@ -1,0 +1,149 @@
+<HTML>
+<head><title>La finestra principale</title></head>
+
+<BODY BGCOLOR=#FFFFFF>
+<A NAME="mainwindow"></A><CENTER>
+<A HREF="noot-tuner_contents.html">Contents</A> <A HREF="noot-tuner_using.html#using">Up</A> <A HREF="noot-tuner_using.html#using">&lt;&lt;</A> <A HREF="noot-tuner_howitworks.html#howitworks">&gt;&gt;</A> </CENTER><HR>
+
+<H2>La finestra principale</H2>
+<P>
+<CENTER></CENTER><img src="screenshot-it.png"><CENTER></CENTER>
+
+Table 2.2: Finestra principale<P>
+Di seguito, la descrizione di tutti i controlli della finestra principale.<P>
+<A HREF="#startstop">Pulsante Start/Stop</A><BR>
+<A HREF="#detectednote">Riquadro "nota rilevata"</A><BR>
+<A HREF="#octave">Ottava</A><BR>
+<A HREF="#note">Nota</A><BR>
+<A HREF="#listen">Pulsante "ascolta"</A><BR>
+<A HREF="#temperament">Selezione del temperamento</A><BR>
+<A HREF="#transpose">Trasponi</A><BR>
+<A HREF="#windowsize">Dimensione finestra</A><BR>
+<A HREF="#threshold">Soglia</A><BR>
+<A HREF="#expectedprecision">Precisione prevista</A><BR>
+<A HREF="#framerate">Frame rate</A><BR>
+<P>
+
+<HR>
+<A NAME="startstop"></A>
+<H3>Pulsante Start/Stop</H3>
+<P>
+Questo pulsante avvia o ferma la rilevazione. Se il dispositivo
+di ingresso è richiesto da un'altra applicazione, si può
+momentaneamente fermare NOOT e riavviarlo successivamente,
+senza chiudere la sua finestra.<P>
+
+<HR>
+<A NAME="detectednote"></A>
+<H3>Riquadro "nota rilevata"</H3>
+<P>
+Questo riquadro si suddivide in due parti. L'indicatore di
+intonazione mostra quanto la frequenza rilevata si allontani
+dalla nota prevista. Se la nota è crescente, l'indicatore
+è blu, se è calante l'indicatore è rosso; se è molto vicina
+a quella corretta, l'indicatore è verde. Quando la nota
+è perfettamente intonata, l'indicatore dovrebbe trovarsi
+sotto la linea nera.<P>
+La parte inferiore del riquadro mostra le seguenti informazioni:<P>
+<UL>
+
+<LI> La nota rilevata. Il suo valore cambia
+se viene selezionata una nota o un'ottava nel pannello di controllo
+sottostante. Se entrambe sono impostati su <TT>Auto</TT>, la nota
+mostrata sarà quella rilevata dal programma.
+<LI> Lo scostamento dalla frequenza prevista,
+in cent (1 cent = 0.01 semitoni).
+<LI> La frequenza rilevata in Hz. Questa informazione
+è di poco uso.
+</UL>
+<P>
+
+<HR>
+<A NAME="octave"></A>
+<H3>Ottava</H3>
+<P>
+Selezionare l'ottava giusta spesso aumenta la precisione della misura.
+Quando l'ottava è impostata su <TT>Auto</TT>, il programma cerca di
+indovinarla, portando spesso a misure meno precise.<P>
+Con lo standard adottato, il Do centrale si trova nell'ottava 3.<P>
+Talvolta l'ottava precisa non è la migliore, in quanto ogni strumento
+produce più di un'armonica. Se la rilevazione non è abbastanza precisa
+(cioè, se l'indicatore oscilla troppo) si può selezionare l'ottava
+immediatamente superiore o inferiore a quella originale, senza rischi.
+Si ricorda che se viene impostata un'ottava nel pannello di controllo,
+l'ottava rilevata potrebbe non corrispondere a quella della nota.<P>
+
+<HR>
+<A NAME="note"></A>
+<H3>Nota</H3>
+<P>
+Come per l'ottava, specificare la nota spesso migliora la precisione,
+ma spesso non è necessario.<P>
+
+<HR>
+<A NAME="listen"></A>
+<H3>Pulsante "ascolta"</H3>
+<P>
+Cliccare su questo pulsante per ascoltare la nota selezionata.<P>
+
+<HR>
+<A NAME="temperament"></A>
+<H3>Selezione del temperamento</H3>
+<P>
+Con NOOT, si può scegliere tra una varietà di temperamenti.
+La descrizione dei temperamenti elencati non è argomento di questo
+manuale.<P>
+
+<HR>
+<A NAME="transpose"></A>
+<H3>Trasponi</H3>
+<P>
+Usare questo controllo per trasporre l'input di un certo numero
+di semitoni. Può essere un numero decimale. La frequenza
+mostrata non sarà alterata.<P>
+The frequency displayed above will not be altered.<P>
+
+<HR>
+<A NAME="windowsize"></A>
+<H3>Dimensione finestra</H3>
+<P>
+Questa opzione influenza l'algoritmo di rilevazione della frequenza.
+Rappresenta il numero di campioni su cui vengono computate la FFT
+e l'autocorrelazione.<P>
+Dovrebbe essere impostato su un valore ragionevole (per esempio 4096).
+Se troppo basso, la precisione desiderata potrebbe non essere
+raggiunta. Se troppo alto, potrebbe rallentare il computer o
+persino peggiorare la misura.<P>
+
+<HR>
+<A NAME="threshold"></A>
+<H3>Soglia</H3>
+<P>
+Questa opzione serve ad avviare la rilevazione solo quando il livello
+dell'input è abbastanza alto, così da evitare interferenze dovute al
+rumore di sottofondo.<P>
+Una soglia di 0 dB significa che la rilevazione non si avvierà mai,
+mentre una soglia di 90 dB (-90 in realtà) lascerà passare
+qualsiasi input.<P>
+A threshold of 0 dB means that the detection will never start, while a threshold
+of 90 dB (-90 dB, actually) will allow any input to be processed.<P>
+
+<HR>
+<A NAME="expectedprecision"></A>
+<H3>Precisione prevista</H3>
+<P>
+Minore il valore, maggiore la precisione. Rappresenta l'errore
+teorico in cent sulla frequenza misurata.<P>
+Si può imporstare su un valore maggiore di 1 (il minimo)
+se si vuole velocizzare il processo, al prezzo di una
+piccola perdita di precisione.<P>
+
+<HR>
+<A NAME="framerate"></A>
+<H3>Frame rate</H3>
+<P>
+Questo numero rappresenta il numero medio di aggiornamenti al
+seconto. Se impostato su un valore troppo alto, il programma
+potrebbe bloccarsi.<P>
+
+</FONT></BODY></HTML>

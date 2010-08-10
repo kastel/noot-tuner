@@ -1,0 +1,33 @@
+startstop|noot-tuner_mainwindow.html|Pulsante Start/Stop
+mainwindow|noot-tuner_mainwindow.html|La finestra principale
+mainwindow|noot-tuner_mainwindow.html|main window
+windowsize|noot-tuner_mainwindow.html|Dimensione finestra
+windowsize|noot-tuner_mainwindow.html|FFT
+howitworks|noot-tuner_howitworks.html|Come funziona
+temperament|noot-tuner_mainwindow.html|Selezione del temperamento
+detectednote|noot-tuner_mainwindow.html|Riquadro "nota rilevata"
+detectednote|noot-tuner_mainwindow.html|note
+detectednote|noot-tuner_mainwindow.html|offset
+detectednote|noot-tuner_mainwindow.html|frequency
+license-gplv3|noot-tuner_license-gplv3.html|GNU GENERAL PUBLIC LICENSE
+introduction|noot-tuner_introduction.html|Introduzione
+requirements|noot-tuner_requirements.html|Requisiti minimi
+license-apply|noot-tuner_license-gplv3.html|How to Apply These Terms to Your New Programs
+license-terms|noot-tuner_license-gplv3.html|Terms and Conditions
+note|noot-tuner_mainwindow.html|Nota
+note|noot-tuner_mainwindow.html|note
+using|noot-tuner_using.html|Come si usa
+license-preamble|noot-tuner_license-gplv3.html|Preamble
+octave|noot-tuner_mainwindow.html|Ottava
+octave|noot-tuner_mainwindow.html|octave
+listen|noot-tuner_mainwindow.html|Pulsante "ascolta"
+license|noot-tuner_license.html|Licenza
+credits|noot-tuner_credits.html|Riconoscimenti
+expectedprecision|noot-tuner_mainwindow.html|Precisione prevista
+expectedprecision|noot-tuner_mainwindow.html|precision
+features|noot-tuner_features.html|Caratteristiche
+changelog|noot-tuner_changelog.html|Changelog
+framerate|noot-tuner_mainwindow.html|Frame rate
+threshold|noot-tuner_mainwindow.html|Soglia
+threshold|noot-tuner_mainwindow.html|noise
+transpose|noot-tuner_mainwindow.html|Trasponi

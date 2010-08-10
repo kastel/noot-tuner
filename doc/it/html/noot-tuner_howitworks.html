@@ -1,0 +1,25 @@
+<HTML>
+<head><title>Come funziona</title></head>
+
+<BODY BGCOLOR=#FFFFFF>
+<A NAME="howitworks"></A><CENTER>
+<A HREF="noot-tuner_contents.html">Contents</A> <A HREF="noot-tuner_contents.html">Up</A> <A HREF="noot-tuner_mainwindow.html#mainwindow">&lt;&lt;</A> <A HREF="noot-tuner_license.html#license">&gt;&gt;</A> </CENTER><HR>
+
+<H2>Come funziona</H2>
+<P>
+L'accordatore NOOT usa un misto di FFT e autocorrelazione
+lineare per raggiungere la precisione di un cent con
+finestre di larghezza relativamente ridotta.<P>
+Ogni volta che il display è aggiornato, viene eseguito il seguente algoritmo:
+<UL>
+
+  <LI> La FFT viene usata per trovare la frequenza con la massima densità spettrale entro la nota e l'ottava selezionate.
+  <LI> Da quella frequenza, viene ricavato un intervallo di frequenze possibili.
+  <LI> Si calcola l'autocorrelazione ai tempi corrispondenti a quell'intervallo di frequenze; viene tenuto il tempo che corrisponde all'autocorrelazione più alta.
+  <LI> Ripetutamente, la frequenza è dimezzata (il tempo è raddoppiato) e viene tenuto il tempo corrispondente all'autocorrelazione più alta tra i valori vicini.
+</UL>
+<P>
+Lo svantaggio principale di questo approccio è la perdita di precisione nei casi in cui gli armonici sono lontani dalla perfezione.<P>
+<P>
+
+</FONT></BODY></HTML>

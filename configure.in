@@ -105,4 +105,5 @@ if test x$ZIP == x; then
 	AC_MSG_WARN(['zip' program not found. May not be able to build documentation]);
 fi
 
-AC_OUTPUT(Makefile po/Makefile.in po/Makefile src/Makefile doc/Makefile doc/en/Makefile)
+AC_OUTPUT(Makefile po/Makefile.in po/Makefile src/Makefile doc/Makefile doc/en/Makefile
+    doc/it/Makefile)
