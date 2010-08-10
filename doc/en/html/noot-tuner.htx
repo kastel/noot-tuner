@@ -3,21 +3,28 @@ mainwindow|noot-tuner_mainwindow.html|The main window
 mainwindow|noot-tuner_mainwindow.html|main window
 windowsize|noot-tuner_mainwindow.html|Window size
 windowsize|noot-tuner_mainwindow.html|FFT
+howitworks|noot-tuner_howitworks.html|How it works
 temperament|noot-tuner_mainwindow.html|Temperament selector
 detectednote|noot-tuner_mainwindow.html|'Detected note' box
 detectednote|noot-tuner_mainwindow.html|note
 detectednote|noot-tuner_mainwindow.html|offset
 detectednote|noot-tuner_mainwindow.html|frequency
+license-gplv3|noot-tuner_license-gplv3.html|GNU GENERAL PUBLIC LICENSE
 introduction|noot-tuner_introduction.html|Introduction
 requirements|noot-tuner_requirements.html|Minimum requirements
+license-apply|noot-tuner_license-gplv3.html|How to Apply These Terms to Your New Programs
+license-terms|noot-tuner_license-gplv3.html|Terms and Conditions
 note|noot-tuner_mainwindow.html|Note selector
 note|noot-tuner_mainwindow.html|note
-gettingstarted|noot-tuner_gettingstarted.html|Using NOOT INSTRUMENT TUNER
+using|noot-tuner_using.html|Using NOOT INSTRUMENT TUNER
+license-preamble|noot-tuner_license-gplv3.html|Preamble
 octave|noot-tuner_mainwindow.html|Octave selector
 octave|noot-tuner_mainwindow.html|octave
 listen|noot-tuner_mainwindow.html|'Listen' button
+license|noot-tuner_license.html|License
 expectedprecision|noot-tuner_mainwindow.html|Expected precision
 expectedprecision|noot-tuner_mainwindow.html|precision
+features|noot-tuner_features.html|Features
 changelog|noot-tuner_changelog.html|Changelog
 framerate|noot-tuner_mainwindow.html|Frame rate
 threshold|noot-tuner_mainwindow.html|Threshold

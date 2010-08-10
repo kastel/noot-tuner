@@ -6,7 +6,7 @@
 \begin{document}
 \author{Davide Castellone}
 \title{NOOT Instrument Tuner}
-\date{February 2009}
+\date{August 2010}
 \maketitle
 \tableofcontents
 
@@ -18,6 +18,43 @@
 be used to tune musical instruments (guitars, pianos) or whatever
 implies the detection of a sound frequency between 20 and 4000 Hz with a cent precision.
 
+\noun{NOOT Instrument Tuner} is distributed under the
+\helpref{GNU General Public License version 3}{license-gplv3}
+
+Website: \urlref{http://code.google.com/p/noot-tuner/}{http://code.google.com/p/noot-tuner/}
+
+Should you find any unexpected behaviour or want to make a suggestion or request a feature,
+please go to the \urlref{bug reporting page}{http://code.google.com/p/noot-tuner/issues/entry}.
+
+The author can be contacted on NOOT's mailing list:
+\urlref{noot-tuner-discuss@googlegroups.com}{mailto:noot-tuner-discuss@googlegroups.com}
+
+\section{Features}\label{features}
+
+\begin{itemize}
+	\item Easy to use (default settings will work in most cases)
+	\item It works with almost any instrument
+	\item Up to one-cent precision (0.01 semitones)
+	\item Real-time display
+	\item Octave and/or note selection
+	\item Transposition
+	\item Selectable temperament
+	\item Internationalisation (English and Italian for now, other languages will follow)
+	\item Cross-platform (it can be compiled on virtually any OS;
+		Windows and Ubuntu packages available now,  other packages available soon)
+	\item Basic documentation included
+\end{itemize}
+
+\textbf{Future plans}
+\begin{itemize}
+	\item Clock correction
+	\item Ever more accuracy
+	\item Customisable temperament
+	\item More ports (OSX, ...) and languages
+	\item PPA for Ubuntu users
+	\item Input volume monitor, clipping detection and/or automatic volume
+\end{itemize}
+
 \section{Minimum requirements}\label{requirements}
 
 \begin{itemize}
@@ -25,7 +62,6 @@ implies the detection of a sound frequency between 20 and 4000 Hz with a cent pr
 \item An audio card with a configured microphone
 \item About 10 MB of RAM memory
 \item About 7 MB of disk space
-\item
 \end{itemize}
 
 \section{Changelog}\label{changelog}
@@ -34,7 +70,7 @@ Version 0.1.0:
 
 \itemize{\item First published version}
 
-\chapter{Using \noun{NOOT Instrument Tuner}}\label{gettingstarted}
+\chapter{Using \noun{NOOT Instrument Tuner}}\label{using}
 
 Before starting, you need to configure your input device.
 Usually this means choosing the input device and adjusting
@@ -150,5 +186,28 @@ if you want to speed up the detection, at the cost of a slight loss of precision
 
 This number represents the average number of updates per second. If it is set to 
 a too high value, the program might hang.
+
+\chapter{How it works}\label{howitworks}
+
+\noun{NOOT Instrument tuner} uses a mix of FFT and linear autocorrelation to reach one-cent precision with relatively narrow window sizes.
+
+Every time the display is updated, the following algorithm is computed on the current window:
+
+\begin{itemize}
+  \item A FFT is used to find the frequency with the highest spectral density within the note and octave constraints (if selected)
+  \item From that frequency, an interval of possible frequencies is taken.
+  \item Autocorrelation is computed at the times corresponding to that frequency interval; the time lag corresponding to the highest autocorrelation is kept.
+  \item Repeatedly, the frequency is halved (the time lag is doubled) and the time lag corresponding to the highest autocorrelation among the near values is kept.
+\end{itemize}
+
+The main disadvantage of this approach is that it ceases to be precise in cases when the harmonics are far less than perfect.
+
+\appendix
+
+\chapter{License}\label{license}
+
+\noun{NOOT Instrument Tuner} is distributed under the \helpref{GNU General Public License}{license-gplv3}
+
+\include{gpl-3.0.tex}
 
 \end{document}

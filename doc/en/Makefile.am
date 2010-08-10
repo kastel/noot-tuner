@@ -9,7 +9,7 @@ dist_help_DATA = noot-tuner.$(HELPEXTENSION)
 noot-tuner.htb: $(srcdir)/html/*
 	( pushd $(srcdir)/html && ( cp -f ../pictures/* . && $(ZIP) -9 -r ../noot-tuner.htb *; popd ) ) || true
 
-$(srcdir)/html/* : noot-tuner-en.tex
+$(srcdir)/html/* : noot-tuner-en.tex gpl-3.0.tex
 	( pushd $(srcdir) && ( { if ! [ -e html ]; then mkdir html; fi } && tex2rtf noot-tuner-en.tex html/noot-tuner -html; popd ) ) || true
 
 #how to compile in CHM? currently compilation is manual... FIXME

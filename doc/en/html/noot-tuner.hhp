@@ -14,7 +14,11 @@ noot-tunerHelp=,"noot-tuner.hhc","noot-tuner.hhk","noot-tuner_contents.html",,,,
 [FILES]
 noot-tuner_contents.html
 noot-tuner_introduction.html
+noot-tuner_features.html
 noot-tuner_requirements.html
 noot-tuner_changelog.html
-noot-tuner_gettingstarted.html
+noot-tuner_using.html
 noot-tuner_mainwindow.html
+noot-tuner_howitworks.html
+noot-tuner_license.html
+noot-tuner_license-gplv3.html
