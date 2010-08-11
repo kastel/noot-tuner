@@ -12,9 +12,9 @@ AlwaysShowComponentsList=False
 AppId={{81979DE0-FE6C-11DD-968B-001B3876CBEE}}
 WizardImageFile=compiler:WizModernImage-IS.bmp
 WizardSmallImageFile=compiler:WizModernSmallImage-IS.bmp
-VersionInfoVersion={#VERSION_MAJOR}.{#VERSION_MINOR}.{#VERSION_BUILD}
-VersionInfoProductVersion={#VERSION_MAJOR}.{#VERSION_MINOR}.{#VERSION_BUILD}
-OutputBaseFilename=noot-tuner{#VERSION_MAJOR}.{#VERSION_MINOR}.{#VERSION_BUILD}-setup
+VersionInfoVersion={#VERSION}
+VersionInfoProductVersion={#VERSION}
+OutputBaseFilename=noot-tuner{#VERSION}-setup
 OutputDir=win-setup
 UsePreviousAppDir=False
 
