@@ -276,16 +276,15 @@ static wxString FindHelpFile()
 //#endif
 	
 	wxFileName fn(wxStandardPaths::Get().GetResourcesDir(),
-			   wxString::Format(wxT("noot-tuner-%s.%s"),
-								wxGetApp().m_locale.GetCanonicalName().c_str(),
-							   HELPEXT));
+			   wxGetApp().m_locale.GetCanonicalName() + wxFileName::GetPathSeparator()
+               + wxT("noot-tuner.") + HELPEXT);
 	
 	if (fn.FileExists())
 		return fn.GetFullPath();
 	
 //	printf("%s does not exist\n", fn.GetFullPath().mb_str());
 	
-	fn.SetName(wxT("noot-tuner"));
+	fn.Assign(wxStandardPaths::Get().GetResourcesDir(), wxString(wxT("noot-tuner"))+HELPEXT);
 	if (fn.FileExists())
 		return fn.GetFullPath();
 	
