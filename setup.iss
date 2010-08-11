@@ -33,6 +33,8 @@ Source: Z:\home\mingw\bin\wxmsw28u_adv_gcc_custom.dll; DestDir: {app}
 Source: Z:\home\mingw\bin\wxmsw28u_html_gcc_custom.dll; DestDir: {app}
 Source: Z:\home\mingw\share\locale\it\LC_MESSAGES\noot-tuner.mo; DestDir: {app}\it; Languages: it
 Source: Z:\home\mingw\share\noot-tuner\noot-tuner.htb; DestDir: {app}
+Source: Z:\home\mingw\share\noot-tuner\it\noot-tuner.htb; DestDir: {app}\it; Languages: it
+
 [Dirs]
 Name: {app}
 Name: {app}\it; Languages: it

@@ -1,10 +1,9 @@
-helpdir = $(datadir)/$(PACKAGE)
-
 #language signature
 HLANG = it
 
 EXTRA_DIST = noot-tuner-$(HLANG).tex texhelp.sty makeidx.sty tex2rtf.ini html pictures
 
+helpdir = $(datadir)/$(PACKAGE)/$(HLANG)
 dist_help_DATA = noot-tuner.$(HELPEXTENSION)
 
 #don't give an error if help cannot be built
