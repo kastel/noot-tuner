@@ -1,7 +1,7 @@
 #language signature
 HLANG = it
 
-EXTRA_DIST = noot-tuner-$(HLANG).tex texhelp.sty makeidx.sty tex2rtf.ini html pictures
+EXTRA_DIST = noot-tuner-$(HLANG).tex texhelp.sty makeidx.sty tex2rtf.ini html pictures gpl-3.0.tex
 
 helpdir = $(datadir)/$(PACKAGE)/$(HLANG)
 dist_help_DATA = noot-tuner.$(HELPEXTENSION)

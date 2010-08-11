@@ -2,7 +2,7 @@
 noinst_HEADERS = audio_file.h audio_portaudio.h audioio.h wxfbtunerframe.h \
 	noot-tuner.h notedetection.h options.h tunerframe.h
 
-EXTRA_DIST = tunerframe.fpb
+EXTRA_DIST = tunerframe.fpb noot-tuner.desktop
 
 #########################################################################
 # APPLICATION SECTION
