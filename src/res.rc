@@ -16,10 +16,10 @@ BEGIN
 		BLOCK "040904E4"
 		BEGIN
 			VALUE "CompanyName", "Davide Castellone"
-			VALUE "FileDescription", "DC Tuner executable file"
-			VALUE "InternalName", "dctuner"
-			VALUE "OriginalFilename", "dctuner.exe"
-			VALUE "ProductName", "DC Tuner"
+			VALUE "FileDescription", "NOOT Instrument Tuner executable file"
+			VALUE "InternalName", "noot-tuner"
+			VALUE "OriginalFilename", "noot-tuner.exe"
+			VALUE "ProductName", "NOOT Instrument Tuner"
 			VALUE "ProductVersion", VERSION
 		END
 	END
