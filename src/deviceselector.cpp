@@ -48,7 +48,7 @@ bool PortaudioBackend::SelectInputDevice(wxWindow* parent)
 		
 		if (info->maxInputChannels > 0) {
 			names.push_back(wxString(info->name, wxConvUTF8));
-			clientdata[listed] = (void*)i;
+			clientdata[listed] = reinterpret_cast<void*>(i);
 			listed++;
 		}
 	}
@@ -57,7 +57,7 @@ bool PortaudioBackend::SelectInputDevice(wxWindow* parent)
 						  names, (char**)clientdata);
 	
 	if (dlg.ShowModal()==wxID_OK)
-		inputDevice = (int) clientdata[dlg.GetSelection()];
+		inputDevice = reinterpret_cast<PaDeviceIndex>(clientdata[dlg.GetSelection()]);
 	
 	return true;
 }
@@ -86,7 +86,7 @@ bool PortaudioBackend::SelectOutputDevice(wxWindow* parent)
 		
 		if (info->maxOutputChannels > 0) {
 			names.push_back(wxString(info->name, wxConvUTF8));
-			clientdata[listed] = (void*)i;
+			clientdata[listed] = reinterpret_cast<void*>(i);
 			listed++;
 		}
 	}
@@ -95,7 +95,7 @@ bool PortaudioBackend::SelectOutputDevice(wxWindow* parent)
 							 names, (char**)clientdata);
 	
 	if (dlg.ShowModal()==wxID_OK)
-		outputDevice = (int) clientdata[dlg.GetSelection()];
+		outputDevice = reinterpret_cast<PaDeviceIndex>(clientdata[dlg.GetSelection()]);
 	
 	return true;
 }
