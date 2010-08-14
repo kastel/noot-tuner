@@ -1,3 +1,9 @@
+noot-tuner (0.1.2) lucid; urgency=low
+
+  * Fixed a bug that caused builds on 64-bit machines to fail
+
+ -- Davide Castellone <dc.kastel@gmail.com>  Sat, 14 Aug 2010 17:50:28 +0200
+
 noot-tuner (0.1.1) lucid; urgency=low
 
   * New upstream development version: minor changes; a better application icon
