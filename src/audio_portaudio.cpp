@@ -65,6 +65,9 @@ void PortaudioBackend::LogPortaudioError(int err)
 
 bool PortaudioBackend::Terminate()
 {
+    if (audioStream)
+        StopStreaming();
+    
 	int err = Pa_Terminate();
 	if (err!=paNoError)
 	{
