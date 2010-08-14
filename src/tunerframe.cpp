@@ -258,8 +258,8 @@ void TunerFrame::OnTimer(wxTimerEvent & event)
 	{
 		stNote1->SetLabel(wxString::Format(wxT("%s%d"), translatedNotes[note].c_str(),
 						  octave-2));
-		stOffset->SetLabel(wxString::Format(wxT("%+3.0f"), offset*100));
-		stFrequency->SetLabel(wxString::Format(wxT("%4.0f Hz"), freq));
+		stOffset->SetLabel(wxString::Format(wxString::Format(wxT("%% +5.%df"), (dcOptions.fExpectedPrecision<2.0) ? 1 : 0), offset*100));
+		stFrequency->SetLabel(wxString::Format(wxString::Format(wxT("%%.%df Hz"), int(4.0-log10(freq))), freq));
 		
 		SetIndicator(offset);
 	}
