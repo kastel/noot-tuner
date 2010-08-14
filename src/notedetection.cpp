@@ -316,8 +316,6 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	int i, e, factor, index, iMax;
 	double tempfreq, dMax;
 	
-	wxMutexLocker ml(s_bufferMutex);
-	
 	if (!fPitches[0])
 		SetTemperament((TEMPERAMENT)dcOptions.iTemperament);
 	
@@ -348,15 +346,20 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 		
 		//theAudioBackend->ResumeStreaming();
 	}
+
 	
 	if (!(frequency || note || octave)) //it is only a setup request
 		return false;
 	
-	//Step 0: check the threshold
+    //Copy buffer content to a local buffer to minimize mutex lock times
+    static Buffer localBuffer(0);
+    buffer.CopyTo(localBuffer);
+
+    //Step 0: check the threshold
 	dMax = pow(10,dcOptions.fThreshold/20);
 	bool ok = false;
-	for (i=0, e=buffer.GetSize(); i<e; ++i)
-		if (buffer[i]>dMax) {
+	for (i=0, e=localBuffer.GetSize(); i<e; ++i)
+		if (localBuffer[i]>dMax) {
 			ok = true;
 			break;
 		}
@@ -365,17 +368,17 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 		return false;
 	
 	/*for (i=0, e=ac.GetSize(); i<e; ++i)
-	ac[i] = AutoCorrelation(buffer, i);*/
+	ac[i] = AutoCorrelation(localBuffer, i);*/
 	
 	//Step 1: fourier-transform the signal
 	fftw_execute(plan);
-	cOut[0][0] /= buffer.GetSize(); //normalise value that will be used as mean
+	cOut[0][0] /= localBuffer.GetSize(); //normalise value that will be used as mean
 	
 	//Step 2: find the lowest maximum
 	{
 		iMax=0;
 		if (dcOptions.iOctave == -1) { //no octave
-			i = 1; e = buffer.GetSize()/2;
+			i = 1; e = localBuffer.GetSize()/2;
 		
 			MiniSortedMap<double, int, 3> peaks(0.0);
 		
@@ -388,14 +391,14 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 			iMax = peaks.GetLowestValue();
 			
 		} else if (dcOptions.iNote == -1 ) { //octave and no note
-			i = floor(fPitches[12*dcOptions.iOctave]*buffer.GetSize()/dcOptions.iSampleRate);
+			i = floor(fPitches[12*dcOptions.iOctave]*localBuffer.GetSize()/dcOptions.iSampleRate);
 			e = i*2;
 		} else
 		{ //both octave and note specified
 			i = floor(fPitches[12*dcOptions.iOctave + dcOptions.iNote - 1]
-				*buffer.GetSize()/dcOptions.iSampleRate);
+				*localBuffer.GetSize()/dcOptions.iSampleRate);
 			e = ceil(fPitches[12*dcOptions.iOctave + dcOptions.iNote + 1]
-					*buffer.GetSize()/dcOptions.iSampleRate);
+					*localBuffer.GetSize()/dcOptions.iSampleRate);
 		}
 		
 		if (!iMax)
@@ -411,14 +414,14 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 			}
 		}
 		
-		tempfreq = double(iMax)*dcOptions.iSampleRate/buffer.GetSize();
+		tempfreq = double(iMax)*dcOptions.iSampleRate/localBuffer.GetSize();
 	}
 	
 	if (tempfreq==0.0)
 		return false;
 	
 	//Step 4: Enhance precision by doubling period iteratively
-	double dd_fft = dcOptions.iSampleRate/double(buffer.GetSize());
+	double dd_fft = dcOptions.iSampleRate/double(localBuffer.GetSize());
 	
 	index = dcOptions.iSampleRate/tempfreq;
 	factor = 1;
@@ -430,7 +433,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 		int first, last;
 		double ac;
 		
-		if ((unsigned)(index*(index-1)) > buffer.GetSize()) /*(dd<dd_fft)*/ {
+		if ((unsigned)(index*(index-1)) > localBuffer.GetSize()) /*(dd<dd_fft)*/ {
 			//Step 5: find a local maximum in (tempfreq-dd; tempfreq+dd)
 			if (factor==1) {
 				first=floor(dcOptions.iSampleRate/(tempfreq+dd_fft));
@@ -445,7 +448,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 			
 			dMax=0; iMax=0;
 			for (i=first; i<=last; ++i)
-				if ((ac=AutoCorrelation(buffer, i, cOut[0][0]))>dMax) {
+				if ((ac=AutoCorrelation(localBuffer, i, cOut[0][0]))>dMax) {
 					dMax = ac;
 					iMax = i;
 				}

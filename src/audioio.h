@@ -27,7 +27,8 @@ class wxWindow;
 
 namespace noot {
 
-///A shift buffer
+///A shift buffer.
+///Operations are synchronised, except reading
 class Buffer {
 	public:
 		Buffer(size_t size);
@@ -43,6 +44,8 @@ class Buffer {
 		size_t GetSize() const { return m_size; }
 		
 		void Resize(size_t new_size);
+
+        void CopyTo(Buffer& dest);
 		
 		~Buffer();
 		
@@ -53,10 +56,15 @@ class Buffer {
 	private:
 		size_t m_size;
 		double* m_ptr;
+
+        //No assignment or copy constructor
+        Buffer& operator=(const Buffer&);
+        Buffer(const Buffer&);
+
+        wxMutex m_mutex;
 };
 
 extern Buffer buffer;
-extern wxMutex s_bufferMutex;
 
 ///Abstraction class for audio backends
 class AudioBackend {

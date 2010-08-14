@@ -36,6 +36,8 @@ AudioBackend::~AudioBackend() { }
 
 void Buffer::Write(size_t size, double * from)
 {
+    wxMutexLocker lock(m_mutex);
+    
 	if (size>m_size)
 	{
 		from += size-m_size;
@@ -51,6 +53,8 @@ void Buffer::Write(size_t size, double * from)
 
 void Buffer::Write(size_t size, short * from)
 {
+    wxMutexLocker lock(m_mutex);
+
 	if (size>m_size)
 	{
 		from += size-m_size;
@@ -71,6 +75,7 @@ void Buffer::Write(size_t size, short * from)
 
 void Buffer::Resize(size_t new_size)
 {
+    wxMutexLocker lock(m_mutex);
 	double* new_ptr = (double*) fftw_malloc(new_size*sizeof(double));
 	
 	if (new_size == m_size)
@@ -95,7 +100,15 @@ Buffer::Buffer(size_t size)
 
 Buffer::~Buffer()
 {
+    wxMutexLocker lock(m_mutex);
 	free(m_ptr);
+}
+
+void Buffer::CopyTo(Buffer& dest) {
+    wxMutexLocker lock(m_mutex);
+
+    dest.Resize(m_size);
+    memcpy(dest.m_ptr, m_ptr, m_size*sizeof(*m_ptr));
 }
 
 bool AudioBackend::PlayNote(double frequency)

@@ -37,19 +37,11 @@ int paCallback(const void *inputBuffer, void *outputBuffer, unsigned long frameC
 	if (s_bIgnore)
 		return 0;
 	
-	if (s_bufferMutex.TryLock()==wxMUTEX_BUSY) {
-		wxMilliSleep(20);
-		if (s_bufferMutex.TryLock()==wxMUTEX_BUSY)
-			return 0;
-	}
-	
 	wxInt16* in = (wxInt16*) inputBuffer;
 	
 	buffer.Write(frameCount, in);
-	
-	s_bufferMutex.Unlock();
-	
-	return 0;
+
+    return 0;
 }
 
 bool PortaudioBackend::Initialise()
@@ -86,7 +78,7 @@ bool PortaudioBackend::StartStreaming()
 {
 	int err;
 	//int i;
-	
+
 	if (!audioStream) {
 		PaDeviceIndex id = inputDevice==-1 ? Pa_GetDefaultInputDevice() : inputDevice;
 		if (id == paNoDevice)
@@ -162,7 +154,7 @@ bool PortaudioBackend::StopStreaming()
 	if (!audioStream)
 		return true;
 	
-	s_bIgnore = true;
+    s_bIgnore = true;
 	err = Pa_CloseStream(audioStream);
 	
 	if (err!=paNoError)
@@ -263,7 +255,8 @@ bool PortaudioBackend::PlayNote(double frequency)
 		return false;
 	}
 	
-	Pa_StartStream(stream);
+	///@TODO: make this function synchronous?
+    Pa_StartStream(stream);
 	Pa_Sleep(1500);
 	Pa_CloseStream(stream);
 	
