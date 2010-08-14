@@ -76,11 +76,13 @@ void Buffer::Write(size_t size, short * from)
 void Buffer::Resize(size_t new_size)
 {
     wxMutexLocker lock(m_mutex);
-	double* new_ptr = (double*) fftw_malloc(new_size*sizeof(double));
 	
 	if (new_size == m_size)
 		return;
-	else if (new_size > m_size)
+
+	double* new_ptr = (double*) fftw_malloc(new_size*sizeof(double));
+
+	if (new_size > m_size)
 	{
 		memmove(new_ptr+new_size-m_size, m_ptr, sizeof(double)*m_size);
 		memset(new_ptr, 0, sizeof(double)*(new_size-m_size));
