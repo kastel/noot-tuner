@@ -41,7 +41,7 @@ L'autore può essere contattato attraverso la mailing list di NOOT:
 \begin{itemize}
 	\item Facilità d'uso (le impostazioni predefinite funzionano nella maggior parte dei casi)
 	\item Funziona con qualsiasi strumento
-	\item Precisione fino a un cent (0.01 semitoni)
+	\item Precisione di mezzo cent (0.005 semitoni)
 	\item Display in tempo reale
 	\item Ottave e note selezionabili
 	\item Trasposizione
@@ -57,7 +57,6 @@ L'autore può essere contattato attraverso la mailing list di NOOT:
 	\item Ancora più precisione
 	\item Temperamento completamente personalizzabile
 	\item Più sistemi operativi e lingue
-	\item PPA per gli utenti Ubuntu
 	\item Monitor del volume in ingresso, rilevazione del clipping e/o volume automatico
 \end{itemize}
 
@@ -70,6 +69,13 @@ L'autore può essere contattato attraverso la mailing list di NOOT:
 \end{itemize}
 
 \section{Changelog}\label{changelog}
+
+Versione 0.1.1:
+\itemize{
+	\item La precisione è data in millesimi e non più in centesimi
+	\item Cambiamenti minori al display
+	\item PPA per gli utenti Ubuntu
+}
 
 Versione 0.1.0:
 
@@ -204,11 +210,10 @@ of 90 dB (-90 dB, actually) will allow any input to be processed.
 \subsection{Precisione prevista}\label{expectedprecision}\index{precision}
 
 Minore il valore, maggiore la precisione. Rappresenta l'errore
-teorico in cent sulla frequenza misurata.
+teorico in millesimi di semitono sulla frequenza misurata.
 
-Si può imporstare su un valore maggiore di 1 (il minimo)
-se si vuole velocizzare il processo, al prezzo di una
-piccola perdita di precisione.
+Valori più bassi rendono il programma meno reattivo e
+possono rallentarlo fino a farlo bloccare.
 
 \subsection{Frame rate}\label{framerate}
 

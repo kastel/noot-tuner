@@ -39,7 +39,7 @@ The author can be contacted on NOOT's mailing list:
 \begin{itemize}
 	\item Easy to use (default settings will work in most cases)
 	\item It works with almost any instrument
-	\item Up to one-cent precision (0.01 semitones)
+	\item Half-cent precision (0.005 semitones)
 	\item Real-time display
 	\item Octave and/or note selection
 	\item Transposition
@@ -56,7 +56,6 @@ The author can be contacted on NOOT's mailing list:
 	\item Ever more accuracy
 	\item Customisable temperament
 	\item More ports (OSX, ...) and languages
-	\item PPA for Ubuntu users
 	\item Input volume monitor, clipping detection and/or automatic volume
 \end{itemize}
 
@@ -70,6 +69,13 @@ The author can be contacted on NOOT's mailing list:
 \end{itemize}
 
 \section{Changelog}\label{changelog}
+
+Version 0.1.1:
+\itemize{
+	\item Precision is now given in millis, not in cents
+	\item Minor improvements to the display
+	\item PPA for Ubuntu users
+}
 
 Version 0.1.0:
 
@@ -192,10 +198,9 @@ of 90 dB (-90 dB, actually) will allow any input to be processed.
 \subsection{Expected precision}\label{expectedprecision}\index{precision}
 
 The lower is this number, the higher will be the precision. It represents the
-theoretical error in cents on the detected frequency.
+theoretical error in thousandths of semitone on the detected frequency.
 
-You can set this option to a higher value than 1 (the minimum value)
-if you want to speed up the detection, at the cost of a slight loss of precision.
+Lower values also mean slower response and CPU usage.
 
 \subsection{Frame rate}\label{framerate}
 
