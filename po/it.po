@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DC Tuner 0.8\n"
 "Report-Msgid-Bugs-To: dc.kastel@gmail.com\n"
-"POT-Creation-Date: 2010-08-10 03:07+0200\n"
-"PO-Revision-Date: 2010-08-10 03:08+0100\n"
+"POT-Creation-Date: 2010-08-15 00:48+0200\n"
+"PO-Revision-Date: 2010-08-15 00:49+0100\n"
 "Last-Translator: Davide Castellone <kastel88@email.it>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -347,12 +347,12 @@ msgstr ""
 "supera la soglia (per evitare di misurare il rumore)"
 
 #: src/wxfbtunerframe.cpp:282
-msgid "&Expected precision (cents)"
-msgstr "Pr&ecisione prevista (cents)"
+msgid "&Expected precision (millis)"
+msgstr "Pr&ecisione prevista (milli)"
 
 #: src/wxfbtunerframe.cpp:287
-msgid "This value is used only Window sise is set to 'Auto'"
-msgstr "Questo valore è usato solo se la dimensione della finestra è impostata su \"Auto\""
+msgid "This value is used especially when Window size is set to 'Auto'"
+msgstr "Questo valore è usato soprattutto quando la dimensione della finestra è impostata su \"Auto\""
 
 #: src/wxfbtunerframe.cpp:288
 msgid "9"
@@ -381,8 +381,8 @@ msgstr "Seleziona un dispositivo di ingresso"
 
 #: src/deviceselector.cpp:56
 #: src/deviceselector.cpp:94
-#: src/tunerframe.cpp:390
-#: src/tunerframe.cpp:396
+#: src/tunerframe.cpp:474
+#: src/tunerframe.cpp:480
 msgid "NOOT Instrument Tuner"
 msgstr "NOOT Instrument tuner"
 
@@ -410,24 +410,24 @@ msgstr "Sol#"
 msgid "A#"
 msgstr "La#"
 
-#: src/tunerframe.cpp:151
+#: src/tunerframe.cpp:156
 #, c-format
 msgid "Invalid number: %s"
 msgstr "Numero non valido: %s"
 
-#: src/tunerframe.cpp:294
+#: src/tunerframe.cpp:378
 msgid "Cannot find help file"
 msgstr "Impossibile trovare il file della guida"
 
-#: src/tunerframe.cpp:343
+#: src/tunerframe.cpp:427
 msgid "Never-out-of-tune Instrument Tuner"
 msgstr "Accordatore per strumenti \"Never-out-of-tune\""
 
-#: src/tunerframe.cpp:346
+#: src/tunerframe.cpp:430
 msgid "A full-featured instrument tuner"
 msgstr "Accordatore per strumenti"
 
-#: src/tunerframe.cpp:353
+#: src/tunerframe.cpp:437
 msgid ""
 "Licensed under the GNU General Public License v. 3\n"
 "http://www.gnu.org/copyleft/gpl.html"
@@ -435,21 +435,21 @@ msgstr ""
 "Distribuito sotto la licenza GNU General Public License v. 3\n"
 "http://www.gnu.org/copyleft/gpl.html"
 
-#: src/tunerframe.cpp:390
-#: src/tunerframe.cpp:396
+#: src/tunerframe.cpp:474
+#: src/tunerframe.cpp:480
 msgid "Unable to launch the default browser"
 msgstr "Impossibile lanciare il browser predefinito"
 
-#: src/audio_portaudio.cpp:71
+#: src/audio_portaudio.cpp:63
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: src/audio_portaudio.cpp:94
+#: src/audio_portaudio.cpp:89
 msgid "No input device found"
 msgstr "Nessun dispositivo di input trovato"
 
-#: src/audio_portaudio.cpp:237
+#: src/audio_portaudio.cpp:232
 msgid "No output device found"
 msgstr "Nessun dispositivo di output trovato"
 
