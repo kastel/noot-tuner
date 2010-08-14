@@ -1,6 +1,6 @@
 Source: noot-tuner
 Section: misc
-Priority: extra
+Priority: optional
 Maintainer: Davide Castellone <dc.kastel@gmail.com>
 Build-Depends: debhelper (>= 7), autotools-dev, libwxgtk2.8-dev, portaudio19-dev, libfftw3-dev, zip
 Standards-Version: 3.8.4

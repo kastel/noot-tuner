@@ -1,3 +1,9 @@
+noot-tuner (0.1.1) lucid; urgency=low
+
+  * New upstream development version: minor changes; a better application icon
+
+ -- Davide Castellone <dc.kastel@gmail.com>  Sun, 08 Aug 2010 16:13:00 +0200
+
 noot-tuner (0.1.0) unstable; urgency=low
 
   * Initial Release.
