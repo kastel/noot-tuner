@@ -644,7 +644,7 @@
                                         <property name="context_help"></property>
                                         <property name="enabled">1</property>
                                         <property name="fg"></property>
-                                        <property name="font">,90,90,20,70,0</property>
+                                        <property name="font">,90,90,20,75,0</property>
                                         <property name="hidden">0</property>
                                         <property name="id">wxID_ANY</property>
                                         <property name="label">--</property>
@@ -699,7 +699,7 @@
                                         <property name="context_help"></property>
                                         <property name="enabled">1</property>
                                         <property name="fg"></property>
-                                        <property name="font">,90,90,20,70,0</property>
+                                        <property name="font">,90,90,20,75,0</property>
                                         <property name="hidden">0</property>
                                         <property name="id">wxID_ANY</property>
                                         <property name="label">--</property>
@@ -754,7 +754,7 @@
                                         <property name="context_help"></property>
                                         <property name="enabled">1</property>
                                         <property name="fg"></property>
-                                        <property name="font">,90,90,20,70,0</property>
+                                        <property name="font">,90,90,20,75,0</property>
                                         <property name="hidden">0</property>
                                         <property name="id">wxID_ANY</property>
                                         <property name="label">--</property>
@@ -1926,7 +1926,7 @@
                                         <property name="font"></property>
                                         <property name="hidden">0</property>
                                         <property name="id">wxID_ANY</property>
-                                        <property name="label">&amp;Expected precision (cents)</property>
+                                        <property name="label">&amp;Expected precision (millis)</property>
                                         <property name="maximum_size"></property>
                                         <property name="minimum_size"></property>
                                         <property name="name">stExpectedPrecision</property>
@@ -1984,7 +1984,7 @@
                                         <property name="initial">2</property>
                                         <property name="max">50</property>
                                         <property name="maximum_size"></property>
-                                        <property name="min">1</property>
+                                        <property name="min">2</property>
                                         <property name="minimum_size"></property>
                                         <property name="name">scExpectedPrecision</property>
                                         <property name="permission">protected</property>
@@ -1992,7 +1992,7 @@
                                         <property name="size"></property>
                                         <property name="style">wxSP_ARROW_KEYS</property>
                                         <property name="subclass"></property>
-                                        <property name="tooltip">This value is used only Window sise is set to &apos;Auto&apos;</property>
+                                        <property name="tooltip">This value is used especially when Window size is set to &apos;Auto&apos;</property>
                                         <property name="validator_data_type"></property>
                                         <property name="validator_style">wxFILTER_NONE</property>
                                         <property name="validator_type">wxDefaultValidator</property>

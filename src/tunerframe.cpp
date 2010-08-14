@@ -44,7 +44,7 @@ wxfbTunerFrame( parent )
 {
 	pnIndicator = new wxPanel(pnGauge, wxID_ANY, wxPoint(0,0),
 							  wxSize(dcOptions.iIndicatorWidth,0), wxBORDER_NONE);
-	
+
 	wxBoxSizer* szGauge;
 	szGauge = new wxBoxSizer( wxHORIZONTAL );
 	
@@ -66,7 +66,7 @@ wxfbTunerFrame( parent )
 	
 	szGauge->Fit(pnGauge);
 	
-	tmTimer = new wxTimer(this, ID_TIMER);
+    tmTimer = new wxTimer(this, ID_TIMER);
 	Connect(ID_TIMER, wxEVT_TIMER, (wxObjectEventFunction) &TunerFrame::OnTimer);
 	
 	//Set the default values:
@@ -81,7 +81,7 @@ wxfbTunerFrame( parent )
 		chWindowSize->SetSelection(index);
 	
 	scThreshold->SetValue(int(-dcOptions.fThreshold));
-	scExpectedPrecision->SetValue(int(dcOptions.fExpectedPrecision));
+	scExpectedPrecision->SetValue(int(dcOptions.fExpectedPrecision*1000));
 	scFrameRate->SetValue(dcOptions.iFrameRate);
 	tcTranspose->SetValue(wxString::Format(wxT("%f"), dcOptions.fTranspose));
 	
@@ -188,12 +188,12 @@ void TunerFrame::OnThresholdSpin( wxSpinEvent& event )
 
 void TunerFrame::OnExpectedPrecisionKillFocus( wxFocusEvent& event )
 {
-	dcOptions.fExpectedPrecision = scExpectedPrecision->GetValue();
+	dcOptions.fExpectedPrecision = scExpectedPrecision->GetValue()/1000.0;
 }
 
 void TunerFrame::OnExpectedPrecisionSpin( wxSpinEvent& event )
 {
-	dcOptions.fExpectedPrecision = scExpectedPrecision->GetValue();
+	dcOptions.fExpectedPrecision = scExpectedPrecision->GetValue()/1000.0;
 }
 
 void TunerFrame::OnFrameRateKillFocus( wxFocusEvent& event )

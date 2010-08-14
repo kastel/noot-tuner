@@ -31,7 +31,7 @@ extern struct NoteDetectionOptions {
 	int iNote; //in semitones: 0 is C, 1 is C# etc
 	int iTemperament;
 	double fThreshold; //in dB
-	double fExpectedPrecision; //in cents
+	double fExpectedPrecision; //in semitones
 	double fTranspose; //in semitones
 	int iSampleRate;
 	

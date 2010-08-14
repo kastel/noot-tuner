@@ -120,19 +120,19 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	
 	stNote1 = new wxStaticText( this, wxID_ANY, _("--"), wxDefaultPosition, wxDefaultSize, wxALIGN_LEFT|wxST_NO_AUTORESIZE );
 	stNote1->Wrap( -1 );
-	stNote1->SetFont( wxFont( 20, 70, 90, 90, false, wxEmptyString ) );
+	stNote1->SetFont( wxFont( 20, 75, 90, 90, false, wxEmptyString ) );
 	
 	fgSizer2->Add( stNote1, 1, wxALL|wxALIGN_CENTER_VERTICAL|wxEXPAND, 5 );
 	
 	stOffset = new wxStaticText( this, wxID_ANY, _("--"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE|wxST_NO_AUTORESIZE );
 	stOffset->Wrap( -1 );
-	stOffset->SetFont( wxFont( 20, 70, 90, 90, false, wxEmptyString ) );
+	stOffset->SetFont( wxFont( 20, 75, 90, 90, false, wxEmptyString ) );
 	
 	fgSizer2->Add( stOffset, 1, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL|wxEXPAND, 5 );
 	
 	stFrequency = new wxStaticText( this, wxID_ANY, _("--"), wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT|wxST_NO_AUTORESIZE );
 	stFrequency->Wrap( -1 );
-	stFrequency->SetFont( wxFont( 20, 70, 90, 90, false, wxEmptyString ) );
+	stFrequency->SetFont( wxFont( 20, 75, 90, 90, false, wxEmptyString ) );
 	
 	fgSizer2->Add( stFrequency, 1, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxEXPAND, 5 );
 	
@@ -279,12 +279,12 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	szAdvancedOptions2 = new wxBoxSizer( wxHORIZONTAL );
 	
 	wxStaticText* stExpectedPrecision;
-	stExpectedPrecision = new wxStaticText( this, wxID_ANY, _("&Expected precision (cents)"), wxDefaultPosition, wxDefaultSize, 0 );
+	stExpectedPrecision = new wxStaticText( this, wxID_ANY, _("&Expected precision (millis)"), wxDefaultPosition, wxDefaultSize, 0 );
 	stExpectedPrecision->Wrap( -1 );
 	szAdvancedOptions2->Add( stExpectedPrecision, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	
-	scExpectedPrecision = new wxSpinCtrl( this, ID_EXPECTEDPRECISION, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 50, 2, wxT("expectedprecision") );
-	scExpectedPrecision->SetToolTip( _("This value is used only Window sise is set to 'Auto'") );
+	scExpectedPrecision = new wxSpinCtrl( this, ID_EXPECTEDPRECISION, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 2, 50, 2, wxT("expectedprecision") );
+	scExpectedPrecision->SetToolTip( _("This value is used especially when Window size is set to 'Auto'") );
 	scExpectedPrecision->SetHelpText( _("9") );
 	
 	szAdvancedOptions2->Add( scExpectedPrecision, 1, wxALL|wxALIGN_CENTER_VERTICAL, 3 );

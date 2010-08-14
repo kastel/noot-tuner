@@ -42,11 +42,11 @@ CREATE_OPTION_ALTERNATE_NAME(dcOptions.iNote, "Options/Note", -1, oin);
 CREATE_OPTION_ALTERNATE_NAME(dcOptions.iTemperament, "Options/Temperament", 0, oit);
 CREATE_OPTION_ALTERNATE_NAME(dcOptions.fThreshold, "Options/Threshold", -70.0, oft);
 CREATE_OPTION_ALTERNATE_NAME(dcOptions.fExpectedPrecision, "Options/ExpectedPrecision",
-							  2, ofepr);
+							  10, ofepr);
 CREATE_OPTION_ALTERNATE_NAME(dcOptions.fTranspose, "Options/Transpose", 0, oftr);
 
 CREATE_OPTION_ALTERNATE_NAME(dcOptions.iIndicatorWidth, "MainWindow/IndicatorWidth", 10, mwiw);
-CREATE_OPTION_ALTERNATE_NAME(dcOptions.fTolerance, "MainWindow/Tolerance", 4, mwt);
+CREATE_OPTION_ALTERNATE_NAME(dcOptions.fTolerance, "MainWindow/Tolerance", 1, mwt);
 CREATE_OPTION_ALTERNATE_NAME(dcOptions.iFrameRate, "MainWindow/FrameRate", 10, mwft);
 
 template<typename key_type, typename value_type, int size> class MiniSortedMap
@@ -311,6 +311,14 @@ static void AutoCorrelationVector(const Buffer& buffer, Buffer& ac)
 	AutoCorrelationVector(buffer, ac, avg);
 }
 
+static unsigned RoundToPowerOf2(unsigned x) {
+    unsigned res = 1;
+    while (res<x)
+        res <<= 1;
+
+    return res;
+}
+
 bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 {
 	int i, e, factor, index, iMax;
@@ -322,9 +330,13 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	//This function also takes care of the buffer size, if it is set to "auto"
 	if (dcOptions.iWindowSize == -1)
 	{
-		int optimalSize = 2/(pow(2, dcOptions.fExpectedPrecision/2400.0)-1);
-		//where 5 is an arbitrary constant
-		buffer.Resize(optimalSize);
+		unsigned optimalSize = RoundToPowerOf2(2/(pow(2, dcOptions.fExpectedPrecision/24)-1));
+		//where the first 2 is an arbitrary constant
+        
+        if (buffer.GetSize()!=optimalSize)
+            printf("Automatic window size: %d\n", optimalSize);
+
+        buffer.Resize(optimalSize);
 	}
 	else
 		buffer.Resize(dcOptions.iWindowSize);
@@ -338,13 +350,15 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	if (cOut==NULL || cOutSize!=buffer.GetSize())
 	{
 		//theAudioBackend->PauseStreaming();
-		
+        printf("Calibrating FFT... "); fflush(stdout);
+
 		cOut = (fftw_complex*) fftw_malloc(sizeof(fftw_complex)*buffer.GetSize());
 		cOutSize = buffer.GetSize();
 		plan = fftw_plan_dft_r2c_1d(buffer.GetSize(), buffer.GetPointer(), cOut,
 									FFTW_MEASURE);
 		
 		//theAudioBackend->ResumeStreaming();
+        printf("Done\n");
 	}
 
 	
@@ -426,7 +440,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	index = dcOptions.iSampleRate/tempfreq;
 	factor = 1;
 	//minimum index to have the expected precision
-	int minindex = ceil(1.0/(pow(2, dcOptions.fExpectedPrecision/2400.0)-1));
+	int minindex = ceil(1.0/(pow(2, dcOptions.fExpectedPrecision/24.0)-1));
 	
 	do
 	{
