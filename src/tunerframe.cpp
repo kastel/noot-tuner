@@ -86,6 +86,11 @@ wxfbTunerFrame( parent )
 	tcTranspose->SetValue(wxString::Format(wxT("%f"), dcOptions.fTranspose));
 	
 	Connect(wxID_ANY, wxEVT_HELP, (wxObjectEventFunction) &TunerFrame::OnHelp);
+
+    ResetIndicator();
+
+    Layout();
+    Fit();
 }
 
 void TunerFrame::OnStartStop( wxCommandEvent& event )
@@ -229,13 +234,14 @@ void TunerFrame::SetIndicator(double offset)
 						  /* height */ gaugesize.GetHeight()-2,
 						  wxSIZE_ALLOW_MINUS_ONE );
 	
-	pnIndicator->Refresh();
+    pnIndicator->Show(true);
+    pnIndicator->Refresh();
 }
 
 void TunerFrame::ResetIndicator()
 {
 	//Hide the indicator out of the parent window
-	pnIndicator->SetSize(-2,-2,0,0);
+	pnIndicator->Show(false);
 }
 
 void TunerFrame::OnTimer(wxTimerEvent & event)
