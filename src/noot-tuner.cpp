@@ -38,7 +38,9 @@ bool tunerapp::OnInit()
 	SetVendorName(wxT("Davide Castellone"));
 	
 	wxConfig::Create();
+    char* old_locale = setlocale(LC_ALL, "C");
 	LoadAllOptions();
+    setlocale(LC_ALL, old_locale);
 	
 	wxString sWisdom = wxConfig::Get()->Read(wxT("FFTW3/Wisdom"), wxEmptyString);
 	if (sWisdom.size())
@@ -79,6 +81,8 @@ int tunerapp::OnExit()
 	
 	char* pcWisdom = fftw_export_wisdom_to_string();
 	wxConfig::Get()->Write(wxT("FFTW3/Wisdom"), wxString(pcWisdom, wxConvUTF8));
+
+    setlocale(LC_ALL, "C");
 	
 	SaveAllOptions();
 	delete wxConfig::Get();
