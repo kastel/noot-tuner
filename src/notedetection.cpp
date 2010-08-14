@@ -42,7 +42,7 @@ CREATE_OPTION_ALTERNATE_NAME(dcOptions.iNote, "Options/Note", -1, oin);
 CREATE_OPTION_ALTERNATE_NAME(dcOptions.iTemperament, "Options/Temperament", 0, oit);
 CREATE_OPTION_ALTERNATE_NAME(dcOptions.fThreshold, "Options/Threshold", -70.0, oft);
 CREATE_OPTION_ALTERNATE_NAME(dcOptions.fExpectedPrecision, "Options/ExpectedPrecision",
-							  10, ofepr);
+							  0.001, ofepr);
 CREATE_OPTION_ALTERNATE_NAME(dcOptions.fTranspose, "Options/Transpose", 0, oftr);
 
 CREATE_OPTION_ALTERNATE_NAME(dcOptions.iIndicatorWidth, "MainWindow/IndicatorWidth", 10, mwiw);
