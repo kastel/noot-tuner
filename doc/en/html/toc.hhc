@@ -1,0 +1,85 @@
+<HTML>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></HEAD>
+<BODY>
+<OBJECT type="text/site properties">
+<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="NOOT Instrument Tuner">
+<param name="Local" value="index.html"></OBJECT></LI>
+<UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Introduction">
+<param name="Local" value="ch01.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Features">
+<param name="Local" value="ch01.html#features"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Minimum requirements">
+<param name="Local" value="ch01s02.html"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Changelog">
+<param name="Local" value="ch01s03.html"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Credits">
+<param name="Local" value="ch01s04.html"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Using NOOT Instrument Tuner">
+<param name="Local" value="ch02.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="The main window">
+<param name="Local" value="ch02.html#mainwindow"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Start/Stop button">
+<param name="Local" value="ch02.html#startstop"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="'Detected note' box">
+<param name="Local" value="ch02.html#detectednote"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Octave selector">
+<param name="Local" value="ch02.html#octave"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Note selector">
+<param name="Local" value="ch02.html#note"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="'Listen' button">
+<param name="Local" value="ch02.html#listen"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Temperament selector">
+<param name="Local" value="ch02.html#temperament"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Transpose">
+<param name="Local" value="ch02.html#transpose"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Window size">
+<param name="Local" value="ch02.html#windowsize"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Threshold">
+<param name="Local" value="ch02.html#threshold"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Expected precision">
+<param name="Local" value="ch02.html#expectedprecision"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Frame rate">
+<param name="Local" value="ch02.html#framerate"></OBJECT></LI>
+</UL></UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="How it works">
+<param name="Local" value="ch03.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="">
+<param name="Local" value="ch04.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="GNU GENERAL PUBLIC LICENSE">
+<param name="Local" value="ch04.html#license-gplv3."></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Preamble">
+<param name="Local" value="ch04.html#id2812343"></OBJECT></LI>
+</UL></UL></UL></UL>
+</UL>
+</BODY></HTML>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"
+ [ 
+<!ENTITY file1001 SYSTEM "gpl-3.2.sgml">
+<!ENTITY graph1001 "pictures/mainwindow"> ]>
+
+<!-- XML file was created by LyX 1.6.6.1
+  See http://www.lyx.org/ for more information -->
+<book lang="en_US">
+<bookinfo>
+<title>NOOT Instrument Tuner</title>
+<author>Davide Castellone</author>
+<date>August 2010</date>
+</bookinfo>
+<toc></toc><chapter id='introduction' >
+<title>Introduction<!-- anchor id="introduction" --></title>
+<para>Never-out-of-tune Instrument Tuner simulates a full-featured instrument tuner. It may be used to tune musical instruments (guitars, pianos) or whatever implies the detection of a sound frequency between 20 and 4000 Hz with a cent precision.</para>
+<para>© 2010 Davide Castellone</para>
+<para>NOOT Instrument Tuner is distributed under the GNU General Public License (see <xref linkend="license-gplv3." />)</para>
+<para>Website:<ulink url="http://code.google.com/p/noot-tuner/"></ulink></para>
+<para>Should you find any unexpected behaviour or want to make a suggestion or request a feature, please go to the <ulink url="http://code.google.com/p/noot-tuner/issues/entry">bug reporting page</ulink>.</para>
+<para>The author can be contacted on NOOT's mailing list: <ulink url="noot-tuner-discuss@googlegroups.com"></ulink></para><sect1 id='features' >
+<title>Features<!-- anchor id="features" --></title>
+<itemizedlist>
+<listitem><para>Easy to use (default settings will work in most cases) </para></listitem><listitem><para>It works with almost any instrument </para></listitem><listitem><para>Half-cent precision (0.005 semitones) </para></listitem><listitem><para>Real-time display </para></listitem><listitem><para>Octave and/or note selection </para></listitem><listitem><para>Transposition </para></listitem><listitem><para>Selectable temperament </para></listitem><listitem><para>Internationalisation (English and Italian for now, other languages will follow) </para></listitem><listitem><para>Cross-platform (it can be compiled on virtually any OS; Windows and Ubuntu packages available now, other packages available soon) </para></listitem><listitem><para>Basic documentation included </para></listitem></itemizedlist><para>Future plans </para><itemizedlist>
+<listitem><para>Clock correction </para></listitem><listitem><para>Ever more accuracy </para></listitem><listitem><para>Customisable temperament </para></listitem><listitem><para>More ports (OSX, ...) and languages </para></listitem><listitem><para>Input volume monitor, clipping detection and/or automatic volume </para></listitem></itemizedlist></sect1><sect1 id='requirements' >
+<title>Minimum requirements<!-- anchor id="requirements" --></title>
+<itemizedlist>
+<listitem><para>An audio card with a configured microphone or line input</para></listitem><listitem><para>Variable disk space (10 MB for the Windows version, 1 MB for Ubuntu packages, about 40 MB for universal packages)</para></listitem></itemizedlist></sect1><sect1 id='changelog' >
+<title>Changelog<!-- anchor id="changelog" --></title>
+<para>Version 0.1.1: </para><itemizedlist>
+<listitem><para>Precision is now given in millis, not in cents </para></listitem><listitem><para>Minor improvements to the display </para></listitem><listitem><para>PPA for Ubuntu users</para></listitem></itemizedlist><para>Version 0.1.0:</para><itemizedlist>
+<listitem><para>First published version</para></listitem></itemizedlist></sect1><sect1 id='credits' >
+<title>Credits<!-- anchor id="credits" --></title>
+<para>Code and Italian translation © 2010 Davide Castellone</para>
+<para>NOOT Instrument Tuner is distributed under the <xref linkend="license-gplv3." /></para>
+<para></para></sect1></chapter><chapter id='using' >
+<title>Using NOOT Instrument Tuner<!-- anchor id="using" --></title>
+<para>Before starting, you need to configure your input device. Usually this means choosing an input device and adjusting its volume in the mixer.</para>
+<para>After doing that, start NOOT. Usually there is no need for changing the default options.</para>
+<para>Click on the Start/Stop button to start the tuner.</para>
+<para>If you already know the note you are tuning and do not need to discover it, you should set the <xref linkend="note" /> and <xref linkend="octave" /> option. This will make note detection easier.</para><sect1 id='mainwindow' >
+<title><!-- anchor id="mainwindow" --><indexterm><primary><dummy>main window</dummy></primary></indexterm> The main window</title>
+<inlinemediaobject><imageobject><imagedata fileref="&graph1001;.png"  role="png"/></imageobject><imageobject><imagedata fileref="&graph1001;.pdf"  role="pdf"/></imageobject><imageobject><imagedata fileref="&graph1001;.eps"  role="eps"/></imageobject><imageobject><imagedata fileref="&graph1001;.bmp"  role="bmp"/></imageobject></inlinemediaobject>
+<para>Here is an explanation of all the controls in the main window.</para><sect2 id='startstop' >
+<title><!-- anchor id="startstop" --><indexterm><primary><dummy>start/stop</dummy></primary></indexterm>Start/Stop button</title>
+<para>This button will start or stop the note detection. If another application need to open the input device, you can temporarily stop NOOT and restart it later, without closing its window.</para></sect2><sect2 id='detectednote' >
+<title><!-- anchor id="detectednote" --><indexterm><primary><dummy>note</dummy></primary></indexterm>'Detected note' box</title>
+<para>This box is made of two parts. The tuning indicator will show how much the detected note is far from the expected note. Its colour varies according to whether the pitch is higher (blue) lower (red) or quite right (green). If the note is perfectly tuned, the indicator should be under the black line.</para>
+<para>The lower part of the box shows the following information: </para><variablelist>
+<varlistentry><term>Note</term><listitem><para><indexterm><primary><dummy>note</dummy></primary></indexterm>The detected note. This value depends on whether you have set the note and the octave in the control panel below. If they are note set to Auto, the note displayed will be exactly the choosen one. </para></listitem></varlistentry><varlistentry><term>Offset</term><listitem><para><indexterm><primary><dummy>offset</dummy></primary></indexterm>The offset from the expected pitch, in cents (1 cent = 0.01 semitones) </para></listitem></varlistentry><varlistentry><term>Frequency</term><listitem><para><indexterm><primary><dummy>frequency</dummy></primary></indexterm>The detected frequency in Hertz. This information is useless to most of the users. </para></listitem></varlistentry></variablelist></sect2><sect2 id='octave' >
+<title><!-- anchor id="octave" --><indexterm><primary><dummy>octave selector</dummy></primary></indexterm>Octave selector</title>
+<para>Selecting the right octaves often improves the precision of the detection algorithm. When the octave is set to Auto, the program guesses it, sometimes leading to a little accurate measure.</para>
+<para>With the standard used the middle C is in octave 3.</para>
+<para>Sometimes the right octave is not the best, since every instrument produces more than one harmonic. If the detection is not precise enough (i.e. the indicator glitches too much) you can safely select an octave lower or higher than the original one. Remember that if you set the octave in the control panel, the detected octave may not correspond to that of the note.</para></sect2><sect2 id='note' >
+<title><!-- anchor id="note" --><indexterm><primary><dummy>note selector</dummy></primary></indexterm>Note selector</title>
+<para>Like for the octave, specifying the note oftens improves the precision, but in most cases you should not need it.</para></sect2><sect2 id='listen' >
+<title><!-- anchor id="listen" --><indexterm><primary><dummy>listen</dummy></primary></indexterm>'Listen' button</title>
+<para>Click on this button to listen to the frequency of the note selected.</para></sect2><sect2 id='temperament' >
+<title><!-- anchor id="temperament" --><indexterm><primary><dummy>temperament</dummy></primary></indexterm>Temperament selector</title>
+<para>With NOOT Instrument Tuner you can choose among a variety of temperaments. The explanation of the temperaments listed is not a subject of this manual.</para></sect2><sect2 id='transpose' >
+<title><!-- anchor id="transpose" --><indexterm><primary><dummy>transpose</dummy></primary></indexterm>Transpose</title>
+<para>Use this control to transpose the input. It can be a decimal number.</para>
+<para>The frequency displayed above will not be altered.</para></sect2><sect2 id='windowsize' >
+<title><!-- anchor id="windowsize" --><indexterm><primary><dummy>FFT</dummy></primary></indexterm><indexterm><primary><dummy>window size</dummy></primary></indexterm>Window size</title>
+<para>This option affects the note detection algorithm. It represents the number of samples on which the FFT and autocorrelation are performed.</para>
+<para>It should be set to a reasonable value (usually 4096). If too low, the precision constraint may not be satisfied. If too high, it may slow down the computer or even make the detection less precise.</para></sect2><sect2 id='threshold' >
+<title><!-- anchor id="threshold" --><indexterm><primary><dummy>noise</dummy></primary></indexterm><indexterm><primary><dummy>threshold</dummy></primary></indexterm>Threshold</title>
+<para>This option is used to start the detection only if the input is loud enough, in order to avoid glitches due to the background noise.</para>
+<para>A threshold of 0 dB means that the detection will never start, while a threshold of 90 dB (-90 dB, actually) will allow any input to be processed.</para></sect2><sect2 id='expectedprecision' >
+<title><!-- anchor id="expectedprecision" --><indexterm><primary><dummy>expected precision</dummy></primary></indexterm>Expected precision</title>
+<para>The lower is this number, the higher will be the precision. It represents the theoretical error in thousandths of semitone on the detected frequency.</para>
+<para>Lower values also mean slower response and CPU usage.</para></sect2><sect2 id='framerate' >
+<title><!-- anchor id="framerate" --><indexterm><primary><dummy>frame rate</dummy></primary></indexterm>Frame rate</title>
+<para>This number represents the average number of updates per second. If it is set to a too high value, the program might hang.</para></sect2></sect1></chapter><chapter id='howitworks' >
+<title>How it works<!-- anchor id="howitworks" --></title>
+<para>NOOT Instrument tuner uses a mix of FFT and linear autocorrelation to reach one-cent precision with relatively narrow window sizes.</para>
+<para>Every time the display is updated, the following algorithm is computed on the current window:</para><itemizedlist>
+<listitem><para>A FFT is used to find the frequency with the highest spectral density within the note and octave constraints (if selected) </para></listitem><listitem><para>From that frequency, an interval of possible frequencies is taken. </para></listitem><listitem><para>Autocorrelation is computed at the times corresponding to that frequency interval; the time lag corresponding to the highest autocorrelation is kept. </para></listitem><listitem><para>Repeatedly, the frequency is halved (the time lag is doubled) and the time lag corresponding to the highest autocorrelation among the near values is kept. </para></listitem></itemizedlist><para>The main disadvantage of this approach is that it ceases to be precise in cases when the harmonics are far less than perfect.</para>
+&file1001;</chapter></book>

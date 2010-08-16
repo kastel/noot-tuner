@@ -1,0 +1,931 @@
+#LyX 1.6.6.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass docbook-book
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<bookinfo>
+\end_layout
+
+\begin_layout Plain Layout
+
+<title>NOOT Instrument Tuner</title>
+\end_layout
+
+\begin_layout Plain Layout
+
+<author>Davide Castellone</author>
+\end_layout
+
+\begin_layout Plain Layout
+
+<date>August 2010</date>
+\end_layout
+
+\begin_layout Plain Layout
+
+</bookinfo>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduction
+\begin_inset CommandInset label
+LatexCommand label
+name "introduction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+Never-out-of-tune Instrument Tuner
+\noun default
+ simulates a full-featured instrument tuner.
+ It may be used to tune musical instruments (guitars, pianos) or whatever
+ implies the detection of a sound frequency between 20 and 4000 Hz with
+ a cent precision.
+\end_layout
+
+\begin_layout Standard
+© 2010 Davide Castellone
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+NOOT Instrument Tuner
+\noun default
+ is distributed under the GNU General Public License (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "license-gplv3"
+
+\end_inset
+
+)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Logo and icon are © 2010 Carmen Buonfiglio, licensed under the 
+\begin_inset CommandInset href
+LatexCommand href
+name "Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License"
+target "http://creativecommons.org/licenses/by-nc-nd/3.0/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Website:
+\begin_inset CommandInset href
+LatexCommand href
+target "http://code.google.com/p/noot-tuner/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Should you find any unexpected behaviour or want to make a suggestion or
+ request a feature, please go to the 
+\begin_inset CommandInset href
+LatexCommand href
+name "bug reporting page"
+target "http://code.google.com/p/noot-tuner/issues/entry"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The author can be contacted on NOOT's mailing list: 
+\begin_inset CommandInset href
+LatexCommand href
+target "noot-tuner-discuss@googlegroups.com"
+type "mailto:"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Features
+\begin_inset CommandInset label
+LatexCommand label
+name "features"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Easy to use (default settings will work in most cases) 
+\end_layout
+
+\begin_layout Itemize
+It works with almost any instrument 
+\end_layout
+
+\begin_layout Itemize
+Half-cent precision (0.005 semitones) 
+\end_layout
+
+\begin_layout Itemize
+Real-time display 
+\end_layout
+
+\begin_layout Itemize
+Octave and/or note selection 
+\end_layout
+
+\begin_layout Itemize
+Transposition 
+\end_layout
+
+\begin_layout Itemize
+Selectable temperament 
+\end_layout
+
+\begin_layout Itemize
+Internationalisation (English and Italian for now, other languages will
+ follow) 
+\end_layout
+
+\begin_layout Itemize
+Cross-platform (it can be compiled on virtually any OS; Windows and Ubuntu
+ packages available now, other packages available soon) 
+\end_layout
+
+\begin_layout Itemize
+Basic documentation included 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Future plans
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Clock correction 
+\end_layout
+
+\begin_layout Itemize
+Ever more accuracy 
+\end_layout
+
+\begin_layout Itemize
+Customisable temperament 
+\end_layout
+
+\begin_layout Itemize
+More ports (OSX, ...) and languages 
+\end_layout
+
+\begin_layout Itemize
+Input volume monitor, clipping detection and/or automatic volume 
+\end_layout
+
+\begin_layout Section
+Minimum requirements
+\begin_inset CommandInset label
+LatexCommand label
+name "requirements"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+An audio card with a configured microphone or line input
+\end_layout
+
+\begin_layout Itemize
+Variable disk space (10 MB for the Windows version, 1 MB for Ubuntu packages,
+ about 40 MB for universal packages)
+\end_layout
+
+\begin_layout Section
+Changelog
+\begin_inset CommandInset label
+LatexCommand label
+name "changelog"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Version 0.1.1: 
+\end_layout
+
+\begin_layout Itemize
+Precision is now given in millis, not in cents 
+\end_layout
+
+\begin_layout Itemize
+Minor improvements to the display 
+\end_layout
+
+\begin_layout Itemize
+PPA for Ubuntu users
+\end_layout
+
+\begin_layout Standard
+Version 0.1.0:
+\end_layout
+
+\begin_layout Itemize
+First published version
+\end_layout
+
+\begin_layout Section
+Credits
+\begin_inset CommandInset label
+LatexCommand label
+name "credits"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Code and Italian translation © 2010 Davide Castellone
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+NOOT Instrument Tuner
+\noun default
+ is distributed under the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "license-gplv3"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Logo and icon are © 2010 Carmen Buonfiglio, licensed under the 
+\begin_inset CommandInset href
+LatexCommand href
+name "Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License"
+target "http://creativecommons.org/licenses/by-nc-nd/3.0/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Using 
+\noun on
+NOOT Instrument Tuner
+\noun default
+
+\begin_inset CommandInset label
+LatexCommand label
+name "using"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Before starting, you need to configure your input device.
+ Usually this means choosing an input device and adjusting its volume in
+ the mixer.
+\end_layout
+
+\begin_layout Standard
+After doing that, start 
+\noun on
+NOOT
+\noun default
+.
+ Usually there is no need for changing the default options.
+\end_layout
+
+\begin_layout Standard
+Click on the 
+\family typewriter
+Start/Stop
+\family default
+ button to start the tuner.
+\end_layout
+
+\begin_layout Standard
+If you already know the note you are tuning and do not need to discover
+ it, you should set the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "note"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "octave"
+
+\end_inset
+
+ option.
+ This will make note detection easier.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "mainwindow"
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+main window
+\end_layout
+
+\end_inset
+
+ The main window
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename pictures/mainwindow.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here is an explanation of all the controls in the main window.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "startstop"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+start/stop
+\end_layout
+
+\end_inset
+
+Start/Stop button
+\end_layout
+
+\begin_layout Standard
+This button will start or stop the note detection.
+ If another application need to open the input device, you can temporarily
+ stop 
+\noun on
+NOOT
+\noun default
+ and restart it later, without closing its window.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "detectednote"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+note
+\end_layout
+
+\end_inset
+
+'Detected note' box
+\end_layout
+
+\begin_layout Standard
+This box is made of two parts.
+ The tuning indicator will show how much the detected note is far from the
+ expected note.
+ Its colour varies according to whether the pitch is higher (blue) lower
+ (red) or quite right (green).
+ If the note is perfectly tuned, the indicator should be under the black
+ line.
+\end_layout
+
+\begin_layout Standard
+The lower part of the box shows the following information: 
+\end_layout
+
+\begin_layout Description
+Note 
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+note
+\end_layout
+
+\end_inset
+
+The detected note.
+ This value depends on whether you have set the note and the octave in the
+ control panel below.
+ If they are note set to 
+\family typewriter
+Auto
+\family default
+, the note displayed will be exactly the choosen one.
+ 
+\end_layout
+
+\begin_layout Description
+Offset 
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+offset
+\end_layout
+
+\end_inset
+
+The offset from the expected pitch, in cents (1 cent = 0.01 semitones) 
+\end_layout
+
+\begin_layout Description
+Frequency 
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+frequency
+\end_layout
+
+\end_inset
+
+The detected frequency in Hertz.
+ This information is useless to most of the users.
+ 
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "octave"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+octave selector
+\end_layout
+
+\end_inset
+
+Octave selector
+\end_layout
+
+\begin_layout Standard
+Selecting the right octaves often improves the precision of the detection
+ algorithm.
+ When the octave is set to 
+\family typewriter
+Auto
+\family default
+, the program guesses it, sometimes leading to a little accurate measure.
+\end_layout
+
+\begin_layout Standard
+With the standard used the middle C is in octave 3.
+\end_layout
+
+\begin_layout Standard
+Sometimes the right octave is not the best, since every instrument produces
+ more than one harmonic.
+ If the detection is not precise enough (i.e.
+ the indicator glitches too much) you can safely select an octave lower
+ or higher than the original one.
+ Remember that if you set the octave in the control panel, the detected
+ octave may not correspond to that of the note.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "note"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+note selector
+\end_layout
+
+\end_inset
+
+Note selector
+\end_layout
+
+\begin_layout Standard
+Like for the octave, specifying the note oftens improves the precision,
+ but in most cases you should not need it.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "listen"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+listen
+\end_layout
+
+\end_inset
+
+'Listen' button
+\end_layout
+
+\begin_layout Standard
+Click on this button to listen to the frequency of the note selected.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "temperament"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+temperament
+\end_layout
+
+\end_inset
+
+Temperament selector
+\end_layout
+
+\begin_layout Standard
+With 
+\noun on
+NOOT Instrument Tuner
+\noun default
+ you can choose among a variety of temperaments.
+ The explanation of the temperaments listed is not a subject of this manual.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "transpose"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+transpose
+\end_layout
+
+\end_inset
+
+Transpose
+\end_layout
+
+\begin_layout Standard
+Use this control to transpose the input.
+ It can be a decimal number.
+\end_layout
+
+\begin_layout Standard
+The frequency displayed above will not be altered.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "windowsize"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+FFT
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+window size
+\end_layout
+
+\end_inset
+
+Window size
+\end_layout
+
+\begin_layout Standard
+This option affects the note detection algorithm.
+ It represents the number of samples on which the FFT and autocorrelation
+ are performed.
+\end_layout
+
+\begin_layout Standard
+It should be set to a reasonable value (usually 4096).
+ If too low, the precision constraint may not be satisfied.
+ If too high, it may slow down the computer or even make the detection less
+ precise.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "threshold"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+noise
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+threshold
+\end_layout
+
+\end_inset
+
+Threshold
+\end_layout
+
+\begin_layout Standard
+This option is used to start the detection only if the input is loud enough,
+ in order to avoid glitches due to the background noise.
+\end_layout
+
+\begin_layout Standard
+A threshold of 0 dB means that the detection will never start, while a threshold
+ of 90 dB (-90 dB, actually) will allow any input to be processed.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "expectedprecision"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+expected precision
+\end_layout
+
+\end_inset
+
+Expected precision
+\end_layout
+
+\begin_layout Standard
+The lower is this number, the higher will be the precision.
+ It represents the theoretical error in thousandths of semitone on the detected
+ frequency.
+\end_layout
+
+\begin_layout Standard
+Lower values also mean slower response and CPU usage.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "framerate"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+frame rate
+\end_layout
+
+\end_inset
+
+Frame rate
+\end_layout
+
+\begin_layout Standard
+This number represents the average number of updates per second.
+ If it is set to a too high value, the program might hang.
+\end_layout
+
+\begin_layout Chapter
+How it works
+\begin_inset CommandInset label
+LatexCommand label
+name "howitworks"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+NOOT Instrument tuner
+\noun default
+ uses a mix of FFT and linear autocorrelation to reach one-cent precision
+ with relatively narrow window sizes.
+\end_layout
+
+\begin_layout Standard
+Every time the display is updated, the following algorithm is computed on
+ the current window:
+\end_layout
+
+\begin_layout Itemize
+A FFT is used to find the frequency with the highest spectral density within
+ the note and octave constraints (if selected) 
+\end_layout
+
+\begin_layout Itemize
+From that frequency, an interval of possible frequencies is taken.
+ 
+\end_layout
+
+\begin_layout Itemize
+Autocorrelation is computed at the times corresponding to that frequency
+ interval; the time lag corresponding to the highest autocorrelation is
+ kept.
+ 
+\end_layout
+
+\begin_layout Itemize
+Repeatedly, the frequency is halved (the time lag is doubled) and the time
+ lag corresponding to the highest autocorrelation among the near values
+ is kept.
+ 
+\end_layout
+
+\begin_layout Standard
+The main disadvantage of this approach is that it ceases to be precise in
+ cases when the harmonics are far less than perfect.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "gpl-3.2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
