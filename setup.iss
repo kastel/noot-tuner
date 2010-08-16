@@ -3,7 +3,7 @@
 [Setup]
 Compression=lzma/max
 AppName=NOOT Instrument Tuner
-AppVerName=NOOT Instrument Tuner {#VERSION_MAJOR}.{#VERSION_MINOR}.{#VERSION_BUILD}
+AppVerName=NOOT Instrument Tuner {#VERSION}
 DefaultDirName={pf}\NOOT Instrument Tuner
 DefaultGroupName=NOOT Instrument Tuner
 VersionInfoCompany=Davide Castellone

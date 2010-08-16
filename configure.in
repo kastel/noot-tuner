@@ -129,8 +129,6 @@ AC_ARG_VAR([HTMLHELP_XSL], [path to htmlhelp.xsl])
 if test x$HTMLHELP_XSL == x; then
     HTMLHELP_XSL=/usr/share/xml/docbook/stylesheet/docbook-xsl/htmlhelp/htmlhelp.xsl
 fi
-AC_CHECK_FILE([$HTMLHELP_XSL], [],
-    [AC_MSG_WARN(['htmlhelp.xsl' is not found. Please specify a path in variable HTMLHELP_XSL])])
 
 AC_OUTPUT(Makefile po/Makefile.in po/Makefile src/Makefile doc/Makefile doc/en/Makefile
     doc/it/Makefile)
