@@ -4,7 +4,7 @@
 \begin_header
 \textclass docbook-book
 \use_default_options false
-\language english
+\language italian
 \inputencoding auto
 \font_roman default
 \font_sans default
@@ -53,7 +53,7 @@ status open
 
 \begin_layout Plain Layout
 
-<title>NOOT Instrument Tuner</title>
+<title>Accordatore NOOT</title>
 \end_layout
 
 \begin_layout Plain Layout
@@ -63,7 +63,7 @@ status open
 
 \begin_layout Plain Layout
 
-<date>August 2010</date>
+<date>Agosto 2010</date>
 \end_layout
 
 \begin_layout Plain Layout
@@ -86,7 +86,7 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Chapter
-Introduction
+Introduzione
 \begin_inset CommandInset label
 LatexCommand label
 name "introduction"
@@ -97,14 +97,11 @@ name "introduction"
 \end_layout
 
 \begin_layout Standard
-
-\noun on
-Never-out-of-tune Instrument Tuner
-\noun default
- simulates a full-featured instrument tuner.
- It may be used to tune musical instruments (guitars, pianos) or whatever
- implies the detection of a sound frequency between 20 and 4000 Hz with
- a cent precision.
+L'accordatore NOOT (Never-out-of-tune Instrument Tuner) simula un accordatore
+ elettronico.
+ Può essere usato per accordare uno strumento musicale (chitarra, pianoforte)
+ o qualsiasi cosa richieda il riconoscimento di una frequenza sonora tra
+ 20 e 4000 Hz con la precisione di un centesimo di semitono.
 \end_layout
 
 \begin_layout Standard
@@ -112,11 +109,7 @@ Never-out-of-tune Instrument Tuner
 \end_layout
 
 \begin_layout Standard
-
-\noun on
-NOOT Instrument Tuner
-\noun default
- is distributed under the GNU General Public License (see 
+NOOT è distribuito sotto la GNU General Public License version 3 (vedi 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "license-gplv3"
@@ -124,28 +117,10 @@ reference "license-gplv3"
 \end_inset
 
 )
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Logo and icon are © 2010 Carmen Buonfiglio, licensed under the 
-\begin_inset CommandInset href
-LatexCommand href
-name "Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License"
-target "http://creativecommons.org/licenses/by-nc-nd/3.0/"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-Website:
+Sito web: 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://code.google.com/p/noot-tuner/"
@@ -156,11 +131,12 @@ target "http://code.google.com/p/noot-tuner/"
 \end_layout
 
 \begin_layout Standard
-Should you find any unexpected behaviour or want to make a suggestion or
- request a feature, please go to the 
+In caso di comportamento imprevisto del programma, o nel caso vogliate dare
+ un suggerimento o richiedere una funzionalità aggiuntiva, si prega di visitare
+ 
 \begin_inset CommandInset href
 LatexCommand href
-name "bug reporting page"
+name "la pagina dei bug"
 target "http://code.google.com/p/noot-tuner/issues/entry"
 
 \end_inset
@@ -169,177 +145,12 @@ target "http://code.google.com/p/noot-tuner/issues/entry"
 \end_layout
 
 \begin_layout Standard
-The author can be contacted on NOOT's mailing list: 
+L'autore può essere contattato attraverso la mailing list di NOOT: 
 \begin_inset CommandInset href
 LatexCommand href
-target "noot-tuner-discuss@googlegroups.com"
+name "noot-tuner-discuss@googlegroups.com"
+target "mailto:noot-tuner-discuss@googlegroups.com"
 type "mailto:"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Features
-\begin_inset CommandInset label
-LatexCommand label
-name "features"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Easy to use (default settings will work in most cases) 
-\end_layout
-
-\begin_layout Itemize
-It works with almost any instrument 
-\end_layout
-
-\begin_layout Itemize
-Half-cent precision (0.005 semitones) 
-\end_layout
-
-\begin_layout Itemize
-Real-time display 
-\end_layout
-
-\begin_layout Itemize
-Octave and/or note selection 
-\end_layout
-
-\begin_layout Itemize
-Transposition 
-\end_layout
-
-\begin_layout Itemize
-Selectable temperament 
-\end_layout
-
-\begin_layout Itemize
-Internationalisation (English and Italian for now, other languages will
- follow) 
-\end_layout
-
-\begin_layout Itemize
-Cross-platform (it can be compiled on virtually any OS; Windows and Ubuntu
- packages available now, other packages available soon) 
-\end_layout
-
-\begin_layout Itemize
-Basic documentation included 
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Future plans
-\series default
- 
-\end_layout
-
-\begin_layout Itemize
-Clock correction 
-\end_layout
-
-\begin_layout Itemize
-Ever more accuracy 
-\end_layout
-
-\begin_layout Itemize
-Customisable temperament 
-\end_layout
-
-\begin_layout Itemize
-More ports (OSX, ...) and languages 
-\end_layout
-
-\begin_layout Itemize
-Input volume monitor, clipping detection and/or automatic volume 
-\end_layout
-
-\begin_layout Section
-Minimum requirements
-\begin_inset CommandInset label
-LatexCommand label
-name "requirements"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-An audio card with a configured microphone or line input
-\end_layout
-
-\begin_layout Itemize
-Variable disk space (10 MB for the Windows version, 1 MB for Ubuntu packages,
- about 40 MB for universal packages)
-\end_layout
-
-\begin_layout Section
-Changelog
-\begin_inset CommandInset label
-LatexCommand label
-name "changelog"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Version 0.1.2.3: 
-\end_layout
-
-\begin_layout Itemize
-Precision is now given in millis, not in cents 
-\end_layout
-
-\begin_layout Itemize
-Minor improvements to the display 
-\end_layout
-
-\begin_layout Itemize
-PPA for Ubuntu users
-\end_layout
-
-\begin_layout Standard
-Version 0.1.0:
-\end_layout
-
-\begin_layout Itemize
-First published version
-\end_layout
-
-\begin_layout Section
-Credits
-\begin_inset CommandInset label
-LatexCommand label
-name "credits"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Code and Italian translation © 2010 Davide Castellone
-\end_layout
-
-\begin_layout Standard
-
-\noun on
-NOOT Instrument Tuner
-\noun default
- is distributed under the 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "license-gplv3"
 
 \end_inset
 
@@ -367,8 +178,187 @@ target "http://creativecommons.org/licenses/by-nc-nd/3.0/"
 
 \end_layout
 
+\begin_layout Section
+Caratteristiche
+\begin_inset CommandInset label
+LatexCommand label
+name "features"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Facilità d'uso (le impostazioni predefinite funzionano nella maggior parte
+ dei casi)
+\end_layout
+
+\begin_layout Itemize
+Funziona con qualsiasi strumento
+\end_layout
+
+\begin_layout Itemize
+Precisione di mezzo cent (0.005 semitoni)
+\end_layout
+
+\begin_layout Itemize
+Display in tempo reale
+\end_layout
+
+\begin_layout Itemize
+Ottave e note selezionabili
+\end_layout
+
+\begin_layout Itemize
+Trasposizione
+\end_layout
+
+\begin_layout Itemize
+Temperamento selezionabile
+\end_layout
+
+\begin_layout Itemize
+Internazionalizzazione
+\end_layout
+
+\begin_layout Itemize
+Cross-platform (può essere compilato praticamente in qualsiasi sistema operativo
+) 
+\end_layout
+
+\begin_layout Itemize
+Documentazione di base inclusa
+\end_layout
+
 \begin_layout Standard
-We also thank the authors of the libraries used:
+Sviluppi futuri
+\end_layout
+
+\begin_layout Itemize
+Clock correction
+\end_layout
+
+\begin_layout Itemize
+Temperamento completamente personalizzabile
+\end_layout
+
+\begin_layout Itemize
+Più sistemi operativi e lingue
+\end_layout
+
+\begin_layout Itemize
+Monitor del volume in ingresso, rilevazione del clipping e/o volume automatico
+\end_layout
+
+\begin_layout Section
+Requisiti minimi
+\begin_inset CommandInset label
+LatexCommand label
+name "requirements"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Una scheda audio con un ingresso audio configurato
+\end_layout
+
+\begin_layout Itemize
+Spazio su disco variabile (circa 1 MB per Ubuntu, 10 MB per Windows, 40
+ MB per i pacchetti universali)
+\end_layout
+
+\begin_layout Section
+Registro dei cambiamenti
+\begin_inset CommandInset label
+LatexCommand label
+name "changelog"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Versione 0.1.1:
+\end_layout
+
+\begin_layout Itemize
+La precisione è data in millesimi e non più in centesimi
+\end_layout
+
+\begin_layout Itemize
+Cambiamenti minori al display
+\end_layout
+
+\begin_layout Itemize
+PPA per gli utenti Ubuntu
+\end_layout
+
+\begin_layout Standard
+Versione 0.1.0:
+\end_layout
+
+\begin_layout Itemize
+Prima versione pubblicata
+\end_layout
+
+\begin_layout Section
+Riconoscimenti
+\begin_inset CommandInset label
+LatexCommand label
+name "credits"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Codice e traduzione italiana © 2010 Davide Castellone
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+NOOT Instrument Tuner
+\noun default
+ è distribuito sotto la GNU General Public License (vedi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "license-gplv3"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Logo and icon are © 2010 Carmen Buonfiglio, licensed under the 
+\begin_inset CommandInset href
+LatexCommand href
+name "Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License"
+target "http://creativecommons.org/licenses/by-nc-nd/3.0/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si ringraziano inoltre gli autori delle librerie utilizzate:
 \end_layout
 
 \begin_layout Itemize
@@ -405,15 +395,11 @@ target "FFTW"
 \end_layout
 
 \begin_layout Standard
-The libraries are redistributed according to the respective licenses.
+Le librerie sono redistribuite secondo le rispettive licenze.
 \end_layout
 
 \begin_layout Chapter
-Using 
-\noun on
-NOOT Instrument Tuner
-\noun default
-
+Come si usa
 \begin_inset CommandInset label
 LatexCommand label
 name "using"
@@ -424,46 +410,35 @@ name "using"
 \end_layout
 
 \begin_layout Standard
-Before starting, you need to configure your input device.
- Usually this means choosing an input device and adjusting its volume in
- the mixer.
+Prima di iniziare, bisogna configurare il dispositivo di ingresso.
+ Solitamente basta selezionare il dispositivo di ingresso nel mixer di sistema
+ e regolare il volume.
 \end_layout
 
 \begin_layout Standard
-After doing that, start 
-\noun on
-NOOT
-\noun default
-.
- Usually there is no need for changing the default options.
+Dopodiché, si può avviare NOOT.
+ Normalmente non è necessario cambiare le impostazioni.
 \end_layout
 
 \begin_layout Standard
-Click on the 
+Cliccare sul pulsante 
 \family typewriter
 Start/Stop
 \family default
- button to start the tuner.
+ per avviare l'accordatore.
 \end_layout
 
 \begin_layout Standard
-If you already know the note you are tuning and do not need to discover
- it, you should set the 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "note"
-
-\end_inset
-
- and 
+Se si conosce già la nota da accordare e non c'è quindi necessità di rilevarla,
+ si consiglia di impostare le opzioni nota e ottava (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "octave"
 
 \end_inset
 
- option.
- This will make note detection easier.
+).
+ Ciò renderà la misura più semplice per il programma.
 \end_layout
 
 \begin_layout Section
@@ -475,7 +450,7 @@ name "mainwindow"
 
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 main window
@@ -483,12 +458,12 @@ main window
 
 \end_inset
 
- The main window
+ La finestra principale
 \end_layout
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename pictures/mainwindow.png
+	filename pictures/screenshot-it.png
 
 \end_inset
 
@@ -496,7 +471,7 @@ main window
 \end_layout
 
 \begin_layout Standard
-Here is an explanation of all the controls in the main window.
+Di seguito, la descrizione di tutti i controlli della finestra principale.
 \end_layout
 
 \begin_layout Subsection
@@ -516,17 +491,14 @@ start/stop
 
 \end_inset
 
-Start/Stop button
+Pulsante Start/Stop
 \end_layout
 
 \begin_layout Standard
-This button will start or stop the note detection.
- If another application need to open the input device, you can temporarily
- stop 
-\noun on
-NOOT
-\noun default
- and restart it later, without closing its window.
+Questo pulsante avvia o ferma la rilevazione.
+ Se il dispositivo di ingresso è richiesto da un'altra applicazione, si
+ può momentaneamente fermare NOOT e riavviarlo successivamente, senza chiudere
+ la sua finestra.
 \end_layout
 
 \begin_layout Subsection
@@ -546,25 +518,25 @@ note
 
 \end_inset
 
-'Detected note' box
+Riquadro "nota rilevata"
 \end_layout
 
 \begin_layout Standard
-This box is made of two parts.
- The tuning indicator will show how much the detected note is far from the
- expected note.
- Its colour varies according to whether the pitch is higher (blue) lower
- (red) or quite right (green).
- If the note is perfectly tuned, the indicator should be under the black
- line.
+Questo riquadro si suddivide in due parti.
+ L'indicatore di intonazione mostra quanto la frequenza rilevata si allontani
+ dalla nota prevista.
+ Se la nota è crescente, l'indicatore è blu, se è calante l'indicatore è
+ rosso; se è molto vicina a quella corretta, l'indicatore è verde.
+ Quando la nota è perfettamente intonata, l'indicatore dovrebbe trovarsi
+ sotto la linea nera.
 \end_layout
 
 \begin_layout Standard
-The lower part of the box shows the following information: 
+La parte inferiore del riquadro mostra le seguenti informazioni:
 \end_layout
 
 \begin_layout Description
-Note 
+Nota 
 \begin_inset Index
 status open
 
@@ -574,19 +546,18 @@ note
 
 \end_inset
 
-The detected note.
- This value depends on whether you have set the note and the octave in the
- control panel below.
- If they are note set to 
+La nota rilevata.
+ Il suo valore cambia se viene selezionata una nota o un'ottava nel pannello
+ di controllo sottostante.
+ Se entrambe sono impostati su 
 \family typewriter
 Auto
 \family default
-, the note displayed will be exactly the choosen one.
- 
+, la nota mostrata sarà quella rilevata dal programma.
 \end_layout
 
 \begin_layout Description
-Offset 
+Scostamento 
 \begin_inset Index
 status open
 
@@ -596,11 +567,11 @@ offset
 
 \end_inset
 
-The offset from the expected pitch, in cents (1 cent = 0.01 semitones) 
+Lo scostamento dalla frequenza prevista, in cent (1 cent = 0.01 semitoni).
 \end_layout
 
 \begin_layout Description
-Frequency 
+Frequenza 
 \begin_inset Index
 status open
 
@@ -610,9 +581,8 @@ frequency
 
 \end_inset
 
-The detected frequency in Hertz.
- This information is useless to most of the users.
- 
+La frequenza rilevata in Hz.
+ Questa informazione è di poco uso.
 \end_layout
 
 \begin_layout Subsection
@@ -632,31 +602,30 @@ octave selector
 
 \end_inset
 
-Octave selector
+Ottava
 \end_layout
 
 \begin_layout Standard
-Selecting the right octaves often improves the precision of the detection
- algorithm.
- When the octave is set to 
+Selezionare l'ottava giusta spesso aumenta la precisione della misura.
+ Quando l'ottava è impostata su 
 \family typewriter
 Auto
 \family default
-, the program guesses it, sometimes leading to a little accurate measure.
+, il programma cerca di indovinarla, portando spesso a misure meno precise.
 \end_layout
 
 \begin_layout Standard
-With the standard used the middle C is in octave 3.
+Con lo standard adottato, il Do centrale si trova nell'ottava 3.
 \end_layout
 
 \begin_layout Standard
-Sometimes the right octave is not the best, since every instrument produces
- more than one harmonic.
- If the detection is not precise enough (i.e.
- the indicator glitches too much) you can safely select an octave lower
- or higher than the original one.
- Remember that if you set the octave in the control panel, the detected
- octave may not correspond to that of the note.
+Talvolta l'ottava precisa non è la migliore, in quanto ogni strumento produce
+ più di un'armonica.
+ Se la rilevazione non è abbastanza precisa (cioè, se l'indicatore oscilla
+ troppo) si può selezionare l'ottava immediatamente superiore o inferiore
+ a quella originale, senza rischi.
+ Si ricorda che se viene impostata un'ottava nel pannello di controllo,
+ l'ottava rilevata potrebbe non corrispondere a quella della nota.
 \end_layout
 
 \begin_layout Subsection
@@ -676,12 +645,12 @@ note selector
 
 \end_inset
 
-Note selector
+Nota
 \end_layout
 
 \begin_layout Standard
-Like for the octave, specifying the note oftens improves the precision,
- but in most cases you should not need it.
+Come per l'ottava, specificare la nota spesso migliora la precisione, ma
+ spesso non è necessario.
 \end_layout
 
 \begin_layout Subsection
@@ -701,11 +670,11 @@ listen
 
 \end_inset
 
-'Listen' button
+Pulsante "ascolta"
 \end_layout
 
 \begin_layout Standard
-Click on this button to listen to the frequency of the note selected.
+Cliccare su questo pulsante per ascoltare la nota selezionata.
 \end_layout
 
 \begin_layout Subsection
@@ -725,16 +694,12 @@ temperament
 
 \end_inset
 
-Temperament selector
+Selezione del temperamento
 \end_layout
 
 \begin_layout Standard
-With 
-\noun on
-NOOT Instrument Tuner
-\noun default
- you can choose among a variety of temperaments.
- The explanation of the temperaments listed is not a subject of this manual.
+Con NOOT, si può scegliere tra una varietà di temperamenti.
+ La descrizione dei temperamenti elencati non è argomento di questo manuale.
 \end_layout
 
 \begin_layout Subsection
@@ -754,16 +719,13 @@ transpose
 
 \end_inset
 
-Transpose
+Trasponi
 \end_layout
 
 \begin_layout Standard
-Use this control to transpose the input.
- It can be a decimal number.
-\end_layout
-
-\begin_layout Standard
-The frequency displayed above will not be altered.
+Usare questo controllo per trasporre l'input di un certo numero di semitoni.
+ Può essere un numero decimale.
+ La frequenza mostrata non sarà alterata.
 \end_layout
 
 \begin_layout Subsection
@@ -793,20 +755,20 @@ window size
 
 \end_inset
 
-Window size
+Dimensione finestra
 \end_layout
 
 \begin_layout Standard
-This option affects the note detection algorithm.
- It represents the number of samples on which the FFT and autocorrelation
- are performed.
+Questa opzione influenza l'algoritmo di rilevazione della frequenza.
+ Rappresenta il numero di campioni su cui vengono computate la FFT e l'autocorre
+lazione.
 \end_layout
 
 \begin_layout Standard
-It should be set to a reasonable value (usually 4096).
- If too low, the precision constraint may not be satisfied.
- If too high, it may slow down the computer or even make the detection less
- precise.
+Dovrebbe essere impostato su un valore ragionevole.
+ Se troppo basso, la precisione desiderata potrebbe non essere raggiunta.
+ Se troppo alto, rende poco reattivo il programma e potrebbe sovraccaricare
+ il computer.
 \end_layout
 
 \begin_layout Subsection
@@ -836,12 +798,17 @@ threshold
 
 \end_inset
 
-Threshold
+Soglia
 \end_layout
 
 \begin_layout Standard
-This option is used to start the detection only if the input is loud enough,
- in order to avoid glitches due to the background noise.
+Questa opzione serve ad avviare la rilevazione solo quando il livello dell'input
+ è abbastanza alto, così da evitare interferenze dovute al rumore di sottofondo.
+\end_layout
+
+\begin_layout Standard
+Una soglia di 0 dB significa che la rilevazione non si avvierà mai, mentre
+ una soglia di 90 dB (-90 in realtà) lascerà passare qualsiasi input.
 \end_layout
 
 \begin_layout Standard
@@ -866,17 +833,17 @@ expected precision
 
 \end_inset
 
-Expected precision
+Precisione prevista
 \end_layout
 
 \begin_layout Standard
-The lower is this number, the higher will be the precision.
- It represents the theoretical error in thousandths of semitone on the detected
- frequency.
+Minore il valore, maggiore la precisione.
+ Rappresenta l'errore teorico in millesimi di semitono sulla frequenza misurata.
 \end_layout
 
 \begin_layout Standard
-Lower values also mean slower response and CPU usage.
+Valori più bassi rendono il programma meno reattivo e possono rallentarlo
+ fino a farlo bloccare.
 \end_layout
 
 \begin_layout Subsection
@@ -900,12 +867,12 @@ Frame rate
 \end_layout
 
 \begin_layout Standard
-This number represents the average number of updates per second.
- If it is set to a too high value, the program might hang.
+Questo numero rappresenta il numero medio di aggiornamenti al seconto.
+ Se impostato su un valore troppo alto, il programma potrebbe bloccarsi.
 \end_layout
 
 \begin_layout Chapter
-How it works
+Come funziona
 \begin_inset CommandInset label
 LatexCommand label
 name "howitworks"
@@ -916,46 +883,38 @@ name "howitworks"
 \end_layout
 
 \begin_layout Standard
-
-\noun on
-NOOT Instrument tuner
-\noun default
- uses a mix of FFT and linear autocorrelation to reach one-cent precision
- with relatively narrow window sizes.
+L'accordatore NOOT usa un misto di FFT e autocorrelazione lineare per raggiunger
+e la precisione di un cent con finestre di larghezza relativamente ridotta.
 \end_layout
 
 \begin_layout Standard
-Every time the display is updated, the following algorithm is computed on
- the current window:
+Ogni volta che il display è aggiornato, viene eseguito il seguente algoritmo:
 \end_layout
 
 \begin_layout Itemize
-A FFT is used to find the frequency with the highest spectral density within
- the note and octave constraints (if selected) 
+La FFT viene usata per trovare la frequenza con la massima densità spettrale
+ entro la nota e l'ottava selezionate.
 \end_layout
 
 \begin_layout Itemize
-From that frequency, an interval of possible frequencies is taken.
- 
+Da quella frequenza, viene ricavato un intervallo di frequenze possibili.
 \end_layout
 
 \begin_layout Itemize
-Autocorrelation is computed at the times corresponding to that frequency
- interval; the time lag corresponding to the highest autocorrelation is
- kept.
- 
+Si calcola l'autocorrelazione ai tempi corrispondenti a quell'intervallo
+ di frequenze; viene tenuto il tempo che corrisponde all'autocorrelazione
+ più alta.
 \end_layout
 
 \begin_layout Itemize
-Repeatedly, the frequency is halved (the time lag is doubled) and the time
- lag corresponding to the highest autocorrelation among the near values
- is kept.
- 
+Ripetutamente, la frequenza è dimezzata (il tempo è raddoppiato) e viene
+ tenuto il tempo corrispondente all'autocorrelazione più alta tra i valori
+ vicini.
 \end_layout
 
 \begin_layout Standard
-The main disadvantage of this approach is that it ceases to be precise in
- cases when the harmonics are far less than perfect.
+Lo svantaggio principale di questo approccio è la perdita di precisione
+ nei casi in cui gli armonici sono lontani dalla perfezione.
 \end_layout
 
 \begin_layout Standard

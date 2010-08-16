@@ -410,9 +410,15 @@ void TunerFrame::OnHelp(wxHelpEvent &event)
 	wxWindow* w;
 	if (o && (w = dynamic_cast<wxWindow*>(o)))
 	{
-		wxString name(w->GetName());
-		if (InitialiseHelp())
-			wxGetApp().helpController->DisplaySection(name);
+		wxString name(w->GetHelpText());
+        wxPrintf(wxT("Help requested for object '%s'"), name.c_str());
+		if (InitialiseHelp()) {
+            long num=0;
+            if (name.ToLong(&num))
+            	wxGetApp().helpController->DisplaySection(num);
+            else
+                wxGetApp().helpController->DisplaySection(name);
+        }
 	}
 }
 

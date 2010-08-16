@@ -28,13 +28,15 @@
 <itemizedlist>
 <listitem><para>An audio card with a configured microphone or line input</para></listitem><listitem><para>Variable disk space (10 MB for the Windows version, 1 MB for Ubuntu packages, about 40 MB for universal packages)</para></listitem></itemizedlist></sect1><sect1 id='changelog' >
 <title>Changelog<!-- anchor id="changelog" --></title>
-<para>Version 0.1.1: </para><itemizedlist>
+<para>Version 0.1.2.3: </para><itemizedlist>
 <listitem><para>Precision is now given in millis, not in cents </para></listitem><listitem><para>Minor improvements to the display </para></listitem><listitem><para>PPA for Ubuntu users</para></listitem></itemizedlist><para>Version 0.1.0:</para><itemizedlist>
 <listitem><para>First published version</para></listitem></itemizedlist></sect1><sect1 id='credits' >
 <title>Credits<!-- anchor id="credits" --></title>
 <para>Code and Italian translation © 2010 Davide Castellone</para>
 <para>NOOT Instrument Tuner is distributed under the <xref linkend="license-gplv3." /></para>
-<para></para></sect1></chapter><chapter id='using' >
+<para></para>
+<para>We also thank the authors of the libraries used:</para><itemizedlist>
+<listitem><para><ulink url="http://wxwidgets.org">wxWidgets</ulink></para></listitem><listitem><para><ulink url="http://www.portaudio.com">Portaudio</ulink></para></listitem><listitem><para><ulink url="FFTW">http://www.fftw.org</ulink></para></listitem></itemizedlist><para>The libraries are redistributed according to the respective licenses.</para></sect1></chapter><chapter id='using' >
 <title>Using NOOT Instrument Tuner<!-- anchor id="using" --></title>
 <para>Before starting, you need to configure your input device. Usually this means choosing an input device and adjusting its volume in the mixer.</para>
 <para>After doing that, start NOOT. Usually there is no need for changing the default options.</para>

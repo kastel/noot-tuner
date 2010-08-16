@@ -78,28 +78,28 @@ namespace noot
 			wxSpinCtrl* scFrameRate;
 			
 			// Virtual event handlers, overide them in your derived class
-			virtual void OnSelectInputDevice( wxCommandEvent& event ) { event.Skip(); }
-			virtual void OnSelectOutputDevice( wxCommandEvent& event ) { event.Skip(); }
-			virtual void OnMenuExit( wxCommandEvent& event ) { event.Skip(); }
-			virtual void OnHelpTOC( wxCommandEvent& event ) { event.Skip(); }
-			virtual void OnHelpContext( wxCommandEvent& event ) { event.Skip(); }
-			virtual void OnHelpWebsite( wxCommandEvent& event ) { event.Skip(); }
-			virtual void OnHelpBug( wxCommandEvent& event ) { event.Skip(); }
-			virtual void OnHelpAbout( wxCommandEvent& event ) { event.Skip(); }
-			virtual void OnStartStop( wxCommandEvent& event ) { event.Skip(); }
-			virtual void OnOctave( wxCommandEvent& event ) { event.Skip(); }
-			virtual void OnNote( wxCommandEvent& event ) { event.Skip(); }
-			virtual void OnListen( wxCommandEvent& event ) { event.Skip(); }
-			virtual void OnTemperament( wxCommandEvent& event ) { event.Skip(); }
-			virtual void OnTransposeKillFocus( wxFocusEvent& event ) { event.Skip(); }
-			virtual void OnTransposeEnter( wxCommandEvent& event ) { event.Skip(); }
-			virtual void OnWindowSizeChoice( wxCommandEvent& event ) { event.Skip(); }
-			virtual void OnThresholdKillFocus( wxFocusEvent& event ) { event.Skip(); }
-			virtual void OnThresholdSpin( wxSpinEvent& event ) { event.Skip(); }
-			virtual void OnExpectedPrecisionKillFocus( wxFocusEvent& event ) { event.Skip(); }
-			virtual void OnExpectedPrecisionSpin( wxSpinEvent& event ) { event.Skip(); }
-			virtual void OnFrameRateKillFocus( wxFocusEvent& event ) { event.Skip(); }
-			virtual void OnFrameRate( wxSpinEvent& event ) { event.Skip(); }
+			virtual void OnSelectInputDevice( wxCommandEvent& event ) = 0;
+			virtual void OnSelectOutputDevice( wxCommandEvent& event ) = 0;
+			virtual void OnMenuExit( wxCommandEvent& event ) = 0;
+			virtual void OnHelpTOC( wxCommandEvent& event ) = 0;
+			virtual void OnHelpContext( wxCommandEvent& event ) = 0;
+			virtual void OnHelpWebsite( wxCommandEvent& event ) = 0;
+			virtual void OnHelpBug( wxCommandEvent& event ) = 0;
+			virtual void OnHelpAbout( wxCommandEvent& event ) = 0;
+			virtual void OnStartStop( wxCommandEvent& event ) = 0;
+			virtual void OnOctave( wxCommandEvent& event ) = 0;
+			virtual void OnNote( wxCommandEvent& event ) = 0;
+			virtual void OnListen( wxCommandEvent& event ) = 0;
+			virtual void OnTemperament( wxCommandEvent& event ) = 0;
+			virtual void OnTransposeKillFocus( wxFocusEvent& event ) = 0;
+			virtual void OnTransposeEnter( wxCommandEvent& event ) = 0;
+			virtual void OnWindowSizeChoice( wxCommandEvent& event ) = 0;
+			virtual void OnThresholdKillFocus( wxFocusEvent& event ) = 0;
+			virtual void OnThresholdSpin( wxSpinEvent& event ) = 0;
+			virtual void OnExpectedPrecisionKillFocus( wxFocusEvent& event ) = 0;
+			virtual void OnExpectedPrecisionSpin( wxSpinEvent& event ) = 0;
+			virtual void OnFrameRateKillFocus( wxFocusEvent& event ) = 0;
+			virtual void OnFrameRate( wxSpinEvent& event ) = 0;
 			
 		
 		public:

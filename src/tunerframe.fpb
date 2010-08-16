@@ -7,7 +7,7 @@
         <property name="disconnect_events">1</property>
         <property name="encoding">UTF-8</property>
         <property name="event_generation">connect</property>
-        <property name="event_handler">impl_virtual</property>
+        <property name="event_handler">decl_pure_virtual</property>
         <property name="file">wxfbtunerframe</property>
         <property name="first_id">1000</property>
         <property name="help_provider">none</property>
@@ -24,7 +24,7 @@
             <property name="center"></property>
             <property name="context_help"></property>
             <property name="enabled">1</property>
-            <property name="extra_style">wxFRAME_EX_CONTEXTHELP</property>
+            <property name="extra_style"></property>
             <property name="fg"></property>
             <property name="font"></property>
             <property name="hidden">0</property>
@@ -298,7 +298,7 @@
                                     <property name="proportion">0</property>
                                     <object class="wxToggleButton" expanded="1">
                                         <property name="bg"></property>
-                                        <property name="context_help"></property>
+                                        <property name="context_help">1</property>
                                         <property name="enabled">1</property>
                                         <property name="fg"></property>
                                         <property name="font"></property>
@@ -319,7 +319,7 @@
                                         <property name="validator_variable"></property>
                                         <property name="value">0</property>
                                         <property name="window_extra_style"></property>
-                                        <property name="window_name">startstop</property>
+                                        <property name="window_name">start_stop</property>
                                         <property name="window_style"></property>
                                         <event name="OnChar"></event>
                                         <event name="OnEnterWindow"></event>
@@ -846,7 +846,7 @@
                                         <property name="size"></property>
                                         <property name="style"></property>
                                         <property name="subclass"></property>
-                                        <property name="tooltip">Select an octave to optimize note detection</property>
+                                        <property name="tooltip"></property>
                                         <property name="validator_data_type"></property>
                                         <property name="validator_style">wxFILTER_NONE</property>
                                         <property name="validator_type">wxDefaultValidator</property>
@@ -887,7 +887,7 @@
                                     <object class="wxChoice" expanded="1">
                                         <property name="bg"></property>
                                         <property name="choices">&quot;Auto&quot; &quot;-1&quot; &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot; &quot;6&quot; &quot;7&quot;</property>
-                                        <property name="context_help">2</property>
+                                        <property name="context_help">3</property>
                                         <property name="enabled">1</property>
                                         <property name="fg"></property>
                                         <property name="font"></property>
@@ -901,13 +901,13 @@
                                         <property name="selection">0</property>
                                         <property name="size"></property>
                                         <property name="subclass"></property>
-                                        <property name="tooltip"></property>
+                                        <property name="tooltip">Select an octave to optimize note detection</property>
                                         <property name="validator_data_type"></property>
                                         <property name="validator_style">wxFILTER_NONE</property>
                                         <property name="validator_type">wxDefaultValidator</property>
                                         <property name="validator_variable"></property>
                                         <property name="window_extra_style"></property>
-                                        <property name="window_name">octave</property>
+                                        <property name="window_name">octave selector</property>
                                         <property name="window_style"></property>
                                         <event name="OnChar"></event>
                                         <event name="OnChoice">OnOctave</event>
@@ -1009,7 +1009,7 @@
                                         <property name="size"></property>
                                         <property name="style"></property>
                                         <property name="subclass"></property>
-                                        <property name="tooltip">Select a note if you already know it</property>
+                                        <property name="tooltip"></property>
                                         <property name="validator_data_type"></property>
                                         <property name="validator_style">wxFILTER_NONE</property>
                                         <property name="validator_type">wxDefaultValidator</property>
@@ -1050,7 +1050,7 @@
                                     <object class="wxChoice" expanded="1">
                                         <property name="bg"></property>
                                         <property name="choices">&quot;Auto&quot; &quot;C&quot; &quot;C# / Db&quot; &quot;D&quot; &quot;D# / Eb&quot; &quot;E&quot; &quot;F&quot; &quot;F# / Gb&quot; &quot;G&quot; &quot;G# / Ab&quot; &quot;A&quot; &quot;A# / Bb&quot; &quot;B&quot;</property>
-                                        <property name="context_help">3</property>
+                                        <property name="context_help">4</property>
                                         <property name="enabled">1</property>
                                         <property name="fg"></property>
                                         <property name="font"></property>
@@ -1064,13 +1064,13 @@
                                         <property name="selection">0</property>
                                         <property name="size"></property>
                                         <property name="subclass"></property>
-                                        <property name="tooltip"></property>
+                                        <property name="tooltip">Select a note if you already know it</property>
                                         <property name="validator_data_type"></property>
                                         <property name="validator_style">wxFILTER_NONE</property>
                                         <property name="validator_type">wxDefaultValidator</property>
                                         <property name="validator_variable"></property>
                                         <property name="window_extra_style"></property>
-                                        <property name="window_name">note</property>
+                                        <property name="window_name">note selector</property>
                                         <property name="window_style"></property>
                                         <event name="OnChar"></event>
                                         <event name="OnChoice">OnNote</event>
@@ -1157,7 +1157,7 @@
                                     <property name="proportion">1</property>
                                     <object class="wxButton" expanded="1">
                                         <property name="bg"></property>
-                                        <property name="context_help">3</property>
+                                        <property name="context_help">5</property>
                                         <property name="default">0</property>
                                         <property name="enabled">0</property>
                                         <property name="fg"></property>
@@ -1333,7 +1333,7 @@
                                     <object class="wxChoice" expanded="1">
                                         <property name="bg"></property>
                                         <property name="choices">&quot;Equal Temperament&quot; &quot;Pythagorean&quot; &quot;Just Intonation&quot; &quot;Bach (Klais)&quot; &quot;Kimberger III&quot; &quot;Werckmeister III&quot; &quot;Werckmeister VI&quot; &quot;Rameau (syntonic)&quot; &quot;Just (Barbour)&quot; &quot;Meantone&quot;</property>
-                                        <property name="context_help">4</property>
+                                        <property name="context_help">6</property>
                                         <property name="enabled">1</property>
                                         <property name="fg"></property>
                                         <property name="font"></property>
@@ -1495,7 +1495,7 @@
                                     <property name="proportion">1</property>
                                     <object class="wxTextCtrl" expanded="1">
                                         <property name="bg"></property>
-                                        <property name="context_help">5</property>
+                                        <property name="context_help">7</property>
                                         <property name="enabled">1</property>
                                         <property name="fg"></property>
                                         <property name="font"></property>
@@ -1635,7 +1635,7 @@
                                     <object class="wxChoice" expanded="1">
                                         <property name="bg"></property>
                                         <property name="choices">&quot;Auto&quot; &quot;512&quot; &quot;1024&quot; &quot;2048&quot; &quot;4096&quot; &quot;8192&quot; &quot;16384&quot;</property>
-                                        <property name="context_help">6</property>
+                                        <property name="context_help">8</property>
                                         <property name="enabled">1</property>
                                         <property name="fg"></property>
                                         <property name="font"></property>
@@ -1655,7 +1655,7 @@
                                         <property name="validator_type">wxDefaultValidator</property>
                                         <property name="validator_variable"></property>
                                         <property name="window_extra_style"></property>
-                                        <property name="window_name">windowsize</property>
+                                        <property name="window_name">window size</property>
                                         <property name="window_style"></property>
                                         <event name="OnChar"></event>
                                         <event name="OnChoice">OnWindowSizeChoice</event>
@@ -1797,7 +1797,7 @@
                                     <property name="proportion">1</property>
                                     <object class="wxSpinCtrl" expanded="1">
                                         <property name="bg"></property>
-                                        <property name="context_help">7</property>
+                                        <property name="context_help">9</property>
                                         <property name="enabled">1</property>
                                         <property name="fg"></property>
                                         <property name="font"></property>
@@ -1975,7 +1975,7 @@
                                     <property name="proportion">1</property>
                                     <object class="wxSpinCtrl" expanded="1">
                                         <property name="bg"></property>
-                                        <property name="context_help">9</property>
+                                        <property name="context_help">10</property>
                                         <property name="enabled">1</property>
                                         <property name="fg"></property>
                                         <property name="font"></property>
@@ -1999,7 +1999,7 @@
                                         <property name="validator_variable"></property>
                                         <property name="value"></property>
                                         <property name="window_extra_style"></property>
-                                        <property name="window_name">expectedprecision</property>
+                                        <property name="window_name">expected precision</property>
                                         <property name="window_style"></property>
                                         <event name="OnChar"></event>
                                         <event name="OnEnterWindow"></event>
@@ -2142,7 +2142,7 @@
                                     <property name="proportion">1</property>
                                     <object class="wxSpinCtrl" expanded="1">
                                         <property name="bg"></property>
-                                        <property name="context_help">10</property>
+                                        <property name="context_help">11</property>
                                         <property name="enabled">1</property>
                                         <property name="fg"></property>
                                         <property name="font"></property>
@@ -2166,7 +2166,7 @@
                                         <property name="validator_variable"></property>
                                         <property name="value">10</property>
                                         <property name="window_extra_style"></property>
-                                        <property name="window_name">framerate</property>
+                                        <property name="window_name">frame rate</property>
                                         <property name="window_style"></property>
                                         <event name="OnChar"></event>
                                         <event name="OnEnterWindow"></event>

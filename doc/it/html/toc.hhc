@@ -1,72 +1,72 @@
 <HTML>
-<HEAD><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></HEAD>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></HEAD>
 <BODY>
 <OBJECT type="text/site properties">
 <param name="ImageType" value="Folder">
 </OBJECT>
 <UL>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="NOOT Instrument Tuner">
+<param name="Name" value="Accordatore NOOT">
 <param name="Local" value="index.html"></OBJECT></LI>
 <UL><LI><OBJECT type="text/sitemap">
-<param name="Name" value="Introduction">
+<param name="Name" value="Introduzione">
 <param name="Local" value="ch01.html"></OBJECT></LI>
 <UL>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="Features">
+<param name="Name" value="Caratteristiche">
 <param name="Local" value="ch01.html#features"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="Minimum requirements">
+<param name="Name" value="Requisiti minimi">
 <param name="Local" value="ch01s02.html"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="Changelog">
+<param name="Name" value="Registro dei cambiamenti">
 <param name="Local" value="ch01s03.html"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="Credits">
+<param name="Name" value="Riconoscimenti">
 <param name="Local" value="ch01s04.html"></OBJECT></LI>
 </UL><LI><OBJECT type="text/sitemap">
-<param name="Name" value="Using NOOT Instrument Tuner">
+<param name="Name" value="Come si usa">
 <param name="Local" value="ch02.html"></OBJECT></LI>
 <UL>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="The main window">
+<param name="Name" value="La finestra principale">
 <param name="Local" value="ch02.html#mainwindow"></OBJECT></LI>
 <UL>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="Start/Stop button">
+<param name="Name" value="Pulsante Start/Stop">
 <param name="Local" value="ch02.html#startstop"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="'Detected note' box">
+<param name="Name" value='Riquadro "nota rilevata"'>
 <param name="Local" value="ch02.html#detectednote"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="Octave selector">
+<param name="Name" value="Ottava">
 <param name="Local" value="ch02.html#octave"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="Note selector">
+<param name="Name" value="Nota">
 <param name="Local" value="ch02.html#note"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="'Listen' button">
+<param name="Name" value='Pulsante "ascolta"'>
 <param name="Local" value="ch02.html#listen"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="Temperament selector">
+<param name="Name" value="Selezione del temperamento">
 <param name="Local" value="ch02.html#temperament"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="Transpose">
+<param name="Name" value="Trasponi">
 <param name="Local" value="ch02.html#transpose"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="Window size">
+<param name="Name" value="Dimensione finestra">
 <param name="Local" value="ch02.html#windowsize"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="Threshold">
+<param name="Name" value="Soglia">
 <param name="Local" value="ch02.html#threshold"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="Expected precision">
+<param name="Name" value="Precisione prevista">
 <param name="Local" value="ch02.html#expectedprecision"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="Frame rate">
 <param name="Local" value="ch02.html#framerate"></OBJECT></LI>
 </UL></UL><LI><OBJECT type="text/sitemap">
-<param name="Name" value="How it works">
+<param name="Name" value="Come funziona">
 <param name="Local" value="ch03.html"></OBJECT></LI>
 <UL>
 <LI><OBJECT type="text/sitemap">
@@ -79,7 +79,7 @@
 <UL>
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="Preamble">
-<param name="Local" value="ch04.html#id3041192"></OBJECT></LI>
+<param name="Local" value="ch04.html#id2927983"></OBJECT></LI>
 </UL></UL></UL></UL>
 </UL>
 </BODY></HTML>

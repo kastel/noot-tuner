@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"
+ [ 
+<!ENTITY file1001 SYSTEM "gpl-3.2.sgml">
+<!ENTITY graph1001 "pictures/screenshot-it"> ]>
+
+<!-- XML file was created by LyX 1.6.6.1
+  See http://www.lyx.org/ for more information -->
+<book lang="it_IT">
+<bookinfo>
+<title>Accordatore NOOT</title>
+<author>Davide Castellone</author>
+<date>Agosto 2010</date>
+</bookinfo>
+<toc></toc><chapter id='introduction' >
+<title>Introduzione<!-- anchor id="introduction" --></title>
+<para>L'accordatore NOOT (Never-out-of-tune Instrument Tuner) simula un accordatore elettronico. Può essere usato per accordare uno strumento musicale (chitarra, pianoforte) o qualsiasi cosa richieda il riconoscimento di una frequenza sonora tra 20 e 4000 Hz con la precisione di un centesimo di semitono.</para>
+<para>© 2010 Davide Castellone</para>
+<para>NOOT è distribuito sotto la GNU General Public License version 3 (vedi <xref linkend="license-gplv3." />)</para>
+<para>Sito web: <ulink url="http://code.google.com/p/noot-tuner/"></ulink></para>
+<para>In caso di comportamento imprevisto del programma, o nel caso vogliate dare un suggerimento o richiedere una funzionalità aggiuntiva, si prega di visitare <ulink url="http://code.google.com/p/noot-tuner/issues/entry">la pagina dei bug</ulink>.</para>
+<para>L'autore può essere contattato attraverso la mailing list di NOOT: <ulink url="mailto:noot-tuner-discuss@googlegroups.com">noot-tuner-discuss@googlegroups.com</ulink></para>
+<para></para><sect1 id='features' >
+<title>Caratteristiche<!-- anchor id="features" --></title>
+<itemizedlist>
+<listitem><para>Facilità d'uso (le impostazioni predefinite funzionano nella maggior parte dei casi)</para></listitem><listitem><para>Funziona con qualsiasi strumento</para></listitem><listitem><para>Precisione di mezzo cent (0.005 semitoni)</para></listitem><listitem><para>Display in tempo reale</para></listitem><listitem><para>Ottave e note selezionabili</para></listitem><listitem><para>Trasposizione</para></listitem><listitem><para>Temperamento selezionabile</para></listitem><listitem><para>Internazionalizzazione</para></listitem><listitem><para>Cross-platform (può essere compilato praticamente in qualsiasi sistema operativo) </para></listitem><listitem><para>Documentazione di base inclusa</para></listitem></itemizedlist><para>Sviluppi futuri</para><itemizedlist>
+<listitem><para>Clock correction</para></listitem><listitem><para>Temperamento completamente personalizzabile</para></listitem><listitem><para>Più sistemi operativi e lingue</para></listitem><listitem><para>Monitor del volume in ingresso, rilevazione del clipping e/o volume automatico</para></listitem></itemizedlist></sect1><sect1 id='requirements' >
+<title>Requisiti minimi<!-- anchor id="requirements" --></title>
+<itemizedlist>
+<listitem><para>Una scheda audio con un ingresso audio configurato</para></listitem><listitem><para>Spazio su disco variabile (circa 1 MB per Ubuntu, 10 MB per Windows, 40 MB per i pacchetti universali)</para></listitem></itemizedlist></sect1><sect1 id='changelog' >
+<title>Registro dei cambiamenti<!-- anchor id="changelog" --></title>
+<para>Versione 0.1.1:</para><itemizedlist>
+<listitem><para>La precisione è data in millesimi e non più in centesimi</para></listitem><listitem><para>Cambiamenti minori al display</para></listitem><listitem><para>PPA per gli utenti Ubuntu</para></listitem></itemizedlist><para>Versione 0.1.0:</para><itemizedlist>
+<listitem><para>Prima versione pubblicata</para></listitem></itemizedlist></sect1><sect1 id='credits' >
+<title>Riconoscimenti<!-- anchor id="credits" --></title>
+<para>Codice e traduzione italiana © 2010 Davide Castellone</para>
+<para>NOOT Instrument Tuner è distribuito sotto la GNU General Public License (vedi <xref linkend="license-gplv3." />).</para>
+<para></para>
+<para>Si ringraziano inoltre gli autori delle librerie utilizzate:</para><itemizedlist>
+<listitem><para><ulink url="http://wxwidgets.org">wxWidgets</ulink></para></listitem><listitem><para><ulink url="http://www.portaudio.com">Portaudio</ulink></para></listitem><listitem><para><ulink url="FFTW">http://www.fftw.org</ulink></para></listitem></itemizedlist><para>Le librerie sono redistribuite secondo le rispettive licenze.</para></sect1></chapter><chapter id='using' >
+<title>Come si usa<!-- anchor id="using" --></title>
+<para>Prima di iniziare, bisogna configurare il dispositivo di ingresso. Solitamente basta selezionare il dispositivo di ingresso nel mixer di sistema e regolare il volume.</para>
+<para>Dopodiché, si può avviare NOOT. Normalmente non è necessario cambiare le impostazioni.</para>
+<para>Cliccare sul pulsante Start/Stop per avviare l'accordatore.</para>
+<para>Se si conosce già la nota da accordare e non c'è quindi necessità di rilevarla, si consiglia di impostare le opzioni nota e ottava (<xref linkend="octave" />). Ciò renderà la misura più semplice per il programma.</para><sect1 id='mainwindow' >
+<title><!-- anchor id="mainwindow" --><indexterm><primary><dummy>main window</dummy></primary></indexterm> La finestra principale</title>
+<inlinemediaobject><imageobject><imagedata fileref="&graph1001;.png"  role="png"/></imageobject><imageobject><imagedata fileref="&graph1001;.pdf"  role="pdf"/></imageobject><imageobject><imagedata fileref="&graph1001;.eps"  role="eps"/></imageobject><imageobject><imagedata fileref="&graph1001;.bmp"  role="bmp"/></imageobject></inlinemediaobject>
+<para>Di seguito, la descrizione di tutti i controlli della finestra principale.</para><sect2 id='startstop' >
+<title><!-- anchor id="startstop" --><indexterm><primary><dummy>start/stop</dummy></primary></indexterm>Pulsante Start/Stop</title>
+<para>Questo pulsante avvia o ferma la rilevazione. Se il dispositivo di ingresso è richiesto da un'altra applicazione, si può momentaneamente fermare NOOT e riavviarlo successivamente, senza chiudere la sua finestra.</para></sect2><sect2 id='detectednote' >
+<title><!-- anchor id="detectednote" --><indexterm><primary><dummy>note</dummy></primary></indexterm>Riquadro "nota rilevata"</title>
+<para>Questo riquadro si suddivide in due parti. L'indicatore di intonazione mostra quanto la frequenza rilevata si allontani dalla nota prevista. Se la nota è crescente, l'indicatore è blu, se è calante l'indicatore è rosso; se è molto vicina a quella corretta, l'indicatore è verde. Quando la nota è perfettamente intonata, l'indicatore dovrebbe trovarsi sotto la linea nera.</para>
+<para>La parte inferiore del riquadro mostra le seguenti informazioni:</para><variablelist>
+<varlistentry><term>Nota</term><listitem><para><indexterm><primary><dummy>note</dummy></primary></indexterm>La nota rilevata. Il suo valore cambia se viene selezionata una nota o un'ottava nel pannello di controllo sottostante. Se entrambe sono impostati su Auto, la nota mostrata sarà quella rilevata dal programma.</para></listitem></varlistentry><varlistentry><term>Scostamento</term><listitem><para><indexterm><primary><dummy>offset</dummy></primary></indexterm>Lo scostamento dalla frequenza prevista, in cent (1 cent = 0.01 semitoni).</para></listitem></varlistentry><varlistentry><term>Frequenza</term><listitem><para><indexterm><primary><dummy>frequency</dummy></primary></indexterm>La frequenza rilevata in Hz. Questa informazione è di poco uso.</para></listitem></varlistentry></variablelist></sect2><sect2 id='octave' >
+<title><!-- anchor id="octave" --><indexterm><primary><dummy>octave selector</dummy></primary></indexterm>Ottava</title>
+<para>Selezionare l'ottava giusta spesso aumenta la precisione della misura. Quando l'ottava è impostata su Auto, il programma cerca di indovinarla, portando spesso a misure meno precise.</para>
+<para>Con lo standard adottato, il Do centrale si trova nell'ottava 3.</para>
+<para>Talvolta l'ottava precisa non è la migliore, in quanto ogni strumento produce più di un'armonica. Se la rilevazione non è abbastanza precisa (cioè, se l'indicatore oscilla troppo) si può selezionare l'ottava immediatamente superiore o inferiore a quella originale, senza rischi. Si ricorda che se viene impostata un'ottava nel pannello di controllo, l'ottava rilevata potrebbe non corrispondere a quella della nota.</para></sect2><sect2 id='note' >
+<title><!-- anchor id="note" --><indexterm><primary><dummy>note selector</dummy></primary></indexterm>Nota</title>
+<para>Come per l'ottava, specificare la nota spesso migliora la precisione, ma spesso non è necessario.</para></sect2><sect2 id='listen' >
+<title><!-- anchor id="listen" --><indexterm><primary><dummy>listen</dummy></primary></indexterm>Pulsante "ascolta"</title>
+<para>Cliccare su questo pulsante per ascoltare la nota selezionata.</para></sect2><sect2 id='temperament' >
+<title><!-- anchor id="temperament" --><indexterm><primary><dummy>temperament</dummy></primary></indexterm>Selezione del temperamento</title>
+<para>Con NOOT, si può scegliere tra una varietà di temperamenti. La descrizione dei temperamenti elencati non è argomento di questo manuale.</para></sect2><sect2 id='transpose' >
+<title><!-- anchor id="transpose" --><indexterm><primary><dummy>transpose</dummy></primary></indexterm>Trasponi</title>
+<para>Usare questo controllo per trasporre l'input di un certo numero di semitoni. Può essere un numero decimale. La frequenza mostrata non sarà alterata.</para></sect2><sect2 id='windowsize' >
+<title><!-- anchor id="windowsize" --><indexterm><primary><dummy>FFT</dummy></primary></indexterm><indexterm><primary><dummy>window size</dummy></primary></indexterm>Dimensione finestra</title>
+<para>Questa opzione influenza l'algoritmo di rilevazione della frequenza. Rappresenta il numero di campioni su cui vengono computate la FFT e l'autocorrelazione.</para>
+<para>Dovrebbe essere impostato su un valore ragionevole. Se troppo basso, la precisione desiderata potrebbe non essere raggiunta. Se troppo alto, rende poco reattivo il programma e potrebbe sovraccaricare il computer.</para></sect2><sect2 id='threshold' >
+<title><!-- anchor id="threshold" --><indexterm><primary><dummy>noise</dummy></primary></indexterm><indexterm><primary><dummy>threshold</dummy></primary></indexterm>Soglia</title>
+<para>Questa opzione serve ad avviare la rilevazione solo quando il livello dell'input è abbastanza alto, così da evitare interferenze dovute al rumore di sottofondo.</para>
+<para>Una soglia di 0 dB significa che la rilevazione non si avvierà mai, mentre una soglia di 90 dB (-90 in realtà) lascerà passare qualsiasi input.</para>
+<para>A threshold of 0 dB means that the detection will never start, while a threshold of 90 dB (-90 dB, actually) will allow any input to be processed.</para></sect2><sect2 id='expectedprecision' >
+<title><!-- anchor id="expectedprecision" --><indexterm><primary><dummy>expected precision</dummy></primary></indexterm>Precisione prevista</title>
+<para>Minore il valore, maggiore la precisione. Rappresenta l'errore teorico in millesimi di semitono sulla frequenza misurata.</para>
+<para>Valori più bassi rendono il programma meno reattivo e possono rallentarlo fino a farlo bloccare.</para></sect2><sect2 id='framerate' >
+<title><!-- anchor id="framerate" --><indexterm><primary><dummy>frame rate</dummy></primary></indexterm>Frame rate</title>
+<para>Questo numero rappresenta il numero medio di aggiornamenti al seconto. Se impostato su un valore troppo alto, il programma potrebbe bloccarsi.</para></sect2></sect1></chapter><chapter id='howitworks' >
+<title>Come funziona<!-- anchor id="howitworks" --></title>
+<para>L'accordatore NOOT usa un misto di FFT e autocorrelazione lineare per raggiungere la precisione di un cent con finestre di larghezza relativamente ridotta.</para>
+<para>Ogni volta che il display è aggiornato, viene eseguito il seguente algoritmo:</para><itemizedlist>
+<listitem><para>La FFT viene usata per trovare la frequenza con la massima densità spettrale entro la nota e l'ottava selezionate.</para></listitem><listitem><para>Da quella frequenza, viene ricavato un intervallo di frequenze possibili.</para></listitem><listitem><para>Si calcola l'autocorrelazione ai tempi corrispondenti a quell'intervallo di frequenze; viene tenuto il tempo che corrisponde all'autocorrelazione più alta.</para></listitem><listitem><para>Ripetutamente, la frequenza è dimezzata (il tempo è raddoppiato) e viene tenuto il tempo corrispondente all'autocorrelazione più alta tra i valori vicini.</para></listitem></itemizedlist><para>Lo svantaggio principale di questo approccio è la perdita di precisione nei casi in cui gli armonici sono lontani dalla perfezione.</para>
+&file1001;</chapter></book>
