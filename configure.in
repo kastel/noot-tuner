@@ -101,7 +101,7 @@ AC_SUBST(VERSION_REV)
 
 AC_SUBST(WX_LIBS)
 
-AC_ARG_VAR([ZIP], [path to zip program])
+AC_ARG_VAR([ZIP], [path to zip executable])
 if test x$ZIP == x; then
     AC_PATH_PROG([ZIP], [zip])
     if test x$ZIP == x; then
@@ -109,11 +109,19 @@ if test x$ZIP == x; then
     fi
 fi
 
-AC_ARG_VAR([XSLTPROC], [path to xsltproc program])
+AC_ARG_VAR([XSLTPROC], [path to xsltproc executable])
 if test x$XSLTPROC == x; then
     AC_PATH_PROG([XSLTPROC], [xsltproc])
     if test x$XSLTPROC == x; then
             AC_MSG_WARN(['xsltproc' program not found. Might not be able to build documentation]);
+    fi
+fi
+
+AC_ARG_VAR([LYX], [path to lyx executable])
+if test x$LYX == x; then
+    AC_PATH_PROG([LYX], [lyx])
+    if test x$LYX == x; then
+            AC_MSG_WARN(['lyx' program not found. Might not be able to build documentation]);
     fi
 fi
 
