@@ -1,5 +1,5 @@
-AC_INIT(src/noot-tuner.cpp, 0.1.2.3, [dc.kastel@gmail.com])
-    AM_INIT_AUTOMAKE(noot-tuner, 0.1.2.3)
+AC_INIT(src/noot-tuner.cpp, 0.1.2.4, [dc.kastel@gmail.com])
+    AM_INIT_AUTOMAKE(noot-tuner, 0.1.2.4)
 
 AC_PROG_CXX
 AC_PROG_INSTALL
@@ -101,11 +101,28 @@ AC_SUBST(VERSION_REV)
 
 AC_SUBST(WX_LIBS)
 
-AC_CHECK_PROG([ZIP], [zip], [zip], [])
-
+AC_ARG_VAR([ZIP], [path to zip program])
 if test x$ZIP == x; then
-	AC_MSG_WARN(['zip' program not found. May not be able to build documentation]);
+    AC_PATH_PROG([ZIP], [zip])
+    if test x$ZIP == x; then
+            AC_MSG_WARN(['zip' program not found. Might not be able to build documentation]);
+    fi
 fi
+
+AC_ARG_VAR([XSLTPROC], [path to xsltproc program])
+if test x$XSLTPROC == x; then
+    AC_PATH_PROG([XSLTPROC], [xsltproc])
+    if test x$XSLTPROC == x; then
+            AC_MSG_WARN(['xsltproc' program not found. Might not be able to build documentation]);
+    fi
+fi
+
+AC_ARG_VAR([HTMLHELP_XSL], [path to htmlhelp.xsl])
+if test x$HTMLHELP_XSL == x; then
+    HTMLHELP_XSL=/usr/share/xml/docbook/stylesheet/docbook-xsl/htmlhelp/htmlhelp.xsl
+fi
+AC_CHECK_FILE([$HTMLHELP_XSL], [],
+    [AC_MSG_WARN(['htmlhelp.xsl' is not found. Please specify a path in variable HTMLHELP_XSL])])
 
 AC_OUTPUT(Makefile po/Makefile.in po/Makefile src/Makefile doc/Makefile doc/en/Makefile
     doc/it/Makefile)
