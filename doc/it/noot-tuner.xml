@@ -8,8 +8,16 @@
   See http://www.lyx.org/ for more information -->
 <book lang="it_IT">
 <bookinfo>
-<title>Accordatore NOOT</title>
-<author>Davide Castellone</author>
+ <title>Accordatore NOOT</title>
+ <author>
+  <firstname>Davide</firstname>
+  <surname>Castellone</surname>
+  <email>dc.kastel@gmail.com</email>
+ </author>
+<copyright>
+ <year>2009-2010</year>
+ <holder>Davide Castellone</holder>
+</copyright>
 <date>Agosto 2010</date>
 </bookinfo>
 <toc></toc><chapter id='introduction' >

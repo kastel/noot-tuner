@@ -8,8 +8,16 @@
   See http://www.lyx.org/ for more information -->
 <book lang="en_US">
 <bookinfo>
-<title>NOOT Instrument Tuner</title>
-<author>Davide Castellone</author>
+ <title>NOOT Instrument Tuner</title>
+ <author>
+  <firstname>Davide</firstname>
+  <surname>Castellone</surname>
+  <email>dc.kastel@gmail.com</email>
+ </author>
+<copyright>
+ <year>2009-2010</year>
+ <holder>Davide Castellone</holder>
+</copyright>
 <date>August 2010</date>
 </bookinfo>
 <toc></toc><chapter id='introduction' >
