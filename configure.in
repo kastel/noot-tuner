@@ -1,5 +1,5 @@
-AC_INIT(src/noot-tuner.cpp, 0.1.2.4, [dc.kastel@gmail.com])
-    AM_INIT_AUTOMAKE(noot-tuner, 0.1.2.4)
+AC_INIT(src/noot-tuner.cpp, 0.1.3, [dc.kastel@gmail.com])
+    AM_INIT_AUTOMAKE(noot-tuner, 0.1.3)
 
 AC_PROG_CXX
 AC_PROG_INSTALL

@@ -5,9 +5,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: noot-tuner 0.1.2.3\n"
+"Project-Id-Version: noot-tuner 0.1.3\n"
 "Report-Msgid-Bugs-To: dc.kastel@gmail.com\n"
-"POT-Creation-Date: 2010-08-15 00:48+0200\n"
+"POT-Creation-Date: 2010-08-16 23:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,302 +19,305 @@ msgstr ""
 msgid "NOOT Instrument tuner"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:22
+#: src/wxfbtunerframe.cpp:21
 msgid "Select &input device..."
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:26
+#: src/wxfbtunerframe.cpp:25
 msgid "Select &output device..."
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:33
+#: src/wxfbtunerframe.cpp:32
 msgid "&Exit"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:36
+#: src/wxfbtunerframe.cpp:35
 msgid "&Devices"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:40
+#: src/wxfbtunerframe.cpp:39
 msgid "&Table of contents"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:44
+#: src/wxfbtunerframe.cpp:43
 msgid "Context help"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:51
+#: src/wxfbtunerframe.cpp:50
 msgid "Project website"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:55
+#: src/wxfbtunerframe.cpp:54
 msgid "Report a bug..."
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:62
+#: src/wxfbtunerframe.cpp:61
 msgid "&About..."
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:65
+#: src/wxfbtunerframe.cpp:64
 msgid "&Help"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:73
+#: src/wxfbtunerframe.cpp:72
 msgid "Note"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:78
+#: src/wxfbtunerframe.cpp:77
 msgid "Start/Stop"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:84
-msgid "Tuning indicator: the gauge should be under the black line"
-msgstr ""
-
-#: src/wxfbtunerframe.cpp:101 src/wxfbtunerframe.cpp:103
-msgid "Detected note"
-msgstr ""
-
-#: src/wxfbtunerframe.cpp:108
-msgid "Offset"
-msgstr ""
-
-#: src/wxfbtunerframe.cpp:110
-msgid "Difference between detected and expected frequency (in cents)"
-msgstr ""
-
-#: src/wxfbtunerframe.cpp:115
-msgid "Frequency"
-msgstr ""
-
-#: src/wxfbtunerframe.cpp:117
-msgid "Detected frequency"
-msgstr ""
-
-#: src/wxfbtunerframe.cpp:121 src/wxfbtunerframe.cpp:127
-#: src/wxfbtunerframe.cpp:133
-msgid "--"
-msgstr ""
-
-#: src/wxfbtunerframe.cpp:144
-msgid "Tuning options"
-msgstr ""
-
-#: src/wxfbtunerframe.cpp:150
-msgid "&Octave"
-msgstr ""
-
-#: src/wxfbtunerframe.cpp:152
-msgid "Select an octave to optimize note detection"
-msgstr ""
-
-#: src/wxfbtunerframe.cpp:156 src/wxfbtunerframe.cpp:175
-#: src/wxfbtunerframe.cpp:248
-msgid "Auto"
-msgstr ""
-
-#: src/wxfbtunerframe.cpp:156
-msgid "-1"
-msgstr ""
-
-#: src/wxfbtunerframe.cpp:156 src/wxfbtunerframe.cpp:226
-msgid "0"
-msgstr ""
-
-#: src/wxfbtunerframe.cpp:156
+#: src/wxfbtunerframe.cpp:78 src/wxfbtunerframe.cpp:155
 msgid "1"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:156 src/wxfbtunerframe.cpp:160
+#: src/wxfbtunerframe.cpp:85
+msgid "Tuning indicator: the gauge should be under the black line"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:102 src/wxfbtunerframe.cpp:104
+msgid "Detected note"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:109
+msgid "Offset"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:111
+msgid "Difference between detected and expected frequency (in cents)"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:116
+msgid "Frequency"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:118
+msgid "Detected frequency"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:122 src/wxfbtunerframe.cpp:128
+#: src/wxfbtunerframe.cpp:134
+msgid "--"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:145
+msgid "Tuning options"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:151
+msgid "&Octave"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:155 src/wxfbtunerframe.cpp:173
+#: src/wxfbtunerframe.cpp:247
+msgid "Auto"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:155
+msgid "-1"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:155 src/wxfbtunerframe.cpp:225
+msgid "0"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:155
 msgid "2"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:156 src/wxfbtunerframe.cpp:179
-#: src/wxfbtunerframe.cpp:190
+#: src/wxfbtunerframe.cpp:155 src/wxfbtunerframe.cpp:160
 msgid "3"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:156 src/wxfbtunerframe.cpp:213
+#: src/wxfbtunerframe.cpp:155 src/wxfbtunerframe.cpp:178
 msgid "4"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:156 src/wxfbtunerframe.cpp:229
+#: src/wxfbtunerframe.cpp:155 src/wxfbtunerframe.cpp:189
 msgid "5"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:156 src/wxfbtunerframe.cpp:253
+#: src/wxfbtunerframe.cpp:155 src/wxfbtunerframe.cpp:212
 msgid "6"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:156 src/wxfbtunerframe.cpp:268
+#: src/wxfbtunerframe.cpp:155 src/wxfbtunerframe.cpp:228
 msgid "7"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:159
+msgid "Select an octave to optimize note detection"
 msgstr ""
 
 #: src/wxfbtunerframe.cpp:169
 msgid "&Note"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:171
-msgid "Select a note if you already know it"
-msgstr ""
-
-#: src/wxfbtunerframe.cpp:175 src/tunerframe.cpp:34
+#: src/wxfbtunerframe.cpp:173 src/tunerframe.cpp:34
 msgid "C"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:175
+#: src/wxfbtunerframe.cpp:173
 msgid "C# / Db"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:175 src/tunerframe.cpp:34
+#: src/wxfbtunerframe.cpp:173 src/tunerframe.cpp:34
 msgid "D"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:175
+#: src/wxfbtunerframe.cpp:173
 msgid "D# / Eb"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:175 src/tunerframe.cpp:34
+#: src/wxfbtunerframe.cpp:173 src/tunerframe.cpp:34
 msgid "E"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:175 src/tunerframe.cpp:34
+#: src/wxfbtunerframe.cpp:173 src/tunerframe.cpp:34
 msgid "F"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:175
+#: src/wxfbtunerframe.cpp:173
 msgid "F# / Gb"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:175 src/tunerframe.cpp:35
+#: src/wxfbtunerframe.cpp:173 src/tunerframe.cpp:35
 msgid "G"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:175
+#: src/wxfbtunerframe.cpp:173
 msgid "G# / Ab"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:175 src/tunerframe.cpp:35
+#: src/wxfbtunerframe.cpp:173 src/tunerframe.cpp:35
 msgid "A"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:175
+#: src/wxfbtunerframe.cpp:173
 msgid "A# / Bb"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:175 src/tunerframe.cpp:35
+#: src/wxfbtunerframe.cpp:173 src/tunerframe.cpp:35
 msgid "B"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:187
+#: src/wxfbtunerframe.cpp:177
+msgid "Select a note if you already know it"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:186
 msgid "&Listen"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:189
+#: src/wxfbtunerframe.cpp:188
 msgid "Click here to listen to the selected note"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:204
+#: src/wxfbtunerframe.cpp:203
 msgid "&Temperament"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:208
+#: src/wxfbtunerframe.cpp:207
 msgid "Equal Temperament"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:208
+#: src/wxfbtunerframe.cpp:207
 msgid "Pythagorean"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:208
+#: src/wxfbtunerframe.cpp:207
 msgid "Just Intonation"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:208
+#: src/wxfbtunerframe.cpp:207
 msgid "Bach (Klais)"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:208
+#: src/wxfbtunerframe.cpp:207
 msgid "Kimberger III"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:208
+#: src/wxfbtunerframe.cpp:207
 msgid "Werckmeister III"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:208
+#: src/wxfbtunerframe.cpp:207
 msgid "Werckmeister VI"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:208
+#: src/wxfbtunerframe.cpp:207
 msgid "Rameau (syntonic)"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:208
+#: src/wxfbtunerframe.cpp:207
 msgid "Just (Barbour)"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:208
+#: src/wxfbtunerframe.cpp:207
 msgid "Meantone"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:212
+#: src/wxfbtunerframe.cpp:211
 msgid "The expected frequency of a note depends on the temperament choosen"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:222
+#: src/wxfbtunerframe.cpp:221
 msgid "T&ranspose (semitones)"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:228
+#: src/wxfbtunerframe.cpp:227
 msgid ""
 "The detected note will be shifted by this number of semitones\n"
 "(it can be a decimal number)"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:238
+#: src/wxfbtunerframe.cpp:237
 msgid "Pitch recognition options"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:244
+#: src/wxfbtunerframe.cpp:243
 msgid "Window &size (samples)"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:248
+#: src/wxfbtunerframe.cpp:247
 msgid "512"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:248
+#: src/wxfbtunerframe.cpp:247
 msgid "1024"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:248
+#: src/wxfbtunerframe.cpp:247
 msgid "2048"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:248
+#: src/wxfbtunerframe.cpp:247
 msgid "4096"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:248
+#: src/wxfbtunerframe.cpp:247
 msgid "8192"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:248
+#: src/wxfbtunerframe.cpp:247
 msgid "16384"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:252
+#: src/wxfbtunerframe.cpp:251
 msgid ""
 "Window size affects speed and quality of frequency detection.\n"
 "Normally you should leave this to \"Auto\""
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:262
+#: src/wxfbtunerframe.cpp:252
+msgid "8"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:261
 msgid "T&hreshold (dB)"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:267
+#: src/wxfbtunerframe.cpp:266
 msgid ""
 "Threshold for starting note detection.\n"
 "Detection starts only if the input is loud\n"
@@ -322,28 +325,32 @@ msgid ""
 "the frequency of the noise)."
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:282
-msgid "&Expected precision (millis)"
-msgstr ""
-
-#: src/wxfbtunerframe.cpp:287
-msgid "This value is used especially when Window size is set to 'Auto'"
-msgstr ""
-
-#: src/wxfbtunerframe.cpp:288
+#: src/wxfbtunerframe.cpp:267
 msgid "9"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:297
+#: src/wxfbtunerframe.cpp:281
+msgid "&Expected precision (millis)"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:286
+msgid "This value is used especially when Window size is set to 'Auto'"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:287
+msgid "10"
+msgstr ""
+
+#: src/wxfbtunerframe.cpp:296
 msgid "Frame rate (fps)"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:302
+#: src/wxfbtunerframe.cpp:301
 msgid "Set the update frequency for this window"
 msgstr ""
 
-#: src/wxfbtunerframe.cpp:303
-msgid "10"
+#: src/wxfbtunerframe.cpp:302
+msgid "11"
 msgstr ""
 
 #: src/deviceselector.cpp:33 src/deviceselector.cpp:71
@@ -354,8 +361,8 @@ msgstr ""
 msgid "Choose an input device"
 msgstr ""
 
-#: src/deviceselector.cpp:56 src/deviceselector.cpp:94 src/tunerframe.cpp:474
-#: src/tunerframe.cpp:480
+#: src/deviceselector.cpp:56 src/deviceselector.cpp:94 src/tunerframe.cpp:480
+#: src/tunerframe.cpp:486
 msgid "NOOT Instrument Tuner"
 msgstr ""
 
@@ -392,21 +399,21 @@ msgstr ""
 msgid "Cannot find help file"
 msgstr ""
 
-#: src/tunerframe.cpp:427
+#: src/tunerframe.cpp:433
 msgid "Never-out-of-tune Instrument Tuner"
 msgstr ""
 
-#: src/tunerframe.cpp:430
+#: src/tunerframe.cpp:436
 msgid "A full-featured instrument tuner"
 msgstr ""
 
-#: src/tunerframe.cpp:437
+#: src/tunerframe.cpp:443
 msgid ""
 "Licensed under the GNU General Public License v. 3\n"
 "http://www.gnu.org/copyleft/gpl.html"
 msgstr ""
 
-#: src/tunerframe.cpp:474 src/tunerframe.cpp:480
+#: src/tunerframe.cpp:480 src/tunerframe.cpp:486
 msgid "Unable to launch the default browser"
 msgstr ""
 

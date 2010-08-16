@@ -1,3 +1,9 @@
+noot-tuner (0.1.2.4) lucid; urgency=low
+
+  * Improvements to documentation
+
+ -- Davide Castellone <dc.kastel@gmail.com>  Mon, 16 Aug 2010 23:23:46 +0200
+
 noot-tuner (0.1.2.3) lucid; urgency=low
 
   * Fixed a locale problem when loading/saving decimal numbers
