@@ -1,3 +1,5 @@
+~$
+/.directory$
 ^debug/
 ^autom4te.cache/
 ^m4/
@@ -24,3 +26,13 @@
 ^missing$
 ^configure$
 ^aclocal\.m4$
+^debian/noot-tuner\.substvars$
+^debian/noot-tuner\.postrm\.debhelper$
+^debian/files$
+^debian/noot-tuner\.debhelper\.log$
+^debian/noot-tuner\.postinst\.debhelper$
+^doc/it/Makefile\.in$
+^doc/it/noot-tuner_mainwindow\.con$
+^gub/gub/specs/portaudio\.py$
+^doc/it/noot-tuner_license-gplv3\.con$
+^setup\.~is$
