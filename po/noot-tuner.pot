@@ -5,9 +5,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: noot-tuner 0.1.0\n"
+"Project-Id-Version: noot-tuner 0.1.2.3\n"
 "Report-Msgid-Bugs-To: dc.kastel@gmail.com\n"
-"POT-Creation-Date: 2010-08-10 03:07+0200\n"
+"POT-Creation-Date: 2010-08-15 00:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -323,11 +323,11 @@ msgid ""
 msgstr ""
 
 #: src/wxfbtunerframe.cpp:282
-msgid "&Expected precision (cents)"
+msgid "&Expected precision (millis)"
 msgstr ""
 
 #: src/wxfbtunerframe.cpp:287
-msgid "This value is used only Window sise is set to 'Auto'"
+msgid "This value is used especially when Window size is set to 'Auto'"
 msgstr ""
 
 #: src/wxfbtunerframe.cpp:288
@@ -354,8 +354,8 @@ msgstr ""
 msgid "Choose an input device"
 msgstr ""
 
-#: src/deviceselector.cpp:56 src/deviceselector.cpp:94 src/tunerframe.cpp:390
-#: src/tunerframe.cpp:396
+#: src/deviceselector.cpp:56 src/deviceselector.cpp:94 src/tunerframe.cpp:474
+#: src/tunerframe.cpp:480
 msgid "NOOT Instrument Tuner"
 msgstr ""
 
@@ -383,42 +383,42 @@ msgstr ""
 msgid "A#"
 msgstr ""
 
-#: src/tunerframe.cpp:151
+#: src/tunerframe.cpp:156
 #, c-format
 msgid "Invalid number: %s"
 msgstr ""
 
-#: src/tunerframe.cpp:294
+#: src/tunerframe.cpp:378
 msgid "Cannot find help file"
 msgstr ""
 
-#: src/tunerframe.cpp:343
+#: src/tunerframe.cpp:427
 msgid "Never-out-of-tune Instrument Tuner"
 msgstr ""
 
-#: src/tunerframe.cpp:346
+#: src/tunerframe.cpp:430
 msgid "A full-featured instrument tuner"
 msgstr ""
 
-#: src/tunerframe.cpp:353
+#: src/tunerframe.cpp:437
 msgid ""
 "Licensed under the GNU General Public License v. 3\n"
 "http://www.gnu.org/copyleft/gpl.html"
 msgstr ""
 
-#: src/tunerframe.cpp:390 src/tunerframe.cpp:396
+#: src/tunerframe.cpp:474 src/tunerframe.cpp:480
 msgid "Unable to launch the default browser"
 msgstr ""
 
-#: src/audio_portaudio.cpp:71
+#: src/audio_portaudio.cpp:63
 #, c-format
 msgid "%s"
 msgstr ""
 
-#: src/audio_portaudio.cpp:94
+#: src/audio_portaudio.cpp:89
 msgid "No input device found"
 msgstr ""
 
-#: src/audio_portaudio.cpp:237
+#: src/audio_portaudio.cpp:232
 msgid "No output device found"
 msgstr ""
