@@ -68,18 +68,19 @@
 </UL></UL><LI><OBJECT type="text/sitemap">
 <param name="Name" value="How it works">
 <param name="Local" value="ch03.html"></OBJECT></LI>
-<UL>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="">
+<param name="Name" value="GNU GENERAL PUBLIC LICENSE">
 <param name="Local" value="ch04.html"></OBJECT></LI>
 <UL>
 <LI><OBJECT type="text/sitemap">
-<param name="Name" value="GNU GENERAL PUBLIC LICENSE">
-<param name="Local" value="ch04.html#license-gplv3."></OBJECT></LI>
-<UL>
-<LI><OBJECT type="text/sitemap">
 <param name="Name" value="Preamble">
-<param name="Local" value="ch04.html#id2678381"></OBJECT></LI>
-</UL></UL></UL></UL>
+<param name="Local" value="ch04.html#license-preamble"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Terms and Conditions">
+<param name="Local" value="ch04s02.html"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="How to Apply These Terms to Your New Programs">
+<param name="Local" value="ch04s03.html"></OBJECT></LI>
+</UL></UL>
 </UL>
 </BODY></HTML>

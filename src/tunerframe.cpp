@@ -411,7 +411,7 @@ void TunerFrame::OnHelp(wxHelpEvent &event)
 	if (o && (w = dynamic_cast<wxWindow*>(o)))
 	{
 		wxString name(w->GetHelpText());
-        wxPrintf(wxT("Help requested for object '%s'"), name.c_str());
+        wxPrintf(wxT("Help requested for object '%s'\n"), name.c_str());
 		if (InitialiseHelp()) {
             long num=0;
             if (name.ToLong(&num))
