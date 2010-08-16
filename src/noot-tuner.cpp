@@ -26,6 +26,7 @@
 #include "audioio.h"
 #include "audio_file.h"
 #include <fftw3.h>
+#include <wx/image.h>
 
 IMPLEMENT_APP(noot::tunerapp);
 
@@ -36,6 +37,7 @@ bool tunerapp::OnInit()
 	//Initialise app options
 	SetAppName(wxT(PACKAGE));
 	SetVendorName(wxT("Davide Castellone"));
+    wxInitAllImageHandlers();
 	
 	wxConfig::Create();
     char* old_locale = setlocale(LC_ALL, "C");
