@@ -20,8 +20,9 @@
 #define __AUDIOIO_H__
 
 #include "config.h"
-#include <string.h>
+#include <cstring>
 #include <wx/thread.h>
+#include <cmath>
 
 class wxWindow;
 
@@ -33,7 +34,7 @@ class Buffer {
 	public:
 		Buffer(size_t size);
 		
-		double* GetPointer() const { return m_ptr; }
+		const double* GetPointer() const { return m_ptr; }
 		
 		///@c Size cannot be greater than m_size
 		void Write(size_t size, double* from);
@@ -43,7 +44,7 @@ class Buffer {
 
 		size_t GetSize() const { return m_size; }
 		
-		void Resize(size_t new_size);
+        void Resize(size_t new_size);
 
         void CopyTo(Buffer& dest);
 		
@@ -52,10 +53,32 @@ class Buffer {
 		double& operator[](size_t i) { return m_ptr[i]; }
 		
 		const double& operator[](size_t i) const { return m_ptr[i]; }
+
+        ///Cached attribute
+        double GetMean() {
+            if (!std::isnan(m_bMean)) return m_fMean;
+            else return (m_fMean=calcMean());
+        }
+
+        ///Return the maximum of the absolute value of the data
+        double GetMax() {
+            if (!std::isnan(m_bMax)) return m_fMax;
+            else return (m_fMax=calcMax());
+        }
+
+        ///Return the maximum value in dB
+        double GetMaxDB() {
+            return std::log10(1.0/GetMax());
+        }
 		
 	private:
+        double calcMean() const;
+        double calcMax() const;
+
 		size_t m_size;
 		double* m_ptr;
+
+        double m_fMean;
 
         //No assignment or copy constructor
         Buffer& operator=(const Buffer&);

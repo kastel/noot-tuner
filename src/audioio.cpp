@@ -49,6 +49,8 @@ void Buffer::Write(size_t size, double * from)
 	}
 	
 	memmove(m_ptr+m_size-size, from, sizeof(double)*size);
+
+    m_fMean = m_fMax = NAN;
 }
 
 void Buffer::Write(size_t size, short * from)
@@ -70,6 +72,8 @@ void Buffer::Write(size_t size, short * from)
 	
 	for (i=from, e=from+size; i<e; ++i, ++di)
 		*di = double(*i)/32768;
+
+    m_fMean = m_fMax = NAN;
 }
 
 
@@ -92,9 +96,11 @@ void Buffer::Resize(size_t new_size)
 	free(m_ptr);
 	m_ptr = new_ptr;
 	m_size = new_size;
+
+    m_fMean = m_fMax = NAN;
 }
 
-Buffer::Buffer(size_t size)
+Buffer::Buffer(size_t size) : m_fMean(NAN)
 {
 	m_ptr = (double*) fftw_malloc(size*sizeof(double));
 	m_size = size;
@@ -111,6 +117,31 @@ void Buffer::CopyTo(Buffer& dest) {
 
     dest.Resize(m_size);
     memcpy(dest.m_ptr, m_ptr, m_size*sizeof(*m_ptr));
+}
+
+double Buffer::calcMean() const {
+    wxMutexLocker lock(m_mutex);
+
+    double sum = 0.0;
+    
+    for (i=0; i<m_size; ++i)
+        sum += m_ptr[i];
+    
+    return sum / m_size;
+}
+
+double Buffer::calcMax() const {
+    wxMutexLocker lock(m_mutex);
+
+    double max = 0.0;
+
+    for (i=0; i<m_size; ++i) {
+        double cur = std::abs(m_ptr[i]);
+        if (cur>max)
+            max = cur;
+    }
+
+    return cur;
 }
 
 bool AudioBackend::PlayNote(double frequency)
