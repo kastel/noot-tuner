@@ -310,7 +310,7 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	this->SetSizer( szMain );
 	this->Layout();
 	szMain->Fit( this );
-	statusBar = this->CreateStatusBar( 1, wxST_SIZEGRIP, wxID_ANY );
+	statusBar = this->CreateStatusBar( 3, 0, wxID_ANY );
 	
 	// Connect Events
 	this->Connect( mnuDevicesInput->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnSelectInputDevice ) );
@@ -335,6 +335,7 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	scExpectedPrecision->Connect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( wxfbTunerFrame::OnExpectedPrecisionSpin ), NULL, this );
 	scFrameRate->Connect( wxEVT_KILL_FOCUS, wxFocusEventHandler( wxfbTunerFrame::OnFrameRateKillFocus ), NULL, this );
 	scFrameRate->Connect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( wxfbTunerFrame::OnFrameRate ), NULL, this );
+	statusBar->Connect( wxEVT_SIZE, wxSizeEventHandler( wxfbTunerFrame::OnStatusBarSize ), NULL, this );
 }
 
 wxfbTunerFrame::~wxfbTunerFrame()
@@ -362,4 +363,5 @@ wxfbTunerFrame::~wxfbTunerFrame()
 	scExpectedPrecision->Disconnect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( wxfbTunerFrame::OnExpectedPrecisionSpin ), NULL, this );
 	scFrameRate->Disconnect( wxEVT_KILL_FOCUS, wxFocusEventHandler( wxfbTunerFrame::OnFrameRateKillFocus ), NULL, this );
 	scFrameRate->Disconnect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( wxfbTunerFrame::OnFrameRate ), NULL, this );
+	statusBar->Disconnect( wxEVT_SIZE, wxSizeEventHandler( wxfbTunerFrame::OnStatusBarSize ), NULL, this );
 }

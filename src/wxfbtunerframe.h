@@ -102,6 +102,7 @@ namespace noot
 			virtual void OnExpectedPrecisionSpin( wxSpinEvent& event ) = 0;
 			virtual void OnFrameRateKillFocus( wxFocusEvent& event ) = 0;
 			virtual void OnFrameRate( wxSpinEvent& event ) = 0;
+			virtual void OnStatusBarSize( wxSizeEvent& event ) = 0;
 			
 		
 		public:

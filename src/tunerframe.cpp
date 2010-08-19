@@ -88,6 +88,17 @@ wxfbTunerFrame( parent )
 	scExpectedPrecision->SetValue(int(dcOptions.fExpectedPrecision*1000));
 	scFrameRate->SetValue(dcOptions.iFrameRate);
 	tcTranspose->SetValue(wxString::Format(wxT("%f"), dcOptions.fTranspose));
+
+    //Create volume meter
+    volumeMeter = new VolumeMeter(statusBar, wxID_ANY, wxDefaultPosition, wxDefaultSize,
+        wxNO_BORDER);
+    volumeMeter->SetRange(-70, 0);
+    volumeMeter->SetThreshold(dcOptions.fThreshold);
+    volumeMeter->SetVolume(-90);
+    volumeMeter->SetClippingLimit(-1);
+
+    int statusSizes[] = { -3, -1, -2 };
+    statusBar->SetStatusWidths(sizeof(statusSizes)/sizeof(*statusSizes), statusSizes);
 	
 	Connect(wxID_ANY, wxEVT_HELP, (wxObjectEventFunction) &TunerFrame::OnHelp);
 
@@ -179,11 +190,13 @@ void TunerFrame::OnWindowSizeChoice( wxCommandEvent& event )
 void TunerFrame::OnThresholdKillFocus( wxFocusEvent& event )
 {
 	dcOptions.fThreshold = -scThreshold->GetValue();
+    volumeMeter->SetThreshold(dcOptions.fThreshold);
 }
 
 void TunerFrame::OnThresholdSpin( wxSpinEvent& event )
 {
 	dcOptions.fThreshold = -scThreshold->GetValue();
+    volumeMeter->SetThreshold(dcOptions.fThreshold);
 }
 
 void TunerFrame::OnExpectedPrecisionKillFocus( wxFocusEvent& event )
@@ -256,7 +269,9 @@ void TunerFrame::OnTimer(wxTimerEvent & event)
 		for (note=0; note<12; ++note)
 			translatedNotes[note] = wxGetTranslation(noteNames[note]);
 	
-	if (DetectNote(&note, &octave, &freq, &offset))
+    volumeMeter->SetVolume(buffer.GetMaxDB());
+
+    if (DetectNote(&note, &octave, &freq, &offset))
 	{
 		stNote1->SetLabel(wxString::Format(wxT("%s%d"), translatedNotes[note].c_str(),
 						  octave-2));
@@ -502,6 +517,14 @@ void Calibrate(wxFrame* window) {
         wxLogStatus(window, _("Listening..."));
     } else
         wxLogStatus(window, _("Paused"));
+}
+
+void TunerFrame::OnStatusBarSize(wxSizeEvent& event) {
+    wxRect rect;
+    statusBar->GetFieldRect(2, rect);
+    rect.Deflate(1, 1);
+
+    volumeMeter->SetSize(rect);
 }
 
 } //namespace
