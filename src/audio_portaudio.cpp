@@ -108,10 +108,10 @@ bool PortaudioBackend::StartStreaming()
 				dcOptions.iSampleRate = preferredSampleRates[i];
 				break;
 			}
-		}
+		}*/
 		
-		//Default if none found
-		if (!dcOptions.iSampleRate)*/
+		//Default if none set
+		if (!dcOptions.iSampleRate)
 			dcOptions.iSampleRate = int(pdi->defaultSampleRate);
 		
 		err = Pa_OpenDefaultStream(&audioStream, 1, 0, paInt16, dcOptions.iSampleRate,
@@ -136,7 +136,7 @@ bool PortaudioBackend::PauseStreaming()
 	int err;
 	
 	if (!audioStream)
-		return true;
+		return false;
 	
 	s_bIgnore = true;
 	err = Pa_AbortStream(audioStream);
@@ -264,6 +264,15 @@ bool PortaudioBackend::PlayNote(double frequency)
 	Pa_CloseStream(stream);
 	
 	return true;
+}
+
+bool PortaudioBackend::IsSampleRateSupported(double rate) {
+    PaStreamParameters parms;
+    parms.channelCount = 1;
+    parms.device = inputDevice;
+    parms.sampleFormat = paInt16;
+
+    return Pa_IsFormatSupported(&parms, NULL, rate);
 }
 
 } //namespace

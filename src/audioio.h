@@ -108,6 +108,8 @@ class AudioBackend {
 	
 	virtual bool SelectInputDevice(wxWindow*);
 	virtual bool SelectOutputDevice(wxWindow*);
+
+    virtual bool IsSampleRateSupported(double rate) = 0;
 	
 	virtual ~AudioBackend();
 	

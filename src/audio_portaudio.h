@@ -34,7 +34,8 @@ namespace noot {
 class PortaudioBackend : public AudioBackend {
 	public:
 	
-	PortaudioBackend() : audioStream(NULL), inputDevice(-1), outputDevice(-1) { };
+	PortaudioBackend() : audioStream(NULL), inputDevice(-1), outputDevice(-1),
+        sampleRate(0.0) { };
 	virtual ~PortaudioBackend();
 	
 	virtual bool Initialise();
@@ -49,12 +50,15 @@ class PortaudioBackend : public AudioBackend {
 	
 	virtual bool SelectInputDevice(wxWindow* parent);
 	virtual bool SelectOutputDevice(wxWindow* parent);
-	
+
+    virtual bool IsSampleRateSupported(double);
+
 	private:
 	
 	PaStream* audioStream;
 	void LogPortaudioError(int);
 	PaDeviceIndex inputDevice, outputDevice;
+    double sampleRate;
 };
 
 } //namespace

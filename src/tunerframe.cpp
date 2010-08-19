@@ -20,6 +20,7 @@
 #include <wx/fs_arc.h>
 #include <wx/aboutdlg.h>
 #include <wx/stdpaths.h>
+#include <wx-2.8/wx/generic/choicdgg.h>
 #include "tunerframe.h"
 #include "notedetection.h"
 #include "options.h"
@@ -123,6 +124,7 @@ void TunerFrame::OnStartStop( wxCommandEvent& event )
 		}
 
         wxLogStatus(this, _("Listening..."));
+        statusBar->SetStatusText(wxString::Format(wxT("%d Hz"), dcOptions.iSampleRate), 1);
 		tmTimer->Start(1000/dcOptions.iFrameRate);
 	}
 	else
@@ -525,6 +527,54 @@ void TunerFrame::OnStatusBarSize(wxSizeEvent& event) {
     rect.Deflate(1, 1);
 
     volumeMeter->SetSize(rect);
+}
+
+static double defaultRates[] = {
+    8000,
+    11025,
+    16000,
+    22050,
+    32000,
+    44100,
+    48000,
+    96000
+};
+
+void TunerFrame::OnToolsSampleRate(wxCommandEvent& event) {
+    bool resume = theAudioBackend->StopStreaming();
+
+    wxArrayString choices;
+
+    choices.Add(_("Default sample rate"));
+
+    unsigned i;
+    for (i=0; i<sizeof(defaultRates)/sizeof(*defaultRates); ++i)
+        if (theAudioBackend->IsSampleRateSupported(defaultRates[i])) {
+            choices.Add(wxString::Format(wxT("%.f"), defaultRates[i]));
+        }
+
+    void* data[choices.size()];
+
+    data[0] = (void*)(unsigned long)(-1);
+    
+    for (i=1; i<choices.size(); ++i)
+        data[i] = (void*)(long)wxAtoi(choices.Item(i));
+
+    void* choice = wxGetSingleChoiceData(_("Select a frame rate"),
+        _("NOOT Instrument Tuner"),
+        choices,
+        data,
+        this);
+
+    if (choice!=(void*)0) {
+        if (choice == (void*)(unsigned long)(-1))
+            dcOptions.iSampleRate = 0;
+        else
+            dcOptions.iSampleRate = (int)(long)choice;
+    }
+
+    statusBar->SetStatusText(wxString::Format(_("%d Hz"), dcOptions.iSampleRate), 1);
+    if (resume) theAudioBackend->StartStreaming();
 }
 
 } //namespace

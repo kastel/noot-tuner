@@ -178,6 +178,26 @@
                     </object>
                 </object>
                 <object class="wxMenu" expanded="1">
+                    <property name="label">Other options</property>
+                    <property name="name">mnuTools</property>
+                    <property name="permission">protected</property>
+                    <object class="wxMenuItem" expanded="1">
+                        <property name="bitmap"></property>
+                        <property name="checked">0</property>
+                        <property name="enabled">1</property>
+                        <property name="help">Change the sampling rate</property>
+                        <property name="id">ID_TOOLS_SAMPLERATE</property>
+                        <property name="kind">wxITEM_NORMAL</property>
+                        <property name="label">Change sampling rate...</property>
+                        <property name="name">mnuToolsSampleRate</property>
+                        <property name="permission">none</property>
+                        <property name="shortcut"></property>
+                        <property name="unchecked_bitmap"></property>
+                        <event name="OnMenuSelection">OnToolsSampleRate</event>
+                        <event name="OnUpdateUI"></event>
+                    </object>
+                </object>
+                <object class="wxMenu" expanded="1">
                     <property name="label">&amp;Help</property>
                     <property name="name">mnuHelp</property>
                     <property name="permission">protected</property>

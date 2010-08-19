@@ -48,6 +48,7 @@ CREATE_OPTION_ALTERNATE_NAME(dcOptions.fTranspose, "Options/Transpose", 0, oftr)
 CREATE_OPTION_ALTERNATE_NAME(dcOptions.iIndicatorWidth, "MainWindow/IndicatorWidth", 10, mwiw);
 CREATE_OPTION_ALTERNATE_NAME(dcOptions.fTolerance, "MainWindow/Tolerance", 1, mwt);
 CREATE_OPTION_ALTERNATE_NAME(dcOptions.iFrameRate, "MainWindow/FrameRate", 10, mwft);
+CREATE_OPTION_ALTERNATE_NAME(dcOptions.iSampleRate, "MainWindow/SampleRate", 0, mwsr);
 
 template<typename key_type, typename value_type, int size> class MiniSortedMap
 {

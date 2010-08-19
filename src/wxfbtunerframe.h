@@ -38,19 +38,20 @@ namespace noot
 {
 	#define ID_MNUDEVICESINPUT 1000
 	#define ID_MNUDEVICESOUTPUT 1001
-	#define ID_HELP_WEBSITE 1002
-	#define ID_HELP_BUG 1003
-	#define ID_TBSTARTSTOP 1004
-	#define ID_PNGAUGE 1005
-	#define ID_OCTAVE 1006
-	#define ID_NOTE 1007
-	#define ID_LISTEN 1008
-	#define ID_TEMPERAMENT 1009
-	#define ID_TRANSPOSE 1010
-	#define ID_WINDOWSIZE 1011
-	#define ID_THRESHOLD 1012
-	#define ID_EXPECTEDPRECISION 1013
-	#define ID_FRAMERATE 1014
+	#define ID_TOOLS_SAMPLERATE 1002
+	#define ID_HELP_WEBSITE 1003
+	#define ID_HELP_BUG 1004
+	#define ID_TBSTARTSTOP 1005
+	#define ID_PNGAUGE 1006
+	#define ID_OCTAVE 1007
+	#define ID_NOTE 1008
+	#define ID_LISTEN 1009
+	#define ID_TEMPERAMENT 1010
+	#define ID_TRANSPOSE 1011
+	#define ID_WINDOWSIZE 1012
+	#define ID_THRESHOLD 1013
+	#define ID_EXPECTEDPRECISION 1014
+	#define ID_FRAMERATE 1015
 	
 	///////////////////////////////////////////////////////////////////////////////
 	/// Class wxfbTunerFrame
@@ -62,6 +63,7 @@ namespace noot
 		protected:
 			wxMenuBar* mbMenuBar;
 			wxMenu* mnuDevices;
+			wxMenu* mnuTools;
 			wxMenu* mnuHelp;
 			wxToggleButton* tbStartStop;
 			wxPanel* pnGauge;
@@ -83,6 +85,7 @@ namespace noot
 			virtual void OnSelectInputDevice( wxCommandEvent& event ) = 0;
 			virtual void OnSelectOutputDevice( wxCommandEvent& event ) = 0;
 			virtual void OnMenuExit( wxCommandEvent& event ) = 0;
+			virtual void OnToolsSampleRate( wxCommandEvent& event ) = 0;
 			virtual void OnHelpTOC( wxCommandEvent& event ) = 0;
 			virtual void OnHelpContext( wxCommandEvent& event ) = 0;
 			virtual void OnHelpWebsite( wxCommandEvent& event ) = 0;

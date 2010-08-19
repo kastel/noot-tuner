@@ -57,7 +57,9 @@ protected:
 	void OnSelectOutputDevice( wxCommandEvent& );
 	void OnMenuExit( wxCommandEvent& );
 	
-	void OnHelpTOC( wxCommandEvent& );
+    void OnToolsSampleRate(wxCommandEvent&);
+
+    void OnHelpTOC( wxCommandEvent& );
 	void OnHelpAbout( wxCommandEvent& );
     void OnHelpBug(wxCommandEvent& );
     void OnHelpWebsite(wxCommandEvent&);
@@ -68,7 +70,7 @@ protected:
 	void OnTimer( wxTimerEvent& event );
 
     void OnStatusBarSize(wxSizeEvent& event);
-	
+
 	wxPanel* pnIndicator;
 	
 	void SetIndicator(double offset);

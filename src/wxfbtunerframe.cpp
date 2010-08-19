@@ -34,6 +34,13 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	
 	mbMenuBar->Append( mnuDevices, _("&Devices") );
 	
+	mnuTools = new wxMenu();
+	wxMenuItem* mnuToolsSampleRate;
+	mnuToolsSampleRate = new wxMenuItem( mnuTools, ID_TOOLS_SAMPLERATE, wxString( _("Change sampling rate...") ) , _("Change the sampling rate"), wxITEM_NORMAL );
+	mnuTools->Append( mnuToolsSampleRate );
+	
+	mbMenuBar->Append( mnuTools, _("Other options") );
+	
 	mnuHelp = new wxMenu();
 	wxMenuItem* mnuHelpTOC;
 	mnuHelpTOC = new wxMenuItem( mnuHelp, wxID_HELP_CONTENTS, wxString( _("&Table of contents") ) , _("Open the help window on the main page"), wxITEM_NORMAL );
@@ -316,6 +323,7 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	this->Connect( mnuDevicesInput->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnSelectInputDevice ) );
 	this->Connect( mnuDevicesOutput->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnSelectOutputDevice ) );
 	this->Connect( mnuDevicesExit->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnMenuExit ) );
+	this->Connect( mnuToolsSampleRate->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsSampleRate ) );
 	this->Connect( mnuHelpTOC->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpTOC ) );
 	this->Connect( mnuHelpContext->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpContext ) );
 	this->Connect( mnuHelpWebsite->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpWebsite ) );
@@ -344,6 +352,7 @@ wxfbTunerFrame::~wxfbTunerFrame()
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnSelectInputDevice ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnSelectOutputDevice ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnMenuExit ) );
+	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsSampleRate ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpTOC ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpContext ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpWebsite ) );
