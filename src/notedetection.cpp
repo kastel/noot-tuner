@@ -387,7 +387,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	/*for (i=0, e=ac.GetSize(); i<e; ++i)
 	ac[i] = AutoCorrelation(localBuffer, i);*/
 
-    printf("Input level: %.f\n", maxdb);
+    //printf("Input level: %.f\n", maxdb);
     if (maxdb < dcOptions.fThreshold)
         return false;
 	
