@@ -4,7 +4,7 @@ from gub.specs import pango
 
 class Pangoxft (pango.Pango):
     dependencies = pango.Pango.dependencies + ['libx11-devel', 'libxft-devel']
-    configure_flags = pango.Pango.configure_flags + ' --with-x --with-included-modules'
+    configure_flags = pango.Pango.configure_flags + ' --with-x --with-dynamic-modules=yes'
     def get_conflict_dict (self):
         return {'': ['pango', 'pangocairo', 'pango-devel', 'pangocairo-devel', 'pango-doc', 'pangocairo-doc'], 'devel': ['pango', 'pangocairo', 'pango-devel', 'pangocairo-devel', 'pangocairo-doc', 'pango-doc'], 'doc': ['pango', 'pangocairo', 'pango-devel', 'pangocairo-devel', 'pango-doc', 'pangocairo-doc'], 'runtime': ['pango', 'pangocairo', 'pango-devel', 'pangocairo-devel', 'pango-doc', 'pangocairo-doc']}
 
