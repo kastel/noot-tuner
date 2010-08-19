@@ -330,13 +330,14 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	//This function also takes care of the buffer size, if it is set to "auto"
 	if (dcOptions.iWindowSize == -1)
 	{
-		unsigned optimalSize = RoundToPowerOf2(2/(pow(2, dcOptions.fExpectedPrecision/24)-1));
+		unsigned optimalSize = 1.8/(pow(2, dcOptions.fExpectedPrecision/24)-1);
+        unsigned optimalSizeRounded = RoundToPowerOf2(optimalSize);
 		//where the first 2 is an arbitrary constant
         
-        if (buffer.GetSize()!=optimalSize)
-            printf("Automatic window size: %d\n", optimalSize);
+        if (buffer.GetSize()!=optimalSizeRounded)
+            printf("Automatic window size: %d, rounded to %d\n", optimalSize, optimalSizeRounded);
 
-        buffer.Resize(optimalSize);
+        buffer.Resize(optimalSizeRounded);
 	}
 	else
 		buffer.Resize(dcOptions.iWindowSize);
