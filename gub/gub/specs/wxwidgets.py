@@ -34,7 +34,7 @@ chmod +x %(targetdir)s/root/%(prefix_dir)s/bin/wx-config-replacement
 
 #First version: wxGTK (uncomment which you prefer)
 class Wxwidgets__linux(Wxwidgets):
-	configure_flags = Wxwidgets.configure_flags + ' --with-x11'
+	configure_flags = Wxwidgets.configure_flags + ' --with-x11 --x-includes=%(targetdir)s/%(prefix_dir)s/include --x-libraries=%(targetdir)s/%(prefix_dir)s/include'
 	dependencies = Wxwidgets.dependencies + ['libsm-devel', 'libx11-devel', 'libxinerama-devel', 'pangoxft-devel']
 
 #Second version: wxX11
@@ -42,3 +42,9 @@ class Wxwidgets__linux(Wxwidgets):
 #	configure_flags = Wxwidgets.configure_flags + ' --without-x11'
 #	dependencies = Wxwidgets.dependencies + ['gtk+-devel', 'tools::glib', 'libxinerama']
 
+
+Wxwidgets__freebsd = Wxwidgets__linux
+
+class Wxwidgets__darwin(Wxwidgets):
+	def download(self):
+		raise Exception('wxWidgets does not support GCC on Mac')
