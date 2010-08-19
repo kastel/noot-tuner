@@ -1634,7 +1634,7 @@
                                     <property name="proportion">1</property>
                                     <object class="wxChoice" expanded="1">
                                         <property name="bg"></property>
-                                        <property name="choices">&quot;Auto&quot; &quot;512&quot; &quot;1024&quot; &quot;2048&quot; &quot;4096&quot; &quot;8192&quot; &quot;16384&quot;</property>
+                                        <property name="choices">&quot;Auto&quot; &quot;512&quot; &quot;1024&quot; &quot;2048&quot; &quot;4096&quot; &quot;8192&quot; &quot;16384&quot; &quot;32768&quot;</property>
                                         <property name="context_help">8</property>
                                         <property name="enabled">1</property>
                                         <property name="fg"></property>

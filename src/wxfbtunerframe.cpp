@@ -244,7 +244,7 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	stWindowSize->Wrap( -1 );
 	szAdvancedOptions1->Add( stWindowSize, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	
-	wxString chWindowSizeChoices[] = { _("Auto"), _("512"), _("1024"), _("2048"), _("4096"), _("8192"), _("16384") };
+	wxString chWindowSizeChoices[] = { _("Auto"), _("512"), _("1024"), _("2048"), _("4096"), _("8192"), _("16384"), _("32768") };
 	int chWindowSizeNChoices = sizeof( chWindowSizeChoices ) / sizeof( wxString );
 	chWindowSize = new wxChoice( this, ID_WINDOWSIZE, wxDefaultPosition, wxDefaultSize, chWindowSizeNChoices, chWindowSizeChoices, 0, wxDefaultValidator, wxT("window size") );
 	chWindowSize->SetSelection( 0 );
