@@ -29,6 +29,7 @@
 #include <wx/button.h>
 #include <wx/textctrl.h>
 #include <wx/spinctrl.h>
+#include <wx/statusbr.h>
 #include <wx/frame.h>
 
 ///////////////////////////////////////////////////////////////////////////
@@ -76,6 +77,7 @@ namespace noot
 			wxSpinCtrl* scThreshold;
 			wxSpinCtrl* scExpectedPrecision;
 			wxSpinCtrl* scFrameRate;
+			wxStatusBar* statusBar;
 			
 			// Virtual event handlers, overide them in your derived class
 			virtual void OnSelectInputDevice( wxCommandEvent& event ) = 0;

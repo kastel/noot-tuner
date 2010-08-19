@@ -38,6 +38,10 @@ static wxString noteNames[] = { _("C"), _("C#"), _("D"), _("D#"), _("E"), _("F")
 //colours
 static wxColour cHigh = *wxBLUE, cLow = *wxRED, cRight = *wxGREEN;
 
+///Pause the audio backend, show a waiting message, call DetectNote without
+///arguments, resume the audio backend (if it was active)
+static void Calibrate(wxFrame* window);
+
 TunerFrame::TunerFrame( wxWindow* parent )
 :
 wxfbTunerFrame( parent )
@@ -88,6 +92,7 @@ wxfbTunerFrame( parent )
 	Connect(wxID_ANY, wxEVT_HELP, (wxObjectEventFunction) &TunerFrame::OnHelp);
 
     ResetIndicator();
+    wxLogStatus(_("Paused"));
 
     Layout();
     Fit();
@@ -97,14 +102,16 @@ void TunerFrame::OnStartStop( wxCommandEvent& event )
 {
 	if (tbStartStop->GetValue())
 	{ //start
-		DetectNote(NULL, NULL, NULL, NULL);
+        Calibrate(this);
 		
 		if (!theAudioBackend->StartStreaming())
 		{
+            wxLogStatus(_("Unable to start listening"));
 			tbStartStop->SetValue(false);
 			return;
 		}
-		
+
+        wxLogStatus(this, _("Listening..."));
 		tmTimer->Start(1000/dcOptions.iFrameRate);
 	}
 	else
@@ -113,6 +120,7 @@ void TunerFrame::OnStartStop( wxCommandEvent& event )
 		if (!theAudioBackend->StopStreaming())
 			tbStartStop->SetValue(true);
 		
+        wxLogStatus(this, _("Paused"));
 		ResetIndicator();
 	}
 }
@@ -160,20 +168,12 @@ void TunerFrame::OnTransposeEnter( wxCommandEvent& event )
 
 void TunerFrame::OnWindowSizeChoice( wxCommandEvent& event )
 {
-	bool restart=false;
-	
-	if (theAudioBackend->PauseStreaming())
-		restart = true;
-	
 	if (event.GetSelection()==0)
 		dcOptions.iWindowSize = -1;
 	else
 		dcOptions.iWindowSize = wxAtoi(chWindowSize->GetStringSelection());
 	
-	DetectNote(NULL, NULL, NULL, NULL);
-	
-	if (restart)
-		theAudioBackend->ResumeStreaming();
+    Calibrate(this);
 }
 
 void TunerFrame::OnThresholdKillFocus( wxFocusEvent& event )
@@ -188,11 +188,13 @@ void TunerFrame::OnThresholdSpin( wxSpinEvent& event )
 
 void TunerFrame::OnExpectedPrecisionKillFocus( wxFocusEvent& event )
 {
+    Calibrate(this);
 	dcOptions.fExpectedPrecision = scExpectedPrecision->GetValue()/1000.0;
 }
 
 void TunerFrame::OnExpectedPrecisionSpin( wxSpinEvent& event )
 {
+    Calibrate(this);
 	dcOptions.fExpectedPrecision = scExpectedPrecision->GetValue()/1000.0;
 }
 
@@ -485,6 +487,21 @@ void TunerFrame::OnHelpWebsite(wxCommandEvent&) {
     if (!wxLaunchDefaultBrowser(wxT("http://code.google.com/p/noot-tuner")))
         wxMessageBox(_("Unable to launch the default browser"), _("NOOT Instrument Tuner"),
             wxOK|wxCENTRE, this);
+}
+
+void Calibrate(wxFrame* window) {
+    wxBusyCursor busy;
+    
+    bool restart = theAudioBackend->PauseStreaming();
+
+    wxLogStatus(window, _("Calibrating..."));
+    DetectNote(NULL, NULL, NULL, NULL);
+
+    if (restart) {
+        theAudioBackend->ResumeStreaming();
+        wxLogStatus(window, _("Listening..."));
+    } else
+        wxLogStatus(window, _("Paused"));
 }
 
 } //namespace

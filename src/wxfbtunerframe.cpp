@@ -18,47 +18,47 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	mbMenuBar = new wxMenuBar( 0 );
 	mnuDevices = new wxMenu();
 	wxMenuItem* mnuDevicesInput;
-	mnuDevicesInput = new wxMenuItem( mnuDevices, ID_MNUDEVICESINPUT, wxString( _("Select &input device...") ) , wxEmptyString, wxITEM_NORMAL );
+	mnuDevicesInput = new wxMenuItem( mnuDevices, ID_MNUDEVICESINPUT, wxString( _("Select &input device...") ) , _("Select an input device"), wxITEM_NORMAL );
 	mnuDevices->Append( mnuDevicesInput );
 	
 	wxMenuItem* mnuDevicesOutput;
-	mnuDevicesOutput = new wxMenuItem( mnuDevices, ID_MNUDEVICESOUTPUT, wxString( _("Select &output device...") ) , wxEmptyString, wxITEM_NORMAL );
+	mnuDevicesOutput = new wxMenuItem( mnuDevices, ID_MNUDEVICESOUTPUT, wxString( _("Select &output device...") ) , _("Select an output device"), wxITEM_NORMAL );
 	mnuDevices->Append( mnuDevicesOutput );
 	
 	wxMenuItem* m_separator1;
 	m_separator1 = mnuDevices->AppendSeparator();
 	
 	wxMenuItem* mnuDevicesExit;
-	mnuDevicesExit = new wxMenuItem( mnuDevices, wxID_EXIT, wxString( _("&Exit") ) , wxEmptyString, wxITEM_NORMAL );
+	mnuDevicesExit = new wxMenuItem( mnuDevices, wxID_EXIT, wxString( _("&Exit") ) , _("Quit the application"), wxITEM_NORMAL );
 	mnuDevices->Append( mnuDevicesExit );
 	
 	mbMenuBar->Append( mnuDevices, _("&Devices") );
 	
 	mnuHelp = new wxMenu();
 	wxMenuItem* mnuHelpTOC;
-	mnuHelpTOC = new wxMenuItem( mnuHelp, wxID_HELP_CONTENTS, wxString( _("&Table of contents") ) , wxEmptyString, wxITEM_NORMAL );
+	mnuHelpTOC = new wxMenuItem( mnuHelp, wxID_HELP_CONTENTS, wxString( _("&Table of contents") ) , _("Open the help window on the main page"), wxITEM_NORMAL );
 	mnuHelp->Append( mnuHelpTOC );
 	
 	wxMenuItem* mnuHelpContext;
-	mnuHelpContext = new wxMenuItem( mnuHelp, wxID_HELP_CONTEXT, wxString( _("Context help") ) + wxT('\t') + wxT("F1"), wxEmptyString, wxITEM_NORMAL );
+	mnuHelpContext = new wxMenuItem( mnuHelp, wxID_HELP_CONTEXT, wxString( _("Context help") ) + wxT('\t') + wxT("F1"), _("Open the help window on the page related to the selected control"), wxITEM_NORMAL );
 	mnuHelp->Append( mnuHelpContext );
 	
 	wxMenuItem* m_separator2;
 	m_separator2 = mnuHelp->AppendSeparator();
 	
 	wxMenuItem* mnuHelpWebsite;
-	mnuHelpWebsite = new wxMenuItem( mnuHelp, ID_HELP_WEBSITE, wxString( _("Project website") ) , wxEmptyString, wxITEM_NORMAL );
+	mnuHelpWebsite = new wxMenuItem( mnuHelp, ID_HELP_WEBSITE, wxString( _("Project website") ) , _("Open NOOT's web page"), wxITEM_NORMAL );
 	mnuHelp->Append( mnuHelpWebsite );
 	
 	wxMenuItem* mnuHelpBug;
-	mnuHelpBug = new wxMenuItem( mnuHelp, ID_HELP_BUG, wxString( _("Report a bug...") ) , wxEmptyString, wxITEM_NORMAL );
+	mnuHelpBug = new wxMenuItem( mnuHelp, ID_HELP_BUG, wxString( _("Report a bug...") ) , _("Open the bug reporting page on NOOT's website"), wxITEM_NORMAL );
 	mnuHelp->Append( mnuHelpBug );
 	
 	wxMenuItem* m_separator3;
 	m_separator3 = mnuHelp->AppendSeparator();
 	
 	wxMenuItem* mnuHelpAbout;
-	mnuHelpAbout = new wxMenuItem( mnuHelp, wxID_ABOUT, wxString( _("&About...") ) , wxEmptyString, wxITEM_NORMAL );
+	mnuHelpAbout = new wxMenuItem( mnuHelp, wxID_ABOUT, wxString( _("&About...") ) , _("Show information about NOOT"), wxITEM_NORMAL );
 	mnuHelp->Append( mnuHelpAbout );
 	
 	mbMenuBar->Append( mnuHelp, _("&Help") );
@@ -310,6 +310,7 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	this->SetSizer( szMain );
 	this->Layout();
 	szMain->Fit( this );
+	statusBar = this->CreateStatusBar( 1, wxST_SIZEGRIP, wxID_ANY );
 	
 	// Connect Events
 	this->Connect( mnuDevicesInput->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnSelectInputDevice ) );
