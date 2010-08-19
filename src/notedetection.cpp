@@ -262,7 +262,7 @@ int NoteBinarySearch(double frequency)
 static double AutoCorrelation(const Buffer& buffer, int index, double avg)
 {
 	int i, end=buffer.GetSize();
-	double* ptr=buffer.GetPointer();
+	const double* ptr=buffer.GetPointer();
 	double res=0;
 	
 	for (i=index; i<end; ++i)
@@ -274,7 +274,7 @@ static double AutoCorrelation(const Buffer& buffer, int index, double avg)
 static void AutoCorrelationVector(const Buffer& buffer, Buffer& ac, double avg)
 {
 	int index = 0, end=buffer.GetSize()<ac.GetSize() ? buffer.GetSize() : ac.GetSize();
-	double* ptr=buffer.GetPointer();
+	const double* ptr=buffer.GetPointer();
 	static Buffer temp(4096);
 	
 	temp.Resize(end);
@@ -303,7 +303,8 @@ static void AutoCorrelationVector(const Buffer& buffer, Buffer& ac, double avg)
 static void AutoCorrelationVector(const Buffer& buffer, Buffer& ac)
 {
 	int index = 0, end=buffer.GetSize();
-	double* ptr=buffer.GetPointer(), avg=0.0;
+	const double* ptr=buffer.GetPointer();
+    double avg=0.0;
 	
 	for (index=0; index!=end; ++index)
 		avg += ptr[index];
@@ -355,7 +356,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 
 		cOut = (fftw_complex*) fftw_malloc(sizeof(fftw_complex)*buffer.GetSize());
 		cOutSize = buffer.GetSize();
-		plan = fftw_plan_dft_r2c_1d(buffer.GetSize(), buffer.GetPointer(), cOut,
+		plan = fftw_plan_dft_r2c_1d(buffer.GetSize(), (double*) buffer.GetPointer(), cOut,
 									FFTW_MEASURE);
 		
 		//theAudioBackend->ResumeStreaming();
@@ -368,10 +369,11 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	
     //Copy buffer content to a local buffer to minimize mutex lock times
     static Buffer localBuffer(0);
+    double maxdb = buffer.GetMaxDB();
     buffer.CopyTo(localBuffer);
 
     //Step 0: check the threshold
-	dMax = pow(10,dcOptions.fThreshold/20);
+	/*dMax = pow(10,dcOptions.fThreshold/20);
 	bool ok = false;
 	for (i=0, e=localBuffer.GetSize(); i<e; ++i)
 		if (localBuffer[i]>dMax) {
@@ -380,10 +382,14 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 		}
 	
 	if (!ok)
-		return false;
-	
+		return false;*/
+
 	/*for (i=0, e=ac.GetSize(); i<e; ++i)
 	ac[i] = AutoCorrelation(localBuffer, i);*/
+
+    printf("Input level: %.f\n", maxdb);
+    if (maxdb < dcOptions.fThreshold)
+        return false;
 	
 	//Step 1: fourier-transform the signal
 	fftw_execute(plan);

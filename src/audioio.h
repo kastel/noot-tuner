@@ -56,29 +56,29 @@ class Buffer {
 
         ///Cached attribute
         double GetMean() {
-            if (!std::isnan(m_bMean)) return m_fMean;
+            if (!std::isnan(m_fMean)) return m_fMean;
             else return (m_fMean=calcMean());
         }
 
         ///Return the maximum of the absolute value of the data
         double GetMax() {
-            if (!std::isnan(m_bMax)) return m_fMax;
+            if (!std::isnan(m_fMax)) return m_fMax;
             else return (m_fMax=calcMax());
         }
 
         ///Return the maximum value in dB
         double GetMaxDB() {
-            return std::log10(1.0/GetMax());
+            return std::log10(GetMax())*20.0;
         }
 		
 	private:
-        double calcMean() const;
-        double calcMax() const;
+        double calcMean();
+        double calcMax();
 
 		size_t m_size;
 		double* m_ptr;
 
-        double m_fMean;
+        double m_fMean, m_fMax;
 
         //No assignment or copy constructor
         Buffer& operator=(const Buffer&);

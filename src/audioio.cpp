@@ -100,7 +100,7 @@ void Buffer::Resize(size_t new_size)
     m_fMean = m_fMax = NAN;
 }
 
-Buffer::Buffer(size_t size) : m_fMean(NAN)
+Buffer::Buffer(size_t size) : m_fMean(NAN), m_fMax(NAN)
 {
 	m_ptr = (double*) fftw_malloc(size*sizeof(double));
 	m_size = size;
@@ -119,10 +119,11 @@ void Buffer::CopyTo(Buffer& dest) {
     memcpy(dest.m_ptr, m_ptr, m_size*sizeof(*m_ptr));
 }
 
-double Buffer::calcMean() const {
+double Buffer::calcMean() {
     wxMutexLocker lock(m_mutex);
 
     double sum = 0.0;
+    unsigned i;
     
     for (i=0; i<m_size; ++i)
         sum += m_ptr[i];
@@ -130,18 +131,19 @@ double Buffer::calcMean() const {
     return sum / m_size;
 }
 
-double Buffer::calcMax() const {
+double Buffer::calcMax() {
     wxMutexLocker lock(m_mutex);
 
     double max = 0.0;
 
+    unsigned i;
     for (i=0; i<m_size; ++i) {
-        double cur = std::abs(m_ptr[i]);
-        if (cur>max)
+        double cur = std::fabs(m_ptr[i]);
+        if (cur > max)
             max = cur;
     }
 
-    return cur;
+    return max;
 }
 
 bool AudioBackend::PlayNote(double frequency)
