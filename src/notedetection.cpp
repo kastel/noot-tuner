@@ -272,6 +272,8 @@ static double AutoCorrelation(const Buffer& buffer, int index, double avg)
 	return res;
 }
 
+//Unused function
+/*
 static void AutoCorrelationVector(const Buffer& buffer, Buffer& ac, double avg)
 {
 	int index = 0, end=buffer.GetSize()<ac.GetSize() ? buffer.GetSize() : ac.GetSize();
@@ -290,8 +292,8 @@ static void AutoCorrelationVector(const Buffer& buffer, Buffer& ac, double avg)
 		double res=0;
 		int i;//, e=end-index-1;
 		
-/*		for (i=0; i<e; ++i)
-		res += ptr[i]*ptr[i+index];*/
+//		for (i=0; i<e; ++i)
+//		res += ptr[i]*ptr[i+index];
 		
 		for (i=index; i<end; ++i)
 			res += ptr[i]*ptr[i-index];
@@ -299,8 +301,10 @@ static void AutoCorrelationVector(const Buffer& buffer, Buffer& ac, double avg)
 		ac[index] = res;
 	}
 }
+*/
 
-
+//Unused function
+/*
 static void AutoCorrelationVector(const Buffer& buffer, Buffer& ac)
 {
 	int index = 0, end=buffer.GetSize();
@@ -312,6 +316,7 @@ static void AutoCorrelationVector(const Buffer& buffer, Buffer& ac)
 	
 	AutoCorrelationVector(buffer, ac, avg);
 }
+*/
 
 static unsigned RoundToPowerOf2(unsigned x) {
     unsigned res = 1;
