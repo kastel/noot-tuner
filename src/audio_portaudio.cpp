@@ -199,31 +199,40 @@ AudioBackend* AudioBackend::CreateDefault()
 
 PortaudioBackend::~PortaudioBackend()
 {
+    if (audioStream)
+        Pa_CloseStream(audioStream);
+
+    if (playNoteStream)
+        Pa_CloseStream(playNoteStream);
+
+    Pa_Terminate();
 }
 
-struct SineData {
+static struct SineData {
 	float frequency;
-	int phase;
-};
+	int sampleCount;
+} sineData;
 
 int PlayNoteCallback(const void *inputBuffer, void *outputBuffer, unsigned long frameCount, const PaStreamCallbackTimeInfo *timeInfo, PaStreamCallbackFlags statusFlags, void *userData)
 {
 	unsigned i;
+    SineData* sineData = (SineData*) userData;
 	float* out = (float*)outputBuffer;
-	double frequency = ((SineData*)userData)->frequency;
+	double frequency = sineData->frequency;
 	double dTs = 1.0/dcOptions.iSampleRate;
-	int& offset = ((SineData*)userData)->phase;
+	int& offset = sineData->sampleCount;
 	
 	for (i=0; i<frameCount; ++i)
 		out[i] = 0.5*sin(2*M_PI*frequency*(++offset)*dTs);
-	
-	return 0;
+
+	if (sineData->sampleCount > dcOptions.iSampleRate*1.5)
+        return paComplete;
+    else
+        return paContinue;
 }
 
 bool PortaudioBackend::PlayNote(double frequency)
 {
-	PaStream* stream;
-	
 	if (!dcOptions.iSampleRate)
 	{
 		PaDeviceIndex id = Pa_GetDefaultOutputDevice();
@@ -238,10 +247,6 @@ bool PortaudioBackend::PlayNote(double frequency)
 		dcOptions.iSampleRate = int(pdi->defaultSampleRate);
 	}
 	
-	SineData sineData;
-	sineData.frequency = frequency;
-	sineData.phase = 0;
-	
 	PaStreamParameters parm;
 	parm.device = outputDevice==-1 ? Pa_GetDefaultOutputDevice() : outputDevice;
 	parm.channelCount = 1;
@@ -249,20 +254,26 @@ bool PortaudioBackend::PlayNote(double frequency)
 	parm.sampleFormat = paFloat32;
 	parm.hostApiSpecificStreamInfo = NULL;
 	
-	int err = Pa_OpenStream(&stream, &parm, NULL, dcOptions.iSampleRate, 512, 
+    //Close the stream if already open
+    if (playNoteStream)
+        Pa_CloseStream(playNoteStream);
+    
+    int err = Pa_OpenStream(&playNoteStream, NULL, &parm, dcOptions.iSampleRate, 512,
 									0, PlayNoteCallback, &sineData);
 	
-	if (err!=paNoError)
+	sineData.frequency = frequency;
+	sineData.sampleCount = 0;
+
+    if (err!=paNoError)
 	{
 		LogPortaudioError(err);
 		return false;
 	}
-	
-	///@TODO: make this function synchronous?
-    Pa_StartStream(stream);
-	Pa_Sleep(1500);
-	Pa_CloseStream(stream);
-	
+
+    Pa_StartStream(playNoteStream);
+	//Pa_Sleep(1500);
+	//Pa_CloseStream(stream);
+
 	return true;
 }
 

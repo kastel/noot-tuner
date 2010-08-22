@@ -20,7 +20,7 @@
 #include <wx/fs_arc.h>
 #include <wx/aboutdlg.h>
 #include <wx/stdpaths.h>
-#include <wx-2.8/wx/generic/choicdgg.h>
+#include <wx/choicdlg.h>
 #include "tunerframe.h"
 #include "notedetection.h"
 #include "options.h"
@@ -100,6 +100,9 @@ wxfbTunerFrame( parent )
 
     int statusSizes[] = { -3, -1, -2 };
     statusBar->SetStatusWidths(sizeof(statusSizes)/sizeof(*statusSizes), statusSizes);
+
+    if (dcOptions.iNote!=-1)
+        btListen->Enable(true);
 	
 	Connect(wxID_ANY, wxEVT_HELP, (wxObjectEventFunction) &TunerFrame::OnHelp);
 
@@ -154,14 +157,14 @@ void TunerFrame::OnNote( wxCommandEvent& event )
 
 void TunerFrame::OnListen( wxCommandEvent& event )
 {
-	if (tbStartStop->GetValue())
-		theAudioBackend->PauseStreaming();
+/*	if (tbStartStop->GetValue())
+		theAudioBackend->PauseStreaming();*/
 	
 	theAudioBackend->PlayNote(GetNoteFrequency(dcOptions.iNote,
-							  dcOptions.iOctave==-1 ? 3 : dcOptions.iOctave));
+							  dcOptions.iOctave==-1 ? 5 : dcOptions.iOctave));
 
-	if (tbStartStop->GetValue())
-		theAudioBackend->ResumeStreaming();
+/*	if (tbStartStop->GetValue())
+		theAudioBackend->ResumeStreaming();*/
 }
 
 void TunerFrame::OnTemperament( wxCommandEvent& event )

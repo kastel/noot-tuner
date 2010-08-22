@@ -30,7 +30,7 @@ extern struct NoteDetectionOptions {
 	int iOctave; //5 -> 3rd octave; -1 -> any
 	int iNote; //in semitones: 0 is C, 1 is C# etc
 	int iTemperament;
-	double fThreshold; //in dB
+	double fThreshold; //negative value, in dB
 	double fExpectedPrecision; //in semitones
 	double fTranspose; //in semitones
 	int iSampleRate;
@@ -62,6 +62,12 @@ void SetTemperament(TEMPERAMENT);
 //The most important function
 bool DetectNote(int* note, int* octave, double* frequency, double* offset);
 
+/**
+ * Get the frequency of a particular note
+ * 
+ * \param note 0=C, 11=B
+ * \param octave the octave (as in NoteDetectionOptions::iOctave)
+ */
 double GetNoteFrequency(int note, int octave);
 
 } //namespace
