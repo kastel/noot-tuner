@@ -21,6 +21,8 @@
 #include <exception>
 #include "options.h"
 #include <fftw3.h>
+#include <wx/utils.h>
+#include <wx/app.h>
 
 using namespace std;
 
@@ -327,6 +329,18 @@ static unsigned RoundToPowerOf2(unsigned x) {
     return res;
 }
 
+///This little object sets a boolean flag when created and unsets it
+///when destructed
+class FlagSetter {
+public:
+    FlagSetter(volatile bool& f) : flag(f) { flag = true; }
+    ~FlagSetter() { flag = false; }
+private:
+    volatile bool& flag;
+};
+
+///This function isn't reentrant on purpose. If called while an instance of
+///DetectNote is still active, it will fail silently and return @c false.
 bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 {
 	int i, e, factor, index, iMax;
@@ -334,6 +348,22 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 #ifdef DEBUG
     double max_acf;
 #endif
+    
+    //Avoid reentrancy
+    static volatile bool processing = false;
+
+    if (processing) {
+#ifdef DEBUG
+        printf("Too fast. Slowing down: skipping a call to DetectNote\n");
+#endif
+        return false;
+    }
+
+    FlagSetter flagSetter(processing);
+
+    //Make a local copy of the options (in case someone modifies them
+    //while processing
+    NoteDetectionOptions dcOptions = noot::dcOptions;
 
 	if (!fPitches[0])
 		SetTemperament((TEMPERAMENT)dcOptions.iTemperament);
@@ -450,6 +480,8 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	
 	if (tempfreq==0.0)
 		return false;
+
+    wxTheApp->Yield();
 	
 	//Step 4: Enhance precision by doubling period iteratively
 	double dd_fft = dcOptions.iSampleRate/double(localBuffer.GetSize());
@@ -478,11 +510,14 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 				return false;
 			
 			dMax=0; iMax=0;
-			for (i=first; i<=last; ++i)
+			for (i=first; i<=last; ++i) {
 				if ((ac=AutoCorrelation(localBuffer, i, cOut[0][0]))>dMax) {
 					dMax = ac;
 					iMax = i;
-				}
+                }
+                if ((i-first)%20==0)
+                    wxTheApp->Yield();
+            }
 			
 			if (!iMax) //negative correlation
 				return false;
@@ -490,7 +525,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
             if (factor==1) {
                 double variance = 0;
                 double mean = localBuffer.GetMean();
-                for (i=0; i<localBuffer.GetSize(); ++i)
+                for (i=0; (unsigned)i<localBuffer.GetSize(); ++i)
                     variance += (localBuffer[i] - mean)*(localBuffer[i] - mean);
 
                 max_acf = dMax/variance;
@@ -503,6 +538,8 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 		
 		factor *= 2;
 		index *= 2;
+
+        wxYield();
 	}
 	while (index<minindex);
 	
@@ -545,7 +582,9 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	if (offset)
 		*offset = 12*log(transposed/fPitches[i])/log(2);
 	
+#ifdef DEBUG
     printf("Max ACF = %.4f\n", max_acf);
+#endif
 
     return true;
 }
