@@ -29,7 +29,7 @@ FileBackend::~FileBackend() { }
 bool FileBackend::Initialise() {
 	m_input = new wxFileInputStream(m_sFile);
 	
-	dcOptions.iSampleRate = 48000;
+	ndOptions.iSampleRate = 48000;
 	
 	if (!m_input->IsOk())
 	{
@@ -50,9 +50,6 @@ bool FileBackend::Terminate() {
 bool FileBackend::StartStreaming() {
 	if (!m_input)
 		return false;
-	
-	//Lock anyway, even if it is useless
-	wxMutexLocker ml(s_bufferMutex);
 	
 	wxDataInputStream dat(*m_input);
 	
