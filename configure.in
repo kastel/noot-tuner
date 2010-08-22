@@ -14,7 +14,7 @@ AM_GNU_GETTEXT([external])
 
 CFLAGS="-Wall -O2 -g0 $CFLAGS"
 CXXFLAGS="-Wall -O2 -g0 -fexceptions $CXXFLAGS"
-CXXDEBUG="-Wall -O0 -g3"
+CXXDEBUG="-Wall -O0 -g3 -DDEBUG"
 CDEBUG=$CXXDEBUG
 
 AC_ARG_ENABLE(debug,

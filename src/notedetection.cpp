@@ -260,6 +260,7 @@ int NoteBinarySearch(double frequency)
 	}
 }
 
+///@todo URGENT: Optimise me
 static double AutoCorrelation(const Buffer& buffer, int index, double avg)
 {
 	int i, end=buffer.GetSize();
@@ -330,7 +331,10 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 {
 	int i, e, factor, index, iMax;
 	double tempfreq, dMax;
-	
+#ifdef DEBUG
+    double max_acf;
+#endif
+
 	if (!fPitches[0])
 		SetTemperament((TEMPERAMENT)dcOptions.iTemperament);
 	
@@ -466,8 +470,8 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 				first=floor(dcOptions.iSampleRate/(tempfreq+dd_fft));
 				last=ceil(dcOptions.iSampleRate/(tempfreq-dd_fft));
 			} else {
-				first = index - 4;
-				last = index + 4;
+				first = index - 2;
+				last = index + 2;
 			}
 			
 			if ((unsigned)first>=cOutSize || (unsigned)last>=cOutSize)
@@ -482,7 +486,18 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 			
 			if (!iMax) //negative correlation
 				return false;
-			
+#ifdef DEBUG
+            if (factor==1) {
+                double variance = 0;
+                double mean = localBuffer.GetMean();
+                for (i=0; i<localBuffer.GetSize(); ++i)
+                    variance += (localBuffer[i] - mean)*(localBuffer[i] - mean);
+
+                max_acf = dMax/variance;
+            }
+#endif
+
+
 			index = iMax;
 		}
 		
@@ -504,6 +519,10 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	double transposed = *frequency * pow(2, dcOptions.fTranspose/12);
 	
 	i = NoteBinarySearch(transposed);
+
+    //Handle extreme return values
+    if (i==0 || i==127)
+        return false;
 	
 	if (note)
 	{
@@ -526,7 +545,9 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	if (offset)
 		*offset = 12*log(transposed/fPitches[i])/log(2);
 	
-	return true;
+    printf("Max ACF = %.4f\n", max_acf);
+
+    return true;
 }
 
 double GetNoteFrequency(int note, int octave)
