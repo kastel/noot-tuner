@@ -36,21 +36,21 @@ fftw_plan plan;
 //MIDI standard is used: 60->C3, 69->A3
 static double fPitches[128]; //the frequencies
 
-NoteDetectionOptions dcOptions;
+NoteDetectionOptions ndOptions;
 
-CREATE_OPTION_ALTERNATE_NAME(dcOptions.iWindowSize, "Options/WindowSize", -1, oiws);
-CREATE_OPTION_ALTERNATE_NAME(dcOptions.iOctave, "Options/Octave", -1, oio);
-CREATE_OPTION_ALTERNATE_NAME(dcOptions.iNote, "Options/Note", -1, oin);
-CREATE_OPTION_ALTERNATE_NAME(dcOptions.iTemperament, "Options/Temperament", 0, oit);
-CREATE_OPTION_ALTERNATE_NAME(dcOptions.fThreshold, "Options/Threshold", -70.0, oft);
-CREATE_OPTION_ALTERNATE_NAME(dcOptions.fExpectedPrecision, "Options/ExpectedPrecision",
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.iWindowSize, "Options/WindowSize", -1, oiws);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.iOctave, "Options/Octave", -1, oio);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.iNote, "Options/Note", -1, oin);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.iTemperament, "Options/Temperament", 0, oit);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.fThreshold, "Options/Threshold", -70.0, oft);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.fExpectedPrecision, "Options/ExpectedPrecision",
 							  0.001, ofepr);
-CREATE_OPTION_ALTERNATE_NAME(dcOptions.fTranspose, "Options/Transpose", 0, oftr);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.fTranspose, "Options/Transpose", 0, oftr);
 
-CREATE_OPTION_ALTERNATE_NAME(dcOptions.iIndicatorWidth, "MainWindow/IndicatorWidth", 10, mwiw);
-CREATE_OPTION_ALTERNATE_NAME(dcOptions.fTolerance, "MainWindow/Tolerance", 1, mwt);
-CREATE_OPTION_ALTERNATE_NAME(dcOptions.iFrameRate, "MainWindow/FrameRate", 10, mwft);
-CREATE_OPTION_ALTERNATE_NAME(dcOptions.iSampleRate, "MainWindow/SampleRate", 0, mwsr);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.iIndicatorWidth, "MainWindow/IndicatorWidth", 10, mwiw);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.fTolerance, "MainWindow/Tolerance", 1, mwt);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.iFrameRate, "MainWindow/FrameRate", 10, mwft);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.iSampleRate, "MainWindow/SampleRate", 0, mwsr);
 
 template<typename key_type, typename value_type, int size> class MiniSortedMap
 {
@@ -363,15 +363,15 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 
     //Make a local copy of the options (in case someone modifies them
     //while processing
-    NoteDetectionOptions dcOptions = noot::dcOptions;
+    NoteDetectionOptions options = noot::ndOptions;
 
 	if (!fPitches[0])
-		SetTemperament((TEMPERAMENT)dcOptions.iTemperament);
+		SetTemperament((TEMPERAMENT)options.iTemperament);
 	
 	//This function also takes care of the buffer size, if it is set to "auto"
-	if (dcOptions.iWindowSize == -1)
+	if (options.iWindowSize == -1)
 	{
-		unsigned optimalSize = 1.8/(pow(2, dcOptions.fExpectedPrecision/24)-1);
+		unsigned optimalSize = 1.8/(pow(2, options.fExpectedPrecision/24)-1);
         unsigned optimalSizeRounded = RoundToPowerOf2(optimalSize);
 		//where the first 2 is an arbitrary constant
         
@@ -381,7 +381,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
         buffer.Resize(optimalSizeRounded);
 	}
 	else
-		buffer.Resize(dcOptions.iWindowSize);
+		buffer.Resize(options.iWindowSize);
 	
 	//Prepare FFT-plan
 	if (cOutSize!=buffer.GetSize() && cOut!=NULL)
@@ -428,7 +428,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	ac[i] = AutoCorrelation(localBuffer, i);*/
 
     //printf("Input level: %.f\n", maxdb);
-    if (maxdb < dcOptions.fThreshold)
+    if (maxdb < options.fThreshold)
         return false;
 	
 	//Step 1: fourier-transform the signal
@@ -438,7 +438,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	//Step 2: find the lowest maximum
 	{
 		iMax=0;
-		if (dcOptions.iOctave == -1) { //no octave
+		if (options.iOctave == -1) { //no octave
 			i = 1; e = localBuffer.GetSize()/2;
 		
 			MiniSortedMap<double, int, 3> peaks(0.0);
@@ -451,15 +451,15 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 			
 			iMax = peaks.GetLowestValue();
 			
-		} else if (dcOptions.iNote == -1 ) { //octave and no note
-			i = floor(fPitches[12*dcOptions.iOctave]*localBuffer.GetSize()/dcOptions.iSampleRate);
+		} else if (options.iNote == -1 ) { //octave and no note
+			i = floor(fPitches[12*options.iOctave]*localBuffer.GetSize()/options.iSampleRate);
 			e = i*2;
 		} else
 		{ //both octave and note specified
-			i = floor(fPitches[12*dcOptions.iOctave + dcOptions.iNote - 1]
-				*localBuffer.GetSize()/dcOptions.iSampleRate);
-			e = ceil(fPitches[12*dcOptions.iOctave + dcOptions.iNote + 1]
-					*localBuffer.GetSize()/dcOptions.iSampleRate);
+			i = floor(fPitches[12*options.iOctave + options.iNote - 1]
+				*localBuffer.GetSize()/options.iSampleRate);
+			e = ceil(fPitches[12*options.iOctave + options.iNote + 1]
+					*localBuffer.GetSize()/options.iSampleRate);
 		}
 		
 		if (!iMax)
@@ -475,7 +475,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 			}
 		}
 		
-		tempfreq = double(iMax)*dcOptions.iSampleRate/localBuffer.GetSize();
+		tempfreq = double(iMax)*options.iSampleRate/localBuffer.GetSize();
 	}
 	
 	if (tempfreq==0.0)
@@ -484,12 +484,12 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
     wxTheApp->Yield();
 	
 	//Step 4: Enhance precision by doubling period iteratively
-	double dd_fft = dcOptions.iSampleRate/double(localBuffer.GetSize());
+	double dd_fft = options.iSampleRate/double(localBuffer.GetSize());
 	
-	index = dcOptions.iSampleRate/tempfreq;
+	index = options.iSampleRate/tempfreq;
 	factor = 1;
 	//minimum index to have the expected precision
-	int minindex = ceil(1.0/(pow(2, dcOptions.fExpectedPrecision/24.0)-1));
+	int minindex = ceil(1.0/(pow(2, options.fExpectedPrecision/24.0)-1));
 	
 	do
 	{
@@ -499,8 +499,8 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 		if ((unsigned)(index*(index-1)) > localBuffer.GetSize()) /*(dd<dd_fft)*/ {
 			//Step 5: find a local maximum in (tempfreq-dd; tempfreq+dd)
 			if (factor==1) {
-				first=floor(dcOptions.iSampleRate/(tempfreq+dd_fft));
-				last=ceil(dcOptions.iSampleRate/(tempfreq-dd_fft));
+				first=floor(options.iSampleRate/(tempfreq+dd_fft));
+				last=ceil(options.iSampleRate/(tempfreq-dd_fft));
 			} else {
 				first = index - 2;
 				last = index + 2;
@@ -544,7 +544,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	while (index<minindex);
 	
 	//Step 6: results
-	*frequency = double(factor)/index*dcOptions.iSampleRate;
+	*frequency = double(factor)/index*options.iSampleRate;
 	
 #ifdef DEBUG
 	if (*frequency < tempfreq-dd_fft || *frequency > tempfreq+dd_fft)
@@ -553,7 +553,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
    		*frequency);
 #endif
 	
-	double transposed = *frequency * pow(2, dcOptions.fTranspose/12);
+	double transposed = *frequency * pow(2, options.fTranspose/12);
 	
 	i = NoteBinarySearch(transposed);
 
@@ -563,11 +563,11 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	
 	if (note)
 	{
-		if (dcOptions.iNote == -1)
+		if (options.iNote == -1)
 			*note = i%12;
 		else
 		{
-			*note = dcOptions.iNote;
+			*note = options.iNote;
 			int i1=i-i%12+*note, i2=i1+12;
 			if (abs(i-i1)<abs(i-i2))
 				i = i1;
@@ -592,13 +592,13 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 double GetNoteFrequency(int note, int octave)
 {
 	if (!fPitches[0])
-		SetTemperament((TEMPERAMENT)dcOptions.iTemperament);
+		SetTemperament((TEMPERAMENT)ndOptions.iTemperament);
 	
 	int n = note+octave*12;
 	if (n<0 || n>127)
 		return 0.0;
 	
-	return fPitches[n] * pow(2, dcOptions.fTranspose/12);
+	return fPitches[n] * pow(2, ndOptions.fTranspose/12);
 }
 
 } //namespace

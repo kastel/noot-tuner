@@ -39,7 +39,7 @@ extern struct NoteDetectionOptions {
 	int iFrameRate;
 	double fTolerance; //in cents
 	int iIndicatorWidth;
-} dcOptions;
+} ndOptions;
 
 int NoteBinarySearch(double frequency); //MIDI standard is used
 

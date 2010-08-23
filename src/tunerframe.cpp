@@ -48,7 +48,7 @@ TunerFrame::TunerFrame( wxWindow* parent )
 wxfbTunerFrame( parent )
 {
 	pnIndicator = new wxPanel(pnGauge, wxID_ANY, wxPoint(0,0),
-							  wxSize(dcOptions.iIndicatorWidth,0), wxBORDER_NONE);
+							  wxSize(ndOptions.iIndicatorWidth,0), wxBORDER_NONE);
 
 	wxBoxSizer* szGauge;
 	szGauge = new wxBoxSizer( wxHORIZONTAL );
@@ -75,33 +75,33 @@ wxfbTunerFrame( parent )
 	Connect(ID_TIMER, wxEVT_TIMER, (wxObjectEventFunction) &TunerFrame::OnTimer);
 	
 	//Set the default values:
-	chOctave->SetSelection(dcOptions.iOctave==-1 ? 0 : dcOptions.iOctave);
-	chNote->SetSelection(dcOptions.iNote+1);
-	chTemperament->SetSelection(dcOptions.iTemperament);
+	chOctave->SetSelection(ndOptions.iOctave==-1 ? 0 : ndOptions.iOctave);
+	chNote->SetSelection(ndOptions.iNote+1);
+	chTemperament->SetSelection(ndOptions.iTemperament);
 	
-	int index = chWindowSize->FindString(wxString::Format(wxT("%d"), dcOptions.iWindowSize));
+	int index = chWindowSize->FindString(wxString::Format(wxT("%d"), ndOptions.iWindowSize));
 	if (index==-1)
 		chWindowSize->SetSelection(0);
 	else
 		chWindowSize->SetSelection(index);
 	
-	scThreshold->SetValue(int(-dcOptions.fThreshold));
-	scExpectedPrecision->SetValue(int(dcOptions.fExpectedPrecision*1000));
-	scFrameRate->SetValue(dcOptions.iFrameRate);
-	tcTranspose->SetValue(wxString::Format(wxT("%f"), dcOptions.fTranspose));
+	scThreshold->SetValue(int(-ndOptions.fThreshold));
+	scExpectedPrecision->SetValue(int(ndOptions.fExpectedPrecision*1000));
+	scFrameRate->SetValue(ndOptions.iFrameRate);
+	tcTranspose->SetValue(wxString::Format(wxT("%f"), ndOptions.fTranspose));
 
     //Create volume meter
     volumeMeter = new VolumeMeter(statusBar, wxID_ANY, wxDefaultPosition, wxDefaultSize,
         wxNO_BORDER);
     volumeMeter->SetRange(-70, 0);
-    volumeMeter->SetThreshold(dcOptions.fThreshold);
+    volumeMeter->SetThreshold(ndOptions.fThreshold);
     volumeMeter->SetVolume(-90);
     volumeMeter->SetClippingLimit(-1);
 
     int statusSizes[] = { -3, -1, -2 };
     statusBar->SetStatusWidths(sizeof(statusSizes)/sizeof(*statusSizes), statusSizes);
 
-    if (dcOptions.iNote!=-1)
+    if (ndOptions.iNote!=-1)
         btListen->Enable(true);
 	
 	Connect(wxID_ANY, wxEVT_HELP, (wxObjectEventFunction) &TunerFrame::OnHelp);
@@ -127,8 +127,8 @@ void TunerFrame::OnStartStop( wxCommandEvent& event )
 		}
 
         wxLogStatus(this, _("Listening..."));
-        statusBar->SetStatusText(wxString::Format(wxT("%d Hz"), dcOptions.iSampleRate), 1);
-		tmTimer->Start(1000/dcOptions.iFrameRate);
+        statusBar->SetStatusText(wxString::Format(wxT("%d Hz"), ndOptions.iSampleRate), 1);
+		tmTimer->Start(1000/ndOptions.iFrameRate);
 	}
 	else
 	{ //stop
@@ -144,14 +144,14 @@ void TunerFrame::OnStartStop( wxCommandEvent& event )
 void TunerFrame::OnOctave( wxCommandEvent& event )
 {
 	if (event.GetSelection()==0)
-		dcOptions.iOctave = -1;
+		ndOptions.iOctave = -1;
 	else
-		dcOptions.iOctave = event.GetSelection();
+		ndOptions.iOctave = event.GetSelection();
 }
 
 void TunerFrame::OnNote( wxCommandEvent& event )
 {
-	dcOptions.iNote = event.GetSelection()-1;
+	ndOptions.iNote = event.GetSelection()-1;
 	btListen->Enable(event.GetSelection()!=0);
 }
 
@@ -160,8 +160,8 @@ void TunerFrame::OnListen( wxCommandEvent& event )
 /*	if (tbStartStop->GetValue())
 		theAudioBackend->PauseStreaming();*/
 	
-	theAudioBackend->PlayNote(GetNoteFrequency(dcOptions.iNote,
-							  dcOptions.iOctave==-1 ? 5 : dcOptions.iOctave));
+	theAudioBackend->PlayNote(GetNoteFrequency(ndOptions.iNote,
+							  ndOptions.iOctave==-1 ? 5 : ndOptions.iOctave));
 
 /*	if (tbStartStop->GetValue())
 		theAudioBackend->ResumeStreaming();*/
@@ -169,8 +169,8 @@ void TunerFrame::OnListen( wxCommandEvent& event )
 
 void TunerFrame::OnTemperament( wxCommandEvent& event )
 {
-	dcOptions.iTemperament = event.GetSelection();
-	SetTemperament((TEMPERAMENT) dcOptions.iTemperament);
+	ndOptions.iTemperament = event.GetSelection();
+	SetTemperament((TEMPERAMENT) ndOptions.iTemperament);
 }
 
 void TunerFrame::OnTransposeEnter( wxCommandEvent& event )
@@ -179,50 +179,50 @@ void TunerFrame::OnTransposeEnter( wxCommandEvent& event )
 	if (!tcTranspose->GetValue().ToDouble(&d))
 		wxLogError(_("Invalid number: %s"), tcTranspose->GetValue().c_str());
 	else
-		dcOptions.fTranspose = d;
+		ndOptions.fTranspose = d;
 }
 
 void TunerFrame::OnWindowSizeChoice( wxCommandEvent& event )
 {
 	if (event.GetSelection()==0)
-		dcOptions.iWindowSize = -1;
+		ndOptions.iWindowSize = -1;
 	else
-		dcOptions.iWindowSize = wxAtoi(chWindowSize->GetStringSelection());
+		ndOptions.iWindowSize = wxAtoi(chWindowSize->GetStringSelection());
 	
     Calibrate(this);
 }
 
 void TunerFrame::OnThresholdKillFocus( wxFocusEvent& event )
 {
-	dcOptions.fThreshold = -scThreshold->GetValue();
-    volumeMeter->SetThreshold(dcOptions.fThreshold);
+	ndOptions.fThreshold = -scThreshold->GetValue();
+    volumeMeter->SetThreshold(ndOptions.fThreshold);
 }
 
 void TunerFrame::OnThresholdSpin( wxSpinEvent& event )
 {
-	dcOptions.fThreshold = -scThreshold->GetValue();
-    volumeMeter->SetThreshold(dcOptions.fThreshold);
+	ndOptions.fThreshold = -scThreshold->GetValue();
+    volumeMeter->SetThreshold(ndOptions.fThreshold);
 }
 
 void TunerFrame::OnExpectedPrecisionKillFocus( wxFocusEvent& event )
 {
     Calibrate(this);
-	dcOptions.fExpectedPrecision = scExpectedPrecision->GetValue()/1000.0;
+	ndOptions.fExpectedPrecision = scExpectedPrecision->GetValue()/1000.0;
 }
 
 void TunerFrame::OnExpectedPrecisionSpin( wxSpinEvent& event )
 {
     Calibrate(this);
-	dcOptions.fExpectedPrecision = scExpectedPrecision->GetValue()/1000.0;
+	ndOptions.fExpectedPrecision = scExpectedPrecision->GetValue()/1000.0;
 }
 
 void TunerFrame::OnFrameRateKillFocus( wxFocusEvent& event )
 {
-	if (dcOptions.iFrameRate != scFrameRate->GetValue()) {
-		dcOptions.iFrameRate = scFrameRate->GetValue();
+	if (ndOptions.iFrameRate != scFrameRate->GetValue()) {
+		ndOptions.iFrameRate = scFrameRate->GetValue();
 		if (tmTimer->IsRunning()) {
 			tmTimer->Stop();
-			tmTimer->Start(1000/dcOptions.iFrameRate);
+			tmTimer->Start(1000/ndOptions.iFrameRate);
 		}
 	}
 }
@@ -236,9 +236,9 @@ void TunerFrame::OnFrameRate( wxSpinEvent& event )
 void TunerFrame::SetIndicator(double offset)
 {
 	wxColour c;
-	if (offset>dcOptions.fTolerance/100)
+	if (offset>ndOptions.fTolerance/100)
 		c = cHigh;
-	else if (offset<-dcOptions.fTolerance/100)
+	else if (offset<-ndOptions.fTolerance/100)
 		c = cLow;
 	else
 		c = cRight;
@@ -248,9 +248,9 @@ void TunerFrame::SetIndicator(double offset)
 	
 	//Note: displayed interval is (-0.5, 0.5)
 	pnIndicator->SetSize( /* x */ offset*gaugesize.GetWidth() + gaugesize.GetWidth()/2 -
-								dcOptions.iIndicatorWidth/2,
+								ndOptions.iIndicatorWidth/2,
 						  /* y */ 1,
-						  /* width */ dcOptions.iIndicatorWidth,
+						  /* width */ ndOptions.iIndicatorWidth,
 						  /* height */ gaugesize.GetHeight()-2,
 						  wxSIZE_ALLOW_MINUS_ONE );
 	
@@ -280,7 +280,7 @@ void TunerFrame::OnTimer(wxTimerEvent & event)
 	{
 		stNote1->SetLabel(wxString::Format(wxT("%s%d"), translatedNotes[note].c_str(),
 						  octave-2));
-		stOffset->SetLabel(wxString::Format(wxString::Format(wxT("%% +5.%df"), (dcOptions.fExpectedPrecision<2.0) ? 1 : 0), offset*100));
+		stOffset->SetLabel(wxString::Format(wxString::Format(wxT("%% +5.%df"), (ndOptions.fExpectedPrecision<2.0) ? 1 : 0), offset*100));
 		stFrequency->SetLabel(wxString::Format(wxString::Format(wxT("%%.%df Hz"), int(4.0-log10(freq))), freq));
 		
 		SetIndicator(offset);
@@ -571,12 +571,12 @@ void TunerFrame::OnToolsSampleRate(wxCommandEvent& event) {
 
     if (choice!=(void*)0) {
         if (choice == (void*)(unsigned long)(-1))
-            dcOptions.iSampleRate = 0;
+            ndOptions.iSampleRate = 0;
         else
-            dcOptions.iSampleRate = (int)(long)choice;
+            ndOptions.iSampleRate = (int)(long)choice;
     }
 
-    statusBar->SetStatusText(wxString::Format(_("%d Hz"), dcOptions.iSampleRate), 1);
+    statusBar->SetStatusText(wxString::Format(_("%d Hz"), ndOptions.iSampleRate), 1);
     if (resume) theAudioBackend->StartStreaming();
 }
 

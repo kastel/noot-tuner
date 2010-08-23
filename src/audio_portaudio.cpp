@@ -111,10 +111,10 @@ bool PortaudioBackend::StartStreaming()
 		}*/
 		
 		//Default if none set
-		if (!dcOptions.iSampleRate)
-			dcOptions.iSampleRate = int(pdi->defaultSampleRate);
+		if (!ndOptions.iSampleRate)
+			ndOptions.iSampleRate = int(pdi->defaultSampleRate);
 		
-		err = Pa_OpenDefaultStream(&audioStream, 1, 0, paInt16, dcOptions.iSampleRate,
+		err = Pa_OpenDefaultStream(&audioStream, 1, 0, paInt16, ndOptions.iSampleRate,
 									BUFFER_SIZE, paCallback, NULL );
 		
 		if (err!=paNoError)
@@ -219,13 +219,13 @@ int PlayNoteCallback(const void *inputBuffer, void *outputBuffer, unsigned long 
     SineData* sineData = (SineData*) userData;
 	float* out = (float*)outputBuffer;
 	double frequency = sineData->frequency;
-	double dTs = 1.0/dcOptions.iSampleRate;
+	double dTs = 1.0/ndOptions.iSampleRate;
 	int& offset = sineData->sampleCount;
 	
 	for (i=0; i<frameCount; ++i)
 		out[i] = 0.5*sin(2*M_PI*frequency*(++offset)*dTs);
 
-	if (sineData->sampleCount > dcOptions.iSampleRate*1.5)
+	if (sineData->sampleCount > ndOptions.iSampleRate*1.5)
         return paComplete;
     else
         return paContinue;
@@ -233,7 +233,7 @@ int PlayNoteCallback(const void *inputBuffer, void *outputBuffer, unsigned long 
 
 bool PortaudioBackend::PlayNote(double frequency)
 {
-	if (!dcOptions.iSampleRate)
+	if (!ndOptions.iSampleRate)
 	{
 		PaDeviceIndex id = Pa_GetDefaultOutputDevice();
 		if (id == paNoDevice)
@@ -244,7 +244,7 @@ bool PortaudioBackend::PlayNote(double frequency)
 			
 		const PaDeviceInfo* pdi = Pa_GetDeviceInfo(id);
 			
-		dcOptions.iSampleRate = int(pdi->defaultSampleRate);
+		ndOptions.iSampleRate = int(pdi->defaultSampleRate);
 	}
 	
 	PaStreamParameters parm;
@@ -258,7 +258,7 @@ bool PortaudioBackend::PlayNote(double frequency)
     if (playNoteStream)
         Pa_CloseStream(playNoteStream);
     
-    int err = Pa_OpenStream(&playNoteStream, NULL, &parm, dcOptions.iSampleRate, 512,
+    int err = Pa_OpenStream(&playNoteStream, NULL, &parm, ndOptions.iSampleRate, 512,
 									0, PlayNoteCallback, &sineData);
 	
 	sineData.frequency = frequency;
