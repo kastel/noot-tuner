@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DC Tuner 0.8\n"
 "Report-Msgid-Bugs-To: dc.kastel@gmail.com\n"
-"POT-Creation-Date: 2010-08-27 17:18+0200\n"
-"PO-Revision-Date: 2010-08-27 17:21+0100\n"
+"POT-Creation-Date: 2010-08-27 21:37+0200\n"
+"PO-Revision-Date: 2010-08-27 21:37+0100\n"
 "Last-Translator: Davide Castellone <kastel88@email.it>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -404,8 +404,8 @@ msgid "8"
 msgstr "8"
 
 #: src/wxfbtunerframe.cpp:279
-msgid "T&hreshold (dB)"
-msgstr "Sogli&a (dB)"
+msgid "T&hreshold (-dB)"
+msgstr "Sogli&a (-dB)"
 
 #: src/wxfbtunerframe.cpp:284
 msgid ""
