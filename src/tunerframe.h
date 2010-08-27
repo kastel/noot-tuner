@@ -58,6 +58,8 @@ protected:
 	void OnMenuExit( wxCommandEvent& );
 	
     void OnToolsSampleRate(wxCommandEvent&);
+    void OnToolsClockCorrRaw(wxCommandEvent&);
+    void OnToolsClockCorrCents(wxCommandEvent&);
 
     void OnHelpTOC( wxCommandEvent& );
 	void OnHelpAbout( wxCommandEvent& );
@@ -77,6 +79,8 @@ protected:
 	void ResetIndicator();
 	
 	bool InitialiseHelp();
+
+    void UpdateStatusBar();
 	
 	wxTimer* tmTimer;
     VolumeMeter* volumeMeter;

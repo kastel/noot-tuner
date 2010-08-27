@@ -21,14 +21,14 @@
 #include <wx/aboutdlg.h>
 #include <wx/stdpaths.h>
 #include <wx/choicdlg.h>
+#include <wx/textdlg.h>
+#include <wx/help.h>
+#include <wx/msgdlg.h>
 #include "tunerframe.h"
 #include "notedetection.h"
 #include "options.h"
 #include "audioio.h"
 #include "noot-tuner.h"
-
-#include <wx/help.h>
-#include <wx/msgdlg.h>
 
 namespace noot {
 
@@ -98,7 +98,7 @@ wxfbTunerFrame( parent )
     volumeMeter->SetVolume(-90);
     volumeMeter->SetClippingLimit(-1);
 
-    int statusSizes[] = { -3, -1, -2 };
+    int statusSizes[] = { -2, -1, -1 };
     statusBar->SetStatusWidths(sizeof(statusSizes)/sizeof(*statusSizes), statusSizes);
 
     if (ndOptions.iNote!=-1)
@@ -127,7 +127,7 @@ void TunerFrame::OnStartStop( wxCommandEvent& event )
 		}
 
         wxLogStatus(this, _("Listening..."));
-        statusBar->SetStatusText(wxString::Format(wxT("%d Hz"), ndOptions.iSampleRate), 1);
+        UpdateStatusBar();
 		tmTimer->Start(1000/ndOptions.iFrameRate);
 	}
 	else
@@ -576,8 +576,52 @@ void TunerFrame::OnToolsSampleRate(wxCommandEvent& event) {
             ndOptions.iSampleRate = (int)(long)choice;
     }
 
-    statusBar->SetStatusText(wxString::Format(_("%d Hz"), ndOptions.iSampleRate), 1);
+    UpdateStatusBar();
+
     if (resume) theAudioBackend->StartStreaming();
+}
+
+void TunerFrame::UpdateStatusBar() {
+    statusBar->SetStatusText(wxString::Format(_("%d Hz *%9.7f"), ndOptions.iSampleRate,
+        ndOptions.fClockCorrection), 1);
+}
+
+void TunerFrame::OnToolsClockCorrRaw(wxCommandEvent& event) {
+    wxString str = wxGetTextFromUser(_("Insert a value for clock correction as a raw factor\n"
+                        "(1.0 means no correction)"), _("Clock correction"),
+                        wxString::Format(_("%9.7f"), ndOptions.fClockCorrection),
+                        this);
+
+    if (str.empty()) //canceled
+        return;
+
+    double tmpval;
+    if (!str.ToDouble(&tmpval)) {
+        wxLogError(_("Invalid number: '%s'"), str.c_str());
+        return;
+    }
+
+    ndOptions.fClockCorrection = tmpval;
+    UpdateStatusBar();
+}
+
+void TunerFrame::OnToolsClockCorrCents(wxCommandEvent& event) {
+    wxString str = wxGetTextFromUser(_("Insert a value for clock correction in hundredths of semitone\n"
+                        "(0 means no correction)"), _("Clock correction"),
+                        wxString::Format(_("%+5.2f"), 1200*log2(ndOptions.fClockCorrection)),
+                        this);
+
+    if (str.empty()) //canceled
+        return;
+
+    double tmpval;
+    if (!str.ToDouble(&tmpval)) {
+        wxLogError(_("Invalid number: '%s'"), str.c_str());
+        return;
+    }
+
+    ndOptions.fClockCorrection = pow(2, tmpval/1200);
+    UpdateStatusBar();
 }
 
 } //namespace

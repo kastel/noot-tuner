@@ -36,10 +36,21 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	
 	mnuTools = new wxMenu();
 	wxMenuItem* mnuToolsSampleRate;
-	mnuToolsSampleRate = new wxMenuItem( mnuTools, ID_TOOLS_SAMPLERATE, wxString( _("Change sampling rate...") ) , _("Change the sampling rate"), wxITEM_NORMAL );
+	mnuToolsSampleRate = new wxMenuItem( mnuTools, ID_TOOLS_SAMPLERATE, wxString( _("Change &sampling rate...") ) , _("Change the sampling rate"), wxITEM_NORMAL );
 	mnuTools->Append( mnuToolsSampleRate );
 	
-	mbMenuBar->Append( mnuTools, _("Other options") );
+	mnuToolsClockCorr = new wxMenu();
+	wxMenuItem* mnuToolsClockCorrRaw;
+	mnuToolsClockCorrRaw = new wxMenuItem( mnuToolsClockCorr, ID_TOOLS_CLOCKCORR_RAW, wxString( _("Set as raw &factor...") ) , _("Set clock correction as a raw coefficient"), wxITEM_NORMAL );
+	mnuToolsClockCorr->Append( mnuToolsClockCorrRaw );
+	
+	wxMenuItem* mnuToolsClockCorrCents;
+	mnuToolsClockCorrCents = new wxMenuItem( mnuToolsClockCorr, ID_TOOLS_CLOCKCORR_CENTS, wxString( _("Set value in &cents...") ) , _("Set clock correction in cents"), wxITEM_NORMAL );
+	mnuToolsClockCorr->Append( mnuToolsClockCorrCents );
+	
+	mnuTools->Append( -1, _("&Clock correction"), mnuToolsClockCorr );
+	
+	mbMenuBar->Append( mnuTools, _("&Other options") );
 	
 	mnuHelp = new wxMenu();
 	wxMenuItem* mnuHelpTOC;
@@ -47,18 +58,18 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	mnuHelp->Append( mnuHelpTOC );
 	
 	wxMenuItem* mnuHelpContext;
-	mnuHelpContext = new wxMenuItem( mnuHelp, wxID_HELP_CONTEXT, wxString( _("Context help") ) + wxT('\t') + wxT("F1"), _("Open the help window on the page related to the selected control"), wxITEM_NORMAL );
+	mnuHelpContext = new wxMenuItem( mnuHelp, wxID_HELP_CONTEXT, wxString( _("&Context help") ) + wxT('\t') + wxT("F1"), _("Open the help window on the page related to the selected control"), wxITEM_NORMAL );
 	mnuHelp->Append( mnuHelpContext );
 	
 	wxMenuItem* m_separator2;
 	m_separator2 = mnuHelp->AppendSeparator();
 	
 	wxMenuItem* mnuHelpWebsite;
-	mnuHelpWebsite = new wxMenuItem( mnuHelp, ID_HELP_WEBSITE, wxString( _("Project website") ) , _("Open NOOT's web page"), wxITEM_NORMAL );
+	mnuHelpWebsite = new wxMenuItem( mnuHelp, ID_HELP_WEBSITE, wxString( _("Project &website") ) , _("Open NOOT's web page"), wxITEM_NORMAL );
 	mnuHelp->Append( mnuHelpWebsite );
 	
 	wxMenuItem* mnuHelpBug;
-	mnuHelpBug = new wxMenuItem( mnuHelp, ID_HELP_BUG, wxString( _("Report a bug...") ) , _("Open the bug reporting page on NOOT's website"), wxITEM_NORMAL );
+	mnuHelpBug = new wxMenuItem( mnuHelp, ID_HELP_BUG, wxString( _("Report a &bug...") ) , _("Open the bug reporting page on NOOT's website"), wxITEM_NORMAL );
 	mnuHelp->Append( mnuHelpBug );
 	
 	wxMenuItem* m_separator3;
@@ -324,6 +335,8 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	this->Connect( mnuDevicesOutput->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnSelectOutputDevice ) );
 	this->Connect( mnuDevicesExit->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnMenuExit ) );
 	this->Connect( mnuToolsSampleRate->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsSampleRate ) );
+	this->Connect( mnuToolsClockCorrRaw->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsClockCorrRaw ) );
+	this->Connect( mnuToolsClockCorrCents->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsClockCorrCents ) );
 	this->Connect( mnuHelpTOC->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpTOC ) );
 	this->Connect( mnuHelpContext->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpContext ) );
 	this->Connect( mnuHelpWebsite->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpWebsite ) );
@@ -353,6 +366,8 @@ wxfbTunerFrame::~wxfbTunerFrame()
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnSelectOutputDevice ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnMenuExit ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsSampleRate ) );
+	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsClockCorrRaw ) );
+	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsClockCorrCents ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpTOC ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpContext ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpWebsite ) );

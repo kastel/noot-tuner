@@ -178,7 +178,7 @@
                     </object>
                 </object>
                 <object class="wxMenu" expanded="1">
-                    <property name="label">Other options</property>
+                    <property name="label">&amp;Other options</property>
                     <property name="name">mnuTools</property>
                     <property name="permission">protected</property>
                     <object class="wxMenuItem" expanded="1">
@@ -188,13 +188,48 @@
                         <property name="help">Change the sampling rate</property>
                         <property name="id">ID_TOOLS_SAMPLERATE</property>
                         <property name="kind">wxITEM_NORMAL</property>
-                        <property name="label">Change sampling rate...</property>
+                        <property name="label">Change &amp;sampling rate...</property>
                         <property name="name">mnuToolsSampleRate</property>
                         <property name="permission">none</property>
                         <property name="shortcut"></property>
                         <property name="unchecked_bitmap"></property>
                         <event name="OnMenuSelection">OnToolsSampleRate</event>
                         <event name="OnUpdateUI"></event>
+                    </object>
+                    <object class="submenu" expanded="1">
+                        <property name="label">&amp;Clock correction</property>
+                        <property name="name">mnuToolsClockCorr</property>
+                        <property name="permission">protected</property>
+                        <object class="wxMenuItem" expanded="1">
+                            <property name="bitmap"></property>
+                            <property name="checked">0</property>
+                            <property name="enabled">1</property>
+                            <property name="help">Set clock correction as a raw coefficient</property>
+                            <property name="id">ID_TOOLS_CLOCKCORR_RAW</property>
+                            <property name="kind">wxITEM_NORMAL</property>
+                            <property name="label">Set as raw &amp;factor...</property>
+                            <property name="name">mnuToolsClockCorrRaw</property>
+                            <property name="permission">none</property>
+                            <property name="shortcut"></property>
+                            <property name="unchecked_bitmap"></property>
+                            <event name="OnMenuSelection">OnToolsClockCorrRaw</event>
+                            <event name="OnUpdateUI"></event>
+                        </object>
+                        <object class="wxMenuItem" expanded="1">
+                            <property name="bitmap"></property>
+                            <property name="checked">0</property>
+                            <property name="enabled">1</property>
+                            <property name="help">Set clock correction in cents</property>
+                            <property name="id">ID_TOOLS_CLOCKCORR_CENTS</property>
+                            <property name="kind">wxITEM_NORMAL</property>
+                            <property name="label">Set value in &amp;cents...</property>
+                            <property name="name">mnuToolsClockCorrCents</property>
+                            <property name="permission">none</property>
+                            <property name="shortcut"></property>
+                            <property name="unchecked_bitmap"></property>
+                            <event name="OnMenuSelection">OnToolsClockCorrCents</event>
+                            <event name="OnUpdateUI"></event>
+                        </object>
                     </object>
                 </object>
                 <object class="wxMenu" expanded="1">
@@ -223,7 +258,7 @@
                         <property name="help">Open the help window on the page related to the selected control</property>
                         <property name="id">wxID_HELP_CONTEXT</property>
                         <property name="kind">wxITEM_NORMAL</property>
-                        <property name="label">Context help</property>
+                        <property name="label">&amp;Context help</property>
                         <property name="name">mnuHelpContext</property>
                         <property name="permission">none</property>
                         <property name="shortcut">F1</property>
@@ -242,7 +277,7 @@
                         <property name="help">Open NOOT&apos;s web page</property>
                         <property name="id">ID_HELP_WEBSITE</property>
                         <property name="kind">wxITEM_NORMAL</property>
-                        <property name="label">Project website</property>
+                        <property name="label">Project &amp;website</property>
                         <property name="name">mnuHelpWebsite</property>
                         <property name="permission">none</property>
                         <property name="shortcut"></property>
@@ -257,7 +292,7 @@
                         <property name="help">Open the bug reporting page on NOOT&apos;s website</property>
                         <property name="id">ID_HELP_BUG</property>
                         <property name="kind">wxITEM_NORMAL</property>
-                        <property name="label">Report a bug...</property>
+                        <property name="label">Report a &amp;bug...</property>
                         <property name="name">mnuHelpBug</property>
                         <property name="permission">none</property>
                         <property name="shortcut"></property>

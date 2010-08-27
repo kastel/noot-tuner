@@ -34,6 +34,7 @@ extern struct NoteDetectionOptions {
 	double fExpectedPrecision; //in semitones
 	double fTranspose; //in semitones
 	int iSampleRate;
+    double fClockCorrection; //as a coefficient (1.0 means no correction)
 	
 	//Gui Options
 	int iFrameRate;

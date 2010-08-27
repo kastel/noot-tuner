@@ -46,6 +46,7 @@ CREATE_OPTION_ALTERNATE_NAME(ndOptions.fThreshold, "Options/Threshold", -70.0, o
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fExpectedPrecision, "Options/ExpectedPrecision",
 							  0.001, ofepr);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fTranspose, "Options/Transpose", 0, oftr);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.fClockCorrection, "Options/ClockCorrection", 1.0, ofcc);
 
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iIndicatorWidth, "MainWindow/IndicatorWidth", 10, mwiw);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fTolerance, "MainWindow/Tolerance", 1, mwt);
@@ -452,13 +453,13 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 			iMax = peaks.GetLowestValue();
 			
 		} else if (options.iNote == -1 ) { //octave and no note
-			i = floor(fPitches[12*options.iOctave]*localBuffer.GetSize()/options.iSampleRate);
+			i = floor(fPitches[12*options.iOctave]/options.fClockCorrection*localBuffer.GetSize()/options.iSampleRate);
 			e = i*2;
 		} else
 		{ //both octave and note specified
-			i = floor(fPitches[12*options.iOctave + options.iNote - 1]
+			i = floor(fPitches[12*options.iOctave + options.iNote - 1]/options.fClockCorrection
 				*localBuffer.GetSize()/options.iSampleRate);
-			e = ceil(fPitches[12*options.iOctave + options.iNote + 1]
+			e = ceil(fPitches[12*options.iOctave + options.iNote + 1]/options.fClockCorrection
 					*localBuffer.GetSize()/options.iSampleRate);
 		}
 		
@@ -544,7 +545,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	while (index<minindex);
 	
 	//Step 6: results
-	*frequency = double(factor)/index*options.iSampleRate;
+	*frequency = double(factor)/index*options.iSampleRate*options.fClockCorrection;
 	
 #ifdef DEBUG
 	if (*frequency < tempfreq-dd_fft || *frequency > tempfreq+dd_fft)
