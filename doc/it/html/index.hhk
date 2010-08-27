@@ -10,71 +10,91 @@
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="main window">
 <param name="Name" value=" La finestra principale">
-<param name="Local" value="ch02.html#id3030471">
+<param name="Local" value="ch02.html#id2698894">
 </OBJECT></LI><LI><OBJECT type="text/sitemap">
 <param name="Name" value="start/stop">
 <param name="Name" value="Pulsante Start/Stop">
-<param name="Local" value="ch02.html#id3028200">
+<param name="Local" value="ch02.html#id2698943">
 </OBJECT></LI><LI><OBJECT type="text/sitemap">
 <param name="Name" value="note">
 <param name="Name" value='Riquadro "nota rilevata"'>
-<param name="Local" value="ch02.html#id3028226">
+<param name="Local" value="ch02.html#id2698969">
 </OBJECT></LI><LI><OBJECT type="text/sitemap">
 <param name="Name" value="note">
 <param name="Name" value='Riquadro "nota rilevata"'>
-<param name="Local" value="ch02.html#id3028262">
+<param name="Local" value="ch02.html#id2699005">
 </OBJECT></LI><LI><OBJECT type="text/sitemap">
 <param name="Name" value="offset">
 <param name="Name" value='Riquadro "nota rilevata"'>
-<param name="Local" value="ch02.html#id3028287">
+<param name="Local" value="ch02.html#id2699030">
 </OBJECT></LI><LI><OBJECT type="text/sitemap">
 <param name="Name" value="frequency">
 <param name="Name" value='Riquadro "nota rilevata"'>
-<param name="Local" value="ch02.html#id3028301">
+<param name="Local" value="ch02.html#id2699045">
 </OBJECT></LI><LI><OBJECT type="text/sitemap">
 <param name="Name" value="octave selector">
 <param name="Name" value="Ottava">
-<param name="Local" value="ch02.html#id3028317">
+<param name="Local" value="ch02.html#id2699062">
 </OBJECT></LI><LI><OBJECT type="text/sitemap">
 <param name="Name" value="note selector">
 <param name="Name" value="Nota">
-<param name="Local" value="ch02.html#id3028361">
+<param name="Local" value="ch02.html#id2699106">
 </OBJECT></LI><LI><OBJECT type="text/sitemap">
 <param name="Name" value="listen">
 <param name="Name" value='Pulsante "ascolta"'>
-<param name="Local" value="ch02.html#id3028382">
+<param name="Local" value="ch02.html#id2699127">
 </OBJECT></LI><LI><OBJECT type="text/sitemap">
 <param name="Name" value="temperament">
 <param name="Name" value="Selezione del temperamento">
-<param name="Local" value="ch02.html#id3028402">
+<param name="Local" value="ch02.html#id2699147">
 </OBJECT></LI><LI><OBJECT type="text/sitemap">
 <param name="Name" value="transpose">
 <param name="Name" value="Trasponi">
-<param name="Local" value="ch02.html#id3028425">
+<param name="Local" value="ch02.html#id2699170">
 </OBJECT></LI><LI><OBJECT type="text/sitemap">
 <param name="Name" value="FFT">
 <param name="Name" value="Dimensione finestra">
-<param name="Local" value="ch02.html#id3028449">
+<param name="Local" value="ch02.html#id2699194">
 </OBJECT></LI><LI><OBJECT type="text/sitemap">
 <param name="Name" value="window size">
 <param name="Name" value="Dimensione finestra">
-<param name="Local" value="ch02.html#id3028455">
+<param name="Local" value="ch02.html#id2699200">
 </OBJECT></LI><LI><OBJECT type="text/sitemap">
 <param name="Name" value="noise">
 <param name="Name" value="Soglia">
-<param name="Local" value="ch02.html#id3028484">
+<param name="Local" value="ch02.html#id2699228">
 </OBJECT></LI><LI><OBJECT type="text/sitemap">
 <param name="Name" value="threshold">
 <param name="Name" value="Soglia">
-<param name="Local" value="ch02.html#id3028490">
+<param name="Local" value="ch02.html#id2699235">
 </OBJECT></LI><LI><OBJECT type="text/sitemap">
 <param name="Name" value="expected precision">
 <param name="Name" value="Precisione prevista">
-<param name="Local" value="ch02.html#id3028529">
+<param name="Local" value="ch02.html#id2699268">
 </OBJECT></LI><LI><OBJECT type="text/sitemap">
 <param name="Name" value="frame rate">
 <param name="Name" value="Frame rate">
-<param name="Local" value="ch02.html#id3028556">
+<param name="Local" value="ch02.html#id2699295">
+</OBJECT></LI><LI><OBJECT type="text/sitemap">
+<param name="Name" value="clipping detection">
+<param name="Name" value="Barra di stato">
+<param name="Local" value="ch02.html#id2699320">
+</OBJECT></LI><LI><OBJECT type="text/sitemap">
+<param name="Name" value="status bar">
+<param name="Name" value="Barra di stato">
+<param name="Local" value="ch02.html#id2699328">
+</OBJECT></LI><LI><OBJECT type="text/sitemap">
+<param name="Name" value="volume meter">
+<param name="Name" value="Barra di stato">
+<param name="Local" value="ch02.html#id2699335">
+</OBJECT></LI><LI><OBJECT type="text/sitemap">
+<param name="Name" value="clock correction">
+<param name="Name" value="Correzione del clock">
+<param name="Local" value="ch03.html#id2750451">
+</OBJECT></LI><LI><OBJECT type="text/sitemap">
+<param name="Name" value="sample rate">
+<param name="Name" value="La frequenza di campionamento ottimale">
+<param name="Local" value="ch03.html#id2750492">
 </OBJECT></LI></UL>
 </BODY></HTML>
 

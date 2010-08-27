@@ -140,8 +140,7 @@ name "introduction"
 L'accordatore NOOT (Never-out-of-tune Instrument Tuner) simula un accordatore
  elettronico.
  Può essere usato per accordare uno strumento musicale (chitarra, pianoforte)
- o qualsiasi cosa richieda il riconoscimento di una frequenza sonora tra
- 20 e 4000 Hz con la precisione di un centesimo di semitono.
+ con la precisione di un centesimo di semitono.
 \end_layout
 
 \begin_layout Standard
@@ -243,15 +242,19 @@ Precisione di mezzo cent (0.005 semitoni)
 \end_layout
 
 \begin_layout Itemize
-Display in tempo reale
-\end_layout
-
-\begin_layout Itemize
 Ottave e note selezionabili
 \end_layout
 
 \begin_layout Itemize
 Trasposizione
+\end_layout
+
+\begin_layout Itemize
+Correzione del clock
+\end_layout
+
+\begin_layout Itemize
+Rilevamento della saturazione (clipping detection)
 \end_layout
 
 \begin_layout Itemize
@@ -272,11 +275,13 @@ Documentazione di base inclusa
 \end_layout
 
 \begin_layout Standard
+
+\series bold
 Sviluppi futuri
 \end_layout
 
 \begin_layout Itemize
-Clock correction
+Nuovi algoritmi di rilevamento della frequenza
 \end_layout
 
 \begin_layout Itemize
@@ -285,10 +290,6 @@ Temperamento completamente personalizzabile
 
 \begin_layout Itemize
 Più sistemi operativi e lingue
-\end_layout
-
-\begin_layout Itemize
-Monitor del volume in ingresso, rilevazione del clipping e/o volume automatico
 \end_layout
 
 \begin_layout Section
@@ -303,7 +304,7 @@ name "requirements"
 \end_layout
 
 \begin_layout Itemize
-Una scheda audio con un ingresso audio configurato
+Una scheda audio con un ingresso audio configurato (microfono o line in)
 \end_layout
 
 \begin_layout Itemize
@@ -323,15 +324,39 @@ name "changelog"
 \end_layout
 
 \begin_layout Standard
-Versione 0.1.1:
+Versione 0.1.4:
 \end_layout
 
 \begin_layout Itemize
-La precisione è data in millesimi e non più in centesimi
+Clipping detection, indicatore del volume
 \end_layout
 
 \begin_layout Itemize
-Cambiamenti minori al display
+Correzione del clock
+\end_layout
+
+\begin_layout Itemize
+Basta blocchi causati dall'uso eccessivo della CPU
+\end_layout
+
+\begin_layout Standard
+Versione 0.1.3:
+\end_layout
+
+\begin_layout Itemize
+Documentazione migliorata (nuovo formato)
+\end_layout
+
+\begin_layout Standard
+Versione 0.1.2.3:
+\end_layout
+
+\begin_layout Itemize
+La precisione è data in millesimi, non più in centesimi
+\end_layout
+
+\begin_layout Itemize
+Miglioramenti vari alla grafica
 \end_layout
 
 \begin_layout Itemize
@@ -339,11 +364,11 @@ PPA per gli utenti Ubuntu
 \end_layout
 
 \begin_layout Standard
-Versione 0.1.0:
+Version 0.1.0:
 \end_layout
 
 \begin_layout Itemize
-Prima versione pubblicata
+Prima versione pubblica
 \end_layout
 
 \begin_layout Section
@@ -426,8 +451,8 @@ target "http://www.portaudio.com"
 \begin_layout Itemize
 \begin_inset CommandInset href
 LatexCommand href
-name "http://www.fftw.org"
-target "FFTW"
+name "FFTW"
+target "http://www.fftw.org"
 
 \end_inset
 
@@ -470,10 +495,18 @@ Start/Stop
 
 \begin_layout Standard
 Se si conosce già la nota da accordare e non c'è quindi necessità di rilevarla,
- si consiglia di impostare le opzioni nota e ottava (
+ si consiglia di impostare le opzioni nota e ottava (v.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "octave"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "note"
 
 \end_inset
 
@@ -503,7 +536,7 @@ main window
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename pictures/screenshot-it.png
+	filename pictures/mainwindow-it.png
 
 \end_inset
 
@@ -851,11 +884,6 @@ Una soglia di 0 dB significa che la rilevazione non si avvierà mai, mentre
  una soglia di 90 dB (-90 in realtà) lascerà passare qualsiasi input.
 \end_layout
 
-\begin_layout Standard
-A threshold of 0 dB means that the detection will never start, while a threshold
- of 90 dB (-90 dB, actually) will allow any input to be processed.
-\end_layout
-
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
@@ -882,8 +910,8 @@ Minore il valore, maggiore la precisione.
 \end_layout
 
 \begin_layout Standard
-Valori più bassi rendono il programma meno reattivo e possono rallentarlo
- fino a farlo bloccare.
+Valori più bassi rendono il programma meno reattivo e aumentano il consumo
+ di risorse della CPU.
 \end_layout
 
 \begin_layout Subsection
@@ -908,7 +936,301 @@ Frame rate
 
 \begin_layout Standard
 Questo numero rappresenta il numero medio di aggiornamenti al seconto.
- Se impostato su un valore troppo alto, il programma potrebbe bloccarsi.
+ Se impostato su un valore troppo alto, il programma potrebbe non soddisfare
+ la velocità richiesta o persino rallentare.
+\end_layout
+
+\begin_layout Subsection
+Barra di stato
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Status-bar"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+clipping detection
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+status bar
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+volume meter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La barra di stato è composta da tre riquadri.
+ Il primo contiene informazioni riguardo lo stato corrente (
+\emph on
+In pausa
+\emph default
+, 
+\emph on
+In ascolto
+\emph default
+, ecc.).
+\end_layout
+
+\begin_layout Standard
+Il secondo riquadro contiene due numeri: la frequenza di campionamento e
+ il fattore di correzione del clock (vedi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Clock-correction"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Il terzo riquadro contiene un indicatore del volume.
+ La linea nera sottile rappresenta la soglia attuale.
+ La nota viene rilevata solo se il volume supera la soglia.
+ L'indicatore diventa rosso quando viene rilevata una possibile distorsione
+ (saturazione o clipping).
+ In tal caso, l'utente dovrebbe abbassare il volume di ingresso, dato che
+ la distorsione altera la misura della frequenza.
+\end_layout
+
+\begin_layout Section
+I menù
+\end_layout
+
+\begin_layout Subsection
+Dispositivi
+\end_layout
+
+\begin_layout Standard
+Questo menù contiene opzioni per selezionare i dispositivi di input e di
+ output.
+\end_layout
+
+\begin_layout Subsection
+Altre opzioni
+\end_layout
+
+\begin_layout Standard
+Attraverso questo menu si possono cambiare la frequenza di camponamento
+ e il fattore di correzione del clock.
+ Si veda 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:Advanced-usage"
+
+\end_inset
+
+ per istruzioni dettagliate.
+\end_layout
+
+\begin_layout Subsubsection
+Cambia frequenza di campionamento
+\end_layout
+
+\begin_layout Standard
+Questa voce di menù apre una finestra con un elenco di alcune possibili
+ frequenze di campionamento per il dispositivo selezionato.
+\end_layout
+
+\begin_layout Subsubsection
+Correzione del clock
+\end_layout
+
+\begin_layout Standard
+Il fattore di correzione del clock è un numero che moltiplica la frequenza
+ rilevata.
+ Impostare questa opzione se la scheda audio ha un clock impreciso.
+ Può essere impostato sia come fattore moltiplicatore, sia in termini di
+ centesimi di semitono (v.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Clock-correction"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Aiuto
+\end_layout
+
+\begin_layout Subsubsection
+Indice
+\end_layout
+
+\begin_layout Standard
+Questa voce di menù apre l'indice di questo manuale.
+\end_layout
+
+\begin_layout Subsubsection
+Aiuto contestuale
+\end_layout
+
+\begin_layout Standard
+Cliccare su questo menù per aprire la documentazione alla pagina relativa
+ al controllo selezionato (vale per i controlli della finestra principale).
+\end_layout
+
+\begin_layout Subsubsection
+Sito Internet del progetto
+\end_layout
+
+\begin_layout Standard
+Questa voce di menù apre il browser predefinito alla pagina principale di
+ NOOT.
+\end_layout
+
+\begin_layout Subsubsection
+Segnala un errore
+\end_layout
+
+\begin_layout Standard
+Cliccare su questo menù per segnalare agli sviluppatori un comportamento
+ anormale o per richiedere una nuova funzionalità.
+ Si aprirà il browser predefinito alla pagina di segnalazione dei bug.
+ Da lì, seguire le istruzioni date.
+\end_layout
+
+\begin_layout Chapter
+Utilizzo avanzato
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:Advanced-usage"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Correzione del clock
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Clock-correction"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+clock correction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Molte schede audio economiche hanno un clock impreciso, che causa un errore
+ sistematico nelle frequenze rilevate e pertanto lo stesso errore sistematico
+ nel riquadro 
+\emph on
+Scostamento
+\emph default
+ (con errori fino a una decina di cent).
+ Il fattore di correzione del clock è un numero che moltiplica la frequenza
+ rilevata in modo da annullare l'errore.
+\end_layout
+
+\begin_layout Standard
+Si può facilmente tarare NOOT per la vostra scheda video usando un diapason
+ (o uno strumento equivalente).
+ Il giusto fattore di correzione in cent è l'opposto dello 
+\emph on
+Scostamento 
+\emph default
+mostrato quando il diapason suona vicino al microfono.
+\end_layout
+
+\begin_layout Section
+La frequenza di campionamento ottimale
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:The-right-sampling"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+sample rate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Allo stato attuale, con l'algoritmo basato sull'autocorrelazione, la frequenza
+ di campionamento migliore è la più alta.
+ Tuttavia, se la nota non viene rilevata correttamente o se l'indicatore
+ trema troppo, si può considerare di abbassarla, tenendo conto che frequenze
+ di campionamento più basse aumentano i tempi di risposta del programma.
+\end_layout
+
+\begin_layout Section
+Accordare note estreme
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Extreme-notes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Le note estreme sono quelle sotto i 100 Hz o sopra i 3000 Hz.
+ Queste frequenze non sono misurate facilmente dal programma.
+ Per permettere al programma di funzionare al meglio con queste note, si
+ dovrebbe per prima cosa selezionare la nota e da accordare nel campo 
+\emph on
+Nota
+\emph default
+ e 
+\emph on
+Ottava
+\emph default
+, per impedire a NOOT di seguire una nota sbagliata.
+ Quindi, si dovrebbe aumentare la frequenza di campionamento e aumentare
+ l'opzione 
+\emph on
+Precisione prevista
+\emph default
+.
+ NOOT infatti non può sempre soddisfare il vincolo di precisione nel caso
+ di note estreme.
 \end_layout
 
 \begin_layout Chapter
@@ -955,6 +1277,137 @@ Ripetutamente, la frequenza è dimezzata (il tempo è raddoppiato) e viene
 \begin_layout Standard
 Lo svantaggio principale di questo approccio è la perdita di precisione
  nei casi in cui gli armonici sono lontani dalla perfezione.
+\end_layout
+
+\begin_layout Chapter
+Risoluzione dei problemi
+\end_layout
+
+\begin_layout Section
+Nessuna nota rilevata
+\end_layout
+
+\begin_layout Standard
+Ossia, i riquadri 
+\emph on
+Nota
+\emph default
+, 
+\emph on
+Frequenza
+\emph default
+ e 
+\emph on
+Scostamento
+\emph default
+ non mostrano nulla o rimangono fermi.
+\end_layout
+
+\begin_layout Itemize
+Il volume potrebbe essere troppo basso o la soglia troppo alta.
+ Si controlli che l'indicatore del volume (in basso a destra nella finestra
+ principale) superi la linea nera sottile che rappresenta la soglia.
+ Controllare il volume di ingresso della scheda audio (del dispositivo seleziona
+to).
+\end_layout
+
+\begin_layout Itemize
+Potrebbe non essere selezionato il dispositivo di ingresso corretto.
+ Se l'indicatore del volume non si sposta, selezionare un altro dispositivo
+ di ingresso nel menù 
+\emph on
+Dispositivi
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+La precisione prevista potrebbe essere troppo restrittiva per la dimensione
+ della finestra selezionata.
+ Selezionare 
+\emph on
+Auto
+\emph default
+ come dimensione della finestra e aumentare il valore dell'opzione 
+\emph on
+Precisione prevista
+\emph default
+.
+\end_layout
+
+\begin_layout Section
+Non viene rilevata la nota corretta
+\end_layout
+
+\begin_layout Itemize
+Facilitare il lavoro del programma specificando quale nota e quale ottava
+ si stanno accordando.
+ (Impostare il valore delle opzioni 
+\emph on
+Nota
+\emph default
+ e 
+\emph on
+Ottava
+\emph default
+.)
+\end_layout
+
+\begin_layout Itemize
+Potrebbe essere necessaria ulteriore precisione: si provi ad aumentare l'opzione
+ 
+\emph on
+Dimensione della finestra
+\emph default
+.
+\end_layout
+
+\begin_layout Section
+L'indicatore oscilla troppo o salta
+\end_layout
+
+\begin_layout Itemize
+Si provi ad impostare le opzioni 
+\emph on
+Nota
+\emph default
+ e 
+\emph on
+Ottava
+\emph default
+.
+ Se l'indicatore non si stabilizza, si provi ad aumentare la dimensione
+ della finestra e/o diminuire il valore della 
+\emph on
+Precisione prevista
+\emph default
+ e/o aumentare la frequenza di camponamento.
+ Se si sta accordando una nota molto alta o bassa (come nel pianoforte)
+ si veda
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Extreme-notes"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Il programma si chiude con un errore o si blocca
+\end_layout
+
+\begin_layout Standard
+Ciò non dovrebbe accadere.
+ Si prega di 
+\begin_inset CommandInset href
+LatexCommand href
+name "segnalare l'errore"
+target "http://code.google.com/p/noot-tuner/issues/entry"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Chapter

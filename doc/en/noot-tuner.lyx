@@ -142,9 +142,8 @@ name "introduction"
 Never-out-of-tune Instrument Tuner
 \noun default
  simulates a full-featured instrument tuner.
- It may be used to tune musical instruments (guitars, pianos) or whatever
- implies the detection of a sound frequency between 20 and 4000 Hz with
- a cent precision.
+ It may be used to tune musical instruments (guitars, pianos) with a cent
+ precision.
 \end_layout
 
 \begin_layout Standard
@@ -240,19 +239,23 @@ It works with almost any instrument
 \end_layout
 
 \begin_layout Itemize
-Half-cent precision (0.005 semitones) 
+Half-cent precision (0.005 semitones)
 \end_layout
 
 \begin_layout Itemize
-Real-time display 
+Octave and/or note selection
 \end_layout
 
 \begin_layout Itemize
-Octave and/or note selection 
+Clock correction
 \end_layout
 
 \begin_layout Itemize
-Transposition 
+Transposition
+\end_layout
+
+\begin_layout Itemize
+Clipping detection
 \end_layout
 
 \begin_layout Itemize
@@ -261,44 +264,34 @@ Selectable temperament
 
 \begin_layout Itemize
 Internationalisation (English and Italian for now, other languages will
- follow) 
+ follow)
 \end_layout
 
 \begin_layout Itemize
 Cross-platform (it can be compiled on virtually any OS; Windows and Ubuntu
- packages available now, other packages available soon) 
+ packages available now, other packages available soon)
 \end_layout
 
 \begin_layout Itemize
-Basic documentation included 
+Basic documentation included
 \end_layout
 
 \begin_layout Standard
 
 \series bold
 Future plans
-\series default
- 
 \end_layout
 
 \begin_layout Itemize
-Clock correction 
+Different detection algorithms
 \end_layout
 
 \begin_layout Itemize
-Ever more accuracy 
+Customisable temperament
 \end_layout
 
 \begin_layout Itemize
-Customisable temperament 
-\end_layout
-
-\begin_layout Itemize
-More ports (OSX, ...) and languages 
-\end_layout
-
-\begin_layout Itemize
-Input volume monitor, clipping detection and/or automatic volume 
+More ports (OSX, ...) and languages
 \end_layout
 
 \begin_layout Section
@@ -333,7 +326,31 @@ name "changelog"
 \end_layout
 
 \begin_layout Standard
-Version 0.1.2.3: 
+Version 0.1.4:
+\end_layout
+
+\begin_layout Itemize
+Volume meter, clipping detection
+\end_layout
+
+\begin_layout Itemize
+Clock correction
+\end_layout
+
+\begin_layout Itemize
+No more hangs due to excessive use of the CPU
+\end_layout
+
+\begin_layout Standard
+Version 0.1.3:
+\end_layout
+
+\begin_layout Itemize
+Improved documentation (new format)
+\end_layout
+
+\begin_layout Standard
+Version 0.1.2.3:
 \end_layout
 
 \begin_layout Itemize
@@ -436,8 +453,8 @@ target "http://www.portaudio.com"
 \begin_layout Itemize
 \begin_inset CommandInset href
 LatexCommand href
-name "http://www.fftw.org"
-target "FFTW"
+name "FFTW"
+target "http://www.fftw.org"
 
 \end_inset
 
@@ -489,6 +506,14 @@ Start/Stop
 \begin_layout Standard
 If you already know the note you are tuning and do not need to discover
  it, you should set the 
+\emph on
+Note
+\emph default
+ and 
+\emph on
+Octave
+\emph default
+ option (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "note"
@@ -502,7 +527,7 @@ reference "octave"
 
 \end_inset
 
- option.
+).
  This will make note detection easier.
 \end_layout
 
@@ -941,7 +966,293 @@ Frame rate
 
 \begin_layout Standard
 This number represents the average number of updates per second.
- If it is set to a too high value, the program might hang.
+ If it is set to a too high value, the program might not fulfill the request
+ or even slow down.
+\end_layout
+
+\begin_layout Subsection
+Status bar
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Status-bar"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+clipping detection
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+status bar
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+volume meter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The status bar il composed of three boxes.
+ The first contains information about the current status (
+\emph on
+Listening
+\emph default
+, 
+\emph on
+Paused
+\emph default
+, etc.).
+\end_layout
+
+\begin_layout Standard
+The second box contains two numbers: sampling frequency and clock correction
+ factor (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Clock-correction"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+The third box contains a volume meter.
+ The thin black line represents the current threshold.
+ Note detection happens only when the input volume is higher than the threshold.
+ The volume meter turns red when possible clipping is detected.
+ In case, the user should lower the volume, as clipping alters the frequency
+ detection.
+\end_layout
+
+\begin_layout Section
+The menus
+\end_layout
+
+\begin_layout Subsection
+Devices
+\end_layout
+
+\begin_layout Standard
+This menu contains options to select the input and output devices.
+\end_layout
+
+\begin_layout Subsection
+Other options
+\end_layout
+
+\begin_layout Standard
+Through this menu you can change the current sampling rate and clock correction.
+ See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:Advanced-usage"
+
+\end_inset
+
+ for detailed instructions.
+\end_layout
+
+\begin_layout Subsubsection
+Change sample rate
+\end_layout
+
+\begin_layout Standard
+This menu item opens a window listing some of the possible sample rate for
+ the device selected.
+\end_layout
+
+\begin_layout Subsubsection
+Clock correction
+\end_layout
+
+\begin_layout Standard
+The clock correction factor is a number that multiplies the detected frequency.
+ Set this option if your sound card has an inaccurate clock.
+ Clock correction can be set as a coefficient or in terms of cents (hundredths
+ of a semitone).
+ (See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Clock-correction"
+
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Subsection
+Help
+\end_layout
+
+\begin_layout Subsubsection
+Table of contents
+\end_layout
+
+\begin_layout Standard
+This menu item opens the table of contents of this book.
+\end_layout
+
+\begin_layout Subsubsection
+Context help
+\end_layout
+
+\begin_layout Standard
+Click on this menu to open the documentation at the page related to the
+ currently selected control.
+\end_layout
+
+\begin_layout Subsubsection
+Project website
+\end_layout
+
+\begin_layout Standard
+This menu opens the default browser on NOOT's website.
+\end_layout
+
+\begin_layout Subsubsection
+Report a bug
+\end_layout
+
+\begin_layout Standard
+Click on this menu if you want to report an abnormal behaviour or to request
+ a new feature.
+ The default browser will open on NOOT's issue tracker.
+ Fill in the form following the instructions given.
+\end_layout
+
+\begin_layout Chapter
+Advanced usage
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:Advanced-usage"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Clock correction
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Clock-correction"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+clock correction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Most cheap sound cards have inaccurate clocks, that lead to a bias in the
+ frequencies detected and thus biased values in the 
+\emph on
+Offset
+\emph default
+ box (with biases up to a few cents).
+ The clock correction factor is a number that multiplies the detected frequency,
+ thus cancelling the bias.
+\end_layout
+
+\begin_layout Standard
+You can easily calibrate NOOT for your sound card by using a tuning fork
+ (or an equivalent instrument).
+ The clock correction factor in cents is the opposite of the 
+\emph on
+Offset
+\emph default
+ value shown when the tuning fork is struck near the microphone.
+\end_layout
+
+\begin_layout Section
+The right sampling rate
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:The-right-sampling"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+sample rate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Currently, with the autocorrelation-based algorithm, the best sampling rate
+ is the highest.
+ However, if the note isn't detected correctly, or if you see glitches,
+ you can consider lowering it, taking into account that lower sampling rates
+ cause longer reaction times.
+\end_layout
+
+\begin_layout Section
+Tuning extremely high or low notes
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Extreme-notes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Extreme notes are those below 100 Hz and above 3000 Hz.
+ These are not easily detected by the program.
+ In order to make the tuner work well with these notes, you should first
+ set the 
+\emph on
+Note 
+\emph default
+and 
+\emph on
+Octave
+\emph default
+ options in the main window, to prevent NOOT from detecting a wrong note.
+ Then, you should raise the sampling rate and raise the 
+\emph on
+Expected precision
+\emph default
+ option.
+ NOOT cannot always satisfy the precision constraint with extreme notes.
 \end_layout
 
 \begin_layout Chapter
@@ -996,6 +1307,138 @@ Repeatedly, the frequency is halved (the time lag is doubled) and the time
 \begin_layout Standard
 The main disadvantage of this approach is that it ceases to be precise in
  cases when the harmonics are far less than perfect.
+\end_layout
+
+\begin_layout Chapter
+Troubleshooting
+\end_layout
+
+\begin_layout Section
+No note is detected
+\end_layout
+
+\begin_layout Standard
+I.e.
+ the 
+\emph on
+Note
+\emph default
+, 
+\emph on
+Frequency
+\emph default
+, and 
+\emph on
+Offset
+\emph default
+ fields do not show anything.
+\end_layout
+
+\begin_layout Itemize
+The volume may be too low or the threshold too high.
+ Look at the volume meter in the lower-right corner and check that the gauge
+ goes past the thin line when a note is produced.
+ Check the input volume of your sound card.
+\end_layout
+
+\begin_layout Itemize
+You may have selected the wrong input device.
+ If the volume meter does not move at all, select another input device in
+ the 
+\emph on
+Devices
+\emph default
+ menu.
+\end_layout
+
+\begin_layout Itemize
+The expected precision could be too high for the window size selected.
+ Select 
+\emph on
+Auto
+\emph default
+ as window size or raise the 
+\emph on
+Expected precision
+\emph default
+ value.
+\end_layout
+
+\begin_layout Section
+The wrong note is detected
+\end_layout
+
+\begin_layout Itemize
+Facilitate the work of the program by telling what note and what octave
+ you are tuning.
+ (Set the 
+\emph on
+Note
+\emph default
+ and 
+\emph on
+Octave
+\emph default
+ options.)
+\end_layout
+
+\begin_layout Itemize
+You may need extra precision: try raising the 
+\emph on
+Window size
+\emph default
+.
+\end_layout
+
+\begin_layout Section
+The indicator glitches
+\end_layout
+
+\begin_layout Itemize
+Try setting the 
+\emph on
+Octave
+\emph default
+ and 
+\emph on
+Note
+\emph default
+ options.
+ If the indicator does not stabilize, try raising the 
+\emph on
+Window size
+\emph default
+ and/or lowering the 
+\emph on
+Expected precision
+\emph default
+ option and/or raising the sampling rate.
+ If you are tuning an extremely high or low note (as in the piano) follow
+ the instructions in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Extreme-notes"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+The program crashes or freezes
+\end_layout
+
+\begin_layout Standard
+This should not happen.
+ Please 
+\begin_inset CommandInset href
+LatexCommand href
+name "file a bug"
+target "http://code.google.com/p/noot-tuner/issues/entry"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Chapter
