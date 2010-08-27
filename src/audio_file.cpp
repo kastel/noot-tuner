@@ -21,6 +21,7 @@
 #include <wx/log.h>
 #include <wx/datstrm.h>
 #include "notedetection.h"
+#include "options.h"
 
 namespace noot {
 
@@ -85,6 +86,11 @@ bool FileBackend::PauseStreaming() {
 bool FileBackend::ResumeStreaming() {
 	//Do nothing
 	return true;
+}
+
+bool FileBackend::IsSampleRateSupported(double) {
+    //Do nothing
+    return true;
 }
 
 } //namespace

@@ -44,6 +44,8 @@ class FileBackend : public AudioBackend
 		virtual bool PauseStreaming();
 		virtual bool ResumeStreaming();
 		virtual bool StopStreaming();
+
+        virtual bool IsSampleRateSupported(double);
 	
 	private:
 		wxString m_sFile;
