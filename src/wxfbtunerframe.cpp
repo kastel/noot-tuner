@@ -276,7 +276,7 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	szAdvancedOptions1->Add( slAdvancedOptions1, 0, wxALL|wxEXPAND, 3 );
 	
 	wxStaticText* stThreshold;
-	stThreshold = new wxStaticText( this, wxID_ANY, _("T&hreshold (dB)"), wxDefaultPosition, wxDefaultSize, 0 );
+	stThreshold = new wxStaticText( this, wxID_ANY, _("T&hreshold (-dB)"), wxDefaultPosition, wxDefaultSize, 0 );
 	stThreshold->Wrap( -1 );
 	szAdvancedOptions1->Add( stThreshold, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	
