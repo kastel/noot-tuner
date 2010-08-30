@@ -5,6 +5,7 @@ AM_SILENT_RULES([yes])
 
 AC_PROG_CXX
 AC_PROG_INSTALL
+AC_PROG_SED
 AC_LIBTOOL_DLOPEN
 AC_PROG_LIBTOOL
 AC_CONFIG_HEADERS([config.h])
@@ -27,15 +28,7 @@ AC_ARG_ENABLE(wxdebug,
 [WXDEBUG=--debug=yes],
 [WXDEBUG=--debug=no])
 
-WXCONFIG=wx-config
-AC_ARG_WITH(wx-config,
-[[  --with-wx-config=FILE     Use the given path to wx-config when determining
-                            wxWidgets configuration; defaults to "wx-config"]],
-[
-    if test "$withval" != "yes" -a "$withval" != ""; then
-        WXCONFIG=$withval
-    fi
-])
+AM_OPTIONS_WXCONFIG
 
 AC_CHECK_HEADER([portaudio.h], ,
 	[AC_MSG_ERROR([Portaudio v19 is required to compile this program])])
@@ -70,30 +63,19 @@ AC_SUBST(HELPEXTENSION)
 AC_SUBST(WINDRES)
 
 
-AC_DEFUN([WXTEST],
-[
-	AC_REQUIRE([AC_PROG_AWK])
-	AC_MSG_CHECKING([wxWidgets version])
-	if wxversion=`$WXCONFIG --version`; then
-		AC_MSG_RESULT([$wxversion])
-	else
-		AC_MSG_RESULT([not found])
-		AC_MSG_ERROR([wxWidgets is required. Try --with-wx-config.])
-	fi])
+wxWin=0
+AM_PATH_WXCONFIG(2.8.8, wxWin=1)
+if test "$wxWin" != 1; then
+    AC_MSG_ERROR([
+            wxWidgets must be installed on your system
+            but wx-config script couldn't be found.
 
-# Call WXTEST func
-WXTEST
-
-# Verify minimus requires
-vers=`echo $wxversion | $AWK 'BEGIN { FS = "."; } { printf "% d", ($1 * 1000 + $2) * 1000 + $3;}'`
-if test -n "$vers" && test "$vers" -ge 2008008; then
-	WX_CPPFLAGS="`$WXCONFIG --cppflags`"
-	WX_CXXFLAGS="`$WXCONFIG --cxxflags | sed -e 's/-fno-exceptions//'`"
-	WX_LIBS="`$WXCONFIG --libs $OPTLIBS`"
-else
-	AC_MSG_ERROR([wxWidgets 2.8.8 or newer is required])
+            Please check that wx-config is in path, the directory
+            where wxWidgets libraries are installed (returned by
+            'wx-config --libs' command) is in LD_LIBRARY_PATH or
+            equivalent variable and wxWidgets version is 2.3.4 or above.
+    ])
 fi
-
 
 CPPFLAGS="$WX_CPPFLAGS $CPPFLAGS"
 CXXFLAGS="$WX_CPPFLAGS $CXXFLAGS"
