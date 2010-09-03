@@ -266,6 +266,10 @@ void TunerFrame::ResetIndicator()
 
 void TunerFrame::OnTimer(wxTimerEvent & event)
 {
+#ifdef DEBUG
+    static int count = 0;
+    printf("TunerFrame::OnTimer %d\n", ++count);
+#endif
 	int note, octave;
 	double freq, offset;
 	
@@ -276,6 +280,9 @@ void TunerFrame::OnTimer(wxTimerEvent & event)
 	
     volumeMeter->SetVolume(buffer.GetMaxDB());
 
+#ifdef DEBUG
+    printf("Detecting note..."); fflush(stdout);
+#endif
     if (DetectNote(&note, &octave, &freq, &offset))
 	{
 		stNote1->SetLabel(wxString::Format(wxT("%s%d"), translatedNotes[note].c_str(),
@@ -287,6 +294,10 @@ void TunerFrame::OnTimer(wxTimerEvent & event)
 	}
 	else
 		ResetIndicator();
+
+#ifdef DEBUG
+    printf(" done\n");
+#endif
 }
 
 void TunerFrame::OnTransposeKillFocus(wxFocusEvent & event)

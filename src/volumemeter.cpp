@@ -38,15 +38,15 @@ void VolumeMeter::OnPaint(wxPaintEvent& event) {
     int width, height;
     GetClientSize(&width, &height);
 
-    wxBufferedPaintDC dc(this);
+    wxPaintDC dc(this);
     if (!dc.IsOk()) {
-        wxLogDebug("VolumeMeter::OnPaint(): cannot create wxBufferedPaintDC");
+        printf("VolumeMeter::OnPaint(): cannot create wxPaintDC\n");
         return; //fail silently
     }
 
     //Initialise with background colour
-    dc.SetBackground(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWFRAME));
-    dc.Clear();
+    //dc.SetBackground(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWFRAME));
+    //dc.Clear();
 
     //Paint a rectangle indicating the volume
     wxColour col;
@@ -58,6 +58,8 @@ void VolumeMeter::OnPaint(wxPaintEvent& event) {
     dc.SetBrush(wxBrush(col));
     dc.SetPen(*wxTRANSPARENT_PEN);
     dc.DrawRectangle(0, 0, wxCoord((m_volume-m_min)/(m_max-m_min)*width), height);
+    dc.SetBrush(*wxWHITE_BRUSH);
+    dc.DrawRectangle(wxCoord((m_volume-m_min)/(m_max-m_min)*width)+1, 0, width, 0);
 
     //Draw a line to show the threshold
     //dc.SetBrush(*wxTRANSPARENT_BRUSH)
@@ -67,7 +69,7 @@ void VolumeMeter::OnPaint(wxPaintEvent& event) {
         dc.DrawLine(wxCoord(pos), 0, wxCoord(pos), height);
     }
 
-    //event.Skip(true);
+    event.Skip(false);
 }
 
 VolumeMeter::~VolumeMeter() { }
