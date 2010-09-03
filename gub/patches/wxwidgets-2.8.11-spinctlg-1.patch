@@ -1,0 +1,14 @@
+--- wxWidgets-2.8.11/src/generic/spinctlg.cpp~	2010-08-14 23:07:37.643737340 +0200
++++ wxWidgets-2.8.11/src/generic/spinctlg.cpp	2010-08-14 23:32:03.195737321 +0200
+@@ -230,8 +230,8 @@
+     wxSize sizeBtn = m_btn->GetSize();
+ 
+     wxCoord wText = width - sizeBtn.x;
+-    m_text->SetSize(x, y, wText, height);
+-    m_btn->SetSize(x + wText + MARGIN, y, wxDefaultCoord, height);
++    m_text->SetSize(x, y - height, wText, height);
++    m_btn->SetSize(x + wText + MARGIN, y - height, wxDefaultCoord, height);
+ }
+ 
+ // ----------------------------------------------------------------------------
+

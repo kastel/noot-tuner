@@ -1,0 +1,17 @@
+src/audio_file.cpp
+src/notedetection.cpp
+src/wxfbtunerframe.h
+src/wxfbtunerframe.cpp
+src/deviceselector.cpp
+src/tunerframe.h
+src/options.cpp
+src/audioio.cpp
+src/options.h
+src/tunerframe.cpp
+src/noot-tuner.cpp
+src/audioio.h
+src/audio_file.h
+src/audio_portaudio.cpp
+src/audio_portaudio.h
+src/notedetection.h
+src/noot-tuner.h

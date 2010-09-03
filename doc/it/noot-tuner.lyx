@@ -1,0 +1,3066 @@
+#LyX 1.6.6.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass docbook-book
+\use_default_options false
+\language italian
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<bookinfo>
+\end_layout
+
+\begin_layout Plain Layout
+
+ <title>Accordatore NOOT</title>
+\end_layout
+
+\begin_layout Plain Layout
+
+ <author>
+\end_layout
+
+\begin_layout Plain Layout
+
+  <firstname>Davide</firstname>
+\end_layout
+
+\begin_layout Plain Layout
+
+  <surname>Castellone</surname>
+\end_layout
+
+\begin_layout Plain Layout
+
+  <email>dc.kastel@gmail.com</email>
+\end_layout
+
+\begin_layout Plain Layout
+
+ </author>
+\end_layout
+
+\begin_layout Plain Layout
+
+<copyright>
+\end_layout
+
+\begin_layout Plain Layout
+
+ <year>2009-2010</year>
+\end_layout
+
+\begin_layout Plain Layout
+
+ <holder>Davide Castellone</holder>
+\end_layout
+
+\begin_layout Plain Layout
+
+</copyright>
+\end_layout
+
+\begin_layout Plain Layout
+
+<date>Agosto 2010</date>
+\end_layout
+
+\begin_layout Plain Layout
+
+</bookinfo>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduzione
+\begin_inset CommandInset label
+LatexCommand label
+name "introduction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+L'accordatore NOOT (Never-out-of-tune Instrument Tuner) simula un accordatore
+ elettronico.
+ Può essere usato per accordare uno strumento musicale (chitarra, pianoforte)
+ con la precisione di un centesimo di semitono.
+\end_layout
+
+\begin_layout Standard
+© 2010 Davide Castellone
+\end_layout
+
+\begin_layout Standard
+NOOT è distribuito sotto la GNU General Public License version 3 (vedi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "license-gplv3"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+Sito web: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://code.google.com/p/noot-tuner/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In caso di comportamento imprevisto del programma, o nel caso vogliate dare
+ un suggerimento o richiedere una funzionalità aggiuntiva, si prega di visitare
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "la pagina dei bug"
+target "http://code.google.com/p/noot-tuner/issues/entry"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+L'autore può essere contattato attraverso la mailing list di NOOT: 
+\begin_inset CommandInset href
+LatexCommand href
+name "noot-tuner-discuss@googlegroups.com"
+target "mailto:noot-tuner-discuss@googlegroups.com"
+type "mailto:"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Logo and icon are © 2010 Carmen Buonfiglio, licensed under the 
+\begin_inset CommandInset href
+LatexCommand href
+name "Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License"
+target "http://creativecommons.org/licenses/by-nc-nd/3.0/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Caratteristiche
+\begin_inset CommandInset label
+LatexCommand label
+name "features"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Facilità d'uso (le impostazioni predefinite funzionano nella maggior parte
+ dei casi)
+\end_layout
+
+\begin_layout Itemize
+Funziona con qualsiasi strumento
+\end_layout
+
+\begin_layout Itemize
+Precisione di mezzo cent (0.005 semitoni)
+\end_layout
+
+\begin_layout Itemize
+Ottave e note selezionabili
+\end_layout
+
+\begin_layout Itemize
+Trasposizione
+\end_layout
+
+\begin_layout Itemize
+Correzione del clock
+\end_layout
+
+\begin_layout Itemize
+Rilevamento della saturazione (clipping detection)
+\end_layout
+
+\begin_layout Itemize
+Temperamento selezionabile
+\end_layout
+
+\begin_layout Itemize
+Internazionalizzazione
+\end_layout
+
+\begin_layout Itemize
+Cross-platform (può essere compilato praticamente in qualsiasi sistema operativo
+) 
+\end_layout
+
+\begin_layout Itemize
+Documentazione di base inclusa
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Sviluppi futuri
+\end_layout
+
+\begin_layout Itemize
+Nuovi algoritmi di rilevamento della frequenza
+\end_layout
+
+\begin_layout Itemize
+Temperamento completamente personalizzabile
+\end_layout
+
+\begin_layout Itemize
+Più sistemi operativi e lingue
+\end_layout
+
+\begin_layout Section
+Requisiti minimi
+\begin_inset CommandInset label
+LatexCommand label
+name "requirements"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Una scheda audio con un ingresso audio configurato (microfono o line in)
+\end_layout
+
+\begin_layout Itemize
+Spazio su disco variabile (circa 1 MB per Ubuntu, 10 MB per Windows, 40
+ MB per i pacchetti universali)
+\end_layout
+
+\begin_layout Section
+Registro dei cambiamenti
+\begin_inset CommandInset label
+LatexCommand label
+name "changelog"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Versione 0.1.4:
+\end_layout
+
+\begin_layout Itemize
+Clipping detection, indicatore del volume
+\end_layout
+
+\begin_layout Itemize
+Correzione del clock
+\end_layout
+
+\begin_layout Itemize
+Basta blocchi causati dall'uso eccessivo della CPU
+\end_layout
+
+\begin_layout Standard
+Versione 0.1.3:
+\end_layout
+
+\begin_layout Itemize
+Documentazione migliorata (nuovo formato)
+\end_layout
+
+\begin_layout Standard
+Versione 0.1.2.3:
+\end_layout
+
+\begin_layout Itemize
+La precisione è data in millesimi, non più in centesimi
+\end_layout
+
+\begin_layout Itemize
+Miglioramenti vari alla grafica
+\end_layout
+
+\begin_layout Itemize
+PPA per gli utenti Ubuntu
+\end_layout
+
+\begin_layout Standard
+Version 0.1.0:
+\end_layout
+
+\begin_layout Itemize
+Prima versione pubblica
+\end_layout
+
+\begin_layout Section
+Riconoscimenti
+\begin_inset CommandInset label
+LatexCommand label
+name "credits"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Codice e traduzione italiana © 2010 Davide Castellone
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+NOOT Instrument Tuner
+\noun default
+ è distribuito sotto la GNU General Public License (vedi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "license-gplv3"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Logo and icon are © 2010 Carmen Buonfiglio, licensed under the 
+\begin_inset CommandInset href
+LatexCommand href
+name "Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License"
+target "http://creativecommons.org/licenses/by-nc-nd/3.0/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si ringraziano inoltre gli autori delle librerie utilizzate:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "wxWidgets"
+target "http://wxwidgets.org"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Portaudio"
+target "http://www.portaudio.com"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "FFTW"
+target "http://www.fftw.org"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Le librerie sono redistribuite secondo le rispettive licenze.
+\end_layout
+
+\begin_layout Chapter
+Come si usa
+\begin_inset CommandInset label
+LatexCommand label
+name "using"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Prima di iniziare, bisogna configurare il dispositivo di ingresso.
+ Solitamente basta selezionare il dispositivo di ingresso nel mixer di sistema
+ e regolare il volume.
+\end_layout
+
+\begin_layout Standard
+Dopodiché, si può avviare NOOT.
+ Normalmente non è necessario cambiare le impostazioni.
+\end_layout
+
+\begin_layout Standard
+Cliccare sul pulsante 
+\family typewriter
+Start/Stop
+\family default
+ per avviare l'accordatore.
+\end_layout
+
+\begin_layout Standard
+Se si conosce già la nota da accordare e non c'è quindi necessità di rilevarla,
+ si consiglia di impostare le opzioni nota e ottava (v.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "octave"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "note"
+
+\end_inset
+
+).
+ Ciò renderà la misura più semplice per il programma.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "mainwindow"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+main window
+\end_layout
+
+\end_inset
+
+ La finestra principale
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename pictures/mainwindow-it.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Di seguito, la descrizione di tutti i controlli della finestra principale.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "startstop"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+start/stop
+\end_layout
+
+\end_inset
+
+Pulsante Start/Stop
+\end_layout
+
+\begin_layout Standard
+Questo pulsante avvia o ferma la rilevazione.
+ Se il dispositivo di ingresso è richiesto da un'altra applicazione, si
+ può momentaneamente fermare NOOT e riavviarlo successivamente, senza chiudere
+ la sua finestra.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "detectednote"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+note
+\end_layout
+
+\end_inset
+
+Riquadro "nota rilevata"
+\end_layout
+
+\begin_layout Standard
+Questo riquadro si suddivide in due parti.
+ L'indicatore di intonazione mostra quanto la frequenza rilevata si allontani
+ dalla nota prevista.
+ Se la nota è crescente, l'indicatore è blu, se è calante l'indicatore è
+ rosso; se è molto vicina a quella corretta, l'indicatore è verde.
+ Quando la nota è perfettamente intonata, l'indicatore dovrebbe trovarsi
+ sotto la linea nera.
+\end_layout
+
+\begin_layout Standard
+La parte inferiore del riquadro mostra le seguenti informazioni:
+\end_layout
+
+\begin_layout Description
+Nota 
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+note
+\end_layout
+
+\end_inset
+
+La nota rilevata.
+ Il suo valore cambia se viene selezionata una nota o un'ottava nel pannello
+ di controllo sottostante.
+ Se entrambe sono impostati su 
+\family typewriter
+Auto
+\family default
+, la nota mostrata sarà quella rilevata dal programma.
+\end_layout
+
+\begin_layout Description
+Scostamento 
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+offset
+\end_layout
+
+\end_inset
+
+Lo scostamento dalla frequenza prevista, in cent (1 cent = 0.01 semitoni).
+\end_layout
+
+\begin_layout Description
+Frequenza 
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+frequency
+\end_layout
+
+\end_inset
+
+La frequenza rilevata in Hz.
+ Questa informazione è di poco uso.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "octave"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+octave selector
+\end_layout
+
+\end_inset
+
+Ottava
+\end_layout
+
+\begin_layout Standard
+Selezionare l'ottava giusta spesso aumenta la precisione della misura.
+ Quando l'ottava è impostata su 
+\family typewriter
+Auto
+\family default
+, il programma cerca di indovinarla, portando spesso a misure meno precise.
+\end_layout
+
+\begin_layout Standard
+Con lo standard adottato, il Do centrale si trova nell'ottava 3.
+\end_layout
+
+\begin_layout Standard
+Talvolta l'ottava precisa non è la migliore, in quanto ogni strumento produce
+ più di un'armonica.
+ Se la rilevazione non è abbastanza precisa (cioè, se l'indicatore oscilla
+ troppo) si può selezionare l'ottava immediatamente superiore o inferiore
+ a quella originale, senza rischi.
+ Si ricorda che se viene impostata un'ottava nel pannello di controllo,
+ l'ottava rilevata potrebbe non corrispondere a quella della nota.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "note"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+note selector
+\end_layout
+
+\end_inset
+
+Nota
+\end_layout
+
+\begin_layout Standard
+Come per l'ottava, specificare la nota spesso migliora la precisione, ma
+ spesso non è necessario.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "listen"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+listen
+\end_layout
+
+\end_inset
+
+Pulsante "ascolta"
+\end_layout
+
+\begin_layout Standard
+Cliccare su questo pulsante per ascoltare la nota selezionata.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "temperament"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+temperament
+\end_layout
+
+\end_inset
+
+Selezione del temperamento
+\end_layout
+
+\begin_layout Standard
+Con NOOT, si può scegliere tra una varietà di temperamenti.
+ La descrizione dei temperamenti elencati non è argomento di questo manuale.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "transpose"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+transpose
+\end_layout
+
+\end_inset
+
+Trasponi
+\end_layout
+
+\begin_layout Standard
+Usare questo controllo per trasporre l'input di un certo numero di semitoni.
+ Può essere un numero decimale.
+ La frequenza mostrata non sarà alterata.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "windowsize"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+FFT
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+window size
+\end_layout
+
+\end_inset
+
+Dimensione finestra
+\end_layout
+
+\begin_layout Standard
+Questa opzione influenza l'algoritmo di rilevazione della frequenza.
+ Rappresenta il numero di campioni su cui vengono computate la FFT e l'autocorre
+lazione.
+\end_layout
+
+\begin_layout Standard
+Dovrebbe essere impostato su un valore ragionevole.
+ Se troppo basso, la precisione desiderata potrebbe non essere raggiunta.
+ Se troppo alto, rende poco reattivo il programma e potrebbe sovraccaricare
+ il computer.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "threshold"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+noise
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+threshold
+\end_layout
+
+\end_inset
+
+Soglia
+\end_layout
+
+\begin_layout Standard
+Questa opzione serve ad avviare la rilevazione solo quando il livello dell'input
+ è abbastanza alto, così da evitare interferenze dovute al rumore di sottofondo.
+\end_layout
+
+\begin_layout Standard
+Una soglia di 0 dB significa che la rilevazione non si avvierà mai, mentre
+ una soglia di 90 dB (-90 in realtà) lascerà passare qualsiasi input.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "expectedprecision"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+expected precision
+\end_layout
+
+\end_inset
+
+Precisione prevista
+\end_layout
+
+\begin_layout Standard
+Minore il valore, maggiore la precisione.
+ Rappresenta l'errore teorico in millesimi di semitono sulla frequenza misurata.
+\end_layout
+
+\begin_layout Standard
+Valori più bassi rendono il programma meno reattivo e aumentano il consumo
+ di risorse della CPU.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "framerate"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+frame rate
+\end_layout
+
+\end_inset
+
+Frame rate
+\end_layout
+
+\begin_layout Standard
+Questo numero rappresenta il numero medio di aggiornamenti al seconto.
+ Se impostato su un valore troppo alto, il programma potrebbe non soddisfare
+ la velocità richiesta o persino rallentare.
+\end_layout
+
+\begin_layout Subsection
+Barra di stato
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Status-bar"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+clipping detection
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+status bar
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+volume meter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La barra di stato è composta da tre riquadri.
+ Il primo contiene informazioni riguardo lo stato corrente (
+\emph on
+In pausa
+\emph default
+, 
+\emph on
+In ascolto
+\emph default
+, ecc.).
+\end_layout
+
+\begin_layout Standard
+Il secondo riquadro contiene due numeri: la frequenza di campionamento e
+ il fattore di correzione del clock (vedi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Clock-correction"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Il terzo riquadro contiene un indicatore del volume.
+ La linea nera sottile rappresenta la soglia attuale.
+ La nota viene rilevata solo se il volume supera la soglia.
+ L'indicatore diventa rosso quando viene rilevata una possibile distorsione
+ (saturazione o clipping).
+ In tal caso, l'utente dovrebbe abbassare il volume di ingresso, dato che
+ la distorsione altera la misura della frequenza.
+\end_layout
+
+\begin_layout Section
+I menù
+\end_layout
+
+\begin_layout Subsection
+Dispositivi
+\end_layout
+
+\begin_layout Standard
+Questo menù contiene opzioni per selezionare i dispositivi di input e di
+ output.
+\end_layout
+
+\begin_layout Subsection
+Altre opzioni
+\end_layout
+
+\begin_layout Standard
+Attraverso questo menu si possono cambiare la frequenza di camponamento
+ e il fattore di correzione del clock.
+ Si veda 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:Advanced-usage"
+
+\end_inset
+
+ per istruzioni dettagliate.
+\end_layout
+
+\begin_layout Subsubsection
+Cambia frequenza di campionamento
+\end_layout
+
+\begin_layout Standard
+Questa voce di menù apre una finestra con un elenco di alcune possibili
+ frequenze di campionamento per il dispositivo selezionato.
+\end_layout
+
+\begin_layout Subsubsection
+Correzione del clock
+\end_layout
+
+\begin_layout Standard
+Il fattore di correzione del clock è un numero che moltiplica la frequenza
+ rilevata.
+ Impostare questa opzione se la scheda audio ha un clock impreciso.
+ Può essere impostato sia come fattore moltiplicatore, sia in termini di
+ centesimi di semitono (v.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Clock-correction"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Aiuto
+\end_layout
+
+\begin_layout Subsubsection
+Indice
+\end_layout
+
+\begin_layout Standard
+Questa voce di menù apre l'indice di questo manuale.
+\end_layout
+
+\begin_layout Subsubsection
+Aiuto contestuale
+\end_layout
+
+\begin_layout Standard
+Cliccare su questo menù per aprire la documentazione alla pagina relativa
+ al controllo selezionato (vale per i controlli della finestra principale).
+\end_layout
+
+\begin_layout Subsubsection
+Sito Internet del progetto
+\end_layout
+
+\begin_layout Standard
+Questa voce di menù apre il browser predefinito alla pagina principale di
+ NOOT.
+\end_layout
+
+\begin_layout Subsubsection
+Segnala un errore
+\end_layout
+
+\begin_layout Standard
+Cliccare su questo menù per segnalare agli sviluppatori un comportamento
+ anormale o per richiedere una nuova funzionalità.
+ Si aprirà il browser predefinito alla pagina di segnalazione dei bug.
+ Da lì, seguire le istruzioni date.
+\end_layout
+
+\begin_layout Chapter
+Utilizzo avanzato
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:Advanced-usage"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Correzione del clock
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Clock-correction"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+clock correction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Molte schede audio economiche hanno un clock impreciso, che causa un errore
+ sistematico nelle frequenze rilevate e pertanto lo stesso errore sistematico
+ nel riquadro 
+\emph on
+Scostamento
+\emph default
+ (con errori fino a una decina di cent).
+ Il fattore di correzione del clock è un numero che moltiplica la frequenza
+ rilevata in modo da annullare l'errore.
+\end_layout
+
+\begin_layout Standard
+Si può facilmente tarare NOOT per la vostra scheda video usando un diapason
+ (o uno strumento equivalente).
+ Il giusto fattore di correzione in cent è l'opposto dello 
+\emph on
+Scostamento 
+\emph default
+mostrato quando il diapason suona vicino al microfono.
+\end_layout
+
+\begin_layout Section
+La frequenza di campionamento ottimale
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:The-right-sampling"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+sample rate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Allo stato attuale, con l'algoritmo basato sull'autocorrelazione, la frequenza
+ di campionamento migliore è la più alta.
+ Tuttavia, se la nota non viene rilevata correttamente o se l'indicatore
+ trema troppo, si può considerare di abbassarla, tenendo conto che frequenze
+ di campionamento più basse aumentano i tempi di risposta del programma.
+\end_layout
+
+\begin_layout Section
+Accordare note estreme
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Extreme-notes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Le note estreme sono quelle sotto i 100 Hz o sopra i 3000 Hz.
+ Queste frequenze non sono misurate facilmente dal programma.
+ Per permettere al programma di funzionare al meglio con queste note, si
+ dovrebbe per prima cosa selezionare la nota e da accordare nel campo 
+\emph on
+Nota
+\emph default
+ e 
+\emph on
+Ottava
+\emph default
+, per impedire a NOOT di seguire una nota sbagliata.
+ Quindi, si dovrebbe aumentare la frequenza di campionamento e aumentare
+ l'opzione 
+\emph on
+Precisione prevista
+\emph default
+.
+ NOOT infatti non può sempre soddisfare il vincolo di precisione nel caso
+ di note estreme.
+\end_layout
+
+\begin_layout Chapter
+Come funziona
+\begin_inset CommandInset label
+LatexCommand label
+name "howitworks"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+L'accordatore NOOT usa un misto di FFT e autocorrelazione lineare per raggiunger
+e la precisione di un cent con finestre di larghezza relativamente ridotta.
+\end_layout
+
+\begin_layout Standard
+Ogni volta che il display è aggiornato, viene eseguito il seguente algoritmo:
+\end_layout
+
+\begin_layout Itemize
+La FFT viene usata per trovare la frequenza con la massima densità spettrale
+ entro la nota e l'ottava selezionate.
+\end_layout
+
+\begin_layout Itemize
+Da quella frequenza, viene ricavato un intervallo di frequenze possibili.
+\end_layout
+
+\begin_layout Itemize
+Si calcola l'autocorrelazione ai tempi corrispondenti a quell'intervallo
+ di frequenze; viene tenuto il tempo che corrisponde all'autocorrelazione
+ più alta.
+\end_layout
+
+\begin_layout Itemize
+Ripetutamente, la frequenza è dimezzata (il tempo è raddoppiato) e viene
+ tenuto il tempo corrispondente all'autocorrelazione più alta tra i valori
+ vicini.
+\end_layout
+
+\begin_layout Standard
+Lo svantaggio principale di questo approccio è la perdita di precisione
+ nei casi in cui gli armonici sono lontani dalla perfezione.
+\end_layout
+
+\begin_layout Chapter
+Risoluzione dei problemi
+\end_layout
+
+\begin_layout Section
+Nessuna nota rilevata
+\end_layout
+
+\begin_layout Standard
+Ossia, i riquadri 
+\emph on
+Nota
+\emph default
+, 
+\emph on
+Frequenza
+\emph default
+ e 
+\emph on
+Scostamento
+\emph default
+ non mostrano nulla o rimangono fermi.
+\end_layout
+
+\begin_layout Itemize
+Il volume potrebbe essere troppo basso o la soglia troppo alta.
+ Si controlli che l'indicatore del volume (in basso a destra nella finestra
+ principale) superi la linea nera sottile che rappresenta la soglia.
+ Controllare il volume di ingresso della scheda audio (del dispositivo seleziona
+to).
+\end_layout
+
+\begin_layout Itemize
+Potrebbe non essere selezionato il dispositivo di ingresso corretto.
+ Se l'indicatore del volume non si sposta, selezionare un altro dispositivo
+ di ingresso nel menù 
+\emph on
+Dispositivi
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+La precisione prevista potrebbe essere troppo restrittiva per la dimensione
+ della finestra selezionata.
+ Selezionare 
+\emph on
+Auto
+\emph default
+ come dimensione della finestra e aumentare il valore dell'opzione 
+\emph on
+Precisione prevista
+\emph default
+.
+\end_layout
+
+\begin_layout Section
+Non viene rilevata la nota corretta
+\end_layout
+
+\begin_layout Itemize
+Facilitare il lavoro del programma specificando quale nota e quale ottava
+ si stanno accordando.
+ (Impostare il valore delle opzioni 
+\emph on
+Nota
+\emph default
+ e 
+\emph on
+Ottava
+\emph default
+.)
+\end_layout
+
+\begin_layout Itemize
+Potrebbe essere necessaria ulteriore precisione: si provi ad aumentare l'opzione
+ 
+\emph on
+Dimensione della finestra
+\emph default
+.
+\end_layout
+
+\begin_layout Section
+L'indicatore oscilla troppo o salta
+\end_layout
+
+\begin_layout Itemize
+Si provi ad impostare le opzioni 
+\emph on
+Nota
+\emph default
+ e 
+\emph on
+Ottava
+\emph default
+.
+ Se l'indicatore non si stabilizza, si provi ad aumentare la dimensione
+ della finestra e/o diminuire il valore della 
+\emph on
+Precisione prevista
+\emph default
+ e/o aumentare la frequenza di camponamento.
+ Se si sta accordando una nota molto alta o bassa (come nel pianoforte)
+ si veda
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Extreme-notes"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Il programma si chiude con un errore o si blocca
+\end_layout
+
+\begin_layout Standard
+Ciò non dovrebbe accadere.
+ Si prega di 
+\begin_inset CommandInset href
+LatexCommand href
+name "segnalare l'errore"
+target "http://code.google.com/p/noot-tuner/issues/entry"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Chapter
+\start_of_appendix
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "license-gplv3"
+
+\end_inset
+
+GNU GENERAL PUBLIC LICENSE
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Version 3, 29 June 2007
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Copyright ©
+\begin_inset space \space{}
+\end_inset
+
+2007 Free Software Foundation, Inc.
+ 
+\family typewriter
+http://fsf.org/
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Everyone is permitted to copy and distribute verbatim copies of this license
+ document, but changing it is not allowed.
+\end_layout
+
+\begin_layout Section
+
+\lang english
+Preamble
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "license-preamble"
+
+\end_inset
+
+ The GNU General Public License is a free, copyleft license for software
+ and other kinds of works.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The licenses for most software and other practical works are designed to
+ take away your freedom to share and change the works.
+ By contrast, the GNU General Public License is intended to guarantee your
+ freedom to share and change all versions of a program--to make sure it
+ remains free software for all its users.
+ We, the Free Software Foundation, use the GNU General Public License for
+ most of our software; it applies also to any other work released this way
+ by its authors.
+ You can apply it to your programs, too.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+When we speak of free software, we are referring to freedom, not price.
+ Our General Public Licenses are designed to make sure that you have the
+ freedom to distribute copies of free software (and charge for them if you
+ wish), that you receive source code or can get it if you want it, that
+ you can change the software or use pieces of it in new free programs, and
+ that you know you can do these things.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To protect your rights, we need to prevent others from denying you these
+ rights or asking you to surrender the rights.
+ Therefore, you have certain responsibilities if you distribute copies of
+ the software, or if you modify it: responsibilities to respect the freedom
+ of others.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+For example, if you distribute copies of such a program, whether gratis
+ or for a fee, you must pass on to the recipients the same freedoms that
+ you received.
+ You must make sure that they, too, receive or can get the source code.
+ And you must show them these terms so they know their rights.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Developers that use the GNU GPL protect your rights with two steps: (1)
+ assert copyright on the software, and (2) offer you this License giving
+ you legal permission to copy, distribute and/or modify it.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+For the developers' and authors' protection, the GPL clearly explains that
+ there is no warranty for this free software.
+ For both users' and authors' sake, the GPL requires that modified versions
+ be marked as changed, so that their problems will not be attributed erroneously
+ to authors of previous versions.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Some devices are designed to deny users access to install or run modified
+ versions of the software inside them, although the manufacturer can do
+ so.
+ This is fundamentally incompatible with the aim of protecting users' freedom
+ to change the software.
+ The systematic pattern of such abuse occurs in the area of products for
+ individuals to use, which is precisely where it is most unacceptable.
+ Therefore, we have designed this version of the GPL to prohibit the practice
+ for those products.
+ If such problems arise substantially in other domains, we stand ready to
+ extend this provision to those domains in future versions of the GPL, as
+ needed to protect the freedom of users.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Finally, every program is threatened constantly by software patents.
+ States should not allow patents to restrict development and use of software
+ on general-purpose computers, but in those that do, we wish to avoid the
+ special danger that patents applied to a free program could make it effectively
+ proprietary.
+ To prevent this, the GPL assures that patents cannot be used to render
+ the program non-free.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The precise terms and conditions for copying, distribution and modification
+ follow.
+\end_layout
+
+\begin_layout Section
+
+\lang english
+Terms and Conditions
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "license-terms"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtocounter{enumi}{-1}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Definitions.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+This License
+\begin_inset Quotes erd
+\end_inset
+
+ refers to version 3 of the GNU General Public License.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Copyright
+\begin_inset Quotes erd
+\end_inset
+
+ also means copyright-like laws that apply to other kinds of works, such
+ as semiconductor masks.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+The Program
+\begin_inset Quotes erd
+\end_inset
+
+ refers to any copyrightable work licensed under this License.
+ Each licensee is addressed as 
+\begin_inset Quotes eld
+\end_inset
+
+you
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Licensees
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+recipients
+\begin_inset Quotes erd
+\end_inset
+
+ may be individuals or organizations.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To 
+\begin_inset Quotes eld
+\end_inset
+
+modify
+\begin_inset Quotes erd
+\end_inset
+
+ a work means to copy from or adapt all or part of the work in a fashion
+ requiring copyright permission, other than the making of an exact copy.
+ The resulting work is called a 
+\begin_inset Quotes eld
+\end_inset
+
+modified version
+\begin_inset Quotes erd
+\end_inset
+
+ of the earlier work or a work 
+\begin_inset Quotes eld
+\end_inset
+
+based on
+\begin_inset Quotes erd
+\end_inset
+
+ the earlier work.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+A 
+\begin_inset Quotes eld
+\end_inset
+
+covered work
+\begin_inset Quotes erd
+\end_inset
+
+ means either the unmodified Program or a work based on the Program.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To 
+\begin_inset Quotes eld
+\end_inset
+
+propagate
+\begin_inset Quotes erd
+\end_inset
+
+ a work means to do anything with it that, without permission, would make
+ you directly or secondarily liable for infringement under applicable copyright
+ law, except executing it on a computer or modifying a private copy.
+ Propagation includes copying, distribution (with or without modification),
+ making available to the public, and in some countries other activities
+ as well.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To 
+\begin_inset Quotes eld
+\end_inset
+
+convey
+\begin_inset Quotes erd
+\end_inset
+
+ a work means any kind of propagation that enables other parties to make
+ or receive copies.
+ Mere interaction with a user through a computer network, with no transfer
+ of a copy, is not conveying.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+An interactive user interface displays 
+\begin_inset Quotes eld
+\end_inset
+
+Appropriate Legal Notices
+\begin_inset Quotes erd
+\end_inset
+
+ to the extent that it includes a convenient and prominently visible feature
+ that (1) displays an appropriate copyright notice, and (2) tells the user
+ that there is no warranty for the work (except to the extent that warranties
+ are provided), that licensees may convey the work under this License, and
+ how to view a copy of this License.
+ If the interface presents a list of user commands or options, such as a
+ menu, a prominent item in the list meets this criterion.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Source Code.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+The 
+\begin_inset Quotes eld
+\end_inset
+
+source code
+\begin_inset Quotes erd
+\end_inset
+
+ for a work means the preferred form of the work for making modifications
+ to it.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Object code
+\begin_inset Quotes erd
+\end_inset
+
+ means any non-source form of a work.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+A 
+\begin_inset Quotes eld
+\end_inset
+
+Standard Interface
+\begin_inset Quotes erd
+\end_inset
+
+ means an interface that either is an official standard defined by a recognized
+ standards body, or, in the case of interfaces specified for a particular
+ programming language, one that is widely used among developers working
+ in that language.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\begin_inset Quotes eld
+\end_inset
+
+System Libraries
+\begin_inset Quotes erd
+\end_inset
+
+ of an executable work include anything, other than the work as a whole,
+ that (a) is included in the normal form of packaging a Major Component,
+ but which is not part of that Major Component, and (b) serves only to enable
+ use of the work with that Major Component, or to implement a Standard Interface
+ for which an implementation is available to the public in source code form.
+ A 
+\begin_inset Quotes eld
+\end_inset
+
+Major Component
+\begin_inset Quotes erd
+\end_inset
+
+, in this context, means a major essential component (kernel, window system,
+ and so on) of the specific operating system (if any) on which the executable
+ work runs, or a compiler used to produce the work, or an object code interprete
+r used to run it.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Corresponding Source
+\begin_inset Quotes erd
+\end_inset
+
+ for a work in object code form means all the source code needed to generate,
+ install, and (for an executable work) run the object code and to modify
+ the work, including scripts to control those activities.
+ However, it does not include the work's System Libraries, or general-purpose
+ tools or generally available free programs which are used unmodified in
+ performing those activities but which are not part of the work.
+ For example, Corresponding Source includes interface definition files associate
+d with source files for the work, and the source code for shared libraries
+ and dynamically linked subprograms that the work is specifically designed
+ to require, such as by intimate data communication or control flow between
+ those subprograms and other parts of the work.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The Corresponding Source need not include anything that users can regenerate
+ automatically from other parts of the Corresponding Source.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The Corresponding Source for a work in source code form is that same work.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Basic Permissions.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+All rights granted under this License are granted for the term of copyright
+ on the Program, and are irrevocable provided the stated conditions are
+ met.
+ This License explicitly affirms your unlimited permission to run the unmodified
+ Program.
+ The output from running a covered work is covered by this License only
+ if the output, given its content, constitutes a covered work.
+ This License acknowledges your rights of fair use or other equivalent,
+ as provided by copyright law.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You may make, run and propagate covered works that you do not convey, without
+ conditions so long as your license otherwise remains in force.
+ You may convey covered works to others for the sole purpose of having them
+ make modifications exclusively for you, or provide you with facilities
+ for running those works, provided that you comply with the terms of this
+ License in conveying all material for which you do not control copyright.
+ Those thus making or running the covered works for you must do so exclusively
+ on your behalf, under your direction and control, on terms that prohibit
+ them from making any copies of your copyrighted material outside their
+ relationship with you.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Conveying under any other circumstances is permitted solely under the conditions
+ stated below.
+ Sublicensing is not allowed; section 10 makes it unnecessary.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Protecting Users' Legal Rights From Anti-Circumvention Law.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+No covered work shall be deemed part of an effective technological measure
+ under any applicable law fulfilling obligations under article 11 of the
+ WIPO copyright treaty adopted on 20 December 1996, or similar laws prohibiting
+ or restricting circumvention of such measures.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+When you convey a covered work, you waive any legal power to forbid circumventio
+n of technological measures to the extent such circumvention is effected
+ by exercising rights under this License with respect to the covered work,
+ and you disclaim any intention to limit operation or modification of the
+ work as a means of enforcing, against the work's users, your or third parties'
+ legal rights to forbid circumvention of technological measures.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Conveying Verbatim Copies.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+You may convey verbatim copies of the Program's source code as you receive
+ it, in any medium, provided that you conspicuously and appropriately publish
+ on each copy an appropriate copyright notice; keep intact all notices stating
+ that this License and any non-permissive terms added in accord with section
+ 7 apply to the code; keep intact all notices of the absence of any warranty;
+ and give all recipients a copy of this License along with the Program.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You may charge any price or no price for each copy that you convey, and
+ you may offer support or warranty protection for a fee.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Conveying Modified Source Versions.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+You may convey a work based on the Program, or the modifications to produce
+ it from the Program, in the form of source code under the terms of section
+ 4, provided that you also meet all of these conditions: 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+The work must carry prominent notices stating that you modified it, and
+ giving a relevant date.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+The work must carry prominent notices stating that it is released under
+ this License and any conditions added under section 7.
+ This requirement modifies the requirement in section 4 to 
+\begin_inset Quotes eld
+\end_inset
+
+keep intact all notices
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+You must license the entire work, as a whole, under this License to anyone
+ who comes into possession of a copy.
+ This License will therefore apply, along with any applicable section 7
+ additional terms, to the whole of the work, and all its parts, regardless
+ of how they are packaged.
+ This License gives no permission to license the work in any other way,
+ but it does not invalidate such permission if you have separately received
+ it.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+If the work has interactive user interfaces, each must display Appropriate
+ Legal Notices; however, if the Program has interactive interfaces that
+ do not display Appropriate Legal Notices, your work need not make them
+ do so.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+A compilation of a covered work with other separate and independent works,
+ which are not by their nature extensions of the covered work, and which
+ are not combined with it such as to form a larger program, in or on a volume
+ of a storage or distribution medium, is called an 
+\begin_inset Quotes eld
+\end_inset
+
+aggregate
+\begin_inset Quotes erd
+\end_inset
+
+ if the compilation and its resulting copyright are not used to limit the
+ access or legal rights of the compilation's users beyond what the individual
+ works permit.
+ Inclusion of a covered work in an aggregate does not cause this License
+ to apply to the other parts of the aggregate.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Conveying Non-Source Forms.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+You may convey a covered work in object code form under the terms of sections
+ 4 and 5, provided that you also convey the machine-readable Corresponding
+ Source under the terms of this License, in one of these ways: 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Convey the object code in, or embodied in, a physical product (including
+ a physical distribution medium), accompanied by the Corresponding Source
+ fixed on a durable physical medium customarily used for software interchange.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Convey the object code in, or embodied in, a physical product (including
+ a physical distribution medium), accompanied by a written offer, valid
+ for at least three years and valid for as long as you offer spare parts
+ or customer support for that product model, to give anyone who possesses
+ the object code either (1) a copy of the Corresponding Source for all the
+ software in the product that is covered by this License, on a durable physical
+ medium customarily used for software interchange, for a price no more than
+ your reasonable cost of physically performing this conveying of source,
+ or (2) access to copy the Corresponding Source from a network server at
+ no charge.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Convey individual copies of the object code with a copy of the written offer
+ to provide the Corresponding Source.
+ This alternative is allowed only occasionally and noncommercially, and
+ only if you received the object code with such an offer, in accord with
+ subsection 6b.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Convey the object code by offering access from a designated place (gratis
+ or for a charge), and offer equivalent access to the Corresponding Source
+ in the same way through the same place at no further charge.
+ You need not require recipients to copy the Corresponding Source along
+ with the object code.
+ If the place to copy the object code is a network server, the Corresponding
+ Source may be on a different server (operated by you or a third party)
+ that supports equivalent copying facilities, provided you maintain clear
+ directions next to the object code saying where to find the Corresponding
+ Source.
+ Regardless of what server hosts the Corresponding Source, you remain obligated
+ to ensure that it is available for as long as needed to satisfy these requireme
+nts.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Convey the object code using peer-to-peer transmission, provided you inform
+ other peers where the object code and Corresponding Source of the work
+ are being offered to the general public at no charge under subsection 6d.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+A separable portion of the object code, whose source code is excluded from
+ the Corresponding Source as a System Library, need not be included in conveying
+ the object code work.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+A 
+\begin_inset Quotes eld
+\end_inset
+
+User Product
+\begin_inset Quotes erd
+\end_inset
+
+ is either (1) a 
+\begin_inset Quotes eld
+\end_inset
+
+consumer product
+\begin_inset Quotes erd
+\end_inset
+
+, which means any tangible personal property which is normally used for
+ personal, family, or household purposes, or (2) anything designed or sold
+ for incorporation into a dwelling.
+ In determining whether a product is a consumer product, doubtful cases
+ shall be resolved in favor of coverage.
+ For a particular product received by a particular user, 
+\begin_inset Quotes eld
+\end_inset
+
+normally used
+\begin_inset Quotes erd
+\end_inset
+
+ refers to a typical or common use of that class of product, regardless
+ of the status of the particular user or of the way in which the particular
+ user actually uses, or expects or is expected to use, the product.
+ A product is a consumer product regardless of whether the product has substanti
+al commercial, industrial or non-consumer uses, unless such uses represent
+ the only significant mode of use of the product.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Installation Information
+\begin_inset Quotes erd
+\end_inset
+
+ for a User Product means any methods, procedures, authorization keys, or
+ other information required to install and execute modified versions of
+ a covered work in that User Product from a modified version of its Correspondin
+g Source.
+ The information must suffice to ensure that the continued functioning of
+ the modified object code is in no case prevented or interfered with solely
+ because modification has been made.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you convey an object code work under this section in, or with, or specificall
+y for use in, a User Product, and the conveying occurs as part of a transaction
+ in which the right of possession and use of the User Product is transferred
+ to the recipient in perpetuity or for a fixed term (regardless of how the
+ transaction is characterized), the Corresponding Source conveyed under
+ this section must be accompanied by the Installation Information.
+ But this requirement does not apply if neither you nor any third party
+ retains the ability to install modified object code on the User Product
+ (for example, the work has been installed in ROM).
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The requirement to provide Installation Information does not include a requireme
+nt to continue to provide support service, warranty, or updates for a work
+ that has been modified or installed by the recipient, or for the User Product
+ in which it has been modified or installed.
+ Access to a network may be denied when the modification itself materially
+ and adversely affects the operation of the network or violates the rules
+ and protocols for communication across the network.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Corresponding Source conveyed, and Installation Information provided, in
+ accord with this section must be in a format that is publicly documented
+ (and with an implementation available to the public in source code form),
+ and must require no special password or key for unpacking, reading or copying.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Additional Terms.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Additional permissions
+\begin_inset Quotes erd
+\end_inset
+
+ are terms that supplement the terms of this License by making exceptions
+ from one or more of its conditions.
+ Additional permissions that are applicable to the entire Program shall
+ be treated as though they were included in this License, to the extent
+ that they are valid under applicable law.
+ If additional permissions apply only to part of the Program, that part
+ may be used separately under those permissions, but the entire Program
+ remains governed by this License without regard to the additional permissions.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+When you convey a copy of a covered work, you may at your option remove
+ any additional permissions from that copy, or from any part of it.
+ (Additional permissions may be written to require their own removal in
+ certain cases when you modify the work.) You may place additional permissions
+ on material, added by you to a covered work, for which you have or can
+ give appropriate copyright permission.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Notwithstanding any other provision of this License, for material you add
+ to a covered work, you may (if authorized by the copyright holders of that
+ material) supplement the terms of this License with terms: 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Disclaiming warranty or limiting liability differently from the terms of
+ sections 15 and 16 of this License; or 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Requiring preservation of specified reasonable legal notices or author attributi
+ons in that material or in the Appropriate Legal Notices displayed by works
+ containing it; or 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Prohibiting misrepresentation of the origin of that material, or requiring
+ that modified versions of such material be marked in reasonable ways as
+ different from the original version; or 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Limiting the use for publicity purposes of names of licensors or authors
+ of the material; or 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Declining to grant rights under trademark law for use of some trade names,
+ trademarks, or service marks; or 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Requiring indemnification of licensors and authors of that material by anyone
+ who conveys the material (or modified versions of it) with contractual
+ assumptions of liability to the recipient, for any liability that these
+ contractual assumptions directly impose on those licensors and authors.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+All other non-permissive additional terms are considered 
+\begin_inset Quotes eld
+\end_inset
+
+further restrictions
+\begin_inset Quotes erd
+\end_inset
+
+ within the meaning of section 10.
+ If the Program as you received it, or any part of it, contains a notice
+ stating that it is governed by this License along with a term that is a
+ further restriction, you may remove that term.
+ If a license document contains a further restriction but permits relicensing
+ or conveying under this License, you may add to a covered work material
+ governed by the terms of that license document, provided that the further
+ restriction does not survive such relicensing or conveying.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you add terms to a covered work in accord with this section, you must
+ place, in the relevant source files, a statement of the additional terms
+ that apply to those files, or a notice indicating where to find the applicable
+ terms.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Additional terms, permissive or non-permissive, may be stated in the form
+ of a separately written license, or stated as exceptions; the above requirement
+s apply either way.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Termination.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+You may not propagate or modify a covered work except as expressly provided
+ under this License.
+ Any attempt otherwise to propagate or modify it is void, and will automatically
+ terminate your rights under this License (including any patent licenses
+ granted under the third paragraph of section 11).
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+However, if you cease all violation of this License, then your license from
+ a particular copyright holder is reinstated (a) provisionally, unless and
+ until the copyright holder explicitly and finally terminates your license,
+ and (b) permanently, if the copyright holder fails to notify you of the
+ violation by some reasonable means prior to 60 days after the cessation.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Moreover, your license from a particular copyright holder is reinstated
+ permanently if the copyright holder notifies you of the violation by some
+ reasonable means, this is the first time you have received notice of violation
+ of this License (for any work) from that copyright holder, and you cure
+ the violation prior to 30 days after your receipt of the notice.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Termination of your rights under this section does not terminate the licenses
+ of parties who have received copies or rights from you under this License.
+ If your rights have been terminated and not permanently reinstated, you
+ do not qualify to receive new licenses for the same material under section
+ 10.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Acceptance Not Required for Having Copies.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+You are not required to accept this License in order to receive or run a
+ copy of the Program.
+ Ancillary propagation of a covered work occurring solely as a consequence
+ of using peer-to-peer transmission to receive a copy likewise does not
+ require acceptance.
+ However, nothing other than this License grants you permission to propagate
+ or modify any covered work.
+ These actions infringe copyright if you do not accept this License.
+ Therefore, by modifying or propagating a covered work, you indicate your
+ acceptance of this License to do so.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Automatic Licensing of Downstream Recipients.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+Each time you convey a covered work, the recipient automatically receives
+ a license from the original licensors, to run, modify and propagate that
+ work, subject to this License.
+ You are not responsible for enforcing compliance by third parties with
+ this License.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+An 
+\begin_inset Quotes eld
+\end_inset
+
+entity transaction
+\begin_inset Quotes erd
+\end_inset
+
+ is a transaction transferring control of an organization, or substantially
+ all assets of one, or subdividing an organization, or merging organizations.
+ If propagation of a covered work results from an entity transaction, each
+ party to that transaction who receives a copy of the work also receives
+ whatever licenses to the work the party's predecessor in interest had or
+ could give under the previous paragraph, plus a right to possession of
+ the Corresponding Source of the work from the predecessor in interest,
+ if the predecessor has it or can get it with reasonable efforts.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You may not impose any further restrictions on the exercise of the rights
+ granted or affirmed under this License.
+ For example, you may not impose a license fee, royalty, or other charge
+ for exercise of rights granted under this License, and you may not initiate
+ litigation (including a cross-claim or counterclaim in a lawsuit) alleging
+ that any patent claim is infringed by making, using, selling, offering
+ for sale, or importing the Program or any portion of it.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Patents.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+A 
+\begin_inset Quotes eld
+\end_inset
+
+contributor
+\begin_inset Quotes erd
+\end_inset
+
+ is a copyright holder who authorizes use under this License of the Program
+ or a work on which the Program is based.
+ The work thus licensed is called the contributor's 
+\begin_inset Quotes eld
+\end_inset
+
+contributor version
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+A contributor's 
+\begin_inset Quotes eld
+\end_inset
+
+essential patent claims
+\begin_inset Quotes erd
+\end_inset
+
+ are all patent claims owned or controlled by the contributor, whether already
+ acquired or hereafter acquired, that would be infringed by some manner,
+ permitted by this License, of making, using, or selling its contributor
+ version, but do not include claims that would be infringed only as a consequenc
+e of further modification of the contributor version.
+ For purposes of this definition, 
+\begin_inset Quotes eld
+\end_inset
+
+control
+\begin_inset Quotes erd
+\end_inset
+
+ includes the right to grant patent sublicenses in a manner consistent with
+ the requirements of this License.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Each contributor grants you a non-exclusive, worldwide, royalty-free patent
+ license under the contributor's essential patent claims, to make, use,
+ sell, offer for sale, import and otherwise run, modify and propagate the
+ contents of its contributor version.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In the following three paragraphs, a 
+\begin_inset Quotes eld
+\end_inset
+
+patent license
+\begin_inset Quotes erd
+\end_inset
+
+ is any express agreement or commitment, however denominated, not to enforce
+ a patent (such as an express permission to practice a patent or covenant
+ not to sue for patent infringement).
+ To 
+\begin_inset Quotes eld
+\end_inset
+
+grant
+\begin_inset Quotes erd
+\end_inset
+
+ such a patent license to a party means to make such an agreement or commitment
+ not to enforce a patent against the party.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you convey a covered work, knowingly relying on a patent license, and
+ the Corresponding Source of the work is not available for anyone to copy,
+ free of charge and under the terms of this License, through a publicly
+ available network server or other readily accessible means, then you must
+ either (1) cause the Corresponding Source to be so available, or (2) arrange
+ to deprive yourself of the benefit of the patent license for this particular
+ work, or (3) arrange, in a manner consistent with the requirements of this
+ License, to extend the patent license to downstream recipients.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Knowingly relying
+\begin_inset Quotes erd
+\end_inset
+
+ means you have actual knowledge that, but for the patent license, your
+ conveying the covered work in a country, or your recipient's use of the
+ covered work in a country, would infringe one or more identifiable patents
+ in that country that you have reason to believe are valid.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If, pursuant to or in connection with a single transaction or arrangement,
+ you convey, or propagate by procuring conveyance of, a covered work, and
+ grant a patent license to some of the parties receiving the covered work
+ authorizing them to use, propagate, modify or convey a specific copy of
+ the covered work, then the patent license you grant is automatically extended
+ to all recipients of the covered work and works based on it.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+A patent license is 
+\begin_inset Quotes eld
+\end_inset
+
+discriminatory
+\begin_inset Quotes erd
+\end_inset
+
+ if it does not include within the scope of its coverage, prohibits the
+ exercise of, or is conditioned on the non-exercise of one or more of the
+ rights that are specifically granted under this License.
+ You may not convey a covered work if you are a party to an arrangement
+ with a third party that is in the business of distributing software, under
+ which you make payment to the third party based on the extent of your activity
+ of conveying the work, and under which the third party grants, to any of
+ the parties who would receive the covered work from you, a discriminatory
+ patent license (a) in connection with copies of the covered work conveyed
+ by you (or copies made from those copies), or (b) primarily for and in
+ connection with specific products or compilations that contain the covered
+ work, unless you entered into that arrangement, or that patent license
+ was granted, prior to 28 March 2007.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Nothing in this License shall be construed as excluding or limiting any
+ implied license or other defenses to infringement that may otherwise be
+ available to you under applicable patent law.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+No Surrender of Others' Freedom.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+If conditions are imposed on you (whether by court order, agreement or otherwise
+) that contradict the conditions of this License, they do not excuse you
+ from the conditions of this License.
+ If you cannot convey a covered work so as to satisfy simultaneously your
+ obligations under this License and any other pertinent obligations, then
+ as a consequence you may not convey it at all.
+ For example, if you agree to terms that obligate you to collect a royalty
+ for further conveying from those to whom you convey the Program, the only
+ way you could satisfy both those terms and this License would be to refrain
+ entirely from conveying the Program.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Use with the GNU Affero General Public License.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+Notwithstanding any other provision of this License, you have permission
+ to link or combine any covered work with a work licensed under version
+ 3 of the GNU Affero General Public License into a single combined work,
+ and to convey the resulting work.
+ The terms of this License will continue to apply to the part which is the
+ covered work, but the special requirements of the GNU Affero General Public
+ License, section 13, concerning interaction through a network will apply
+ to the combination as such.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Revised Versions of this License.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+The Free Software Foundation may publish revised and/or new versions of
+ the GNU General Public License from time to time.
+ Such new versions will be similar in spirit to the present version, but
+ may differ in detail to address new problems or concerns.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Each version is given a distinguishing version number.
+ If the Program specifies that a certain numbered version of the GNU General
+ Public License 
+\begin_inset Quotes eld
+\end_inset
+
+or any later version
+\begin_inset Quotes erd
+\end_inset
+
+ applies to it, you have the option of following the terms and conditions
+ either of that numbered version or of any later version published by the
+ Free Software Foundation.
+ If the Program does not specify a version number of the GNU General Public
+ License, you may choose any version ever published by the Free Software
+ Foundation.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If the Program specifies that a proxy can decide which future versions of
+ the GNU General Public License can be used, that proxy's public statement
+ of acceptance of a version permanently authorizes you to choose that version
+ for the Program.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Later license versions may give you additional or different permissions.
+ However, no additional obligations are imposed on any author or copyright
+ holder as a result of your choosing to follow a later version.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Disclaimer of Warranty.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
+ THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE
+ LAW.
+ EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER
+ PARTIES PROVIDE THE PROGRAM 
+\begin_inset Quotes eld
+\end_inset
+
+AS IS
+\begin_inset Quotes erd
+\end_inset
+
+ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT
+ NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE.
+ THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH
+ YOU.
+ SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY
+ SERVICING, REPAIR OR CORRECTION.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Limitation of Liability.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING WILL
+ ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS THE
+ PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY
+ GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE
+ USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS
+ OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR
+ THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS),
+ EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY
+ OF SUCH DAMAGES.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Interpretation of Sections 15 and 16.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+If the disclaimer of warranty and limitation of liability provided above
+ cannot be given local legal effect according to their terms, reviewing
+ courts shall apply local law that most closely approximates an absolute
+ waiver of all civil liability in connection with the Program, unless a
+ warranty or assumption of liability accompanies a copy of the Program in
+ return for a fee.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\lang english
+End of Terms and Conditions
+\end_layout
+
+\begin_layout Section
+
+\lang english
+How to Apply These Terms to Your New Programs
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "license-apply"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you develop a new program, and you want it to be of the greatest possible
+ use to the public, the best way to achieve this is to make it free software
+ which everyone can redistribute and change under these terms.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To do so, attach the following notices to the program.
+ It is safest to attach them to the start of each source file to most effectivel
+y state the exclusion of warranty; and each file should have at least the
+ 
+\begin_inset Quotes eld
+\end_inset
+
+copyright
+\begin_inset Quotes erd
+\end_inset
+
+ line and a pointer to where the full notice is found.
+\end_layout
+
+\begin_layout Quotation
+
+\size footnotesize
+\lang english
+<one line to give the program's name and a brief idea of what it does.>
+\end_layout
+
+\begin_layout Quotation
+
+\size footnotesize
+\lang english
+Copyright (C) <textyear> <name of author>
+\end_layout
+
+\begin_layout Quotation
+
+\size footnotesize
+\lang english
+This program is free software: you can redistribute it and/or modify it
+ under the terms of the GNU General Public License as published by the Free
+ Software Foundation, either version 3 of the License, or (at your option)
+ any later version.
+\end_layout
+
+\begin_layout Quotation
+
+\size footnotesize
+\lang english
+This program is distributed in the hope that it will be useful, but WITHOUT
+ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE.
+ See the GNU General Public License for more details.
+\end_layout
+
+\begin_layout Quotation
+
+\size footnotesize
+\lang english
+You should have received a copy of the GNU General Public License along
+ with this program.
+ If not, see <http://www.gnu.org/licenses/>.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Also add information on how to contact you by electronic and paper mail.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If the program does terminal interaction, make it output a short notice
+ like this when it starts in an interactive mode:
+\end_layout
+
+\begin_layout Quotation
+
+\size footnotesize
+\lang english
+<program> Copyright (C) <year> <name of author>
+\end_layout
+
+\begin_layout Quotation
+
+\size footnotesize
+\lang english
+This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
+ This is free software, and you are welcome to redistribute it under certain
+ conditions; type `show c' for details.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The hypothetical commands 
+\family typewriter
+show w
+\family default
+ and 
+\family typewriter
+show c
+\family default
+ should show the appropriate parts of the General Public License.
+ Of course, your program's commands might be different; for a GUI interface,
+ you would use an 
+\begin_inset Quotes eld
+\end_inset
+
+about box
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You should also get your employer (if you work as a programmer) or school,
+ if any, to sign a 
+\begin_inset Quotes eld
+\end_inset
+
+copyright disclaimer
+\begin_inset Quotes erd
+\end_inset
+
+ for the program, if necessary.
+ For more information on this, and how to apply and follow the GNU GPL,
+ see 
+\family typewriter
+http://www.gnu.org/licenses/
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The GNU General Public License does not permit incorporating your program
+ into proprietary programs.
+ If your program is a subroutine library, you may consider it more useful
+ to permit linking proprietary applications with the library.
+ If this is what you want to do, use the GNU Lesser General Public License
+ instead of this License.
+ But first, please read 
+\family typewriter
+http://www.gnu.org/philosophy/why-not-lgpl.html
+\family default
+.
+ 
+\end_layout
+
+\end_body
+\end_document

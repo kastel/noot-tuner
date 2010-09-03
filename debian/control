@@ -1,0 +1,24 @@
+Source: noot-tuner
+Section: misc
+Priority: optional
+Maintainer: Davide Castellone <dc.kastel@gmail.com>
+Build-Depends: debhelper (>= 7), autotools-dev, libwxgtk2.8-dev, portaudio19-dev, libfftw3-dev, zip
+Standards-Version: 3.8.4
+Homepage: http://code.google.com/p/noot-tuner/
+
+Package: noot-tuner
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Accurate and customisable graphical instrument tuner
+ Never-out-of-tune Instrument Tuner is a cross-platform and open source application that can turn a computer and a microphone into a very accurate instrument tuner.
+ .
+ Even if it was conceived especially for tuning a piano, it can be used with any musical instrument.
+ .
+ Features
+ * Easy to use (default settings will work in most cases)
+ * Up to one-cent precision (0.01 semitones)
+ * Recognition can be restricted to a particular octave and/or note
+ * Transposition
+ * Customisable temperament
+ * Internationalisation
+ * Cross-platform

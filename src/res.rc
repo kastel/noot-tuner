@@ -1,0 +1,26 @@
+#include <windows.h>
+#include "version.h"
+#include "config.h"
+
+1 VERSIONINFO
+FILEVERSION VERSION_MAJOR,VERSION_MINOR,VERSION_BUILD,VERSION_REV
+PRODUCTVERSION VERSION_MAJOR,VERSION_MINOR,VERSION_BUILD,VERSION_REV
+FILEFLAGSMASK 0
+FILEFLAGS 0
+FILETYPE VFT_APP
+FILESUBTYPE 0
+FILEOS VOS__WINDOWS32
+BEGIN
+	BLOCK "StringFileInfo"
+	BEGIN
+		BLOCK "040904E4"
+		BEGIN
+			VALUE "CompanyName", "Davide Castellone"
+			VALUE "FileDescription", "NOOT Instrument Tuner executable file"
+			VALUE "InternalName", "noot-tuner"
+			VALUE "OriginalFilename", "noot-tuner.exe"
+			VALUE "ProductName", "NOOT Instrument Tuner"
+			VALUE "ProductVersion", VERSION
+		END
+	END
+END

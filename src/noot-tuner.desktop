@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=NOOT Instrument Tuner
+Name[it]=Accordatore NOOT
+Exec=noot-tuner
+Comment=Precision instrument tuner
+Comment[it]=Accordatore di precisione per strumenti musicali
+Terminal=false
+Categories=Application;AudioVideo;Audio

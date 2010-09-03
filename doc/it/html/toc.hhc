@@ -1,0 +1,151 @@
+<HTML>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></HEAD>
+<BODY>
+<OBJECT type="text/site properties">
+<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Accordatore NOOT">
+<param name="Local" value="index.html"></OBJECT></LI>
+<UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Introduzione">
+<param name="Local" value="ch01.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Caratteristiche">
+<param name="Local" value="ch01.html#features"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Requisiti minimi">
+<param name="Local" value="ch01.html#requirements"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Registro dei cambiamenti">
+<param name="Local" value="ch01.html#changelog"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Riconoscimenti">
+<param name="Local" value="ch01.html#credits"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Come si usa">
+<param name="Local" value="ch02.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="La finestra principale">
+<param name="Local" value="ch02.html#mainwindow"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Pulsante Start/Stop">
+<param name="Local" value="ch02.html#startstop"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value='Riquadro "nota rilevata"'>
+<param name="Local" value="ch02.html#detectednote"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Ottava">
+<param name="Local" value="ch02.html#octave"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Nota">
+<param name="Local" value="ch02.html#note"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value='Pulsante "ascolta"'>
+<param name="Local" value="ch02.html#listen"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Selezione del temperamento">
+<param name="Local" value="ch02.html#temperament"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Trasponi">
+<param name="Local" value="ch02.html#transpose"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Dimensione finestra">
+<param name="Local" value="ch02.html#windowsize"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Soglia">
+<param name="Local" value="ch02.html#threshold"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Precisione prevista">
+<param name="Local" value="ch02.html#expectedprecision"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Frame rate">
+<param name="Local" value="ch02.html#framerate"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Barra di stato">
+<param name="Local" value="ch02.html#sec:Status-bar"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="I menù">
+<param name="Local" value="ch02.html#id2699377"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Dispositivi">
+<param name="Local" value="ch02.html#id2699383"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Altre opzioni">
+<param name="Local" value="ch02.html#id2699393"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Cambia frequenza di campionamento">
+<param name="Local" value="ch02.html#id2699410"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Correzione del clock">
+<param name="Local" value="ch02.html#id2699422"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Aiuto">
+<param name="Local" value="ch02.html#id2750383"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Indice">
+<param name="Local" value="ch02.html#id2750389"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Aiuto contestuale">
+<param name="Local" value="ch02.html#id2750398"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Sito Internet del progetto">
+<param name="Local" value="ch02.html#id2750410"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Segnala un errore">
+<param name="Local" value="ch02.html#id2750421"></OBJECT></LI>
+</UL></UL></UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Utilizzo avanzato">
+<param name="Local" value="ch03.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Correzione del clock">
+<param name="Local" value="ch03.html#sec:Clock-correction"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="La frequenza di campionamento ottimale">
+<param name="Local" value="ch03.html#sec:The-right-sampling"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Accordare note estreme">
+<param name="Local" value="ch03.html#sec:Extreme-notes"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Come funziona">
+<param name="Local" value="ch04.html"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Risoluzione dei problemi">
+<param name="Local" value="ch05.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Nessuna nota rilevata">
+<param name="Local" value="ch05.html#id2750607"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Non viene rilevata la nota corretta">
+<param name="Local" value="ch05.html#id2750659"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="L'indicatore oscilla troppo o salta">
+<param name="Local" value="ch05.html#id2750687"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Il programma si chiude con un errore o si blocca">
+<param name="Local" value="ch05.html#id2750715"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="GNU GENERAL PUBLIC LICENSE">
+<param name="Local" value="ch06.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Preamble">
+<param name="Local" value="ch06.html#id2750753"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Terms and Conditions">
+<param name="Local" value="ch06.html#id2698246"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="How to Apply These Terms to Your New Programs">
+<param name="Local" value="ch06.html#id2751806"></OBJECT></LI>
+</UL></UL>
+</UL>
+</BODY></HTML>
