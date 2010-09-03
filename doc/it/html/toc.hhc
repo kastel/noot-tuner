@@ -70,37 +70,37 @@
 <param name="Local" value="ch02.html#sec:Status-bar"></OBJECT></LI>
 </UL><LI><OBJECT type="text/sitemap">
 <param name="Name" value="I menù">
-<param name="Local" value="ch02.html#id2699377"></OBJECT></LI>
+<param name="Local" value="ch02.html#id2878372"></OBJECT></LI>
 <UL>
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="Dispositivi">
-<param name="Local" value="ch02.html#id2699383"></OBJECT></LI>
+<param name="Local" value="ch02.html#id2878378"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="Altre opzioni">
-<param name="Local" value="ch02.html#id2699393"></OBJECT></LI>
+<param name="Local" value="ch02.html#id2878388"></OBJECT></LI>
 <UL>
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="Cambia frequenza di campionamento">
-<param name="Local" value="ch02.html#id2699410"></OBJECT></LI>
+<param name="Local" value="ch02.html#id2878405"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="Correzione del clock">
-<param name="Local" value="ch02.html#id2699422"></OBJECT></LI>
+<param name="Local" value="ch02.html#id2878417"></OBJECT></LI>
 </UL><LI><OBJECT type="text/sitemap">
 <param name="Name" value="Aiuto">
-<param name="Local" value="ch02.html#id2750383"></OBJECT></LI>
+<param name="Local" value="ch02.html#id2929378"></OBJECT></LI>
 <UL>
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="Indice">
-<param name="Local" value="ch02.html#id2750389"></OBJECT></LI>
+<param name="Local" value="ch02.html#id2929384"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="Aiuto contestuale">
-<param name="Local" value="ch02.html#id2750398"></OBJECT></LI>
+<param name="Local" value="ch02.html#id2929393"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="Sito Internet del progetto">
-<param name="Local" value="ch02.html#id2750410"></OBJECT></LI>
+<param name="Local" value="ch02.html#id2929406"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="Segnala un errore">
-<param name="Local" value="ch02.html#id2750421"></OBJECT></LI>
+<param name="Local" value="ch02.html#id2929416"></OBJECT></LI>
 </UL></UL></UL><LI><OBJECT type="text/sitemap">
 <param name="Name" value="Utilizzo avanzato">
 <param name="Local" value="ch03.html"></OBJECT></LI>
@@ -123,29 +123,29 @@
 <UL>
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="Nessuna nota rilevata">
-<param name="Local" value="ch05.html#id2750607"></OBJECT></LI>
+<param name="Local" value="ch05.html#id2929602"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="Non viene rilevata la nota corretta">
-<param name="Local" value="ch05.html#id2750659"></OBJECT></LI>
+<param name="Local" value="ch05.html#id2929655"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="L'indicatore oscilla troppo o salta">
-<param name="Local" value="ch05.html#id2750687"></OBJECT></LI>
+<param name="Local" value="ch05.html#id2929682"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="Il programma si chiude con un errore o si blocca">
-<param name="Local" value="ch05.html#id2750715"></OBJECT></LI>
+<param name="Local" value="ch05.html#id2929710"></OBJECT></LI>
 </UL><LI><OBJECT type="text/sitemap">
 <param name="Name" value="GNU GENERAL PUBLIC LICENSE">
 <param name="Local" value="ch06.html"></OBJECT></LI>
 <UL>
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="Preamble">
-<param name="Local" value="ch06.html#id2750753"></OBJECT></LI>
+<param name="Local" value="ch06.html#id2929748"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="Terms and Conditions">
-<param name="Local" value="ch06.html#id2698246"></OBJECT></LI>
+<param name="Local" value="ch06.html#id2877242"></OBJECT></LI>
 <LI><OBJECT type="text/sitemap">
 <param name="Name" value="How to Apply These Terms to Your New Programs">
-<param name="Local" value="ch06.html#id2751806"></OBJECT></LI>
+<param name="Local" value="ch06.html#id2930802"></OBJECT></LI>
 </UL></UL>
 </UL>
 </BODY></HTML>

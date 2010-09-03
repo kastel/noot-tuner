@@ -35,7 +35,7 @@
 <itemizedlist>
 <listitem><para>An audio card with a configured microphone or line input</para></listitem><listitem><para>Variable disk space (10 MB for the Windows version, 1 MB for Ubuntu packages, about 40 MB for universal packages)</para></listitem></itemizedlist></sect1><sect1 id='changelog' >
 <title>Changelog<!-- anchor id="changelog" --></title>
-<para>Version 0.1.4:</para><itemizedlist>
+<para>Version 0.2.0:</para><itemizedlist>
 <listitem><para>Volume meter, clipping detection</para></listitem><listitem><para>Clock correction</para></listitem><listitem><para>No more hangs due to excessive use of the CPU</para></listitem></itemizedlist><para>Version 0.1.3:</para><itemizedlist>
 <listitem><para>Improved documentation (new format)</para></listitem></itemizedlist><para>Version 0.1.2.3:</para><itemizedlist>
 <listitem><para>Precision is now given in millis, not in cents </para></listitem><listitem><para>Minor improvements to the display </para></listitem><listitem><para>PPA for Ubuntu users</para></listitem></itemizedlist><para>Version 0.1.0:</para><itemizedlist>
