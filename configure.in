@@ -1,5 +1,5 @@
-AC_INIT(src/noot-tuner.cpp, 0.1.4, [dc.kastel@gmail.com])
-    AM_INIT_AUTOMAKE(noot-tuner, 0.1.4)
+AC_INIT(src/noot-tuner.cpp, 0.2.0, [dc.kastel@gmail.com])
+    AM_INIT_AUTOMAKE(noot-tuner, 0.2.0)
 
 AM_SILENT_RULES([yes])
 
@@ -15,7 +15,7 @@ AC_CONFIG_FILES([version.h])
 AM_GNU_GETTEXT([external])
 
 CFLAGS="-Wall -O2 -g0 $CFLAGS"
-CXXFLAGS="-Wall -O2 -g0 -fexceptions $CXXFLAGS"
+CXXFLAGS="-Wall -O2 -g0 -fexceptions $CXXFLAGS -fno-strict-aliasing"
 CXXDEBUG="-Wall -O0 -g3 -DDEBUG"
 CDEBUG=$CXXDEBUG
 
@@ -96,7 +96,7 @@ if test "$wxWin" != 1; then
             Please check that wx-config is in path, the directory
             where wxWidgets libraries are installed (returned by
             'wx-config --libs' command) is in LD_LIBRARY_PATH or
-            equivalent variable and wxWidgets version is 2.3.4 or above.
+            equivalent variable and wxWidgets version is 2.8.8 or above.
     ])
 fi
 
