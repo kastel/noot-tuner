@@ -270,6 +270,12 @@ void TunerFrame::OnTimer(wxTimerEvent & event)
     static int count = 0;
     printf("TunerFrame::OnTimer %d\n", ++count);
 #endif
+
+    if (!tbStartStop->GetValue()) {
+        tmTimer->Stop();
+        return;
+    }
+
 	int note, octave;
 	double freq, offset;
 	
@@ -285,7 +291,11 @@ void TunerFrame::OnTimer(wxTimerEvent & event)
 #endif
     if (DetectNote(&note, &octave, &freq, &offset))
 	{
-		stNote1->SetLabel(wxString::Format(wxT("%s%d"), translatedNotes[note].c_str(),
+#ifdef DEBUG
+        printf(" done\n");
+#endif
+
+        stNote1->SetLabel(wxString::Format(wxT("%s%d"), translatedNotes[note].c_str(),
 						  octave-2));
 		stOffset->SetLabel(wxString::Format(wxString::Format(wxT("%% +5.%df"), (ndOptions.fExpectedPrecision<2.0) ? 1 : 0), offset*100));
 		stFrequency->SetLabel(wxString::Format(wxString::Format(wxT("%%.%df Hz"), int(4.0-log10(freq))), freq));
@@ -296,7 +306,7 @@ void TunerFrame::OnTimer(wxTimerEvent & event)
 		ResetIndicator();
 
 #ifdef DEBUG
-    printf(" done\n");
+    printf("\n");
 #endif
 }
 

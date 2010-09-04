@@ -28,6 +28,10 @@ using namespace std;
 
 namespace noot {
 
+//don't go below this frequency: it would be useless and it would slow down
+//the program
+static const double MIN_FREQUENCY = 25.0;
+
 //static dcBuffer ac(4096);
 fftw_complex* cOut=NULL;
 size_t cOutSize=0;
@@ -350,18 +354,6 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
     double max_acf;
 #endif
     
-    //Avoid reentrancy
-    static volatile bool processing = false;
-
-    if (processing) {
-#ifdef DEBUG
-        printf("Too fast. Slowing down: skipping a call to DetectNote\n");
-#endif
-        return false;
-    }
-
-    FlagSetter flagSetter(processing);
-
     //Make a local copy of the options (in case someone modifies them
     //while processing
     NoteDetectionOptions options = noot::ndOptions;
@@ -408,6 +400,17 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	if (!(frequency || note || octave)) //it is only a setup request
 		return false;
 	
+    //Avoid reentrancy
+    static volatile bool processing = false;
+
+    if (processing) {
+#ifdef DEBUG
+        printf("Too fast. Slowing down: skipping a call to DetectNote\n");
+#endif
+        return false;
+    }
+
+    FlagSetter flagSetter(processing);
     //Copy buffer content to a local buffer to minimize mutex lock times
     static Buffer localBuffer(0);
     double maxdb = buffer.GetMaxDB();
@@ -440,7 +443,8 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	{
 		iMax=0;
 		if (options.iOctave == -1) { //no octave
-			i = 1; e = localBuffer.GetSize()/2;
+			i = MIN_FREQUENCY/double(options.iSampleRate)*localBuffer.GetSize();
+            e = localBuffer.GetSize()/2;
 		
 			MiniSortedMap<double, int, 3> peaks(0.0);
 		
