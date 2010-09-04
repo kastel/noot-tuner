@@ -28,6 +28,9 @@
 #include <wx/intl.h>
 #include <wx/app.h>
 #include <wx/helphtml.h>
+#if SNDFILE_SUPPORT
+#include <sndfile.h>
+#endif
 
 //#if !defined(__WXMSW__) && !wxUSE_WXHTML_HELP
 #if !wxUSE_WXHTML_HELP
@@ -42,11 +45,25 @@ tunerapp : public wxApp
 	public:
 		virtual bool OnInit();
 		virtual int OnExit();
-		tunerapp() : helpController(NULL) { }
+		tunerapp() : helpController(NULL), m_nogui(false) {
+#if SNDFILE_SUPPORT
+            m_sndfile = NULL;
+#endif
+        }
+
+        virtual void OnInitCmdLine(wxCmdLineParser&);
+        virtual bool OnCmdLineParsed(wxCmdLineParser&);
 	
 	
 	wxLocale m_locale;
 	wxHtmlHelpController* helpController;
+
+#if SNDFILE_SUPPORT
+    wxString m_filename;
+    SNDFILE* m_sndfile;
+#endif
+
+    bool m_nogui;
 };
 
 } //namespace

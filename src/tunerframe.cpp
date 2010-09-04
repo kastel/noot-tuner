@@ -308,6 +308,7 @@ void TunerFrame::OnTimer(wxTimerEvent & event)
 #ifdef DEBUG
     printf("\n");
 #endif
+    theAudioBackend->DoIdle();
 }
 
 void TunerFrame::OnTransposeKillFocus(wxFocusEvent & event)

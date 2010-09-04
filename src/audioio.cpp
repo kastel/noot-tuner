@@ -163,4 +163,6 @@ bool AudioBackend::SelectOutputDevice(wxWindow*)
 	return false;
 }
 
+void AudioBackend::DoIdle() { }
+
 } //namespace

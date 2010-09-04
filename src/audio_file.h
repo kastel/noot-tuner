@@ -46,6 +46,8 @@ class FileBackend : public AudioBackend
 		virtual bool ResumeStreaming();
 		virtual bool StopStreaming();
 
+        virtual void DoIdle();
+
         virtual bool IsSampleRateSupported(double);
 
         ///Advance by a certain number of samples

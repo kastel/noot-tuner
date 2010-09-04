@@ -63,11 +63,15 @@ bool FileBackend::Advance(int samples) {
 
     //only keep the first channel
     double chan[ns];
-    for (int i; i<nread; ++i)
+    for (int i=0; i<nread; ++i)
         chan[i] = data[i*m_info.channels];
 
     buffer.Write(nread, chan);
     return nread;
+}
+
+void FileBackend::DoIdle() {
+    Advance();
 }
 
 bool FileBackend::StartStreaming() {

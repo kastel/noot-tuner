@@ -70,7 +70,7 @@ class Buffer {
         double GetMaxDB() {
             return std::log10(GetMax())*20.0;
         }
-		
+
 	private:
         double calcMean();
         double calcMax();
@@ -103,7 +103,10 @@ class AudioBackend {
 	virtual bool PauseStreaming() = 0;
 	virtual bool ResumeStreaming() = 0;
 	virtual bool StopStreaming() = 0;
-	
+
+    ///Call this every time the buffer is analysed
+    virtual void DoIdle();
+
 	virtual bool PlayNote(double frequency);
 	
 	virtual bool SelectInputDevice(wxWindow*);
