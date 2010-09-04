@@ -19,7 +19,7 @@
 
 #include "config.h"
 
-#ifdef SNDFILE_SUPPORT
+#if SNDFILE_SUPPORT
 #include "audio_file.h"
 #include <wx/log.h>
 #include <wx/datstrm.h>
