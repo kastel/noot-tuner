@@ -20,10 +20,14 @@ if HAVE_WINDRES
     noot_tuner_SOURCES += res.rc
 endif
 
-noot_tuner_LDFLAGS = $(WX_LIBS) -lfftw3 -lportaudio
+noot_tuner_LDFLAGS = $(WX_LIBS) -lfftw3 -lportaudio $(NOOT_LIBS)
 
-.rc.o:
-	$(WINDRES) $(CPPFLAGS) -I.. -o $@ $<
+res_verbose = $(res_verbose_$(V))
+               res_verbose_ = $(res_verbose_$(AM_DEFAULT_VERBOSITY))
+               res_verbose_0 = @echo "  RES    $@";
+
+.rc.o: ../version.h
+	$(res_verbose) $(WINDRES) $(CPPFLAGS) -I.. -o $@ $<
 
 Applicationsdir = $(datadir)/applications
 Applications_DATA = noot-tuner.desktop
