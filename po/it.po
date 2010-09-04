@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DC Tuner 0.8\n"
 "Report-Msgid-Bugs-To: dc.kastel@gmail.com\n"
-"POT-Creation-Date: 2010-09-03 18:13+0200\n"
+"POT-Creation-Date: 2010-09-04 02:34+0200\n"
 "PO-Revision-Date: 2010-08-27 21:37+0100\n"
 "Last-Translator: Davide Castellone <kastel88@email.it>\n"
 "Language-Team: \n"
@@ -441,8 +441,8 @@ msgstr "Nessun dispositivo di input trovato"
 msgid "Choose an input device"
 msgstr "Seleziona un dispositivo di ingresso"
 
-#: src/deviceselector.cpp:56 src/deviceselector.cpp:94 src/tunerframe.cpp:502
-#: src/tunerframe.cpp:508 src/tunerframe.cpp:567
+#: src/deviceselector.cpp:56 src/deviceselector.cpp:94 src/tunerframe.cpp:523
+#: src/tunerframe.cpp:529 src/tunerframe.cpp:588
 msgid "NOOT Instrument Tuner"
 msgstr "NOOT Instrument tuner"
 
@@ -470,7 +470,7 @@ msgstr "Sol#"
 msgid "A#"
 msgstr "La#"
 
-#: src/tunerframe.cpp:110 src/tunerframe.cpp:139 src/tunerframe.cpp:524
+#: src/tunerframe.cpp:110 src/tunerframe.cpp:139 src/tunerframe.cpp:545
 msgid "Paused"
 msgstr "In pausa"
 
@@ -478,7 +478,7 @@ msgstr "In pausa"
 msgid "Unable to start listening"
 msgstr "Impossibile avviare l'ascolto"
 
-#: src/tunerframe.cpp:129 src/tunerframe.cpp:522
+#: src/tunerframe.cpp:129 src/tunerframe.cpp:543
 msgid "Listening..."
 msgstr "In ascolto..."
 
@@ -487,19 +487,19 @@ msgstr "In ascolto..."
 msgid "Invalid number: %s"
 msgstr "Numero non valido: %s"
 
-#: src/tunerframe.cpp:400
+#: src/tunerframe.cpp:421
 msgid "Cannot find help file"
 msgstr "Impossibile trovare il file della guida"
 
-#: src/tunerframe.cpp:455
+#: src/tunerframe.cpp:476
 msgid "Never-out-of-tune Instrument Tuner"
 msgstr "Accordatore per strumenti \"Never-out-of-tune\""
 
-#: src/tunerframe.cpp:458
+#: src/tunerframe.cpp:479
 msgid "A full-featured instrument tuner"
 msgstr "Accordatore per strumenti"
 
-#: src/tunerframe.cpp:465
+#: src/tunerframe.cpp:486
 msgid ""
 "Licensed under the GNU General Public License v. 3\n"
 "http://www.gnu.org/copyleft/gpl.html"
@@ -507,28 +507,28 @@ msgstr ""
 "Distribuito sotto la licenza GNU General Public License v. 3\n"
 "http://www.gnu.org/copyleft/gpl.html"
 
-#: src/tunerframe.cpp:502 src/tunerframe.cpp:508
+#: src/tunerframe.cpp:523 src/tunerframe.cpp:529
 msgid "Unable to launch the default browser"
 msgstr "Impossibile lanciare il browser predefinito"
 
-#: src/tunerframe.cpp:517
+#: src/tunerframe.cpp:538
 msgid "Calibrating..."
 msgstr "Calibrazione..."
 
-#: src/tunerframe.cpp:551
+#: src/tunerframe.cpp:572
 msgid "Default sample rate"
 msgstr "Default"
 
-#: src/tunerframe.cpp:566
+#: src/tunerframe.cpp:587
 msgid "Select a frame rate"
 msgstr "Seleziona una frequenza di campionamento"
 
-#: src/tunerframe.cpp:585
+#: src/tunerframe.cpp:606
 #, c-format
 msgid "%d Hz *%9.7f"
 msgstr "%d Hz *%9.7f"
 
-#: src/tunerframe.cpp:590
+#: src/tunerframe.cpp:611
 msgid ""
 "Insert a value for clock correction as a raw factor\n"
 "(1.0 means no correction)"
@@ -536,21 +536,21 @@ msgstr ""
 "Inserire un valore per la correzione di clock come coefficiente\n"
 "(1,0 significa nessuna correzione)"
 
-#: src/tunerframe.cpp:591 src/tunerframe.cpp:610
+#: src/tunerframe.cpp:612 src/tunerframe.cpp:631
 msgid "Clock correction"
 msgstr "Correzione del clock"
 
-#: src/tunerframe.cpp:592
+#: src/tunerframe.cpp:613
 #, c-format
 msgid "%9.7f"
 msgstr "%9.7f"
 
-#: src/tunerframe.cpp:600 src/tunerframe.cpp:619
+#: src/tunerframe.cpp:621 src/tunerframe.cpp:640
 #, c-format
 msgid "Invalid number: '%s'"
 msgstr "Numero non valido: \"%s\""
 
-#: src/tunerframe.cpp:609
+#: src/tunerframe.cpp:630
 msgid ""
 "Insert a value for clock correction in hundredths of semitone\n"
 "(0 means no correction)"
@@ -558,7 +558,7 @@ msgstr ""
 "Inserire un valore per la correzione del clock in centesimi di semitono\n"
 "(0 significa nessuna correzione)"
 
-#: src/tunerframe.cpp:611
+#: src/tunerframe.cpp:632
 #, c-format
 msgid "%+5.2f"
 msgstr "%+5.2f"
