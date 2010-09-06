@@ -57,6 +57,7 @@ CREATE_OPTION_ALTERNATE_NAME(ndOptions.fTolerance, "MainWindow/Tolerance", 1, mw
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iFrameRate, "MainWindow/FrameRate", 10, mwft);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iSampleRate, "MainWindow/SampleRate", 0, mwsr);
 
+///Class used to find the lowest peak
 template<typename key_type, typename value_type, int size> class MiniSortedMap
 {
 	public:
@@ -68,6 +69,23 @@ template<typename key_type, typename value_type, int size> class MiniSortedMap
 		
 		inline void Insert(key_type key, value_type value) {
 			int pos, i;
+
+            //If a key with a near value (diff<=1) is found, it is replaced
+            for (pos=0; pos<size; ++pos)
+                if (abs(m_vals[pos]-value)<=1) {
+                    if (key > m_keys[pos]) {
+                        //remove the current value
+                        for (i=pos+1; i<size; ++i) {
+                            m_keys[i-1] = m_keys[i];
+                            m_vals[i-1] = m_vals[i];
+                        }
+                        break;
+                    }
+                    else
+                        return; //reject
+                }
+
+            //Normal insertion
 			for (pos=0; pos<size; ++pos)
 				if (key>m_keys[pos])
 					break;
