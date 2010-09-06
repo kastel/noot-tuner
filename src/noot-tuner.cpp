@@ -85,7 +85,6 @@ void tunerapp::OnInitCmdLine(wxCmdLineParser& parser) {
 
     setlocale(LC_NUMERIC, "C");
     wxApp::OnInitCmdLine(parser);
-    InitLocale();
 }
 
 static bool ParseOpt(wxCmdLineParser& parser, const wxChar* optname, int& val) {
@@ -156,6 +155,8 @@ bool tunerapp::OnCmdLineParsed(wxCmdLineParser& parser) {
         wxLogError(wxT("%s"), s.c_str());
         return false;
     }
+
+    InitLocale();
 
     if (!wxApp::OnCmdLineParsed(parser))
         return false;
