@@ -1,6 +1,7 @@
 # these are the headers for your project
 noinst_HEADERS = audio_file.h audio_portaudio.h audioio.h wxfbtunerframe.h \
-	noot-tuner.h notedetection.h options.h tunerframe.h volumemeter.h
+	noot-tuner.h notedetection.h options.h tunerframe.h volumemeter.h \
+	nogui.h
 
 EXTRA_DIST = tunerframe.fpb noot-tuner.desktop
 
@@ -13,7 +14,7 @@ bin_PROGRAMS = noot-tuner
 
 noot_tuner_SOURCES = audio_file.cpp audio_portaudio.cpp audioio.cpp \
 	wxfbtunerframe.cpp noot-tuner.cpp deviceselector.cpp notedetection.cpp options.cpp \
-	tunerframe.cpp volumemeter.cpp
+	tunerframe.cpp volumemeter.cpp nogui.cpp
 
 # the application source, library search path, and link libraries
 if HAVE_WINDRES

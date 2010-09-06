@@ -35,7 +35,7 @@ class PortaudioBackend : public AudioBackend {
 	public:
 	
 	PortaudioBackend() : audioStream(NULL), playNoteStream(NULL), inputDevice(-1), outputDevice(-1),
-        sampleRate(0.0) { };
+        sampleRate(0.0), currentTime(0.0) { };
 	virtual ~PortaudioBackend();
 	
 	virtual bool Initialise();
@@ -47,6 +47,8 @@ class PortaudioBackend : public AudioBackend {
 	virtual bool StopStreaming();
 	
 	virtual bool PlayNote(double);
+
+    virtual double GetCurrentTime();
 	
 	virtual bool SelectInputDevice(wxWindow* parent);
 	virtual bool SelectOutputDevice(wxWindow* parent);
@@ -59,7 +61,7 @@ class PortaudioBackend : public AudioBackend {
     
 	void LogPortaudioError(int);
 	PaDeviceIndex inputDevice, outputDevice;
-    double sampleRate;
+    double sampleRate, currentTime;
 };
 
 } //namespace

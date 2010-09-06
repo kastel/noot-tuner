@@ -104,14 +104,18 @@ class AudioBackend {
 	virtual bool ResumeStreaming() = 0;
 	virtual bool StopStreaming() = 0;
 
+    ///Get the current time in seconds
+    virtual double GetCurrentTime() = 0;
+
     ///Call this every time the buffer is analysed
     virtual void DoIdle();
 
 	virtual bool PlayNote(double frequency);
 	
-	virtual bool SelectInputDevice(wxWindow*);
-	virtual bool SelectOutputDevice(wxWindow*);
+	virtual bool SelectInputDevice(wxWindow* parent);
+	virtual bool SelectOutputDevice(wxWindow* parent);
 
+    ///Return true if the given sample rate is supported
     virtual bool IsSampleRateSupported(double rate) = 0;
 	
 	virtual ~AudioBackend();

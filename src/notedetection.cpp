@@ -369,7 +369,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 		//where the first 2 is an arbitrary constant
         
         if (buffer.GetSize()!=optimalSizeRounded)
-            printf("Automatic window size: %d, rounded to %d\n", optimalSize, optimalSizeRounded);
+            fprintf(stderr, "Automatic window size: %d, rounded to %d\n", optimalSize, optimalSizeRounded);
 
         buffer.Resize(optimalSizeRounded);
 	}
@@ -385,7 +385,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	if (cOut==NULL || cOutSize!=buffer.GetSize())
 	{
 		//theAudioBackend->PauseStreaming();
-        printf("Calibrating FFT... "); fflush(stdout);
+        fprintf(stderr, "Calibrating FFT... "); fflush(stderr);
 
 		cOut = (fftw_complex*) fftw_malloc(sizeof(fftw_complex)*buffer.GetSize());
 		cOutSize = buffer.GetSize();
@@ -393,7 +393,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 									FFTW_MEASURE);
 		
 		//theAudioBackend->ResumeStreaming();
-        printf("Done\n");
+        fprintf(stderr, "Done\n");
 	}
 
 	
@@ -405,7 +405,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 
     if (processing) {
 #ifdef DEBUG
-        printf("Too fast. Slowing down: skipping a call to DetectNote\n");
+        fprintf(stderr, "Too fast. Slowing down: skipping a call to DetectNote\n");
 #endif
         return false;
     }
@@ -553,7 +553,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	
 #ifdef DEBUG
 	if (*frequency < tempfreq-dd_fft || *frequency > tempfreq+dd_fft)
-		printf("Warning: FFT says frequency is between %5.2f and %5.2f, but "
+		fprintf(stderr, "Warning: FFT says frequency is between %5.2f and %5.2f, but "
 			"I'm returning %5.2f\n", tempfreq-dd_fft, tempfreq+dd_fft,
    		*frequency);
 #endif
@@ -588,7 +588,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 		*offset = 12*log(transposed/fPitches[i])/log(2);
 	
 #ifdef DEBUG
-    printf("Max ACF = %.4f\n", max_acf);
+    fprintf(stderr, "Max ACF = %.4f\n", max_acf);
 #endif
 
     return true;

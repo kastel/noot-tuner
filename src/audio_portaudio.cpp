@@ -32,6 +32,8 @@ bool s_bIgnore = false;
 
 int preferredSampleRates[] = { 96000, 48000, 44100 };
 
+double* currentTimePtr = NULL;
+
 int paCallback(const void *inputBuffer, void *outputBuffer, unsigned long frameCount, const PaStreamCallbackTimeInfo *timeInfo, PaStreamCallbackFlags statusFlags, void *userData)
 {
 	if (s_bIgnore)
@@ -41,11 +43,15 @@ int paCallback(const void *inputBuffer, void *outputBuffer, unsigned long frameC
 	
 	buffer.Write(frameCount, in);
 
+    *currentTimePtr = timeInfo->currentTime;
+
     return 0;
 }
 
 bool PortaudioBackend::Initialise()
 {
+    currentTimePtr = &currentTime;
+    
 	int err = Pa_Initialize();
 	if (err!=paNoError)
 	{
@@ -284,6 +290,10 @@ bool PortaudioBackend::IsSampleRateSupported(double rate) {
     parms.sampleFormat = paInt16;
 
     return Pa_IsFormatSupported(&parms, NULL, rate);
+}
+
+double PortaudioBackend::GetCurrentTime() {
+    return currentTime;
 }
 
 } //namespace

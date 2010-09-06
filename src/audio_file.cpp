@@ -28,7 +28,13 @@
 
 namespace noot {
 
-FileBackend::~FileBackend() { }
+FileBackend::FileBackend(const wxString& filename) : m_filename(filename), m_sndfile(NULL),
+            m_step(1024), m_currentSample(0), m_eof(false) { }
+
+FileBackend::~FileBackend() {
+    if (m_sndfile)
+        Terminate();
+}
 
 bool FileBackend::Initialise() {
     m_info.format = 0;
@@ -67,6 +73,12 @@ bool FileBackend::Advance(int samples) {
         chan[i] = data[i*m_info.channels];
 
     buffer.Write(nread, chan);
+
+    m_currentSample += nread;
+
+    if (nread==0)
+        m_eof = true;
+
     return nread;
 }
 
@@ -97,6 +109,10 @@ bool FileBackend::ResumeStreaming() {
 bool FileBackend::IsSampleRateSupported(double) {
     //Do nothing
     return true;
+}
+
+double FileBackend::GetCurrentTime() {
+    return double(m_currentSample)/ndOptions.iSampleRate;
 }
 
 } //namespace

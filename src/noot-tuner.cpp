@@ -29,12 +29,11 @@
 #include <fftw3.h>
 #include <wx/image.h>
 #include <wx/cmdline.h>
+#include "nogui.h"
 
 IMPLEMENT_APP(noot::tunerapp);
 
 namespace noot {
-
-static char* old_locale;
 
 bool tunerapp::OnInit()
 {
@@ -44,20 +43,16 @@ bool tunerapp::OnInit()
     wxInitAllImageHandlers();
 	
 	wxConfig::Create();
-    old_locale = setlocale(LC_ALL, "C");
+    setlocale(LC_ALL, "C");
 	LoadAllOptions();
-    setlocale(LC_ALL, old_locale);
 	
 	wxString sWisdom = wxConfig::Get()->Read(wxT("FFTW3/Wisdom"), wxEmptyString);
-	if (sWisdom.size())
-		fftw_import_wisdom_from_string(sWisdom.mb_str());
+	if (sWisdom.size()) {
+		int out = fftw_import_wisdom_from_string(sWisdom.mb_str());
+        fprintf(stderr, "Imported wisdom (%d)\n", out);
+    }
 	
-	//Load translations
-	wxLanguage syslang=(wxLanguage)wxLocale::GetSystemLanguage();
-	m_locale.Init(syslang);
-	m_locale.AddCatalog(wxT("wx"));
-	m_locale.AddCatalog(wxT(PACKAGE));
-
+    InitLocale();
     //call base class version
     return wxApp::OnInit();
 }
@@ -88,8 +83,9 @@ void tunerapp::OnInitCmdLine(wxCmdLineParser& parser) {
 
     parser.SetDesc(desc);
 
-    old_locale = setlocale(LC_NUMERIC, "C");
-    return wxApp::OnInitCmdLine(parser);
+    setlocale(LC_NUMERIC, "C");
+    wxApp::OnInitCmdLine(parser);
+    InitLocale();
 }
 
 static bool ParseOpt(wxCmdLineParser& parser, const wxChar* optname, int& val) {
@@ -161,17 +157,23 @@ bool tunerapp::OnCmdLineParsed(wxCmdLineParser& parser) {
         return false;
     }
 
-    setlocale(LC_NUMERIC, old_locale);
     if (!wxApp::OnCmdLineParsed(parser))
         return false;
 
-	//Create main window
-	TunerFrame* frame = new TunerFrame(NULL);
+    if (!m_nogui) {
+        //Create main window
+        TunerFrame* frame = new TunerFrame(NULL);
 
-	frame->Show(true);
-	SetTopWindow(frame);
-
-    return true;
+        frame->Show(true);
+        SetTopWindow(frame);
+        return true;
+    }
+    else {
+        //output only interface
+        TextInterface();
+        OnExit();
+        return false;
+    }
 }
 
 int tunerapp::OnExit()
@@ -182,6 +184,7 @@ int tunerapp::OnExit()
 	
 	char* pcWisdom = fftw_export_wisdom_to_string();
 	wxConfig::Get()->Write(wxT("FFTW3/Wisdom"), wxString(pcWisdom, wxConvUTF8));
+    free(pcWisdom);
 
     setlocale(LC_ALL, "C");
 	
@@ -191,5 +194,13 @@ int tunerapp::OnExit()
 	
 	return 0;
 } 
+
+void tunerapp::InitLocale() {
+ 	//Load translations
+	wxLanguage syslang=(wxLanguage)wxLocale::GetSystemLanguage();
+	m_locale.Init(syslang);
+	m_locale.AddCatalog(wxT("wx"));
+	m_locale.AddCatalog(wxT(PACKAGE));
+}
 
 } //namespace

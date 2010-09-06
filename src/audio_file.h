@@ -34,8 +34,7 @@ namespace noot {
 class FileBackend : public AudioBackend
 {
 	public:
-		FileBackend(const wxString& filename) : m_filename(filename), m_sndfile(NULL),
-            m_step(1024){ }
+		FileBackend(const wxString& filename);
 		~FileBackend();
 
 		virtual bool Initialise();
@@ -48,7 +47,11 @@ class FileBackend : public AudioBackend
 
         virtual void DoIdle();
 
+        virtual double GetCurrentTime();
+
         virtual bool IsSampleRateSupported(double);
+
+        bool Eof() { return m_eof; }
 
         ///Advance by a certain number of samples
         ///\param samples number of samples (0 means default)
@@ -66,6 +69,8 @@ class FileBackend : public AudioBackend
         SNDFILE* m_sndfile;
         int m_step;
         SF_INFO m_info;
+        int m_currentSample;
+        bool m_eof;
 };
 
 } //namespace
