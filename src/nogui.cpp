@@ -52,6 +52,9 @@ void TextInterface() {
     }
 #endif
 
+    //Set to the standard C locale to print out numbers machine-readably
+    setlocale(LC_NUMERIC, "C");
+
     printf("# NOOT Instrument tuner output\n"
         "# Options used:\n"
         "#   Window size = %d\n"
