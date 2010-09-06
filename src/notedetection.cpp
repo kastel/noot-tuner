@@ -32,7 +32,6 @@ namespace noot {
 //the program
 static const double MIN_FREQUENCY = 25.0;
 
-//static dcBuffer ac(4096);
 fftw_complex* cOut=NULL;
 size_t cOutSize=0;
 fftw_plan plan;
@@ -44,7 +43,7 @@ NoteDetectionOptions ndOptions;
 
 ///Refine frequency measurement iteratively by working on the autocorrelation
 ///(variants will be added)
-static bool RefineFrequency_Autocov(double* frequency, Buffer& localBuffer, NoteDetectionOptions& options);
+bool RefineFrequency_Autocov(double* frequency, Buffer& localBuffer, NoteDetectionOptions& options);
 
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iWindowSize, "Options/WindowSize", -1, oiws);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iOctave, "Options/Octave", -1, oio);
@@ -289,65 +288,6 @@ int NoteBinarySearch(double frequency)
 	}
 }
 
-///@todo URGENT: Optimise me
-static double AutoCorrelation(const Buffer& buffer, int index, double avg)
-{
-	int i, end=buffer.GetSize();
-	const double* ptr=buffer.GetPointer();
-	double res=0;
-	
-	for (i=index; i<end; ++i)
-		res += (ptr[i]-avg)*(ptr[i-index]-avg);
-		
-	return res;
-}
-
-//Unused function
-/*
-static void AutoCorrelationVector(const Buffer& buffer, Buffer& ac, double avg)
-{
-	int index = 0, end=buffer.GetSize()<ac.GetSize() ? buffer.GetSize() : ac.GetSize();
-	const double* ptr=buffer.GetPointer();
-	static Buffer temp(4096);
-	
-	temp.Resize(end);
-	
-	for (index=0; index!=end; ++index)
-		temp[index] = buffer[index]-avg;
-	
-	ptr = temp.GetPointer();
-	
-	for (index=0; index!=end; ++index)
-	{
-		double res=0;
-		int i;//, e=end-index-1;
-		
-//		for (i=0; i<e; ++i)
-//		res += ptr[i]*ptr[i+index];
-		
-		for (i=index; i<end; ++i)
-			res += ptr[i]*ptr[i-index];
-		
-		ac[index] = res;
-	}
-}
-*/
-
-//Unused function
-/*
-static void AutoCorrelationVector(const Buffer& buffer, Buffer& ac)
-{
-	int index = 0, end=buffer.GetSize();
-	const double* ptr=buffer.GetPointer();
-    double avg=0.0;
-	
-	for (index=0; index!=end; ++index)
-		avg += ptr[index];
-	
-	AutoCorrelationVector(buffer, ac, avg);
-}
-*/
-
 static unsigned RoundToPowerOf2(unsigned x) {
     unsigned res = 1;
     while (res<x)
@@ -543,83 +483,6 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	if (offset)
 		*offset = 12*log(transposed/fPitches[i])/log(2);
 	
-    return true;
-}
-
-bool RefineFrequency_Autocov(double* frequency, Buffer& localBuffer, NoteDetectionOptions& options) {
-    //Step 4: Enhance precision by doubling period iteratively
-    double tempfreq = *frequency;
-    double dd_fft = options.iSampleRate/double(localBuffer.GetSize());
-    double dMax;
-#ifdef DEBUG
-    double max_acf;
-#endif
-
-	int i, iMax, index = options.iSampleRate/tempfreq, factor = 1;
-    
-	//minimum index to have the expected precision
-	int minindex = ceil(1.0/(pow(2, options.fExpectedPrecision/24.0)-1));
-	
-	do
-	{
-		int first, last;
-		double ac;
-		
-		if ((unsigned)(index*(index-1)) > localBuffer.GetSize()) /*(dd<dd_fft)*/ {
-			//Step 5: find a local maximum in (tempfreq-dd; tempfreq+dd)
-			if (factor==1) {
-				first=floor(options.iSampleRate/(tempfreq+dd_fft));
-				last=ceil(options.iSampleRate/(tempfreq-dd_fft));
-			} else {
-				first = index - 2;
-				last = index + 2;
-			}
-			
-			if ((unsigned)first>=cOutSize || (unsigned)last>=cOutSize)
-				return false;
-			
-			dMax=0; iMax=0;
-			for (i=first; i<=last; ++i) {
-				if ((ac=AutoCorrelation(localBuffer, i, cOut[0][0]))>dMax) {
-					dMax = ac;
-					iMax = i;
-                }
-                if ((i-first)%20==0)
-                    wxTheApp->Yield();
-            }
-			
-			if (!iMax) //negative correlation
-				return false;
-#ifdef DEBUG
-            if (factor==1) {
-                double variance = 0;
-                double mean = localBuffer.GetMean();
-                for (i=0; (unsigned)i<localBuffer.GetSize(); ++i)
-                    variance += (localBuffer[i] - mean)*(localBuffer[i] - mean);
-
-                max_acf = dMax/variance;
-            }
-#endif
-			index = iMax;
-		}
-		
-		factor *= 2;
-		index *= 2;
-
-        wxYield();
-	}
-	while (index<minindex);
-	
-	//Step 6: results
-	*frequency = double(factor)/index*options.iSampleRate*options.fClockCorrection;
-#ifdef DEBUG
-	if (*frequency < tempfreq-dd_fft || *frequency > tempfreq+dd_fft)
-		fprintf(stderr, "Warning: FFT says frequency is between %5.2f and %5.2f, but "
-			"I'm returning %5.2f\n", tempfreq-dd_fft, tempfreq+dd_fft,
-   		*frequency);
-
-    fprintf(stderr, "Max ACF = %.4f\n", max_acf);
-#endif
     return true;
 }
 
