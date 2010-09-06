@@ -36,7 +36,8 @@
 <itemizedlist>
 <listitem><para>Una scheda audio con un ingresso audio configurato (microfono o line in)</para></listitem><listitem><para>Spazio su disco variabile (circa 1 MB per Ubuntu, 10 MB per Windows, 40 MB per i pacchetti universali)</para></listitem></itemizedlist></sect1><sect1 id='changelog' >
 <title>Registro dei cambiamenti<!-- anchor id="changelog" --></title>
-<para>Versione 0.2.0:</para><itemizedlist>
+<para>Versione 0.2.1:</para><itemizedlist>
+<listitem><para>Supporto per l'analisi offline (lettura da file audio)</para></listitem><listitem><para>Interfaccia testuale (per scopi testing)</para></listitem></itemizedlist><para>Versione 0.2.0:</para><itemizedlist>
 <listitem><para>Clipping detection, indicatore del volume</para></listitem><listitem><para>Correzione del clock</para></listitem><listitem><para>Basta blocchi causati dall'uso eccessivo della CPU</para></listitem></itemizedlist><para>Versione 0.1.3:</para><itemizedlist>
 <listitem><para>Documentazione migliorata (nuovo formato)</para></listitem></itemizedlist><para>Versione 0.1.2.3:</para><itemizedlist>
 <listitem><para>La precisione è data in millesimi, non più in centesimi</para></listitem><listitem><para>Miglioramenti vari alla grafica</para></listitem><listitem><para>PPA per gli utenti Ubuntu</para></listitem></itemizedlist><para>Version 0.1.0:</para><itemizedlist>

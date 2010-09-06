@@ -326,6 +326,18 @@ name "changelog"
 \end_layout
 
 \begin_layout Standard
+Version 0.2.1:
+\end_layout
+
+\begin_layout Itemize
+Support for offline analysis (sound file)
+\end_layout
+
+\begin_layout Itemize
+Added a text interface (for testing purposes)
+\end_layout
+
+\begin_layout Standard
 Version 0.2.0:
 \end_layout
 
