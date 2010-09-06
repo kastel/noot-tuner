@@ -42,6 +42,10 @@ static double fPitches[128]; //the frequencies
 
 NoteDetectionOptions ndOptions;
 
+///Refine frequency measurement iteratively by working on the autocorrelation
+///(variants will be added)
+static bool RefineFrequency_Autocov(double* frequency, Buffer& localBuffer, NoteDetectionOptions& options);
+
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iWindowSize, "Options/WindowSize", -1, oiws);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iOctave, "Options/Octave", -1, oio);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iNote, "Options/Note", -1, oin);
@@ -366,11 +370,8 @@ private:
 ///DetectNote is still active, it will fail silently and return @c false.
 bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 {
-	int i, e, factor, index, iMax;
+	int i, e, iMax;
 	double tempfreq, dMax;
-#ifdef DEBUG
-    double max_acf;
-#endif
     
     //Make a local copy of the options (in case someone modifies them
     //while processing
@@ -506,11 +507,56 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 
     wxTheApp->Yield();
 	
-	//Step 4: Enhance precision by doubling period iteratively
-	double dd_fft = options.iSampleRate/double(localBuffer.GetSize());
+    //Steps 4 to 6
+    *frequency = tempfreq;
+    if (!RefineFrequency_Autocov(frequency, localBuffer, options))
+        return false;
+
+    //Step 7: Transpose
+    double transposed = *frequency * pow(2, options.fTranspose/12);
 	
-	index = options.iSampleRate/tempfreq;
-	factor = 1;
+	//Step 8: Find note, octave and offset
+    i = NoteBinarySearch(transposed);
+
+    //Handle extreme return values
+    if (i==0 || i==127)
+        return false;
+	
+	if (note)
+	{
+		if (options.iNote == -1)
+			*note = i%12;
+		else
+		{
+			*note = options.iNote;
+			int i1=i-i%12+*note, i2=i1+12;
+			if (abs(i-i1)<abs(i-i2))
+				i = i1;
+			else
+				i = i2;
+		}
+	}
+	
+	if (octave)
+		*octave = i/12;
+	
+	if (offset)
+		*offset = 12*log(transposed/fPitches[i])/log(2);
+	
+    return true;
+}
+
+bool RefineFrequency_Autocov(double* frequency, Buffer& localBuffer, NoteDetectionOptions& options) {
+    //Step 4: Enhance precision by doubling period iteratively
+    double tempfreq = *frequency;
+    double dd_fft = options.iSampleRate/double(localBuffer.GetSize());
+    double dMax;
+#ifdef DEBUG
+    double max_acf;
+#endif
+
+	int i, iMax, index = options.iSampleRate/tempfreq, factor = 1;
+    
 	//minimum index to have the expected precision
 	int minindex = ceil(1.0/(pow(2, options.fExpectedPrecision/24.0)-1));
 	
@@ -554,8 +600,6 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
                 max_acf = dMax/variance;
             }
 #endif
-
-
 			index = iMax;
 		}
 		
@@ -568,47 +612,14 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	
 	//Step 6: results
 	*frequency = double(factor)/index*options.iSampleRate*options.fClockCorrection;
-	
 #ifdef DEBUG
 	if (*frequency < tempfreq-dd_fft || *frequency > tempfreq+dd_fft)
 		fprintf(stderr, "Warning: FFT says frequency is between %5.2f and %5.2f, but "
 			"I'm returning %5.2f\n", tempfreq-dd_fft, tempfreq+dd_fft,
    		*frequency);
-#endif
-	
-	double transposed = *frequency * pow(2, options.fTranspose/12);
-	
-	i = NoteBinarySearch(transposed);
 
-    //Handle extreme return values
-    if (i==0 || i==127)
-        return false;
-	
-	if (note)
-	{
-		if (options.iNote == -1)
-			*note = i%12;
-		else
-		{
-			*note = options.iNote;
-			int i1=i-i%12+*note, i2=i1+12;
-			if (abs(i-i1)<abs(i-i2))
-				i = i1;
-			else
-				i = i2;
-		}
-	}
-	
-	if (octave)
-		*octave = i/12;
-	
-	if (offset)
-		*offset = 12*log(transposed/fPitches[i])/log(2);
-	
-#ifdef DEBUG
     fprintf(stderr, "Max ACF = %.4f\n", max_acf);
 #endif
-
     return true;
 }
 
