@@ -29,12 +29,13 @@ extern struct NoteDetectionOptions {
 	int iWindowSize;
 	int iOctave; //5 -> 3rd octave; -1 -> any
 	int iNote; //in semitones: 0 is C, 1 is C# etc
-	int iTemperament;
+	int iTemperament; //see TEMPERAMENT
 	double fThreshold; //negative value, in dB
 	double fExpectedPrecision; //in semitones
 	double fTranspose; //in semitones
 	int iSampleRate;
     double fClockCorrection; //as a coefficient (1.0 means no correction)
+    int iRefinement; //see REFINEMENT
 	
 	//Gui Options
 	int iFrameRate;
@@ -57,6 +58,14 @@ enum TEMPERAMENT {
 	T_MEANTONE
 };
 
+///Type of refinement used
+enum REFINEMENT {
+    ///Autocovariance
+    R_AUTOCOV,
+    ///Power spectrum
+    R_POWER_SPECTRUM
+};
+
 //Frequency tables MUST be initialized before using them
 void SetTemperament(TEMPERAMENT);
 
@@ -70,6 +79,10 @@ bool DetectNote(int* note, int* octave, double* frequency, double* offset);
  * \param octave the octave (as in NoteDetectionOptions::iOctave)
  */
 double GetNoteFrequency(int note, int octave);
+
+///Pointer to a function that refines frequency
+typedef bool (*FrequencyRefinementFunc)(double* frequency, Buffer& localBuffer,
+    NoteDetectionOptions& options);
 
 } //namespace
 

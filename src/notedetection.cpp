@@ -23,6 +23,7 @@
 #include <fftw3.h>
 #include <wx/utils.h>
 #include <wx/app.h>
+#include <wx/log.h>
 
 using namespace std;
 
@@ -41,9 +42,13 @@ static double fPitches[128]; //the frequencies
 
 NoteDetectionOptions ndOptions;
 
-///Refine frequency measurement iteratively by working on the autocorrelation
-///(variants will be added)
 bool RefineFrequency_Autocov(double* frequency, Buffer& localBuffer, NoteDetectionOptions& options);
+bool RefineFrequency_PowerSpectrum(double* frequency, Buffer& localBuffer, NoteDetectionOptions& options);
+
+FrequencyRefinementFunc refinementFunc[] = {
+    RefineFrequency_Autocov,
+    RefineFrequency_PowerSpectrum
+};
 
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iWindowSize, "Options/WindowSize", -1, oiws);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iOctave, "Options/Octave", -1, oio);
@@ -54,6 +59,7 @@ CREATE_OPTION_ALTERNATE_NAME(ndOptions.fExpectedPrecision, "Options/ExpectedPrec
 							  0.001, ofepr);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fTranspose, "Options/Transpose", 0, oftr);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fClockCorrection, "Options/ClockCorrection", 1.0, ofcc);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.iRefinement, "MainWindow/Refinement", 0, ofrf);
 
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iIndicatorWidth, "MainWindow/IndicatorWidth", 10, mwiw);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fTolerance, "MainWindow/Tolerance", 1, mwt);
@@ -448,8 +454,13 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
     wxTheApp->Yield();
 	
     //Steps 4 to 6
+    if ((unsigned)options.iRefinement >
+        (unsigned)(sizeof(refinementFunc)/sizeof(refinementFunc[0])))
+        wxLogFatalError(_("Invalid refinement function. Aborting"));
+
+
     *frequency = tempfreq;
-    if (!RefineFrequency_Autocov(frequency, localBuffer, options))
+    if (!refinementFunc[options.iRefinement](frequency, localBuffer, options))
         return false;
 
     //Step 7: Transpose

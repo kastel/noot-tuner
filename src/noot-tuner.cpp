@@ -78,7 +78,8 @@ void tunerapp::OnInitCmdLine(wxCmdLineParser& parser) {
         { wxCMD_LINE_OPTION, wxT("r"), wxT("samplerate"), _("Sample rate"), wxCMD_LINE_VAL_NUMBER },
         { wxCMD_LINE_OPTION, wxT("F"), wxT("framerate"), _("Frame rate"), wxCMD_LINE_VAL_NUMBER },
         { wxCMD_LINE_OPTION, wxT("c"), wxT("corr"), _("Clock correction as a factor"), wxCMD_LINE_VAL_STRING },
-        { wxCMD_LINE_OPTION, wxT("C"), wxT("corr-cent"), _("Clock correction in cents"), wxCMD_LINE_VAL_STRING }
+        { wxCMD_LINE_OPTION, wxT("C"), wxT("corr-cent"), _("Clock correction in cents"), wxCMD_LINE_VAL_STRING },
+        { wxCMD_LINE_OPTION, wxT("a"), wxT("refinement"), _("Refinement algorithm (0 or 1)"), wxCMD_LINE_VAL_NUMBER }
     };
 
     parser.SetDesc(desc);
@@ -135,6 +136,7 @@ bool tunerapp::OnCmdLineParsed(wxCmdLineParser& parser) {
         ParseOpt(parser, wxT("corr"), ndOptions.fClockCorrection);
         if (ParseOpt(parser, wxT("corr-cent"), ndOptions.fClockCorrection))
             ndOptions.fClockCorrection = pow(2.0, ndOptions.fClockCorrection/1200.0);
+        ParseOpt(parser, wxT("refinement"), ndOptions.iRefinement);
 
         //Initialise audio system
 #if SNDFILE_SUPPORT
