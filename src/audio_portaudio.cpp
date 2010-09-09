@@ -24,13 +24,9 @@
 #include <wx/intl.h>
 #include "notedetection.h"
 
-#define BUFFER_SIZE 1024
-
 namespace noot {
 
 bool s_bIgnore = false;
-
-int preferredSampleRates[] = { 96000, 48000, 44100 };
 
 double* currentTimePtr = NULL;
 
@@ -121,7 +117,7 @@ bool PortaudioBackend::StartStreaming()
 			ndOptions.iSampleRate = int(pdi->defaultSampleRate);
 		
 		err = Pa_OpenDefaultStream(&audioStream, 1, 0, paInt16, ndOptions.iSampleRate,
-									BUFFER_SIZE, paCallback, NULL );
+									ndOptions.iSampleRate/100, paCallback, NULL );
 		
 		if (err!=paNoError)
 		{
