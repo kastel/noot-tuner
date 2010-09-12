@@ -397,6 +397,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
             break;
         case W_HANNING:
             HanningWindow(localBuffer);
+            break;
         default:
             wxLogFatalError(wxT("Unknown window function!"));
     }
