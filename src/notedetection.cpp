@@ -51,15 +51,16 @@ FrequencyRefinementFunc refinementFunc[] = {
 };
 
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iWindowSize, "Options/WindowSize", -1, oiws);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.iWindowType, "Options/WindowType", W_RECT, oiwt);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iOctave, "Options/Octave", -1, oio);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iNote, "Options/Note", -1, oin);
-CREATE_OPTION_ALTERNATE_NAME(ndOptions.iTemperament, "Options/Temperament", 0, oit);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.iTemperament, "Options/Temperament", T_EQUAL, oit);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fThreshold, "Options/Threshold", -70.0, oft);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fExpectedPrecision, "Options/ExpectedPrecision",
 							  0.001, ofepr);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fTranspose, "Options/Transpose", 0, oftr);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fClockCorrection, "Options/ClockCorrection", 1.0, ofcc);
-CREATE_OPTION_ALTERNATE_NAME(ndOptions.iRefinement, "MainWindow/Refinement", 0, ofrf);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.iRefinement, "MainWindow/Refinement", R_AUTOCOV, ofrf);
 
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iIndicatorWidth, "MainWindow/IndicatorWidth", 10, mwiw);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fTolerance, "MainWindow/Tolerance", 1, mwt);
@@ -312,6 +313,15 @@ private:
     volatile bool& flag;
 };
 
+///Apply a Hanning (Hann) window to a buffer. This function changes the buffer
+void HanningWindow(Buffer& buffer) {
+    int i, e=buffer.GetSize();
+    double* ptr = (double*) buffer.GetPointer();
+    
+    for (i=0; i<e; ++i)
+        ptr[i] *= 0.5*(1-cos(2*M_PI*(i)/(e-1)));
+}
+
 ///This function isn't reentrant on purpose. If called while an instance of
 ///DetectNote is still active, it will fail silently and return @c false.
 bool DetectNote(int * note, int * octave, double * frequency, double* offset)
@@ -380,6 +390,16 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
     static Buffer localBuffer(0);
     double maxdb = buffer.GetMaxDB();
     buffer.CopyTo(localBuffer);
+
+    //Step -1: Apply a window
+    switch ((WINDOW)options.iWindowType) {
+        case W_RECT:
+            break;
+        case W_HANNING:
+            HanningWindow(localBuffer);
+        default:
+            wxLogFatalError(wxT("Unknown window function!"));
+    }
 
     //Step 0: check the threshold
 	/*dMax = pow(10,dcOptions.fThreshold/20);

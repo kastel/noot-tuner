@@ -68,7 +68,8 @@ void tunerapp::OnInitCmdLine(wxCmdLineParser& parser) {
         { wxCMD_LINE_OPTION, wxT("f"), wxT("file"), _("Input file name (enables offline analysis)"), wxCMD_LINE_VAL_STRING },
         { wxCMD_LINE_OPTION, wxT("s"), wxT("step"), _("Advance step in samples"), wxCMD_LINE_VAL_NUMBER },
 #endif
-        { wxCMD_LINE_OPTION, wxT("w"), wxT("window"), _("Window size (0 means auto)"), wxCMD_LINE_VAL_NUMBER },
+        { wxCMD_LINE_OPTION, wxT("w"), wxT("windowsize"), _("Window size (0 means auto)"), wxCMD_LINE_VAL_NUMBER },
+        { wxCMD_LINE_OPTION, wxT("W"), wxT("windowtype"), _("Window type"), wxCMD_LINE_VAL_NUMBER },
         { wxCMD_LINE_OPTION, wxT("O"), wxT("octave"), _("Octave (5 means octave 3, -1 means any)"), wxCMD_LINE_VAL_NUMBER },
         { wxCMD_LINE_OPTION, wxT("N"), wxT("note"), _("Note as a number (0=C, 1=C#, ... -1=any)"), wxCMD_LINE_VAL_NUMBER },
         { wxCMD_LINE_OPTION, wxT("T"), wxT("temperament"), _("Temperament (0=equal, others: see main window)"), wxCMD_LINE_VAL_NUMBER },
@@ -124,7 +125,8 @@ bool tunerapp::OnCmdLineParsed(wxCmdLineParser& parser) {
     try {
         m_nogui = parser.Found(wxT("nogui"));
 
-        ParseOpt(parser, wxT("window"), ndOptions.iWindowSize);
+        ParseOpt(parser, wxT("windowsize"), ndOptions.iWindowSize);
+        ParseOpt(parser, wxT("windowtype"), ndOptions.iWindowType);
         ParseOpt(parser, wxT("octave"), ndOptions.iOctave);
         ParseOpt(parser, wxT("note"), ndOptions.iNote);
         ParseOpt(parser, wxT("temperament"), ndOptions.iTemperament);

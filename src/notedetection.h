@@ -27,6 +27,7 @@ namespace noot {
 //General options
 extern struct NoteDetectionOptions {
 	int iWindowSize;
+    int iWindowType;
 	int iOctave; //5 -> 3rd octave; -1 -> any
 	int iNote; //in semitones: 0 is C, 1 is C# etc
 	int iTemperament; //see TEMPERAMENT
@@ -44,6 +45,11 @@ extern struct NoteDetectionOptions {
 } ndOptions;
 
 int NoteBinarySearch(double frequency); //MIDI standard is used
+
+enum WINDOW {
+    W_RECT,
+    W_HANNING
+};
 
 enum TEMPERAMENT {
 	T_EQUAL,

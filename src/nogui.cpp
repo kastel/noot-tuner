@@ -65,11 +65,13 @@ void TextInterface() {
         "#   Transpose = %f\n"
         "#   Clock correction = %.8f\n"
         "#   Frame rate = %d\n"
+        "#   Window type = %d\n"
         "#\n#Time\tFrequency\tOffset\tOctave\tNote\n",
         ndOptions.iWindowSize, ndOptions.fExpectedPrecision,
         ndOptions.iOctave, ndOptions.iNote, ndOptions.iTemperament,
         ndOptions.fThreshold, ndOptions.fTranspose,
-        ndOptions.fClockCorrection, ndOptions.iFrameRate);
+        ndOptions.fClockCorrection, ndOptions.iFrameRate,
+        ndOptions.iWindowType);
 
     DetectNote(NULL, NULL, NULL, NULL);
 
