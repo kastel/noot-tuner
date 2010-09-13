@@ -317,11 +317,26 @@ private:
 
 ///Apply a Hanning (Hann) window to a buffer. This function changes the buffer
 void HanningWindow(Buffer& buffer) {
-    int i, e=buffer.GetSize();
+    size_t size = buffer.GetSize();
+    //variable that holds a pre-calculated window
+    static Buffer windowCache(0);
+
+    if (windowCache.GetSize()!=size) {
+        //recreate cache window
+        windowCache.Resize(size);
+
+        double* wptr = (double*) windowCache.GetPointer();
+
+        for (size_t i=0; i<size; ++i)
+            wptr[i] = 0.5*(1-cos(2*M_PI*(i)/(size-1)));
+    }
+
+    //multiply the buffer with the window
+    double* wptr = (double*) windowCache.GetPointer();
     double* ptr = (double*) buffer.GetPointer();
     
-    for (i=0; i<e; ++i)
-        ptr[i] *= 0.5*(1-cos(2*M_PI*(i)/(e-1)));
+    for (size_t i=0; i<size; ++i)
+        ptr[i] *= wptr[i];
 }
 
 ///This function isn't reentrant on purpose. If called while an instance of
