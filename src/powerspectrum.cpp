@@ -48,7 +48,7 @@ static double PowerSpectrum(Buffer& buffer, double frequency, NoteDetectionOptio
 }
 
 ///@todo Split cases 1, 2, 3 & 4 and calculate two sides in cases 1 and 2
-bool RefineFrequency_PowerSpectrum(double* frequency, Buffer& localBuffer,
+bool RefineFrequency_PowerSpectrum(double* frequency, Buffer& buffer,
     NoteDetectionOptions& options)
 {
 #ifdef DEBUG
@@ -57,7 +57,7 @@ bool RefineFrequency_PowerSpectrum(double* frequency, Buffer& localBuffer,
 
     double size = buffer.GetSize();
     //relative frequency
-    double relfreq = *frequency/size;
+    double relfreq = *frequency/options.iSampleRate;
     //expected error in terms of relative frequency
     double mindd = relfreq*(pow(2.0, options.fExpectedPrecision/12.0) - 1.0);
     
@@ -79,29 +79,46 @@ bool RefineFrequency_PowerSpectrum(double* frequency, Buffer& localBuffer,
     leftX = relfreq - fftdd;
     rightX = relfreq + fftdd;
 
-    centreY = PowerSpectrum(localBuffer, centreX, options);
-    leftY = PowerSpectrum(localBuffer, leftX, options);
-    rightY = PowerSpectrum(localBuffer, rightX, options);
+    centreY = PowerSpectrum(buffer, centreX, options);
+    rightY = PowerSpectrum(buffer, rightX, options);
+    leftY = PowerSpectrum(buffer, leftX, options);
 
     while (centreX - leftX > mindd) {
-        bool recalcCentre = true;
 #if DEBUG
         fprintf(stderr, "Left   (%f, %f)\nCentre (%f, %f)\nRight  (%f, %f)\n",
-            leftX*size, leftY,
-            centreX*size, centreY,
-            rightX*size, rightY);
+            leftX*options.iSampleRate, leftY,
+            centreX*options.iSampleRate, centreY,
+            rightX*options.iSampleRate, rightY);
 #endif
         //case 3: _-^
         if (leftY < centreY && centreY < rightY) {
             leftX = centreX;
             leftY = centreY;
             centreX = (centreX + rightX)/2;
+
+/*          //move to the right
+            leftX = centreX;
+            leftY = centreY;
+            centreX = rightX;
+            centreY = rightY;
+            rightX = centreX + (centreX - leftX);
+            rightY = PowerSpectrum(buffer, rightX, options);
+ */
         }
         //case 4: ^-_
         else if (leftY > centreY && centreY > rightY) {
             rightX = centreX;
             rightY = centreY;
             centreX = (leftX + centreX)/2;
+/*
+            //move to the left
+            rightX = centreX;
+            rightY = centreY;
+            centreX = leftX;
+            centreY = leftY;
+            leftX = centreX - rightX + centreX;
+            leftY = PowerSpectrum(buffer, leftX, options);
+ */
         }
         //case 1: _^-
         //case 2: -^_
@@ -132,8 +149,6 @@ bool RefineFrequency_PowerSpectrum(double* frequency, Buffer& localBuffer,
                 leftX = clX;
                 leftY = clY;
             }
-
-            recalcCentre = false;
         }
         //other cases: discard
         else {
@@ -142,13 +157,9 @@ bool RefineFrequency_PowerSpectrum(double* frequency, Buffer& localBuffer,
 #endif
             return false;
         }
-
-        //recalc centre
-        if (recalcCentre)
-            centreY = PowerSpectrum(buffer, centreX, options);
         
 #ifdef DEBUG
-            fprintf(stderr, "DD: %f\n", (centreX - leftX)*size);
+            fprintf(stderr, "DD: %f\n", (centreX - leftX)*options.iSampleRate);
 #endif
     }
     ///@todo
@@ -157,7 +168,7 @@ bool RefineFrequency_PowerSpectrum(double* frequency, Buffer& localBuffer,
     if (leftY > centreY)
         centreX = leftX;
     
-    *frequency = centreX*size;
+    *frequency = centreX*options.iSampleRate;
 #ifdef DEBUG
     fprintf(stderr, "Frequency refined: %f\n", *frequency);
 #endif

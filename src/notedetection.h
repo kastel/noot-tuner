@@ -66,6 +66,8 @@ enum TEMPERAMENT {
 
 ///Type of refinement used
 enum REFINEMENT {
+    ///No refinement, FFT only
+    R_NONE,
     ///Autocovariance
     R_AUTOCOV,
     ///Power spectrum

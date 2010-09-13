@@ -44,8 +44,10 @@ NoteDetectionOptions ndOptions;
 
 bool RefineFrequency_Autocov(double* frequency, Buffer& localBuffer, NoteDetectionOptions& options);
 bool RefineFrequency_PowerSpectrum(double* frequency, Buffer& localBuffer, NoteDetectionOptions& options);
+bool RefineFrequency_Noop(double* frequency, Buffer& localBuffer, NoteDetectionOptions& options);
 
 FrequencyRefinementFunc refinementFunc[] = {
+    RefineFrequency_Noop,
     RefineFrequency_Autocov,
     RefineFrequency_PowerSpectrum
 };
@@ -528,6 +530,12 @@ double GetNoteFrequency(int note, int octave)
 		return 0.0;
 	
 	return fPitches[n] * pow(2, ndOptions.fTranspose/12);
+}
+
+bool RefineFrequency_Noop(double* frequency, Buffer& localBuffer,
+    NoteDetectionOptions& options)
+{
+    return true;
 }
 
 } //namespace
