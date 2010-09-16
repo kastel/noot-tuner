@@ -28,16 +28,26 @@ namespace noot {
 
 bool s_bIgnore = false;
 
+bool isPortaudioInitialised = false;
+
 double* currentTimePtr = NULL;
+
+static int sampleRateDivider = 1;
 
 int paCallback(const void *inputBuffer, void *outputBuffer, unsigned long frameCount, const PaStreamCallbackTimeInfo *timeInfo, PaStreamCallbackFlags statusFlags, void *userData)
 {
-	if (s_bIgnore)
+    if (s_bIgnore)
 		return 0;
-	
+
 	wxInt16* in = (wxInt16*) inputBuffer;
+
+    wxInt16 out[frameCount/sampleRateDivider];
+    wxInt16* outptr = out;
+
+    for (unsigned i=0; i<frameCount; i+=sampleRateDivider, ++outptr)
+        *outptr = in[i];
 	
-	buffer.Write(frameCount, in);
+	buffer.Write(frameCount/sampleRateDivider, out);
 
     *currentTimePtr = timeInfo->currentTime;
 
@@ -48,12 +58,17 @@ bool PortaudioBackend::Initialise()
 {
     currentTimePtr = &currentTime;
     
-	int err = Pa_Initialize();
+    if (isPortaudioInitialised)
+        return false;
+
+    int err = Pa_Initialize();
 	if (err!=paNoError)
 	{
 		LogPortaudioError(err);
 		return false;
 	}
+
+    isPortaudioInitialised = true;
 	
 	return true;
 }
@@ -67,15 +82,32 @@ void PortaudioBackend::LogPortaudioError(int err)
 
 bool PortaudioBackend::Terminate()
 {
+    if (!isPortaudioInitialised) {
+        fprintf(stderr, "Trying to terminate Portaudio backend twice\n");
+        return false;
+    }
+
     if (audioStream)
-        StopStreaming();
-    
+        Pa_AbortStream(audioStream);
+
+    if (playNoteStream)
+        Pa_AbortStream(playNoteStream);
+
+    if (audioStream || playNoteStream) {
+        Pa_Sleep(200); //wait for the threads to stop
+        audioStream = playNoteStream = NULL;
+    }
+
 	int err = Pa_Terminate();
 	if (err!=paNoError)
 	{
 		LogPortaudioError(err);
 		return false;
 	}
+
+    audioStream = NULL;
+    playNoteStream = NULL;
+    isPortaudioInitialised = false;
 	return true;
 }
 
@@ -115,9 +147,35 @@ bool PortaudioBackend::StartStreaming()
 		//Default if none set
 		if (!ndOptions.iSampleRate)
 			ndOptions.iSampleRate = int(pdi->defaultSampleRate);
-		
-		err = Pa_OpenDefaultStream(&audioStream, 1, 0, paInt16, ndOptions.iSampleRate,
-									ndOptions.iSampleRate/100, paCallback, NULL );
+
+        static int preferredSampleRates[] = { 96000, 48000, 44100, 32000, 22050, 16000, 11025, 8000 };
+        int i, sr;
+        const int srs = sizeof(preferredSampleRates)/sizeof(preferredSampleRates[0]);
+        for (i=0; i<srs; ++i)
+            if (IsSampleRateSupported(preferredSampleRates[i]))
+                break;
+
+        if (i>=srs)
+        {
+            wxLogError(_("Couldn't find a viable sample rate. Please choose another input device"));
+            return false;
+        }
+
+        sr = preferredSampleRates[i];
+        sampleRateDivider = sr/ndOptions.iSampleRate;
+        ndOptions.iSampleRate = sr/sampleRateDivider;
+
+        fprintf(stderr, "Actual sample rate %d, divider %d\n", sr, sampleRateDivider);
+
+        PaStreamParameters strparm;
+        strparm.device = (inputDevice==paNoDevice) ? Pa_GetDefaultInputDevice() : inputDevice;
+        strparm.channelCount = 1;
+        strparm.sampleFormat = paInt16;
+        strparm.suggestedLatency = 0.01;
+        strparm.hostApiSpecificStreamInfo = NULL;
+        
+        err = Pa_OpenStream(&audioStream, &strparm, NULL, ndOptions.iSampleRate*sampleRateDivider,
+									0, 0, paCallback, NULL );
 		
 		if (err!=paNoError)
 		{
@@ -157,7 +215,7 @@ bool PortaudioBackend::StopStreaming()
 	int err;
 	
 	if (!audioStream)
-		return true;
+		return false;
 	
     s_bIgnore = true;
 	err = Pa_CloseStream(audioStream);
@@ -201,13 +259,7 @@ AudioBackend* AudioBackend::CreateDefault()
 
 PortaudioBackend::~PortaudioBackend()
 {
-    if (audioStream)
-        Pa_CloseStream(audioStream);
-
-    if (playNoteStream)
-        Pa_CloseStream(playNoteStream);
-
-    Pa_Terminate();
+    Terminate();
 }
 
 static struct SineData {

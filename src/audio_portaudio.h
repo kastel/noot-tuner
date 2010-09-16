@@ -35,7 +35,7 @@ class PortaudioBackend : public AudioBackend {
 	public:
 	
 	PortaudioBackend() : audioStream(NULL), playNoteStream(NULL), inputDevice(-1), outputDevice(-1),
-        sampleRate(0.0), currentTime(0.0) { };
+        sampleRate(0.0), currentTime(0.0){ };
 	virtual ~PortaudioBackend();
 	
 	virtual bool Initialise();

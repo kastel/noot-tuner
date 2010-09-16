@@ -598,9 +598,8 @@ void TunerFrame::OnToolsSampleRate(wxCommandEvent& event) {
             ndOptions.iSampleRate = (int)(long)choice;
     }
 
-    UpdateStatusBar();
-
     if (resume) theAudioBackend->StartStreaming();
+    UpdateStatusBar();
 }
 
 void TunerFrame::UpdateStatusBar() {
