@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: DC Tuner 0.8\n"
-"Report-Msgid-Bugs-To: dc.kastel@gmail.com\n"
-"POT-Creation-Date: 2010-09-04 02:34+0200\n"
-"PO-Revision-Date: 2010-08-27 21:37+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-09-16 04:01+0100\n"
+"PO-Revision-Date: 2010-09-16 04:02+0100\n"
 "Last-Translator: Davide Castellone <kastel88@email.it>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,9 +16,9 @@ msgstr ""
 "X-Poedit-Basepath: /home/davide/Projects/noot-tuner\n"
 "X-Poedit-SearchPath-0: src\n"
 
-#: src/wxfbtunerframe.h:118
-msgid "NOOT Instrument tuner"
-msgstr "NOOT Instrument tuner"
+#: src/notedetection.cpp:497
+msgid "Invalid refinement function. Aborting"
+msgstr "Funzione di raffinamento non valida. Uscita"
 
 #: src/wxfbtunerframe.cpp:21
 msgid "Select &input device..."
@@ -132,16 +132,17 @@ msgstr "Nota"
 msgid "Start/Stop"
 msgstr "Start/Stop"
 
-#: src/wxfbtunerframe.cpp:96 src/wxfbtunerframe.cpp:173
+#: src/wxfbtunerframe.cpp:96
+#: src/wxfbtunerframe.cpp:173
 msgid "1"
 msgstr "1"
 
 #: src/wxfbtunerframe.cpp:103
 msgid "Tuning indicator: the gauge should be under the black line"
-msgstr ""
-"Indicatore di accordatura: la lancetta dovrebbe trovarsi sotto la linea nera"
+msgstr "Indicatore di accordatura: la lancetta dovrebbe trovarsi sotto la linea nera"
 
-#: src/wxfbtunerframe.cpp:120 src/wxfbtunerframe.cpp:122
+#: src/wxfbtunerframe.cpp:120
+#: src/wxfbtunerframe.cpp:122
 msgid "Detected note"
 msgstr "Nota rilevata"
 
@@ -161,7 +162,8 @@ msgstr "Frequenza"
 msgid "Detected frequency"
 msgstr "Frequenza rilevata"
 
-#: src/wxfbtunerframe.cpp:140 src/wxfbtunerframe.cpp:146
+#: src/wxfbtunerframe.cpp:140
+#: src/wxfbtunerframe.cpp:146
 #: src/wxfbtunerframe.cpp:152
 msgid "--"
 msgstr "--"
@@ -174,7 +176,8 @@ msgstr "Opzioni di accordatura"
 msgid "&Octave"
 msgstr "&Ottava"
 
-#: src/wxfbtunerframe.cpp:173 src/wxfbtunerframe.cpp:191
+#: src/wxfbtunerframe.cpp:173
+#: src/wxfbtunerframe.cpp:191
 #: src/wxfbtunerframe.cpp:265
 msgid "Auto"
 msgstr "Auto"
@@ -183,7 +186,8 @@ msgstr "Auto"
 msgid "-1"
 msgstr "-1"
 
-#: src/wxfbtunerframe.cpp:173 src/wxfbtunerframe.cpp:243
+#: src/wxfbtunerframe.cpp:173
+#: src/wxfbtunerframe.cpp:243
 msgid "0"
 msgstr "0"
 
@@ -191,23 +195,28 @@ msgstr "0"
 msgid "2"
 msgstr "2"
 
-#: src/wxfbtunerframe.cpp:173 src/wxfbtunerframe.cpp:178
+#: src/wxfbtunerframe.cpp:173
+#: src/wxfbtunerframe.cpp:178
 msgid "3"
 msgstr "3"
 
-#: src/wxfbtunerframe.cpp:173 src/wxfbtunerframe.cpp:196
+#: src/wxfbtunerframe.cpp:173
+#: src/wxfbtunerframe.cpp:196
 msgid "4"
 msgstr "4"
 
-#: src/wxfbtunerframe.cpp:173 src/wxfbtunerframe.cpp:207
+#: src/wxfbtunerframe.cpp:173
+#: src/wxfbtunerframe.cpp:207
 msgid "5"
 msgstr "5"
 
-#: src/wxfbtunerframe.cpp:173 src/wxfbtunerframe.cpp:230
+#: src/wxfbtunerframe.cpp:173
+#: src/wxfbtunerframe.cpp:230
 msgid "6"
 msgstr "6"
 
-#: src/wxfbtunerframe.cpp:173 src/wxfbtunerframe.cpp:246
+#: src/wxfbtunerframe.cpp:173
+#: src/wxfbtunerframe.cpp:246
 msgid "7"
 msgstr "7"
 
@@ -219,7 +228,8 @@ msgstr "Selezionare un'ottava per ottimizzare il rilevamento della nota"
 msgid "&Note"
 msgstr "&Nota"
 
-#: src/wxfbtunerframe.cpp:191 src/tunerframe.cpp:35
+#: src/wxfbtunerframe.cpp:191
+#: src/tunerframe.cpp:35
 msgid "C"
 msgstr "Do"
 
@@ -227,7 +237,8 @@ msgstr "Do"
 msgid "C# / Db"
 msgstr "Do# / Reb"
 
-#: src/wxfbtunerframe.cpp:191 src/tunerframe.cpp:35
+#: src/wxfbtunerframe.cpp:191
+#: src/tunerframe.cpp:35
 msgid "D"
 msgstr "Re"
 
@@ -235,11 +246,13 @@ msgstr "Re"
 msgid "D# / Eb"
 msgstr "Re# / Mib"
 
-#: src/wxfbtunerframe.cpp:191 src/tunerframe.cpp:35
+#: src/wxfbtunerframe.cpp:191
+#: src/tunerframe.cpp:35
 msgid "E"
 msgstr "Mi"
 
-#: src/wxfbtunerframe.cpp:191 src/tunerframe.cpp:35
+#: src/wxfbtunerframe.cpp:191
+#: src/tunerframe.cpp:35
 msgid "F"
 msgstr "Fa"
 
@@ -247,7 +260,8 @@ msgstr "Fa"
 msgid "F# / Gb"
 msgstr "Fa# / Solb"
 
-#: src/wxfbtunerframe.cpp:191 src/tunerframe.cpp:36
+#: src/wxfbtunerframe.cpp:191
+#: src/tunerframe.cpp:36
 msgid "G"
 msgstr "Sol"
 
@@ -255,7 +269,8 @@ msgstr "Sol"
 msgid "G# / Ab"
 msgstr "Sol# / Lab"
 
-#: src/wxfbtunerframe.cpp:191 src/tunerframe.cpp:36
+#: src/wxfbtunerframe.cpp:191
+#: src/tunerframe.cpp:36
 msgid "A"
 msgstr "La"
 
@@ -263,7 +278,8 @@ msgstr "La"
 msgid "A# / Bb"
 msgstr "La# / Sib"
 
-#: src/wxfbtunerframe.cpp:191 src/tunerframe.cpp:36
+#: src/wxfbtunerframe.cpp:191
+#: src/tunerframe.cpp:36
 msgid "B"
 msgstr "Si"
 
@@ -325,8 +341,7 @@ msgstr "Meantone"
 
 #: src/wxfbtunerframe.cpp:229
 msgid "The expected frequency of a note depends on the temperament choosen"
-msgstr ""
-"La frequenza prevista di ogni nota dipende dal temperamento selezionato"
+msgstr "La frequenza prevista di ogni nota dipende dal temperamento selezionato"
 
 #: src/wxfbtunerframe.cpp:239
 msgid "T&ranspose (semitones)"
@@ -381,8 +396,7 @@ msgid ""
 "Window size affects speed and quality of frequency detection.\n"
 "Normally you should leave this to \"Auto\""
 msgstr ""
-"La dimensione della finestra condiziona la velocità e la qualità della "
-"misura.\n"
+"La dimensione della finestra condiziona la velocità e la qualità della misura.\n"
 "Normalmente si può lasciare su \"Auto\""
 
 #: src/wxfbtunerframe.cpp:270
@@ -413,9 +427,7 @@ msgstr "Pr&ecisione prevista (milli)"
 
 #: src/wxfbtunerframe.cpp:304
 msgid "This value is used especially when Window size is set to 'Auto'"
-msgstr ""
-"Questo valore è usato soprattutto quando la dimensione della finestra è "
-"impostata su \"Auto\""
+msgstr "Questo valore è usato soprattutto quando la dimensione della finestra è impostata su \"Auto\""
 
 #: src/wxfbtunerframe.cpp:305
 msgid "10"
@@ -433,7 +445,8 @@ msgstr "Imposta la frequenza di aggiornamento per questa finestra"
 msgid "11"
 msgstr "11"
 
-#: src/deviceselector.cpp:33 src/deviceselector.cpp:71
+#: src/deviceselector.cpp:33
+#: src/deviceselector.cpp:71
 msgid "No audio device found"
 msgstr "Nessun dispositivo di input trovato"
 
@@ -441,8 +454,11 @@ msgstr "Nessun dispositivo di input trovato"
 msgid "Choose an input device"
 msgstr "Seleziona un dispositivo di ingresso"
 
-#: src/deviceselector.cpp:56 src/deviceselector.cpp:94 src/tunerframe.cpp:523
-#: src/tunerframe.cpp:529 src/tunerframe.cpp:588
+#: src/deviceselector.cpp:56
+#: src/deviceselector.cpp:94
+#: src/tunerframe.cpp:524
+#: src/tunerframe.cpp:530
+#: src/tunerframe.cpp:589
 msgid "NOOT Instrument Tuner"
 msgstr "NOOT Instrument tuner"
 
@@ -470,7 +486,9 @@ msgstr "Sol#"
 msgid "A#"
 msgstr "La#"
 
-#: src/tunerframe.cpp:110 src/tunerframe.cpp:139 src/tunerframe.cpp:545
+#: src/tunerframe.cpp:110
+#: src/tunerframe.cpp:139
+#: src/tunerframe.cpp:546
 msgid "Paused"
 msgstr "In pausa"
 
@@ -478,7 +496,8 @@ msgstr "In pausa"
 msgid "Unable to start listening"
 msgstr "Impossibile avviare l'ascolto"
 
-#: src/tunerframe.cpp:129 src/tunerframe.cpp:543
+#: src/tunerframe.cpp:129
+#: src/tunerframe.cpp:544
 msgid "Listening..."
 msgstr "In ascolto..."
 
@@ -487,19 +506,19 @@ msgstr "In ascolto..."
 msgid "Invalid number: %s"
 msgstr "Numero non valido: %s"
 
-#: src/tunerframe.cpp:421
+#: src/tunerframe.cpp:422
 msgid "Cannot find help file"
 msgstr "Impossibile trovare il file della guida"
 
-#: src/tunerframe.cpp:476
+#: src/tunerframe.cpp:477
 msgid "Never-out-of-tune Instrument Tuner"
 msgstr "Accordatore per strumenti \"Never-out-of-tune\""
 
-#: src/tunerframe.cpp:479
+#: src/tunerframe.cpp:480
 msgid "A full-featured instrument tuner"
 msgstr "Accordatore per strumenti"
 
-#: src/tunerframe.cpp:486
+#: src/tunerframe.cpp:487
 msgid ""
 "Licensed under the GNU General Public License v. 3\n"
 "http://www.gnu.org/copyleft/gpl.html"
@@ -507,19 +526,20 @@ msgstr ""
 "Distribuito sotto la licenza GNU General Public License v. 3\n"
 "http://www.gnu.org/copyleft/gpl.html"
 
-#: src/tunerframe.cpp:523 src/tunerframe.cpp:529
+#: src/tunerframe.cpp:524
+#: src/tunerframe.cpp:530
 msgid "Unable to launch the default browser"
 msgstr "Impossibile lanciare il browser predefinito"
 
-#: src/tunerframe.cpp:538
+#: src/tunerframe.cpp:539
 msgid "Calibrating..."
 msgstr "Calibrazione..."
 
-#: src/tunerframe.cpp:572
+#: src/tunerframe.cpp:573
 msgid "Default sample rate"
 msgstr "Default"
 
-#: src/tunerframe.cpp:587
+#: src/tunerframe.cpp:588
 msgid "Select a frame rate"
 msgstr "Seleziona una frequenza di campionamento"
 
@@ -536,7 +556,8 @@ msgstr ""
 "Inserire un valore per la correzione di clock come coefficiente\n"
 "(1,0 significa nessuna correzione)"
 
-#: src/tunerframe.cpp:612 src/tunerframe.cpp:631
+#: src/tunerframe.cpp:612
+#: src/tunerframe.cpp:631
 msgid "Clock correction"
 msgstr "Correzione del clock"
 
@@ -545,7 +566,8 @@ msgstr "Correzione del clock"
 msgid "%9.7f"
 msgstr "%9.7f"
 
-#: src/tunerframe.cpp:621 src/tunerframe.cpp:640
+#: src/tunerframe.cpp:621
+#: src/tunerframe.cpp:640
 #, c-format
 msgid "Invalid number: '%s'"
 msgstr "Numero non valido: \"%s\""
@@ -563,25 +585,109 @@ msgstr ""
 msgid "%+5.2f"
 msgstr "%+5.2f"
 
-#: src/audio_portaudio.cpp:63
+#: src/noot-tuner.cpp:61
+#, c-format
+msgid ""
+"NOOT Instrument Tuner v. %s\n"
+"(C) 2010 Davide Castellone\n"
+msgstr ""
+"NOOT Instrument Tuner v. %s\n"
+"(C) 2010 Davide Castellone\n"
+
+#: src/noot-tuner.cpp:66
+msgid "Don't open a window"
+msgstr "Non aprire una finestra"
+
+#: src/noot-tuner.cpp:68
+msgid "Input file name (enables offline analysis)"
+msgstr "Nome file di ingresso (attiva l'analisi offline)"
+
+#: src/noot-tuner.cpp:69
+msgid "Advance step in samples"
+msgstr "Passo di avanzamento in campioni"
+
+#: src/noot-tuner.cpp:71
+msgid "Window size (0 means auto)"
+msgstr "Dimensione finestra (0 per 'auto')"
+
+#: src/noot-tuner.cpp:72
+msgid "Window type"
+msgstr "Tipo di finestra"
+
+#: src/noot-tuner.cpp:73
+msgid "Octave (5 means octave 3, -1 means any)"
+msgstr "Ottava (5 per ottava 3, -1 per qualsiasi)"
+
+#: src/noot-tuner.cpp:74
+msgid "Note as a number (0=C, 1=C#, ... -1=any)"
+msgstr "Nota come numero (0=Do, 1=Do#, ... -1=tutte)"
+
+#: src/noot-tuner.cpp:75
+msgid "Temperament (0=equal, others: see manual)"
+msgstr "Temperamento (0=equabile, altri: vedi manuale)"
+
+#: src/noot-tuner.cpp:76
+msgid "Noise threshold in dB, negative number"
+msgstr "Soglia del rumore in dB, numero negativo"
+
+#: src/noot-tuner.cpp:77
+msgid "Expected precision in semitones"
+msgstr "Precisione prevista in semitoni"
+
+#: src/noot-tuner.cpp:78
+msgid "Transposing in semitones"
+msgstr "Trasposizione in semitoni"
+
+#: src/noot-tuner.cpp:79
+msgid "Sample rate"
+msgstr "Frequenza di campionamento"
+
+#: src/noot-tuner.cpp:80
+msgid "Frame rate"
+msgstr "Frequenza di aggiornamento"
+
+#: src/noot-tuner.cpp:81
+msgid "Clock correction as a factor"
+msgstr "Correzione del clock come coefficiente"
+
+#: src/noot-tuner.cpp:82
+msgid "Clock correction in cents"
+msgstr "Correzione del clock in centesimi"
+
+#: src/noot-tuner.cpp:83
+msgid "Refinement algorithm (0=none, 1=autocov, 2=CFT)"
+msgstr "Raffinamento (0=nessuno, 1=autocov, 2=CFT)"
+
+#: src/noot-tuner.cpp:106
+#, c-format
+msgid "Error while parsing number '%s'"
+msgstr "Errore nella conversione del numero \"%s\""
+
+#: src/audio_portaudio.cpp:80
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: src/audio_portaudio.cpp:89
+#: src/audio_portaudio.cpp:123
 msgid "No input device found"
 msgstr "Nessun dispositivo di input trovato"
 
-#: src/audio_portaudio.cpp:241
+#: src/audio_portaudio.cpp:160
+msgid "Couldn't find a viable sample rate. Please choose another input device"
+msgstr "Impossibile trovare una frequenza di campionamento utile. Si prega di selezionare un dispositivo di ingresso differente."
+
+#: src/audio_portaudio.cpp:295
 msgid "No output device found"
 msgstr "Nessun dispositivo di output trovato"
 
+#: src/wxfbtunerframe.h:118
+msgid "NOOT Instrument tuner"
+msgstr "NOOT Instrument tuner"
+
 #~ msgid "%d Hz"
 #~ msgstr "%d Hz"
-
 #~ msgid "DC Tuner"
 #~ msgstr "DC Tuner"
-
 #~ msgid ""
 #~ "%s %s.\n"
 #~ "%s\n"
@@ -592,3 +698,4 @@ msgstr "Nessun dispositivo di output trovato"
 #~ "%s\n"
 #~ "\n"
 #~ "By %s"
+

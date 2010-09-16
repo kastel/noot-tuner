@@ -63,7 +63,7 @@ void tunerapp::OnInitCmdLine(wxCmdLineParser& parser) {
 
     //limit: decimal numbers are treated as strings and converted later
     wxCmdLineEntryDesc desc[] = {
-        { wxCMD_LINE_SWITCH, wxT("n"), wxT("nogui"), _("Don't open user interface") },
+        { wxCMD_LINE_SWITCH, wxT("n"), wxT("nogui"), _("Don't open a window") },
 #if SNDFILE_SUPPORT
         { wxCMD_LINE_OPTION, wxT("f"), wxT("file"), _("Input file name (enables offline analysis)"), wxCMD_LINE_VAL_STRING },
         { wxCMD_LINE_OPTION, wxT("s"), wxT("step"), _("Advance step in samples"), wxCMD_LINE_VAL_NUMBER },
@@ -72,15 +72,15 @@ void tunerapp::OnInitCmdLine(wxCmdLineParser& parser) {
         { wxCMD_LINE_OPTION, wxT("W"), wxT("windowtype"), _("Window type"), wxCMD_LINE_VAL_NUMBER },
         { wxCMD_LINE_OPTION, wxT("O"), wxT("octave"), _("Octave (5 means octave 3, -1 means any)"), wxCMD_LINE_VAL_NUMBER },
         { wxCMD_LINE_OPTION, wxT("N"), wxT("note"), _("Note as a number (0=C, 1=C#, ... -1=any)"), wxCMD_LINE_VAL_NUMBER },
-        { wxCMD_LINE_OPTION, wxT("T"), wxT("temperament"), _("Temperament (0=equal, others: see main window)"), wxCMD_LINE_VAL_NUMBER },
-        { wxCMD_LINE_OPTION, wxT("t"), wxT("threshold"), _("Noise threshold in dB, negative value"), wxCMD_LINE_VAL_STRING },
+        { wxCMD_LINE_OPTION, wxT("T"), wxT("temperament"), _("Temperament (0=equal, others: see manual)"), wxCMD_LINE_VAL_NUMBER },
+        { wxCMD_LINE_OPTION, wxT("t"), wxT("threshold"), _("Noise threshold in dB, negative number"), wxCMD_LINE_VAL_STRING },
         { wxCMD_LINE_OPTION, wxT("p"), wxT("precision"), _("Expected precision in semitones"), wxCMD_LINE_VAL_STRING },
         { wxCMD_LINE_OPTION, wxT("R"), wxT("transpose"), _("Transposing in semitones"), wxCMD_LINE_VAL_STRING },
         { wxCMD_LINE_OPTION, wxT("r"), wxT("samplerate"), _("Sample rate"), wxCMD_LINE_VAL_NUMBER },
         { wxCMD_LINE_OPTION, wxT("F"), wxT("framerate"), _("Frame rate"), wxCMD_LINE_VAL_NUMBER },
         { wxCMD_LINE_OPTION, wxT("c"), wxT("corr"), _("Clock correction as a factor"), wxCMD_LINE_VAL_STRING },
         { wxCMD_LINE_OPTION, wxT("C"), wxT("corr-cent"), _("Clock correction in cents"), wxCMD_LINE_VAL_STRING },
-        { wxCMD_LINE_OPTION, wxT("a"), wxT("refinement"), _("Refinement algorithm (0 or 1)"), wxCMD_LINE_VAL_NUMBER }
+        { wxCMD_LINE_OPTION, wxT("a"), wxT("refinement"), _("Refinement algorithm (0=none, 1=autocov, 2=CFT)"), wxCMD_LINE_VAL_NUMBER }
     };
 
     parser.SetDesc(desc);
