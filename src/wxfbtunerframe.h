@@ -41,19 +41,24 @@ namespace noot
 	#define ID_TOOLS_SAMPLERATE 1002
 	#define ID_TOOLS_CLOCKCORR_RAW 1003
 	#define ID_TOOLS_CLOCKCORR_CENTS 1004
-	#define ID_HELP_WEBSITE 1005
-	#define ID_HELP_BUG 1006
-	#define ID_TBSTARTSTOP 1007
-	#define ID_PNGAUGE 1008
-	#define ID_OCTAVE 1009
-	#define ID_NOTE 1010
-	#define ID_LISTEN 1011
-	#define ID_TEMPERAMENT 1012
-	#define ID_TRANSPOSE 1013
-	#define ID_WINDOWSIZE 1014
-	#define ID_THRESHOLD 1015
-	#define ID_EXPECTEDPRECISION 1016
-	#define ID_FRAMERATE 1017
+	#define ID_TOOLS_WINDOW_RECT 1005
+	#define ID_TOOLS_WINDOW_HANNING 1006
+	#define ID_TOOLS_REFINEMENT_NONE 1007
+	#define ID_TOOLS_REFINEMENT_AUTOCOV 1008
+	#define ID_TOOLS_REFINEMENT_CFT 1009
+	#define ID_HELP_WEBSITE 1010
+	#define ID_HELP_BUG 1011
+	#define ID_TBSTARTSTOP 1012
+	#define ID_PNGAUGE 1013
+	#define ID_OCTAVE 1014
+	#define ID_NOTE 1015
+	#define ID_LISTEN 1016
+	#define ID_TEMPERAMENT 1017
+	#define ID_TRANSPOSE 1018
+	#define ID_WINDOWSIZE 1019
+	#define ID_THRESHOLD 1020
+	#define ID_EXPECTEDPRECISION 1021
+	#define ID_FRAMERATE 1022
 	
 	///////////////////////////////////////////////////////////////////////////////
 	/// Class wxfbTunerFrame
@@ -67,6 +72,8 @@ namespace noot
 			wxMenu* mnuDevices;
 			wxMenu* mnuTools;
 			wxMenu* mnuToolsClockCorr;
+			wxMenu* mnuToolsWindow;
+			wxMenu* mnuToolsRefinement;
 			wxMenu* mnuHelp;
 			wxToggleButton* tbStartStop;
 			wxPanel* pnGauge;
@@ -91,6 +98,10 @@ namespace noot
 			virtual void OnToolsSampleRate( wxCommandEvent& event ) = 0;
 			virtual void OnToolsClockCorrRaw( wxCommandEvent& event ) = 0;
 			virtual void OnToolsClockCorrCents( wxCommandEvent& event ) = 0;
+			virtual void OnToolsWindowType( wxCommandEvent& event ) = 0;
+			virtual void OnToolsWindowTypeUpdateUI( wxUpdateUIEvent& event ) = 0;
+			virtual void OnToolsRefinement( wxCommandEvent& event ) = 0;
+			virtual void OnToolsRefinementUpdateUI( wxUpdateUIEvent& event ) = 0;
 			virtual void OnHelpTOC( wxCommandEvent& event ) = 0;
 			virtual void OnHelpContext( wxCommandEvent& event ) = 0;
 			virtual void OnHelpWebsite( wxCommandEvent& event ) = 0;

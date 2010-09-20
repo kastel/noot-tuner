@@ -231,6 +231,91 @@
                             <event name="OnUpdateUI"></event>
                         </object>
                     </object>
+                    <object class="submenu" expanded="1">
+                        <property name="label">&amp;Window type</property>
+                        <property name="name">mnuToolsWindow</property>
+                        <property name="permission">protected</property>
+                        <object class="wxMenuItem" expanded="1">
+                            <property name="bitmap"></property>
+                            <property name="checked">0</property>
+                            <property name="enabled">1</property>
+                            <property name="help">Set window type to &apos;rectangular&apos;</property>
+                            <property name="id">ID_TOOLS_WINDOW_RECT</property>
+                            <property name="kind">wxITEM_RADIO</property>
+                            <property name="label">&amp;Rectangular</property>
+                            <property name="name">mnuToolsWindowRect</property>
+                            <property name="permission">none</property>
+                            <property name="shortcut"></property>
+                            <property name="unchecked_bitmap"></property>
+                            <event name="OnMenuSelection">OnToolsWindowType</event>
+                            <event name="OnUpdateUI">OnToolsWindowTypeUpdateUI</event>
+                        </object>
+                        <object class="wxMenuItem" expanded="1">
+                            <property name="bitmap"></property>
+                            <property name="checked">1</property>
+                            <property name="enabled">1</property>
+                            <property name="help">Set window type to &apos;Hanning&apos;</property>
+                            <property name="id">ID_TOOLS_WINDOW_HANNING</property>
+                            <property name="kind">wxITEM_RADIO</property>
+                            <property name="label">&amp;Hanning</property>
+                            <property name="name">mnuToolsWindowHanning</property>
+                            <property name="permission">none</property>
+                            <property name="shortcut"></property>
+                            <property name="unchecked_bitmap"></property>
+                            <event name="OnMenuSelection">OnToolsWindowType</event>
+                            <event name="OnUpdateUI">OnToolsWindowTypeUpdateUI</event>
+                        </object>
+                    </object>
+                    <object class="submenu" expanded="1">
+                        <property name="label">&amp;Refinement algorithm</property>
+                        <property name="name">mnuToolsRefinement</property>
+                        <property name="permission">protected</property>
+                        <object class="wxMenuItem" expanded="1">
+                            <property name="bitmap"></property>
+                            <property name="checked">0</property>
+                            <property name="enabled">1</property>
+                            <property name="help">Set refinement algorithm to &apos;None&apos;</property>
+                            <property name="id">ID_TOOLS_REFINEMENT_NONE</property>
+                            <property name="kind">wxITEM_RADIO</property>
+                            <property name="label">&amp;None</property>
+                            <property name="name">mnuToolsRefinementNone</property>
+                            <property name="permission">none</property>
+                            <property name="shortcut"></property>
+                            <property name="unchecked_bitmap"></property>
+                            <event name="OnMenuSelection">OnToolsRefinement</event>
+                            <event name="OnUpdateUI">OnToolsRefinementUpdateUI</event>
+                        </object>
+                        <object class="wxMenuItem" expanded="1">
+                            <property name="bitmap"></property>
+                            <property name="checked">0</property>
+                            <property name="enabled">1</property>
+                            <property name="help">Set refinement algorithm to &apos;Autocovariance&apos;</property>
+                            <property name="id">ID_TOOLS_REFINEMENT_AUTOCOV</property>
+                            <property name="kind">wxITEM_RADIO</property>
+                            <property name="label">&amp;Autocovariance</property>
+                            <property name="name">mnuToolsRefinementAutocov</property>
+                            <property name="permission">none</property>
+                            <property name="shortcut"></property>
+                            <property name="unchecked_bitmap"></property>
+                            <event name="OnMenuSelection">OnToolsRefinement</event>
+                            <event name="OnUpdateUI">OnToolsRefinementUpdateUI</event>
+                        </object>
+                        <object class="wxMenuItem" expanded="1">
+                            <property name="bitmap"></property>
+                            <property name="checked">1</property>
+                            <property name="enabled">1</property>
+                            <property name="help">Set refinement algorithm to &apos;Continuous power spectrum&apos;</property>
+                            <property name="id">ID_TOOLS_REFINEMENT_CFT</property>
+                            <property name="kind">wxITEM_RADIO</property>
+                            <property name="label">&amp;Continuous power spectrum</property>
+                            <property name="name">mnuToolsRefinementCFT</property>
+                            <property name="permission">none</property>
+                            <property name="shortcut"></property>
+                            <property name="unchecked_bitmap"></property>
+                            <event name="OnMenuSelection">OnToolsRefinement</event>
+                            <event name="OnUpdateUI">OnToolsRefinementUpdateUI</event>
+                        </object>
+                    </object>
                 </object>
                 <object class="wxMenu" expanded="1">
                     <property name="label">&amp;Help</property>

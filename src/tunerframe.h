@@ -74,8 +74,14 @@ protected:
     void OnStatusBarSize(wxSizeEvent& event);
 
 	wxPanel* pnIndicator;
-	
-	void SetIndicator(double offset);
+
+    void OnToolsRefinement(wxCommandEvent& event);
+    void OnToolsRefinementUpdateUI(wxUpdateUIEvent& event);
+
+    void OnToolsWindowType(wxCommandEvent& event);
+    void OnToolsWindowTypeUpdateUI(wxUpdateUIEvent& event);
+
+    void SetIndicator(double offset);
 	void ResetIndicator();
 	
 	bool InitialiseHelp();

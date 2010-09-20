@@ -33,7 +33,7 @@ extern size_t cOutSize;
 ///Please note that @c frequency is ranged in [0, 1]
 static double PowerSpectrum(Buffer& buffer, double frequency, NoteDetectionOptions& options) {
     const double* ptr = buffer.GetPointer();
-    int size = options.iWindowSize;
+    int size = buffer.GetSize();
 
     double sumS=0.0, sumC=0.0;
     for (int i=0; i<size; ++i, ++ptr) {

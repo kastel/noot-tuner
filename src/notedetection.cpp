@@ -356,7 +356,13 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	//This function also takes care of the buffer size, if it is set to "auto"
 	if (options.iWindowSize == -1)
 	{
-		unsigned optimalSize = 1.8/(pow(2, options.fExpectedPrecision/24)-1);
+        unsigned optimalSize;
+
+        if (options.iRefinement==R_AUTOCOV)
+            optimalSize = 1.8/(pow(2, options.fExpectedPrecision/24)-1);
+        else if (options.iRefinement==R_POWER_SPECTRUM)
+            optimalSize = options.iSampleRate/3; //one third of a second
+
         unsigned optimalSizeRounded = RoundToPowerOf2(optimalSize);
 		//where the first 2 is an arbitrary constant
         

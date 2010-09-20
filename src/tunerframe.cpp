@@ -32,6 +32,9 @@
 
 namespace noot {
 
+CREATE_OPTION_VARIABLE(int, sampleRateAutocov, "MainWindow/SampleRateAutocov", 96000);
+CREATE_OPTION_VARIABLE(int, sampleRateCFT, "MainWindow/SampleRateCFT", 16000);
+
 static wxString noteNames[] = { _("C"), _("C#"), _("D"), _("D#"), _("E"), _("F"),
 	_("F#"), _("G"), _("G#"), _("A"), _("A#"), _("B")
 };
@@ -644,5 +647,78 @@ void TunerFrame::OnToolsClockCorrCents(wxCommandEvent& event) {
     ndOptions.fClockCorrection = pow(2, tmpval/1200);
     UpdateStatusBar();
 }
+
+void TunerFrame::OnToolsWindowTypeUpdateUI(wxUpdateUIEvent& event) {
+    switch (event.GetId()) {
+        case ID_TOOLS_WINDOW_RECT:
+            mnuToolsWindow->Check(ID_TOOLS_WINDOW_RECT, ndOptions.iWindowType == W_RECT);
+            break;
+        case ID_TOOLS_WINDOW_HANNING:
+            mnuToolsWindow->Check(ID_TOOLS_WINDOW_HANNING, ndOptions.iWindowType == W_HANNING);
+            break;
+    }
+}
+
+void TunerFrame::OnToolsWindowType(wxCommandEvent& event) {
+    switch (event.GetId()) {
+        case ID_TOOLS_WINDOW_RECT:
+            ndOptions.iWindowType = W_RECT;
+            break;
+        case ID_TOOLS_WINDOW_HANNING:
+            ndOptions.iWindowType = W_HANNING;
+            break;
+    }
+}
+
+void TunerFrame::OnToolsRefinementUpdateUI(wxUpdateUIEvent& event) {
+    switch (event.GetId()) {
+        case ID_TOOLS_REFINEMENT_NONE:
+            mnuToolsRefinement->Check(ID_TOOLS_REFINEMENT_NONE, ndOptions.iRefinement == R_NONE);
+            break;
+        case ID_TOOLS_REFINEMENT_AUTOCOV:
+            mnuToolsRefinement->Check(ID_TOOLS_REFINEMENT_AUTOCOV, ndOptions.iRefinement == R_AUTOCOV);
+            break;
+        case ID_TOOLS_REFINEMENT_CFT:
+            mnuToolsRefinement->Check(ID_TOOLS_REFINEMENT_CFT, ndOptions.iRefinement == R_POWER_SPECTRUM);
+            break;
+    }
+}
+
+void TunerFrame::OnToolsRefinement(wxCommandEvent& event) {
+    switch (ndOptions.iRefinement) {
+        case R_NONE:
+            break;
+        case R_AUTOCOV:
+            sampleRateAutocov = ndOptions.iSampleRate;
+            break;
+        case R_POWER_SPECTRUM:
+            sampleRateCFT = ndOptions.iSampleRate;
+            break;
+    }
+
+    bool restart = theAudioBackend->StopStreaming();
+
+    switch (event.GetId()) {
+        case ID_TOOLS_REFINEMENT_NONE:
+            ndOptions.iRefinement = R_NONE;
+            ndOptions.iSampleRate = 0;
+            break;
+        case ID_TOOLS_REFINEMENT_AUTOCOV:
+            ndOptions.iRefinement = R_AUTOCOV;
+            ndOptions.iSampleRate = sampleRateAutocov;
+            break;
+        case ID_TOOLS_REFINEMENT_CFT:
+            ndOptions.iRefinement = R_POWER_SPECTRUM;
+            ndOptions.iSampleRate = sampleRateCFT;
+            break;
+    }
+
+    if (restart)
+        theAudioBackend->StartStreaming();
+
+    UpdateStatusBar();
+}
+
+
 
 } //namespace

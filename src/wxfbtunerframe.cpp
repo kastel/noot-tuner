@@ -50,6 +50,34 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	
 	mnuTools->Append( -1, _("&Clock correction"), mnuToolsClockCorr );
 	
+	mnuToolsWindow = new wxMenu();
+	wxMenuItem* mnuToolsWindowRect;
+	mnuToolsWindowRect = new wxMenuItem( mnuToolsWindow, ID_TOOLS_WINDOW_RECT, wxString( _("&Rectangular") ) , _("Set window type to 'rectangular'"), wxITEM_RADIO );
+	mnuToolsWindow->Append( mnuToolsWindowRect );
+	
+	wxMenuItem* mnuToolsWindowHanning;
+	mnuToolsWindowHanning = new wxMenuItem( mnuToolsWindow, ID_TOOLS_WINDOW_HANNING, wxString( _("&Hanning") ) , _("Set window type to 'Hanning'"), wxITEM_RADIO );
+	mnuToolsWindow->Append( mnuToolsWindowHanning );
+	mnuToolsWindowHanning->Check( true );
+	
+	mnuTools->Append( -1, _("&Window type"), mnuToolsWindow );
+	
+	mnuToolsRefinement = new wxMenu();
+	wxMenuItem* mnuToolsRefinementNone;
+	mnuToolsRefinementNone = new wxMenuItem( mnuToolsRefinement, ID_TOOLS_REFINEMENT_NONE, wxString( _("&None") ) , _("Set refinement algorithm to 'None'"), wxITEM_RADIO );
+	mnuToolsRefinement->Append( mnuToolsRefinementNone );
+	
+	wxMenuItem* mnuToolsRefinementAutocov;
+	mnuToolsRefinementAutocov = new wxMenuItem( mnuToolsRefinement, ID_TOOLS_REFINEMENT_AUTOCOV, wxString( _("&Autocovariance") ) , _("Set refinement algorithm to 'Autocovariance'"), wxITEM_RADIO );
+	mnuToolsRefinement->Append( mnuToolsRefinementAutocov );
+	
+	wxMenuItem* mnuToolsRefinementCFT;
+	mnuToolsRefinementCFT = new wxMenuItem( mnuToolsRefinement, ID_TOOLS_REFINEMENT_CFT, wxString( _("&Continuous power spectrum") ) , _("Set refinement algorithm to 'Continuous power spectrum'"), wxITEM_RADIO );
+	mnuToolsRefinement->Append( mnuToolsRefinementCFT );
+	mnuToolsRefinementCFT->Check( true );
+	
+	mnuTools->Append( -1, _("&Refinement algorithm"), mnuToolsRefinement );
+	
 	mbMenuBar->Append( mnuTools, _("&Other options") );
 	
 	mnuHelp = new wxMenu();
@@ -337,6 +365,16 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	this->Connect( mnuToolsSampleRate->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsSampleRate ) );
 	this->Connect( mnuToolsClockCorrRaw->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsClockCorrRaw ) );
 	this->Connect( mnuToolsClockCorrCents->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsClockCorrCents ) );
+	this->Connect( mnuToolsWindowRect->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsWindowType ) );
+	this->Connect( mnuToolsWindowRect->GetId(), wxEVT_UPDATE_UI, wxUpdateUIEventHandler( wxfbTunerFrame::OnToolsWindowTypeUpdateUI ) );
+	this->Connect( mnuToolsWindowHanning->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsWindowType ) );
+	this->Connect( mnuToolsWindowHanning->GetId(), wxEVT_UPDATE_UI, wxUpdateUIEventHandler( wxfbTunerFrame::OnToolsWindowTypeUpdateUI ) );
+	this->Connect( mnuToolsRefinementNone->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsRefinement ) );
+	this->Connect( mnuToolsRefinementNone->GetId(), wxEVT_UPDATE_UI, wxUpdateUIEventHandler( wxfbTunerFrame::OnToolsRefinementUpdateUI ) );
+	this->Connect( mnuToolsRefinementAutocov->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsRefinement ) );
+	this->Connect( mnuToolsRefinementAutocov->GetId(), wxEVT_UPDATE_UI, wxUpdateUIEventHandler( wxfbTunerFrame::OnToolsRefinementUpdateUI ) );
+	this->Connect( mnuToolsRefinementCFT->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsRefinement ) );
+	this->Connect( mnuToolsRefinementCFT->GetId(), wxEVT_UPDATE_UI, wxUpdateUIEventHandler( wxfbTunerFrame::OnToolsRefinementUpdateUI ) );
 	this->Connect( mnuHelpTOC->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpTOC ) );
 	this->Connect( mnuHelpContext->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpContext ) );
 	this->Connect( mnuHelpWebsite->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpWebsite ) );
@@ -368,6 +406,16 @@ wxfbTunerFrame::~wxfbTunerFrame()
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsSampleRate ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsClockCorrRaw ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsClockCorrCents ) );
+	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsWindowType ) );
+	this->Disconnect( wxID_ANY, wxEVT_UPDATE_UI, wxUpdateUIEventHandler( wxfbTunerFrame::OnToolsWindowTypeUpdateUI ) );
+	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsWindowType ) );
+	this->Disconnect( wxID_ANY, wxEVT_UPDATE_UI, wxUpdateUIEventHandler( wxfbTunerFrame::OnToolsWindowTypeUpdateUI ) );
+	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsRefinement ) );
+	this->Disconnect( wxID_ANY, wxEVT_UPDATE_UI, wxUpdateUIEventHandler( wxfbTunerFrame::OnToolsRefinementUpdateUI ) );
+	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsRefinement ) );
+	this->Disconnect( wxID_ANY, wxEVT_UPDATE_UI, wxUpdateUIEventHandler( wxfbTunerFrame::OnToolsRefinementUpdateUI ) );
+	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnToolsRefinement ) );
+	this->Disconnect( wxID_ANY, wxEVT_UPDATE_UI, wxUpdateUIEventHandler( wxfbTunerFrame::OnToolsRefinementUpdateUI ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpTOC ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpContext ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( wxfbTunerFrame::OnHelpWebsite ) );
