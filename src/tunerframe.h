@@ -88,7 +88,7 @@ protected:
 
     void UpdateStatusBar();
 	
-	wxTimer* tmTimer;
+	wxTimer tmTimer;
     VolumeMeter* volumeMeter;
 	
 public:

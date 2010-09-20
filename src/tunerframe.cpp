@@ -49,7 +49,7 @@ static void Calibrate(wxFrame* window);
 
 TunerFrame::TunerFrame( wxWindow* parent )
 :
-wxfbTunerFrame( parent )
+wxfbTunerFrame( parent ), tmTimer(this, ID_TIMER)
 {
 	pnIndicator = new wxPanel(pnGauge, wxID_ANY, wxPoint(0,0),
 							  wxSize(ndOptions.iIndicatorWidth,0), wxBORDER_NONE);
@@ -75,7 +75,6 @@ wxfbTunerFrame( parent )
 	
 	szGauge->Fit(pnGauge);
 	
-    tmTimer = new wxTimer(this, ID_TIMER);
 	Connect(ID_TIMER, wxEVT_TIMER, (wxObjectEventFunction) &TunerFrame::OnTimer);
 	
 	//Set the default values:
@@ -146,11 +145,11 @@ void TunerFrame::OnStartStop( wxCommandEvent& event )
 
         wxLogStatus(this, _("Listening..."));
         UpdateStatusBar();
-		tmTimer->Start(1000/ndOptions.iFrameRate);
+		tmTimer.Start(1000/ndOptions.iFrameRate);
 	}
 	else
 	{ //stop
-		tmTimer->Stop();
+		tmTimer.Stop();
 		if (!theAudioBackend->StopStreaming())
 			tbStartStop->SetValue(true);
 		
@@ -238,9 +237,9 @@ void TunerFrame::OnFrameRateKillFocus( wxFocusEvent& event )
 {
 	if (ndOptions.iFrameRate != scFrameRate->GetValue()) {
 		ndOptions.iFrameRate = scFrameRate->GetValue();
-		if (tmTimer->IsRunning()) {
-			tmTimer->Stop();
-			tmTimer->Start(1000/ndOptions.iFrameRate);
+		if (tmTimer.IsRunning()) {
+			tmTimer.Stop();
+			tmTimer.Start(1000/ndOptions.iFrameRate);
 		}
 	}
 }
@@ -290,7 +289,7 @@ void TunerFrame::OnTimer(wxTimerEvent & event)
 #endif
 
     if (!tbStartStop->GetValue()) {
-        tmTimer->Stop();
+        tmTimer.Stop();
         return;
     }
 
