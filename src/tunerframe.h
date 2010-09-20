@@ -94,6 +94,9 @@ protected:
 public:
 	/** Constructor */
 	TunerFrame( wxWindow* parent );
+
+    ///Destructor
+    ~TunerFrame();
 };
 
 } //namespace

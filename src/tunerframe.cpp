@@ -34,6 +34,7 @@ namespace noot {
 
 CREATE_OPTION_VARIABLE(int, sampleRateAutocov, "MainWindow/SampleRateAutocov", 96000);
 CREATE_OPTION_VARIABLE(int, sampleRateCFT, "MainWindow/SampleRateCFT", 16000);
+CREATE_OPTION_VARIABLE(int, sampleRateNone, "MainWindow/SampleRateNone", 0);
 
 static wxString noteNames[] = { _("C"), _("C#"), _("D"), _("D#"), _("E"), _("F"),
 	_("F#"), _("G"), _("G#"), _("A"), _("A#"), _("B")
@@ -114,6 +115,20 @@ wxfbTunerFrame( parent )
 
     Layout();
     Fit();
+}
+
+TunerFrame::~TunerFrame() {
+    switch (ndOptions.iRefinement) {
+        case R_NONE:
+            sampleRateNone = ndOptions.iSampleRate;
+            break;
+        case R_AUTOCOV:
+            sampleRateAutocov = ndOptions.iSampleRate;
+            break;
+        case R_POWER_SPECTRUM:
+            sampleRateCFT = ndOptions.iSampleRate;
+            break;
+    }
 }
 
 void TunerFrame::OnStartStop( wxCommandEvent& event )
@@ -687,6 +702,7 @@ void TunerFrame::OnToolsRefinementUpdateUI(wxUpdateUIEvent& event) {
 void TunerFrame::OnToolsRefinement(wxCommandEvent& event) {
     switch (ndOptions.iRefinement) {
         case R_NONE:
+            sampleRateNone = ndOptions.iSampleRate;
             break;
         case R_AUTOCOV:
             sampleRateAutocov = ndOptions.iSampleRate;
@@ -701,7 +717,7 @@ void TunerFrame::OnToolsRefinement(wxCommandEvent& event) {
     switch (event.GetId()) {
         case ID_TOOLS_REFINEMENT_NONE:
             ndOptions.iRefinement = R_NONE;
-            ndOptions.iSampleRate = 0;
+            ndOptions.iSampleRate = sampleRateNone;
             break;
         case ID_TOOLS_REFINEMENT_AUTOCOV:
             ndOptions.iRefinement = R_AUTOCOV;

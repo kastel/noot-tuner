@@ -1,6 +1,6 @@
 /*
 
-  Copyright (C) 2008 by Davide Castellone <dc.kastel@gmail.com>
+  Copyright (C) 2008-2010 by Davide Castellone <dc.kastel@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
@@ -29,7 +29,7 @@ struct __option {
 	__option(void(*_load)(), void(*_save)()) : load(_load), save(_save) { }
 };
 
-extern std::vector<__option> __options;
+std::vector<__option>& GetGlobalOptions();
 
 void SaveAllOptions();
 void LoadAllOptions();
@@ -38,15 +38,12 @@ void LoadAllOptions();
 	static void opt_load_##salt() { wxConfig::Get()->Read(wxT(name), &(variable), default); } \
 	static void opt_save_##salt() { wxConfig::Get()->Write(wxT(name), variable); } \
 	static std::vector<__option>::iterator _inserter_##salt = \
-		__options.insert(__options.end(), __option(opt_load_##salt, opt_save_##salt));
+		GetGlobalOptions().insert(GetGlobalOptions().end(), __option(opt_load_##salt, opt_save_##salt));
 
 
 ///Like @c CREATE_OPTION_VARIABLE, except that this one does not create the variable
 #define CREATE_OPTION_EXISTING_VARIABLE(type, variable, name, default) \
-	static void opt_load_##variable() { wxConfig::Get()->Read(wxT(name), &variable, default); } \
-	static void opt_save_##variable() { wxConfig::Get()->Write(wxT(name), variable); } \
-	static std::vector<__option>::iterator _inserter_##variable = \
-		__options.insert(__options.end(), __option(opt_load_##variable, opt_save_##variable));
+    CREATE_OPTION_ALTERNATE_NAME(variable, name, default, variable)
 
 /**
  * Create a static variable whose value is read on startup and written on exit.
@@ -57,10 +54,7 @@ void LoadAllOptions();
  */
 #define CREATE_OPTION_VARIABLE(type, variable, name, default) \
 	static type variable; \
-	static void opt_load_##variable() { wxConfig::Get()->Read(wxT(name), &variable, default); } \
-	static void opt_save_##variable() { wxConfig::Get()->Write(wxT(name), variable); } \
-	static std::vector<__option>::iterator _inserter_##variable = \
-		__options.insert(__options.end(), __option(opt_load_##variable, opt_save_##variable));
+    CREATE_OPTION_EXISTING_VARIABLE(type, variable, name, default)
 /*
 	static struct _inserter_##variable { _inserter_##variable() { \
  		__options.push_back(__option(opt_load_##variable, opt_save_##variable)); } } \

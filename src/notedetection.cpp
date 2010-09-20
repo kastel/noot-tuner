@@ -62,12 +62,12 @@ CREATE_OPTION_ALTERNATE_NAME(ndOptions.fExpectedPrecision, "Options/ExpectedPrec
 							  0.001, ofepr);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fTranspose, "Options/Transpose", 0, oftr);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fClockCorrection, "Options/ClockCorrection", 1.0, ofcc);
-CREATE_OPTION_ALTERNATE_NAME(ndOptions.iRefinement, "MainWindow/Refinement", R_AUTOCOV, ofrf);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.iRefinement, "Options/Refinement", R_AUTOCOV, ofrf);
 
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iIndicatorWidth, "MainWindow/IndicatorWidth", 10, mwiw);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fTolerance, "MainWindow/Tolerance", 1, mwt);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iFrameRate, "MainWindow/FrameRate", 10, mwft);
-CREATE_OPTION_ALTERNATE_NAME(ndOptions.iSampleRate, "MainWindow/SampleRate", 0, mwsr);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.iSampleRate, "Options/SampleRate", 0, mwsr);
 
 ///Class used to find the lowest peak
 template<typename key_type, typename value_type, int size> class MiniSortedMap
@@ -358,13 +358,15 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	{
         unsigned optimalSize;
 
+        ///@todo Move optimal window size into another function
         if (options.iRefinement==R_AUTOCOV)
             optimalSize = 1.8/(pow(2, options.fExpectedPrecision/24)-1);
         else if (options.iRefinement==R_POWER_SPECTRUM)
             optimalSize = options.iSampleRate/3; //one third of a second
+        else
+            optimalSize = options.iSampleRate; //one second
 
         unsigned optimalSizeRounded = RoundToPowerOf2(optimalSize);
-		//where the first 2 is an arbitrary constant
         
         if (buffer.GetSize()!=optimalSizeRounded)
             fprintf(stderr, "Automatic window size: %d, rounded to %d\n", optimalSize, optimalSizeRounded);
@@ -502,6 +504,9 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
         (unsigned)(sizeof(refinementFunc)/sizeof(refinementFunc[0])))
         wxLogFatalError(_("Invalid refinement function. Aborting"));
 
+
+    if (tempfreq < MIN_FREQUENCY)
+        return false;
 
     *frequency = tempfreq;
     if (!refinementFunc[options.iRefinement](frequency, localBuffer, options))
