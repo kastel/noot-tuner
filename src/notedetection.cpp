@@ -53,21 +53,21 @@ FrequencyRefinementFunc refinementFunc[] = {
 };
 
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iWindowSize, "Options/WindowSize", -1, oiws);
-CREATE_OPTION_ALTERNATE_NAME(ndOptions.iWindowType, "Options/WindowType", W_RECT, oiwt);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.iWindowType, "Options/WindowType", W_HANNING, oiwt);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iOctave, "Options/Octave", -1, oio);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iNote, "Options/Note", -1, oin);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iTemperament, "Options/Temperament", T_EQUAL, oit);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fThreshold, "Options/Threshold", -70.0, oft);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fExpectedPrecision, "Options/ExpectedPrecision",
-							  0.001, ofepr);
+							  0.002, ofepr);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fTranspose, "Options/Transpose", 0, oftr);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fClockCorrection, "Options/ClockCorrection", 1.0, ofcc);
-CREATE_OPTION_ALTERNATE_NAME(ndOptions.iRefinement, "Options/Refinement", R_AUTOCOV, ofrf);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.iRefinement, "Options/Refinement", R_POWER_SPECTRUM, ofrf);
 
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iIndicatorWidth, "MainWindow/IndicatorWidth", 10, mwiw);
-CREATE_OPTION_ALTERNATE_NAME(ndOptions.fTolerance, "MainWindow/Tolerance", 1, mwt);
-CREATE_OPTION_ALTERNATE_NAME(ndOptions.iFrameRate, "MainWindow/FrameRate", 10, mwft);
-CREATE_OPTION_ALTERNATE_NAME(ndOptions.iSampleRate, "Options/SampleRate", 0, mwsr);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.fTolerance, "MainWindow/Tolerance", 2, mwt);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.iFrameRate, "MainWindow/FrameRate", 30, mwft);
+CREATE_OPTION_ALTERNATE_NAME(ndOptions.iSampleRate, "Options/SampleRate", 16000, mwsr);
 
 ///Class used to find the lowest peak
 template<typename key_type, typename value_type, int size> class MiniSortedMap
