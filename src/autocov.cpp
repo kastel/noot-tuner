@@ -22,10 +22,6 @@
 
 namespace noot {
 
-//these are defined in notedetection.cpp
-extern fftw_complex* cOut;
-extern size_t cOutSize;
-
 ///@todo URGENT: Optimise me
 static double AutoCorrelation(const Buffer& buffer, int index, double avg)
 {
@@ -72,12 +68,12 @@ bool AutocovRefinement::RefineFrequency(double* frequency, Buffer& localBuffer, 
 				last = index + 2;
 			}
 
-			if ((unsigned)first>=cOutSize || (unsigned)last>=cOutSize)
+			if ((unsigned)first>=localBuffer.GetSize() || (unsigned)last>=localBuffer.GetSize())
 				return false;
 
 			dMax=0; iMax=0;
 			for (i=first; i<=last; ++i) {
-				if ((ac=AutoCorrelation(localBuffer, i, cOut[0][0]))>dMax) {
+				if ((ac=AutoCorrelation(localBuffer, i, localBuffer.GetMean()))>dMax) {
 					dMax = ac;
 					iMax = i;
                 }

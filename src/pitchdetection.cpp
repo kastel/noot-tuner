@@ -27,10 +27,6 @@ inline int abs(int x) {
     return x<0 ? -x : x;
 }
 
-//these are defined in notedetection.cpp
-extern fftw_complex* cOut;
-extern size_t cOutSize;
-
 ///Class used to find the lowest peak
 template<typename key_type, typename value_type, int size> class MiniSortedMap
 {
