@@ -26,6 +26,7 @@
 #include <cmath>
 #include <exception>
 #include "options.h"
+#include "pitchdetection.h"
 #include <fftw3.h>
 #include <wx/utils.h>
 #include <wx/app.h>
@@ -34,10 +35,6 @@
 using namespace std;
 
 namespace noot {
-
-//don't go below this frequency: it would be useless and it would slow down
-//the program
-static const double MIN_FREQUENCY = 25.0;
 
 fftw_complex* cOut=NULL;
 size_t cOutSize=0;
@@ -77,66 +74,6 @@ bool NoopRefinement::RefineFrequency(double* frequency, Buffer& localBuffer, Not
     //do nothing
     return true;
 }
-
-///Class used to find the lowest peak
-template<typename key_type, typename value_type, int size> class MiniSortedMap
-{
-	public:
-		MiniSortedMap(key_type default_value) {
-			int i;
-			for (i=0; i<size; ++i)
-				m_keys[i] = default_value;
-		}
-		
-		inline void Insert(key_type key, value_type value) {
-			int pos, i;
-
-            //If a key with a near value (diff<=1) is found, it is replaced
-            for (pos=0; pos<size; ++pos)
-                if (abs(m_vals[pos]-value)<=1) {
-                    if (key > m_keys[pos]) {
-                        //remove the current value
-                        for (i=pos+1; i<size; ++i) {
-                            m_keys[i-1] = m_keys[i];
-                            m_vals[i-1] = m_vals[i];
-                        }
-                        break;
-                    }
-                    else
-                        return; //reject
-                }
-
-            //Normal insertion
-			for (pos=0; pos<size; ++pos)
-				if (key>m_keys[pos])
-					break;
-			
-			if (pos<size) {
-				for (i=size-2; i>=pos; --i) {
-					m_keys[i+1] = m_keys[i];
-					m_vals[i+1] = m_vals[i];
-				}
-				m_keys[pos] = key;
-				m_vals[pos] = value;
-			}
-		}
-		
-		//Ad hoc function
-		inline value_type GetLowestValue() {
-			int i;
-			value_type tMin=m_vals[0];
-			
-			for (i=1; i<size; ++i)
-				if (m_vals[i]<tMin)
-					tMin = m_vals[i];
-			
-			return tMin;
-		}
-		
-	private:
-		key_type   m_keys[size];
-		value_type m_vals[size];
-};
 
 void SetTemperament(TEMPERAMENT mode)
 {
@@ -383,8 +320,6 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 
             buffer.Resize(optimalSizeRounded);
         }
-        else
-            buffer.Resize(options.iWindowSize);
 	}
 	else
 		buffer.Resize(options.iWindowSize);
@@ -440,21 +375,6 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
             wxLogFatalError(wxT("Unknown window function!"));
     }
 
-    //Step 0: check the threshold
-	/*dMax = pow(10,dcOptions.fThreshold/20);
-	bool ok = false;
-	for (i=0, e=localBuffer.GetSize(); i<e; ++i)
-		if (localBuffer[i]>dMax) {
-			ok = true;
-			break;
-		}
-	
-	if (!ok)
-		return false;*/
-
-	/*for (i=0, e=ac.GetSize(); i<e; ++i)
-	ac[i] = AutoCorrelation(localBuffer, i);*/
-
     //printf("Input level: %.f\n", maxdb);
     if (maxdb < options.fThreshold)
         return false;
@@ -463,24 +383,16 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	fftw_execute(plan);
 	cOut[0][0] /= localBuffer.GetSize(); //normalise value that will be used as mean
 	
-	//Step 2: find the lowest maximum
+	//Step 2: do a fast pitch detection (PitchDetection is called only if an
+    //octave is not selected)
+    if (options.iOctave == -1) { // no octave
+        if (!PitchDetection(&tempfreq, localBuffer, options, cOut))
+            return false;
+    }
+    else
 	{
-		iMax=0;
-		if (options.iOctave == -1) { //no octave
-			i = MIN_FREQUENCY/double(options.iSampleRate)*localBuffer.GetSize();
-            e = localBuffer.GetSize()/2;
-		
-			MiniSortedMap<double, int, 3> peaks(0.0);
-		
-			for (; i<e; ++i)
-			{
-				double dAmp = cOut[i][0]*cOut[i][0] + cOut[i][1]*cOut[i][1];
-				peaks.Insert(dAmp, i);
-			}
-			
-			iMax = peaks.GetLowestValue();
-			
-		} else if (options.iNote == -1 ) { //octave and no note
+        iMax=0;
+		if (options.iNote == -1 ) { //octave and no note
 			i = floor(fPitches[12*options.iOctave]/options.fClockCorrection*localBuffer.GetSize()/options.iSampleRate);
 			e = i*2;
 		} else
@@ -507,15 +419,12 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 		tempfreq = double(iMax)*options.iSampleRate/localBuffer.GetSize();
 	}
 	
-	if (tempfreq==0.0)
-		return false;
+    if (tempfreq < MIN_FREQUENCY)
+    return false;
 
     wxTheApp->Yield();
 	
     //Steps 4 to 6
-    if (tempfreq < MIN_FREQUENCY)
-        return false;
-
     *frequency = tempfreq;
     if (!refinementAlgorithms[options.iRefinement]->RefineFrequency(frequency, localBuffer, options))
         return false;

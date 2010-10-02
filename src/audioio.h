@@ -20,9 +20,8 @@
 #define __AUDIOIO_H__
 
 #include "config.h"
-#include <cstring>
-#include <wx/thread.h>
 #include <cmath>
+#include <wx/thread.h>
 
 class wxWindow;
 

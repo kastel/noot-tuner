@@ -106,6 +106,10 @@ struct NoopRefinement : public RefinementAlgorithm {
     virtual unsigned OptimalWindowSize(NoteDetectionOptions& options);
 };
 
+//don't go below this frequency: it would be useless and it would slow down
+//the program
+const double MIN_FREQUENCY = 25.0;
+
 } //namespace
 
 #endif // __NOTEDETECTION_H__
