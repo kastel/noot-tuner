@@ -88,9 +88,23 @@ bool DetectNote(int* note, int* octave, double* frequency, double* offset);
  */
 double GetNoteFrequency(int note, int octave);
 
-///Pointer to a function that refines frequency
-typedef bool (*FrequencyRefinementFunc)(double* frequency, Buffer& localBuffer,
-    NoteDetectionOptions& options);
+///Abstraction for frequency refinement methods
+struct RefinementAlgorithm {
+    ///Function that refines frequency
+    virtual bool RefineFrequency(double* frequency, Buffer& localBuffer,
+        NoteDetectionOptions& options) = 0;
+    
+    ///Function that returns the ideal window size for a this refinement method
+    virtual unsigned OptimalWindowSize(NoteDetectionOptions& options) = 0;
+};
+
+///Refinement algorithm that does nothing
+struct NoopRefinement : public RefinementAlgorithm {
+    virtual bool RefineFrequency(double* frequency, Buffer& localBuffer,
+        NoteDetectionOptions& options);
+
+    virtual unsigned OptimalWindowSize(NoteDetectionOptions& options);
+};
 
 } //namespace
 

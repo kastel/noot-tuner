@@ -16,7 +16,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include "notedetection.h"
+#include "powerspectrum.h"
 #include <fftw3.h>
 #include <wx/app.h>
 #include <cmath>
@@ -28,6 +28,10 @@ namespace noot {
 //these are defined in notedetection.cpp
 extern fftw_complex* cOut;
 extern size_t cOutSize;
+
+unsigned PowerSpectrumRefinement::OptimalWindowSize(NoteDetectionOptions& options) {
+    return options.iSampleRate/3; //one third of a second
+}
 
 ///Calculate the power spectrum at a given frequency.
 ///Please note that @c frequency is ranged in [0, 1]
@@ -48,7 +52,7 @@ static double PowerSpectrum(Buffer& buffer, double frequency, NoteDetectionOptio
 }
 
 ///@todo Split cases 1, 2, 3 & 4 and calculate two sides in cases 1 and 2
-bool RefineFrequency_PowerSpectrum(double* frequency, Buffer& buffer,
+bool PowerSpectrumRefinement::RefineFrequency(double* frequency, Buffer& buffer,
     NoteDetectionOptions& options)
 {
 #ifdef DEBUG

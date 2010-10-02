@@ -1,7 +1,7 @@
 # these are the headers for your project
 noinst_HEADERS = audio_file.h audio_portaudio.h audioio.h wxfbtunerframe.h \
 	noot-tuner.h notedetection.h options.h tunerframe.h volumemeter.h \
-	nogui.h
+	nogui.h autocov.h powerspectrum.h
 
 EXTRA_DIST = tunerframe.fpb noot-tuner.desktop
 

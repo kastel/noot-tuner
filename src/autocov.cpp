@@ -16,7 +16,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include "notedetection.h"
+#include "autocov.h"
 #include <fftw3.h>
 #include <wx/app.h>
 
@@ -39,7 +39,11 @@ static double AutoCorrelation(const Buffer& buffer, int index, double avg)
 	return res;
 }
 
-bool RefineFrequency_Autocov(double* frequency, Buffer& localBuffer, NoteDetectionOptions& options) {
+unsigned AutocovRefinement::OptimalWindowSize(NoteDetectionOptions& options) {
+    return 1.8/(pow(2, options.fExpectedPrecision/24)-1);
+}
+
+bool AutocovRefinement::RefineFrequency(double* frequency, Buffer& localBuffer, NoteDetectionOptions& options) {
     //Step 4: Enhance precision by doubling period iteratively
     double tempfreq = *frequency;
     double dd_fft = options.iSampleRate/double(localBuffer.GetSize());

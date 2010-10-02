@@ -16,6 +16,12 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
+#include "powerspectrum.h"
+
+
+#include "autocov.h"
+
 #include "notedetection.h"
 #include <cmath>
 #include <exception>
@@ -42,14 +48,8 @@ static double fPitches[128]; //the frequencies
 
 NoteDetectionOptions ndOptions;
 
-bool RefineFrequency_Autocov(double* frequency, Buffer& localBuffer, NoteDetectionOptions& options);
-bool RefineFrequency_PowerSpectrum(double* frequency, Buffer& localBuffer, NoteDetectionOptions& options);
-bool RefineFrequency_Noop(double* frequency, Buffer& localBuffer, NoteDetectionOptions& options);
-
-FrequencyRefinementFunc refinementFunc[] = {
-    RefineFrequency_Noop,
-    RefineFrequency_Autocov,
-    RefineFrequency_PowerSpectrum
+RefinementAlgorithm* refinementAlgorithms[] = {
+    new NoopRefinement(), new AutocovRefinement(), new PowerSpectrumRefinement()
 };
 
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iWindowSize, "Options/WindowSize", -1, oiws);
@@ -68,6 +68,15 @@ CREATE_OPTION_ALTERNATE_NAME(ndOptions.iIndicatorWidth, "MainWindow/IndicatorWid
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.fTolerance, "MainWindow/Tolerance", 2, mwt);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iFrameRate, "MainWindow/FrameRate", 30, mwft);
 CREATE_OPTION_ALTERNATE_NAME(ndOptions.iSampleRate, "Options/SampleRate", 16000, mwsr);
+
+unsigned NoopRefinement::OptimalWindowSize(NoteDetectionOptions& options) {
+    return options.iSampleRate;
+}
+
+bool NoopRefinement::RefineFrequency(double* frequency, Buffer& localBuffer, NoteDetectionOptions& options) {
+    //do nothing
+    return true;
+}
 
 ///Class used to find the lowest peak
 template<typename key_type, typename value_type, int size> class MiniSortedMap
@@ -353,25 +362,29 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
 	if (!fPitches[0])
 		SetTemperament((TEMPERAMENT)options.iTemperament);
 	
-	//This function also takes care of the buffer size, if it is set to "auto"
+    //Check if refinement algorithm number is correct
+    if ((unsigned)options.iRefinement >
+        (unsigned)(sizeof(refinementAlgorithms)/sizeof(refinementAlgorithms[0])))
+        wxLogFatalError(_("Invalid refinement algorithm. Aborting"));
+
+    //This function also takes care of the buffer size, if it is set to "auto"
 	if (options.iWindowSize == -1)
 	{
         unsigned optimalSize;
 
-        ///@todo Move optimal window size into another function
-        if (options.iRefinement==R_AUTOCOV)
-            optimalSize = 1.8/(pow(2, options.fExpectedPrecision/24)-1);
-        else if (options.iRefinement==R_POWER_SPECTRUM)
-            optimalSize = options.iSampleRate/3; //one third of a second
+        optimalSize = refinementAlgorithms[options.iRefinement]->OptimalWindowSize(options);
+
+        if (optimalSize!=0) {
+
+            unsigned optimalSizeRounded = RoundToPowerOf2(optimalSize);
+
+            if (buffer.GetSize()!=optimalSizeRounded)
+                fprintf(stderr, "Automatic window size: %d, rounded to %d\n", optimalSize, optimalSizeRounded);
+
+            buffer.Resize(optimalSizeRounded);
+        }
         else
-            optimalSize = options.iSampleRate; //one second
-
-        unsigned optimalSizeRounded = RoundToPowerOf2(optimalSize);
-        
-        if (buffer.GetSize()!=optimalSizeRounded)
-            fprintf(stderr, "Automatic window size: %d, rounded to %d\n", optimalSize, optimalSizeRounded);
-
-        buffer.Resize(optimalSizeRounded);
+            buffer.Resize(options.iWindowSize);
 	}
 	else
 		buffer.Resize(options.iWindowSize);
@@ -500,16 +513,11 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
     wxTheApp->Yield();
 	
     //Steps 4 to 6
-    if ((unsigned)options.iRefinement >
-        (unsigned)(sizeof(refinementFunc)/sizeof(refinementFunc[0])))
-        wxLogFatalError(_("Invalid refinement function. Aborting"));
-
-
     if (tempfreq < MIN_FREQUENCY)
         return false;
 
     *frequency = tempfreq;
-    if (!refinementFunc[options.iRefinement](frequency, localBuffer, options))
+    if (!refinementAlgorithms[options.iRefinement]->RefineFrequency(frequency, localBuffer, options))
         return false;
 
     //Step 7: Transpose
