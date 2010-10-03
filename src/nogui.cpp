@@ -109,7 +109,7 @@ void TextInterface() {
 
     puts("# End of results\n");
     theAudioBackend->Terminate();
-    fprintf(stderr, "Closing...");
+    fprintf(stderr, "Closing...\n");
 }
 
 } // namespace
