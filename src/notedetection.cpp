@@ -221,6 +221,9 @@ int NoteBinarySearch(double frequency)
 {
 	int step = 32;
 	int i=64;
+
+    if (frequency > fPitches[127])
+        return 0;
 	
 	while (true)
 	{
@@ -305,7 +308,7 @@ bool DetectNote(int * note, int * octave, double * frequency, double* offset)
         wxLogFatalError(_("Invalid refinement algorithm. Aborting"));
 
     //This function also takes care of the buffer size, if it is set to "auto"
-	if (options.iWindowSize == -1)
+	if (options.iWindowSize <= 0)
 	{
         unsigned optimalSize;
 
