@@ -52,5 +52,5 @@ void SaveAllOptions()
 	for (; i!=e; ++i)
 		i->save();
 
-    fprintf(stderr, "Saved %d options\n", options->size());
+//    fprintf(stderr, "Saved %d options\n", options->size());
 }
