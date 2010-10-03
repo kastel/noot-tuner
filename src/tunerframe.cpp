@@ -671,6 +671,7 @@ void TunerFrame::OnToolsWindowTypeUpdateUI(wxUpdateUIEvent& event) {
             mnuToolsWindow->Check(ID_TOOLS_WINDOW_HANNING, ndOptions.iWindowType == W_HANNING);
             break;
     }
+    event.Skip(true);
 }
 
 void TunerFrame::OnToolsWindowType(wxCommandEvent& event) {
@@ -696,6 +697,7 @@ void TunerFrame::OnToolsRefinementUpdateUI(wxUpdateUIEvent& event) {
             mnuToolsRefinement->Check(ID_TOOLS_REFINEMENT_CFT, ndOptions.iRefinement == R_POWER_SPECTRUM);
             break;
     }
+    event.Skip(true);
 }
 
 void TunerFrame::OnToolsRefinement(wxCommandEvent& event) {
