@@ -110,6 +110,9 @@ struct NoopRefinement : public RefinementAlgorithm {
 //the program
 const double MIN_FREQUENCY = 25.0;
 
+//don't go above this frequency: it would confuse the pitch detector
+const double MAX_FREQUENCY = 12000.0;
+
 } //namespace
 
 #endif // __NOTEDETECTION_H__

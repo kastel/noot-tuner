@@ -18,74 +18,151 @@
  ***************************************************************************/
 #include "pitchdetection.h"
 #include <cmath>
+#include <vector>
+#include <algorithm>
+#ifdef DEBUG
+#include <signal.h>
+#endif
 
 using namespace std;
 
 namespace noot {
 
-inline int abs(int x) {
+inline unsigned abs(int x) {
     return x<0 ? -x : x;
 }
 
-///Class used to find the lowest peak
-template<typename key_type, typename value_type, int size> class MiniSortedMap
+typedef vector<pair<int, double> > PeakVector;
+
+/** 
+ * Simple peak detection function
+ * 
+ * From the smoothed FFT data, points with a high absolute value are selected,
+ * then adjacent points are deleted while keeping only the higher
+ */
+void PeakDetection(PeakVector& peaks, fftw_complex* fft, unsigned size,
+    unsigned min_index, unsigned max_index)
 {
-	public:
-		MiniSortedMap(key_type default_value) {
-			int i;
-			for (i=0; i<size; ++i)
-				m_keys[i] = default_value;
-		}
+    double mean = 0.0, max = 0.0;
+    unsigned i;
+    
+    //smooth the absolute value of the fft (hanning window of width 5)
+    const double coefs[5] = {0.25, 0.75, 1, 0.75, 0.25};
+    double spectrum[size/2];
+    spectrum[0] = spectrum[1] = 0.0; //first 2 values are unused but initialised anyway
+    for (i=3; i<size/2-2; ++i) {
+        spectrum[i] =
+            (coefs[0]*(fft[i-2][0]*fft[i-2][0] + fft[i-2][1]*fft[i-2][1]) +
+            coefs[1]*(fft[i-1][0]*fft[i-1][0] + fft[i-1][1]*fft[i-1][1]) +
+            coefs[2]*(fft[i  ][0]*fft[i  ][0] + fft[i  ][1]*fft[i  ][1]) +
+            coefs[3]*(fft[i+1][0]*fft[i+1][0] + fft[i+1][1]*fft[i+1][1]) +
+            coefs[4]*(fft[i+2][0]*fft[i+2][0] + fft[i+2][1]*fft[i+2][1]))*i;
+        //Why multiply by i? To cancel the decay due to the transfer function
+        //of the microphone (usually 1/s)
+    }
+    
+    //calculate mean and maximum value in the power spectrum
+    for (i=1; i<size/2; ++i) {
+        mean += spectrum[i];
+        if (spectrum[i] > max)
+            max = spectrum[i];
+    }
+    mean /= size/2;
+#ifdef DEBUG
+    fprintf(stderr, "FFT size=%d, mean=%f, max=%f\n", size, mean, max);
+#endif
 
-		inline void Insert(key_type key, value_type value) {
-			int pos, i;
+    //scan the fft data for peaks
+    double threshold = max/20 > 10*mean ? max/20 : 10*mean;
 
-            //If a key with a near value (diff<=1) is found, it is replaced
-            for (pos=0; pos<size; ++pos)
-                if (abs(m_vals[pos]-value)<=1) {
-                    if (key > m_keys[pos]) {
-                        //remove the current value
-                        for (i=pos+1; i<size; ++i) {
-                            m_keys[i-1] = m_keys[i];
-                            m_vals[i-1] = m_vals[i];
-                        }
-                        break;
-                    }
-                    else
-                        return; //reject
-                }
+    for (i=min_index; i<max_index-1; ++i) {
+        if (spectrum[i] > threshold && spectrum[i] > spectrum[i+1] &&
+            spectrum[i] > spectrum[i-1])
+        {
+            //add peak to peak list
+            peaks.push_back(make_pair(i, spectrum[i]));
+        }
+    }
 
-            //Normal insertion
-			for (pos=0; pos<size; ++pos)
-				if (key>m_keys[pos])
-					break;
+#ifdef DEBUG
+    fprintf(stderr, "Peak Table\n");
+    for (i=0; i<peaks.size(); ++i)
+        fprintf(stderr, "%d, %f, %f\n", peaks[i].first,
+            peaks[i].first/double(size)*ndOptions.iSampleRate,
+            peaks[i].second);
+#endif
+}
 
-			if (pos<size) {
-				for (i=size-2; i>=pos; --i) {
-					m_keys[i+1] = m_keys[i];
-					m_vals[i+1] = m_vals[i];
-				}
-				m_keys[pos] = key;
-				m_vals[pos] = value;
-			}
-		}
-
-		//Ad hoc function
-		inline value_type GetLowestValue() {
-			int i;
-			value_type tMin=m_vals[0];
-
-			for (i=1; i<size; ++i)
-				if (m_vals[i]<tMin)
-					tMin = m_vals[i];
-
-			return tMin;
-		}
-
-	private:
-		key_type   m_keys[size];
-		value_type m_vals[size];
+struct PeakSorterInv {
+    bool operator()(pair<int, double> x, pair<int, double> y) {
+        return x.second > y.second;
+    }
 };
+
+/**
+ * Alternate pitch detection algorithm
+ *
+ * - For every couple of peaks, add their difference to a map. If that
+ *   difference is already present, sum the weights
+ * - Pick the difference with the greatest weight (up to a tolerance)
+ */
+bool PitchDetectionFromPeaks(int* frequency, PeakVector& peaks, unsigned min_freq)
+{
+    vector<pair<int, double> > diffs;
+
+    if (peaks.empty())
+        return false;
+
+    //add a peak in 0
+    peaks.push_back(make_pair(0, 0.0));
+
+    unsigned i, j, k, e;
+    for (i=0, e=peaks.size(); i<e-1; ++i) {
+        for (j=i+1; j<e; ++j) {
+            unsigned diff = abs(peaks[j].first - peaks[i].first);
+            if (diff < min_freq)
+                continue;
+            
+            //find matching difference
+            bool found = false;
+            for (k=0; k<diffs.size(); ++k) {
+                if (abs(diffs[k].first - diff) <= 2) { //found
+                    diffs[k].second += peaks[i].second + peaks[j].second;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+                diffs.push_back(make_pair(diff, peaks[i].second + peaks[j].second));
+        }
+    }
+
+    sort(diffs.begin(), diffs.end(), PeakSorterInv());
+
+#ifdef DEBUG
+    fprintf(stderr, "Table of differences\n");
+    for (i=0, e=diffs.size(); i<e; ++i)
+        fprintf(stderr, "%d, %f, %f\n", diffs[i].first,
+            diffs[i].first/double(buffer.GetSize())*ndOptions.iSampleRate,
+            diffs[i].second);
+#endif
+
+    //Pick the difference with the greatest score
+    int maxDiff = diffs[0].first;
+    //Does it match a peak?
+    for (i=0, e=peaks.size(); i<e; ++i)
+        if (abs(peaks[i].first - maxDiff) <= 2) {
+            //found
+            *frequency = peaks[i].first;
+            return true;
+        }
+
+    //It doesn't match a peak: keep it anyway
+    *frequency = maxDiff;
+
+    return true;
+}
 
 bool PitchDetection(double* frequency, Buffer& localBuffer,
     NoteDetectionOptions& options, fftw_complex* cOut)
@@ -93,21 +170,25 @@ bool PitchDetection(double* frequency, Buffer& localBuffer,
     if (!frequency) //frequency must not be NULL
         return false;
 
-    int i, e;
-    i = MIN_FREQUENCY/double(options.iSampleRate)*localBuffer.GetSize();
-    e = localBuffer.GetSize()/2;
+    unsigned size = localBuffer.GetSize();
 
-    MiniSortedMap<double, int, 3> peaks(0.0);
+    unsigned min_index = MIN_FREQUENCY/options.iSampleRate*localBuffer.GetSize();
+    unsigned max_index = MAX_FREQUENCY/options.iSampleRate*localBuffer.GetSize();
 
-    for (; i<e; ++i)
-    {
-        double dAmp = cOut[i][0]*cOut[i][0] + cOut[i][1]*cOut[i][1];
-        peaks.Insert(dAmp, i);
-    }
+    if (max_index > size/2)
+        max_index = size/2;
 
-    int iMax = peaks.GetLowestValue();
+    PeakVector peaks;
+    PeakDetection(peaks, cOut, size, min_index, max_index);
 
-    *frequency = double(iMax)*options.iSampleRate/localBuffer.GetSize();
+    int ifreq;
+    if (!PitchDetectionFromPeaks(&ifreq, peaks, min_index))
+        return false;
+
+    *frequency = double(ifreq) / size * options.iSampleRate;
+#ifdef DEBUG
+    fprintf(stderr, "Pitch detector says %f\n", *frequency);
+#endif
 
     return true;
 }
