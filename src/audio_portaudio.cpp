@@ -83,7 +83,7 @@ void PortaudioBackend::LogPortaudioError(int err)
 bool PortaudioBackend::Terminate()
 {
     if (!isPortaudioInitialised) {
-        fprintf(stderr, "Trying to terminate Portaudio backend twice\n");
+        //fprintf(stderr, "Trying to terminate Portaudio backend twice\n");
         return false;
     }
 
