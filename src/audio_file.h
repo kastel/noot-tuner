@@ -63,7 +63,9 @@ class FileBackend : public AudioBackend
         int GetDefaultAdvanceSize() { return m_step; }
 
         int GetSampleRate() const { return m_info.samplerate; }
-	
+
+        virtual void SupportedSampleRates(std::vector<int>& rates);
+
 	private:
 		wxString m_filename;
         SNDFILE* m_sndfile;

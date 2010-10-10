@@ -24,6 +24,8 @@
 #include <wx/intl.h>
 #include "notedetection.h"
 
+using namespace std;
+
 namespace noot {
 
 bool s_bIgnore = false;
@@ -111,6 +113,22 @@ bool PortaudioBackend::Terminate()
 	return true;
 }
 
+int PortaudioBackend::GetHighestSupportedSampleRate() {
+    static int preferredSampleRates[] = { 96000, 48000, 44100, 32000, 22050, 16000, 11025, 8000 };
+    int i;
+    const int srs = sizeof(preferredSampleRates)/sizeof(preferredSampleRates[0]);
+    for (i=0; i<srs; ++i)
+        if (IsSampleRateSupported(preferredSampleRates[i]))
+            break;
+
+    if (i>=srs)
+    {
+        return 0;
+    }
+
+    return preferredSampleRates[i];
+}
+
 bool PortaudioBackend::StartStreaming()
 {
 	int err;
@@ -126,42 +144,19 @@ bool PortaudioBackend::StartStreaming()
 		
 		const PaDeviceInfo* pdi = Pa_GetDeviceInfo(id);
 		
-		/*int i, e=sizeof(preferredSampleRates)/sizeof(preferredSampleRates[0]);
-		PaStreamParameters parm;
-		parm.device = id;
-		parm.channelCount = 1;
-		parm.sampleFormat = paInt16;
-		parm.suggestedLatency = 0.0;
-		parm.hostApiSpecificStreamInfo = NULL;
-		dcOptions.iSampleRate = 0;
-		
-		for (i=0; i<e; ++i)
-		{
-			if (Pa_IsFormatSupported(&parm, NULL, preferredSampleRates[i])==paFormatIsSupported)
-			{
-				dcOptions.iSampleRate = preferredSampleRates[i];
-				break;
-			}
-		}*/
-		
 		//Default if none set
 		if (!ndOptions.iSampleRate)
 			ndOptions.iSampleRate = int(pdi->defaultSampleRate);
 
-        static int preferredSampleRates[] = { 96000, 48000, 44100, 32000, 22050, 16000, 11025, 8000 };
-        int i, sr;
-        const int srs = sizeof(preferredSampleRates)/sizeof(preferredSampleRates[0]);
-        for (i=0; i<srs; ++i)
-            if (IsSampleRateSupported(preferredSampleRates[i]))
-                break;
 
-        if (i>=srs)
+        int sr = GetHighestSupportedSampleRate();
+
+        if (!sr)
         {
             wxLogError(_("Couldn't find a viable sample rate. Please choose another input device"));
             return false;
         }
 
-        sr = preferredSampleRates[i];
         sampleRateDivider = sr/ndOptions.iSampleRate;
         ndOptions.iSampleRate = sr/sampleRateDivider;
 
@@ -342,6 +337,21 @@ bool PortaudioBackend::IsSampleRateSupported(double rate) {
 
 double PortaudioBackend::GetCurrentTime() {
     return currentTime;
+}
+
+void PortaudioBackend::SupportedSampleRates(vector<int>& rates) {
+    int highest = GetHighestSupportedSampleRate();
+    vector<int> tmpvector;
+
+    for (int divider = 1; highest/divider >= 8000; ++divider) {
+        if (highest % divider == 0) //only exact divisions!
+            tmpvector.push_back(highest/divider);
+    }
+
+    vector<int>::reverse_iterator ri=tmpvector.rbegin(), re=tmpvector.rend();
+    for (; ri!=re; ++ri) {
+        rates.push_back(*ri);
+    }
 }
 
 } //namespace

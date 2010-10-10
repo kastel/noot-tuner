@@ -30,6 +30,8 @@
 #include "audioio.h"
 #include "noot-tuner.h"
 
+using namespace std;
+
 namespace noot {
 
 CREATE_OPTION_VARIABLE(int, sampleRateAutocov, "MainWindow/SampleRateAutocov", 96000);
@@ -571,49 +573,41 @@ void TunerFrame::OnStatusBarSize(wxSizeEvent& event) {
     volumeMeter->SetSize(rect);
 }
 
-static double defaultRates[] = {
-    8000,
-    11025,
-    16000,
-    22050,
-    32000,
-    44100,
-    48000,
-    96000
-};
-
 void TunerFrame::OnToolsSampleRate(wxCommandEvent& event) {
     bool resume = theAudioBackend->StopStreaming();
 
     wxArrayString choices;
-
-    choices.Add(_("Default sample rate"));
+    vector<int> rates;
+    theAudioBackend->SupportedSampleRates(rates);
+    int defaultChoice = -1;
 
     unsigned i;
-    for (i=0; i<sizeof(defaultRates)/sizeof(*defaultRates); ++i)
-        if (theAudioBackend->IsSampleRateSupported(defaultRates[i])) {
-            choices.Add(wxString::Format(wxT("%.f"), defaultRates[i]));
-        }
+    for (i=0; i<rates.size(); ++i) {
+        choices.Add(wxString::Format(wxT("%d"), rates[i]));
+        if (rates[i]==ndOptions.iSampleRate)
+            defaultChoice = i;
+    }
 
-    void* data[choices.size()];
+    //using char* instead of void*
+    char* data[choices.size()];
 
-    data[0] = (void*)(unsigned long)(-1);
+    data[0] = (char*)(unsigned long)(-1);
     
     for (i=1; i<choices.size(); ++i)
-        data[i] = (void*)(long)wxAtoi(choices.Item(i));
+        data[i] = (char*)(long)rates[i];
 
-    void* choice = wxGetSingleChoiceData(_("Select a frame rate"),
+    wxSingleChoiceDialog dlg(this, _("Select a frame rate"),
         _("NOOT Instrument Tuner"),
         choices,
-        data,
-        this);
+        data);
 
-    if (choice!=(void*)0) {
-        if (choice == (void*)(unsigned long)(-1))
-            ndOptions.iSampleRate = 0;
-        else
-            ndOptions.iSampleRate = (int)(long)choice;
-    }
+    if (defaultChoice>=0)
+        dlg.SetSelection(defaultChoice);
+
+    if (dlg.ShowModal()==wxNO)
+        return;
+
+    ndOptions.iSampleRate = (int)(long)dlg.GetSelectionClientData();
 
     if (resume) theAudioBackend->StartStreaming();
     UpdateStatusBar();

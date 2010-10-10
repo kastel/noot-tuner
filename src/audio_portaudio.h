@@ -55,7 +55,12 @@ class PortaudioBackend : public AudioBackend {
 
     virtual bool IsSampleRateSupported(double);
 
-	private:
+    virtual void SupportedSampleRates(std::vector<int>& rates);
+
+    ///Returns the highest supported sample rate (used internally)
+    int GetHighestSupportedSampleRate();
+    
+private:
 	
 	PaStream *audioStream, *playNoteStream;
     

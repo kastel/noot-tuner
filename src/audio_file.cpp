@@ -26,6 +26,8 @@
 #include "notedetection.h"
 #include "options.h"
 
+using namespace std;
+
 namespace noot {
 
 FileBackend::FileBackend(const wxString& filename) : m_filename(filename), m_sndfile(NULL),
@@ -113,6 +115,10 @@ bool FileBackend::IsSampleRateSupported(double) {
 
 double FileBackend::GetCurrentTime() {
     return double(m_currentSample)/ndOptions.iSampleRate;
+}
+
+void FileBackend::SupportedSampleRates(vector<int>& rates) {
+    rates.push_back(GetSampleRate());
 }
 
 } //namespace

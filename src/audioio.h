@@ -22,6 +22,7 @@
 #include "config.h"
 #include <cmath>
 #include <wx/thread.h>
+#include <vector>
 
 class wxWindow;
 
@@ -116,6 +117,9 @@ class AudioBackend {
 
     ///Return true if the given sample rate is supported
     virtual bool IsSampleRateSupported(double rate) = 0;
+
+    ///Fill a list of supported sample rates
+    virtual void SupportedSampleRates(std::vector<int>& rates) = 0;
 	
 	virtual ~AudioBackend();
 	
