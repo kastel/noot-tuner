@@ -120,9 +120,8 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	wxBoxSizer* szNote1;
 	szNote1 = new wxBoxSizer( wxHORIZONTAL );
 	
-	tbStartStop = new wxToggleButton( this, ID_TBSTARTSTOP, _("Start/Stop"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxT("start_stop") );
-	tbStartStop->SetHelpText( _("1") );
-	
+	tbStartStop = new wxToggleButton( this, ID_TBSTARTSTOP, _("Start/Stop"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxT("ch02.html#startstop") );
+	tbStartStop->SetValue( true ); 
 	szNote1->Add( tbStartStop, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxEXPAND, 5 );
 	
 	pnGauge = new wxPanel( this, ID_PNGAUGE, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL );
@@ -200,10 +199,9 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	
 	wxString chOctaveChoices[] = { _("Auto"), _("-1"), _("0"), _("1"), _("2"), _("3"), _("4"), _("5"), _("6"), _("7") };
 	int chOctaveNChoices = sizeof( chOctaveChoices ) / sizeof( wxString );
-	chOctave = new wxChoice( this, ID_OCTAVE, wxDefaultPosition, wxDefaultSize, chOctaveNChoices, chOctaveChoices, 0, wxDefaultValidator, wxT("octave selector") );
+	chOctave = new wxChoice( this, ID_OCTAVE, wxDefaultPosition, wxDefaultSize, chOctaveNChoices, chOctaveChoices, 0, wxDefaultValidator, wxT("ch02.html#octave") );
 	chOctave->SetSelection( 0 );
 	chOctave->SetToolTip( _("Select an octave to optimize note detection") );
-	chOctave->SetHelpText( _("3") );
 	
 	szTuningOptions1->Add( chOctave, 1, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	
@@ -218,10 +216,9 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	
 	wxString chNoteChoices[] = { _("Auto"), _("C"), _("C# / Db"), _("D"), _("D# / Eb"), _("E"), _("F"), _("F# / Gb"), _("G"), _("G# / Ab"), _("A"), _("A# / Bb"), _("B") };
 	int chNoteNChoices = sizeof( chNoteChoices ) / sizeof( wxString );
-	chNote = new wxChoice( this, ID_NOTE, wxDefaultPosition, wxDefaultSize, chNoteNChoices, chNoteChoices, 0, wxDefaultValidator, wxT("note selector") );
+	chNote = new wxChoice( this, ID_NOTE, wxDefaultPosition, wxDefaultSize, chNoteNChoices, chNoteChoices, 0, wxDefaultValidator, wxT("ch02.html#note") );
 	chNote->SetSelection( 0 );
 	chNote->SetToolTip( _("Select a note if you already know it") );
-	chNote->SetHelpText( _("4") );
 	
 	szTuningOptions1->Add( chNote, 1, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	
@@ -229,10 +226,9 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	slTuningOptions2 = new wxStaticLine( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
 	szTuningOptions1->Add( slTuningOptions2, 0, wxEXPAND | wxALL, 3 );
 	
-	btListen = new wxButton( this, ID_LISTEN, _("&Listen"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxT("listen") );
+	btListen = new wxButton( this, ID_LISTEN, _("&Listen"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxT("ch02.html#listen") );
 	btListen->Enable( false );
 	btListen->SetToolTip( _("Click here to listen to the selected note") );
-	btListen->SetHelpText( _("5") );
 	
 	szTuningOptions1->Add( btListen, 1, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	
@@ -252,10 +248,9 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	
 	wxString chTemperamentChoices[] = { _("Equal Temperament"), _("Pythagorean"), _("Just Intonation"), _("Bach (Klais)"), _("Kimberger III"), _("Werckmeister III"), _("Werckmeister VI"), _("Rameau (syntonic)"), _("Just (Barbour)"), _("Meantone") };
 	int chTemperamentNChoices = sizeof( chTemperamentChoices ) / sizeof( wxString );
-	chTemperament = new wxChoice( this, ID_TEMPERAMENT, wxDefaultPosition, wxDefaultSize, chTemperamentNChoices, chTemperamentChoices, 0, wxDefaultValidator, wxT("temperament") );
+	chTemperament = new wxChoice( this, ID_TEMPERAMENT, wxDefaultPosition, wxDefaultSize, chTemperamentNChoices, chTemperamentChoices, 0, wxDefaultValidator, wxT("ch02.html#temperament") );
 	chTemperament->SetSelection( 0 );
 	chTemperament->SetToolTip( _("The expected frequency of a note depends on the temperament choosen") );
-	chTemperament->SetHelpText( _("6") );
 	
 	szTuningOptions2->Add( chTemperament, 2, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	
@@ -268,10 +263,9 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	stTranspose->Wrap( -1 );
 	szTuningOptions2->Add( stTranspose, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	
-	tcTranspose = new wxTextCtrl( this, ID_TRANSPOSE, _("0"), wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER, wxDefaultValidator, wxT("transpose") );
+	tcTranspose = new wxTextCtrl( this, ID_TRANSPOSE, _("0"), wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER, wxDefaultValidator, wxT("ch02.html#transpose") );
 	tcTranspose->SetMaxLength( 10 ); 
 	tcTranspose->SetToolTip( _("The detected note will be shifted by this number of semitones\n(it can be a decimal number)") );
-	tcTranspose->SetHelpText( _("7") );
 	
 	szTuningOptions2->Add( tcTranspose, 1, wxALL, 3 );
 	
@@ -292,10 +286,9 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	
 	wxString chWindowSizeChoices[] = { _("Auto"), _("512"), _("1024"), _("2048"), _("4096"), _("8192"), _("16384"), _("32768") };
 	int chWindowSizeNChoices = sizeof( chWindowSizeChoices ) / sizeof( wxString );
-	chWindowSize = new wxChoice( this, ID_WINDOWSIZE, wxDefaultPosition, wxDefaultSize, chWindowSizeNChoices, chWindowSizeChoices, 0, wxDefaultValidator, wxT("window size") );
+	chWindowSize = new wxChoice( this, ID_WINDOWSIZE, wxDefaultPosition, wxDefaultSize, chWindowSizeNChoices, chWindowSizeChoices, 0, wxDefaultValidator, wxT("ch02.html#windowsize") );
 	chWindowSize->SetSelection( 0 );
 	chWindowSize->SetToolTip( _("Window size affects speed and quality of frequency detection.\nNormally you should leave this to \"Auto\"") );
-	chWindowSize->SetHelpText( _("8") );
 	
 	szAdvancedOptions1->Add( chWindowSize, 1, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	
@@ -308,9 +301,8 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	stThreshold->Wrap( -1 );
 	szAdvancedOptions1->Add( stThreshold, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	
-	scThreshold = new wxSpinCtrl( this, ID_THRESHOLD, wxT("70"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 90, 70, wxT("threshold") );
+	scThreshold = new wxSpinCtrl( this, ID_THRESHOLD, wxT("70"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 90, 70, wxT("ch02.html#threshold") );
 	scThreshold->SetToolTip( _("Threshold for starting note detection.\nDetection starts only if the input is loud\nenough (this is to avoid trying to detect\nthe frequency of the noise).") );
-	scThreshold->SetHelpText( _("9") );
 	
 	szAdvancedOptions1->Add( scThreshold, 1, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	
@@ -328,9 +320,8 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	stExpectedPrecision->Wrap( -1 );
 	szAdvancedOptions2->Add( stExpectedPrecision, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	
-	scExpectedPrecision = new wxSpinCtrl( this, ID_EXPECTEDPRECISION, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 2, 50, 2, wxT("expected precision") );
+	scExpectedPrecision = new wxSpinCtrl( this, ID_EXPECTEDPRECISION, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 2, 50, 2, wxT("ch02.html#expectedprecision") );
 	scExpectedPrecision->SetToolTip( _("This value is used especially when Window size is set to 'Auto'") );
-	scExpectedPrecision->SetHelpText( _("10") );
 	
 	szAdvancedOptions2->Add( scExpectedPrecision, 1, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	
@@ -343,9 +334,8 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	stFrameRate->Wrap( -1 );
 	szAdvancedOptions2->Add( stFrameRate, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	
-	scFrameRate = new wxSpinCtrl( this, ID_FRAMERATE, wxT("10"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 30, 10, wxT("frame rate") );
+	scFrameRate = new wxSpinCtrl( this, ID_FRAMERATE, wxT("10"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 30, 10, wxT("ch02.html#framerate") );
 	scFrameRate->SetToolTip( _("Set the update frequency for this window") );
-	scFrameRate->SetHelpText( _("11") );
 	
 	szAdvancedOptions2->Add( scFrameRate, 1, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	

@@ -526,9 +526,11 @@ void TunerFrame::OnHelpContext(wxCommandEvent &)
 {
 	wxWindow* w = wxWindow::FindFocus();
 	wxString name;
-	if (w)
+	if (w) {
 		name = w->GetName();
-	
+        wxPrintf(wxT("Showing help for window %d: %s\n"), w->GetId(), name.c_str());
+    }
+
 	if (InitialiseHelp())
 		wxGetApp().helpController->DisplaySection(name);
 }
