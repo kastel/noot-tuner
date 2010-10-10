@@ -163,24 +163,6 @@ reference "license-gplv3"
 \end_inset
 
 )
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Logo and icon are © 2010 Carmen Buonfiglio, licensed under the 
-\begin_inset CommandInset href
-LatexCommand href
-name "Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License"
-target "http://creativecommons.org/licenses/by-nc-nd/3.0/"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -239,7 +221,7 @@ It works with almost any instrument
 \end_layout
 
 \begin_layout Itemize
-Half-cent precision (0.005 semitones)
+Half-cent precision (0.005 semitones) or even better
 \end_layout
 
 \begin_layout Itemize
@@ -276,14 +258,14 @@ Cross-platform (it can be compiled on virtually any OS; Windows and Ubuntu
 Basic documentation included
 \end_layout
 
+\begin_layout Itemize
+Two different frequency refinement algorithms
+\end_layout
+
 \begin_layout Standard
 
 \series bold
 Future plans
-\end_layout
-
-\begin_layout Itemize
-Different detection algorithms
 \end_layout
 
 \begin_layout Itemize
@@ -323,6 +305,51 @@ name "changelog"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Version 0.3.0:
+\end_layout
+
+\begin_layout Itemize
+New frequency refinement algorithm (
+\emph on
+Continuous power spectrum
+\emph default
+), more precise and efficient (now default).
+ The old algorithm is available in the 
+\emph on
+Other options
+\emph default
+ menu
+\end_layout
+
+\begin_layout Itemize
+Sample rate option is saved separately for the two refinement algorithms
+\end_layout
+
+\begin_layout Itemize
+New pitch detection algorithm: pitch detection is more reliable when 
+\emph on
+Octave
+\emph default
+ and 
+\emph on
+Note
+\emph default
+ are set to Auto
+\end_layout
+
+\begin_layout Itemize
+Higher reactivity with low sample rates
+\end_layout
+
+\begin_layout Itemize
+Added option 
+\emph on
+Window type
+\emph default
+ (rectangular or Hanning)
 \end_layout
 
 \begin_layout Standard
@@ -405,35 +432,14 @@ Code and Italian translation © 2010 Davide Castellone
 \noun on
 NOOT Instrument Tuner
 \noun default
- is distributed under the 
+ is distributed under the GNU GPLv3 (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "license-gplv3"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Logo and icon are © 2010 Carmen Buonfiglio, licensed under the 
-\begin_inset CommandInset href
-LatexCommand href
-name "Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License"
-target "http://creativecommons.org/licenses/by-nc-nd/3.0/"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+).
 \end_layout
 
 \begin_layout Standard
@@ -494,7 +500,7 @@ name "using"
 
 \begin_layout Standard
 Before starting, you need to configure your input device.
- Usually this means choosing an input device and adjusting its volume in
+ Commonly this means choosing an input device and adjusting its volume in
  the mixer.
 \end_layout
 
@@ -713,13 +719,13 @@ Octave selector
 \end_layout
 
 \begin_layout Standard
-Selecting the right octaves often improves the precision of the detection
- algorithm.
+Selecting the right octaves improves the precision of the detection and
+ the readability of the indicator.
  When the octave is set to 
 \family typewriter
 Auto
 \family default
-, the program guesses it, sometimes leading to a little accurate measure.
+, the program guesses it, sometimes leading to a note detection error.
 \end_layout
 
 \begin_layout Standard
@@ -727,13 +733,21 @@ With the standard used the middle C is in octave 3.
 \end_layout
 
 \begin_layout Standard
-Sometimes the right octave is not the best, since every instrument produces
- more than one harmonic.
+Sometimes the right octave is not the best choice, since in some cases (especial
+ly with extreme notes) the base frequency is too soft to be detected precisely.
  If the detection is not precise enough (i.e.
- the indicator glitches too much) you can safely select an octave lower
- or higher than the original one.
+ the indicator glitches or vibrates too much) you can safely select an octave
+ lower or higher than the original one.
  Remember that if you set the octave in the control panel, the detected
  octave may not correspond to that of the note.
+ (For other advice see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:Advanced-usage"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection
@@ -840,7 +854,8 @@ Use this control to transpose the input.
 \end_layout
 
 \begin_layout Standard
-The frequency displayed above will not be altered.
+The frequency displayed above will not be altered, but the note and/or the
+ offset in cents may be.
 \end_layout
 
 \begin_layout Subsection
@@ -876,14 +891,29 @@ Window size
 \begin_layout Standard
 This option affects the note detection algorithm.
  It represents the number of samples on which the FFT and autocorrelation
- are performed.
+ (or continuous powr spectrum) are performed.
 \end_layout
 
 \begin_layout Standard
-It should be set to a reasonable value (usually 4096).
- If too low, the precision constraint may not be satisfied.
- If too high, it may slow down the computer or even make the detection less
- precise.
+The optimal window size depends on the refinement algorithm selected.
+ Consider however that in any case a bigger window implies a more accurate
+ measure, at the cost of reducing the reactivity of the program and increasing
+ the CPU usage.
+\end_layout
+
+\begin_layout Standard
+If the default algorithm is set (
+\emph on
+Continuous power spectrum
+\emph default
+), the window size can be set at any value (at least 1/5 of the sample rate).
+ If the alternate algorithm (
+\emph on
+Autocovariance
+\emph default
+) is selected, then when the window size is too little, the precision constraint
+ might not be satisfied, and therefore no result is shown.
+ The optimal window size in the latter case is between 16384 and 32768.
 \end_layout
 
 \begin_layout Subsection
@@ -919,6 +949,8 @@ Threshold
 \begin_layout Standard
 This option is used to start the detection only if the input is loud enough,
  in order to avoid glitches due to the background noise.
+ The threshold is displayed graphically as a thin black line in the volume
+ meter.
 \end_layout
 
 \begin_layout Standard
@@ -977,7 +1009,7 @@ Frame rate
 \end_layout
 
 \begin_layout Standard
-This number represents the average number of updates per second.
+This number represents the maximum number of updates per second.
  If it is set to a too high value, the program might not fulfill the request
  or even slow down.
 \end_layout
@@ -1024,7 +1056,7 @@ volume meter
 \end_layout
 
 \begin_layout Standard
-The status bar il composed of three boxes.
+The status bar is composed of three boxes.
  The first contains information about the current status (
 \emph on
 Listening
@@ -1041,7 +1073,7 @@ The second box contains two numbers: sampling frequency and clock correction
  factor (see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Clock-correction"
+reference "sec:menu-clock-correction"
 
 \end_inset
 
@@ -1058,11 +1090,24 @@ The third box contains a volume meter.
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:menus"
+
+\end_inset
+
 The menus
 \end_layout
 
 \begin_layout Subsection
 Devices
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Devices"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1071,6 +1116,13 @@ This menu contains options to select the input and output devices.
 
 \begin_layout Subsection
 Other options
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Other-options"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1087,15 +1139,38 @@ reference "cha:Advanced-usage"
 
 \begin_layout Subsubsection
 Change sample rate
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:menu-sample-rate"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 This menu item opens a window listing some of the possible sample rate for
  the device selected.
+ Sample rate should be as low as possible if the 
+\begin_inset Quotes eld
+\end_inset
+
+Continuous power spectrum
+\begin_inset Quotes erd
+\end_inset
+
+ refinement algorithm is selected, as high as possible otherwise.
 \end_layout
 
 \begin_layout Subsubsection
 Clock correction
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:menu-clock-correction"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1113,8 +1188,77 @@ reference "sec:Clock-correction"
 .)
 \end_layout
 
+\begin_layout Subsubsection
+Window type
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Window-type"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is a rather techical option.
+ It should always be Hanning, unless you have some serious reason to change
+ it.
+\end_layout
+
+\begin_layout Subsubsection
+Refinement algorithm
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Refinement-algorithm"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This options define the algorithm use to increase the precision of the frequency
+ estimated in the first step.
+\end_layout
+
+\begin_layout Description
+None Don't perform any refinement (useful only for testing, it gives very
+ bad results)
+\end_layout
+
+\begin_layout Description
+Autocovariance The old algorithm (up to version 0.2.x)
+\end_layout
+
+\begin_layout Description
+Continuous
+\begin_inset space ~
+\end_inset
+
+power
+\begin_inset space ~
+\end_inset
+
+spectrum The new algorithm, faster and more reliable with extreme notes.
+\end_layout
+
+\begin_layout Standard
+The default is 
+\emph on
+Continuous power spectrum
+\emph default
+.
+\end_layout
+
 \begin_layout Subsection
 Help
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:menu-help"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1228,8 +1372,18 @@ sample rate
 \end_layout
 
 \begin_layout Standard
-Currently, with the autocorrelation-based algorithm, the best sampling rate
- is the highest.
+With the default algorithm (
+\emph on
+Continuous power spectrum
+\emph default
+), the best sampling rate is the lowest, provided that it's at least two
+ times the maximum frequency to be measured.
+ Usually 8000 or 16000 Hz will go.
+\end_layout
+
+\begin_layout Standard
+With the autocorrelation-based algorithm, the best sampling rate is the
+ highest.
  However, if the note isn't detected correctly, or if you see glitches,
  you can consider lowering it, taking into account that lower sampling rates
  cause longer reaction times.
@@ -1259,7 +1413,7 @@ and
 Octave
 \emph default
  options in the main window, to prevent NOOT from detecting a wrong note.
- Then, you should raise the sampling rate and raise the 
+ Then, you should raise the 
 \emph on
 Expected precision
 \emph default
@@ -1281,15 +1435,25 @@ name "howitworks"
 \begin_layout Standard
 
 \noun on
-NOOT Instrument tuner
+NOOT Instrument tuner 
 \noun default
- uses a mix of FFT and linear autocorrelation to reach one-cent precision
+implements a two-step method to estimate a frequency with one-cent precition
  with relatively narrow window sizes.
+ In the first step, the program computes the FFT of the input signal, and
+ finds an initial range in which the frequency to be measured should be.
+ Then, a refinement algorithm improves the measure.
 \end_layout
 
 \begin_layout Standard
-Every time the display is updated, the following algorithm is computed on
- the current window:
+In the first versions of NOOT, an autocovariance-based refinement algorithm
+ were used.
+ Now the default method computes a close approximation of the continuous
+ power spectrum of the audio signal.
+\end_layout
+
+\begin_layout Standard
+With the old approach, every time the display is updated, the following
+ algorithm is computed on the current window:
 \end_layout
 
 \begin_layout Itemize
@@ -1321,8 +1485,24 @@ The main disadvantage of this approach is that it ceases to be precise in
  cases when the harmonics are far less than perfect.
 \end_layout
 
+\begin_layout Standard
+With the new approach, the signal is compared with a wave having a frequency
+ in the range detected in the first step through linear with a function
+ similar to the linear correlation.
+ Then the frequency of this wave is changed slightly at each step in order
+ to find the waveform which is more similar to the signal, until the required
+ precision is expected.
+\end_layout
+
 \begin_layout Chapter
 Troubleshooting
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:Troubleshooting"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1374,6 +1554,15 @@ Auto
 Expected precision
 \emph default
  value.
+ Select 
+\emph on
+Continuous power spectrum
+\emph default
+ as refinement algorithm (from the 
+\emph on
+Other options
+\emph default
+ menu).
 \end_layout
 
 \begin_layout Section
@@ -1381,8 +1570,8 @@ The wrong note is detected
 \end_layout
 
 \begin_layout Itemize
-Facilitate the work of the program by telling what note and what octave
- you are tuning.
+Facilitate the work of the program by telling what note or at least what
+ octave you are tuning.
  (Set the 
 \emph on
 Note

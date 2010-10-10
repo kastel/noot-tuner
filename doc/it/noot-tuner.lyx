@@ -196,27 +196,6 @@ type "mailto:"
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Logo and icon are © 2010 Carmen Buonfiglio, licensed under the 
-\begin_inset CommandInset href
-LatexCommand href
-name "Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License"
-target "http://creativecommons.org/licenses/by-nc-nd/3.0/"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Caratteristiche
 \begin_inset CommandInset label
@@ -238,7 +217,7 @@ Funziona con qualsiasi strumento
 \end_layout
 
 \begin_layout Itemize
-Precisione di mezzo cent (0.005 semitoni)
+Precisione di mezzo cent (0.005 semitoni) quando non meglio
 \end_layout
 
 \begin_layout Itemize
@@ -274,14 +253,14 @@ Cross-platform (può essere compilato praticamente in qualsiasi sistema operativ
 Documentazione di base inclusa
 \end_layout
 
+\begin_layout Itemize
+Due algoritmi di raffinamento della frequenza selezionabili
+\end_layout
+
 \begin_layout Standard
 
 \series bold
 Sviluppi futuri
-\end_layout
-
-\begin_layout Itemize
-Nuovi algoritmi di rilevamento della frequenza
 \end_layout
 
 \begin_layout Itemize
@@ -321,6 +300,53 @@ name "changelog"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Versione 0.3.0:
+\end_layout
+
+\begin_layout Itemize
+Nuovo algoritmo di raffinamento della frequenza (
+\emph on
+Spettro di potenza continuo
+\emph default
+), più preciso ed efficiente (predefinito da ora).
+ L'algoritmo vecchio è disponibile dal menù 
+\emph on
+Altre opzioni
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+La frequenza di campionamento viene ricordata separatamente per i due algoritmi
+ di raffinamento.
+\end_layout
+
+\begin_layout Itemize
+Nuovo algoritmo di rilevamento della nota: molto più affidabile di prima
+ quando 
+\emph on
+Ottava
+\emph default
+ e 
+\emph on
+Nota
+\emph default
+ sono entrambi su Auto
+\end_layout
+
+\begin_layout Itemize
+Aumentata la reattività nel caso di frequenze di campionamento basse
+\end_layout
+
+\begin_layout Itemize
+Aggiunta l'opzione 
+\emph on
+Tipo di finestra
+\emph default
+ (rettangolare o Hanning)
 \end_layout
 
 \begin_layout Standard
@@ -411,27 +437,6 @@ reference "license-gplv3"
 \end_inset
 
 ).
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Logo and icon are © 2010 Carmen Buonfiglio, licensed under the 
-\begin_inset CommandInset href
-LatexCommand href
-name "Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License"
-target "http://creativecommons.org/licenses/by-nc-nd/3.0/"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -691,12 +696,13 @@ Ottava
 \end_layout
 
 \begin_layout Standard
-Selezionare l'ottava giusta spesso aumenta la precisione della misura.
+Selezionare l'ottava giusta aumenta la precisione della misura e la leggibilità
+ dell'indicatore.
  Quando l'ottava è impostata su 
 \family typewriter
 Auto
 \family default
-, il programma cerca di indovinarla, portando spesso a misure meno precise.
+, il programma cerca di indovinarla, non sempre riuscendoci.
 \end_layout
 
 \begin_layout Standard
@@ -704,13 +710,22 @@ Con lo standard adottato, il Do centrale si trova nell'ottava 3.
 \end_layout
 
 \begin_layout Standard
-Talvolta l'ottava precisa non è la migliore, in quanto ogni strumento produce
- più di un'armonica.
+Talvolta l'ottava esatta della nota non è la scelta migliore, soprattutto
+ nel caso di note estreme, in quando l'armonica principale può essere troppo
+ debole per essere rilevata con precisione.
  Se la rilevazione non è abbastanza precisa (cioè, se l'indicatore oscilla
  troppo) si può selezionare l'ottava immediatamente superiore o inferiore
  a quella originale, senza rischi.
  Si ricorda che se viene impostata un'ottava nel pannello di controllo,
  l'ottava rilevata potrebbe non corrispondere a quella della nota.
+ (Per altri consigli vedi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:Advanced-usage"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection
@@ -810,7 +825,8 @@ Trasponi
 \begin_layout Standard
 Usare questo controllo per trasporre l'input di un certo numero di semitoni.
  Può essere un numero decimale.
- La frequenza mostrata non sarà alterata.
+ La frequenza mostrata non sarà alterata, mentre cambierà il nome della
+ nota e/o lo scostamento in centesimi.
 \end_layout
 
 \begin_layout Subsection
@@ -889,6 +905,8 @@ Soglia
 \begin_layout Standard
 Questa opzione serve ad avviare la rilevazione solo quando il livello dell'input
  è abbastanza alto, così da evitare interferenze dovute al rumore di sottofondo.
+ La soglia è rappresentata graficamente come una linea nera sottile nell'indicat
+ore del volume.
 \end_layout
 
 \begin_layout Standard
@@ -923,7 +941,7 @@ Minore il valore, maggiore la precisione.
 
 \begin_layout Standard
 Valori più bassi rendono il programma meno reattivo e aumentano il consumo
- di risorse della CPU.
+ di risorse.
 \end_layout
 
 \begin_layout Subsection
@@ -947,7 +965,7 @@ Frame rate
 \end_layout
 
 \begin_layout Standard
-Questo numero rappresenta il numero medio di aggiornamenti al seconto.
+Questo numero rappresenta il numero massimo di aggiornamenti al secondo.
  Se impostato su un valore troppo alto, il programma potrebbe non soddisfare
  la velocità richiesta o persino rallentare.
 \end_layout
@@ -1030,10 +1048,24 @@ Il terzo riquadro contiene un indicatore del volume.
 
 \begin_layout Section
 I menù
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:menus"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
 Dispositivi
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Devices"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1043,6 +1075,13 @@ Questo menù contiene opzioni per selezionare i dispositivi di input e di
 
 \begin_layout Subsection
 Altre opzioni
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Other-options"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1060,6 +1099,13 @@ reference "cha:Advanced-usage"
 
 \begin_layout Subsubsection
 Cambia frequenza di campionamento
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:menu-sample-rate"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1067,8 +1113,29 @@ Questa voce di menù apre una finestra con un elenco di alcune possibili
  frequenze di campionamento per il dispositivo selezionato.
 \end_layout
 
+\begin_layout Standard
+La frequenza di campionamento dovrebbe essere la più bassa possibile, quando
+ è selezionato l'algoritmo di raffinamento 
+\begin_inset Quotes eld
+\end_inset
+
+Spettro di potenza continuo
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Altrimenti, dovrebbe essere la più alta possibile.
+\end_layout
+
 \begin_layout Subsubsection
 Correzione del clock
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:menu-clock-correction"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1087,8 +1154,81 @@ reference "sec:Clock-correction"
 ).
 \end_layout
 
+\begin_layout Subsubsection
+Tipo di finestra
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Window-type"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Questa è un'opzione piuttosto tecnica.
+ Dovrebbe essere sempre 
+\begin_inset Quotes eld
+\end_inset
+
+Hanning
+\begin_inset Quotes erd
+\end_inset
+
+, a meno che non si abbiano validi motivi per cambiarla.
+\end_layout
+
+\begin_layout Subsubsection
+Algoritmo di raffinamento
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Refinement-algorithm"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Questa opzione determina l'algoritmo che viene seguito per raffinare la
+ stima iniziale della frequenza.
+\end_layout
+
+\begin_layout Description
+Nessuno Disattiva qualsiasi raffinamento (utile solo nei test: dà pessimi
+ risultati)
+\end_layout
+
+\begin_layout Description
+Autocovarianza È il vecchio algoritmo (fino alle versioni 0.2.x).
+\end_layout
+
+\begin_layout Description
+Spettro
+\begin_inset space ~
+\end_inset
+
+di
+\begin_inset space ~
+\end_inset
+
+potenza
+\begin_inset space ~
+\end_inset
+
+continuo L'algoritmo nuovo, più veloce ed affidabile, soprattutto con le
+ note estreme.
+\end_layout
+
 \begin_layout Subsection
 Aiuto
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:menu-help"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1204,8 +1344,18 @@ sample rate
 \end_layout
 
 \begin_layout Standard
-Allo stato attuale, con l'algoritmo basato sull'autocorrelazione, la frequenza
- di campionamento migliore è la più alta.
+Con l'algoritmo di raffinamento predefinito (
+\emph on
+Spettro di potenza continuo
+\emph default
+) la frequenza di campionamento migliore è la più bassa, purché sia almeno
+ il doppio della massima frequenza da misurare.
+ Solitamente, 8000 o 16000 Hz andranno bene.
+\end_layout
+
+\begin_layout Standard
+Con l'algoritmo basato sull'autocorrelazione, la frequenza di campionamento
+ migliore è la più alta.
  Tuttavia, se la nota non viene rilevata correttamente o se l'indicatore
  trema troppo, si può considerare di abbassarla, tenendo conto che frequenze
  di campionamento più basse aumentano i tempi di risposta del programma.
@@ -1235,8 +1385,7 @@ Nota
 Ottava
 \emph default
 , per impedire a NOOT di seguire una nota sbagliata.
- Quindi, si dovrebbe aumentare la frequenza di campionamento e aumentare
- l'opzione 
+ Quindi, si dovrebbe aumentare l'opzione 
 \emph on
 Precisione prevista
 \emph default
@@ -1257,12 +1406,24 @@ name "howitworks"
 \end_layout
 
 \begin_layout Standard
-L'accordatore NOOT usa un misto di FFT e autocorrelazione lineare per raggiunger
-e la precisione di un cent con finestre di larghezza relativamente ridotta.
+L'accordatore NOOT usa un medodo in due passaggi per stimare la frequenza
+ con la precisione di un cent con finestre di dimensione relativamente ridotta.
+ Nel primo passaggio, il programma calcola la FFT del segnale audio e trova
+ un intervallo in cui è molto probabile che si trovi la frequenza da misurare.
+ Successivamente, un algoritmo di raffinamento della frequenza migliora
+ la misura fino a raggiungere la precisione desiderata.
 \end_layout
 
 \begin_layout Standard
-Ogni volta che il display è aggiornato, viene eseguito il seguente algoritmo:
+Nelle prime versioni, NOOT usava un algoritmo di raffinazione basato sull'autoco
+varianza.
+ Ora invece l'algoritmo predefinito calcola un'approssimazione fedele dello
+ spettro continuo di potenza del segnale.
+\end_layout
+
+\begin_layout Standard
+Con il vecchio approccio, ogni volta che il display è aggiornato, viene
+ eseguito il seguente algoritmo:
 \end_layout
 
 \begin_layout Itemize
@@ -1291,8 +1452,24 @@ Lo svantaggio principale di questo approccio è la perdita di precisione
  nei casi in cui gli armonici sono lontani dalla perfezione.
 \end_layout
 
+\begin_layout Standard
+Con il nuovo sistema, il segnale è confrontato con un'onda sinusoidale avente
+ la frequenza nell'intervallo individuato nel primo passaggio, attraverso
+ una funzione simile alla correlazione lineare.
+ Quindi, la frequenza di quest'onda viene variata leggermente per trovare
+ una frequenza che rende l'onda più simile al segnale, finché non viene
+ raggiunta la precisione prevista.
+\end_layout
+
 \begin_layout Chapter
 Risoluzione dei problemi
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:Troubleshooting"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1345,6 +1522,15 @@ Auto
 Precisione prevista
 \emph default
 .
+ Selezionare 
+\emph on
+Spettro di potenza continuo
+\emph default
+ come algoritmo di raffinamento (dal menù 
+\emph on
+Altre opzioni
+\emph default
+).
 \end_layout
 
 \begin_layout Section
@@ -1352,8 +1538,8 @@ Non viene rilevata la nota corretta
 \end_layout
 
 \begin_layout Itemize
-Facilitare il lavoro del programma specificando quale nota e quale ottava
- si stanno accordando.
+Facilitare il lavoro del programma specificando quale nota o almeno quale
+ ottava si sta accordando.
  (Impostare il valore delle opzioni 
 \emph on
 Nota

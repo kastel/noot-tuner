@@ -3,7 +3,7 @@
  [ 
 <!ENTITY graph1001 "pictures/mainwindow"> ]>
 
-<!-- XML file was created by LyX 1.6.6.1
+<!-- XML file was created by LyX 1.6.5
   See http://www.lyx.org/ for more information -->
 <book lang="en_US">
 <bookinfo>
@@ -29,13 +29,14 @@
 <para>The author can be contacted on NOOT's mailing list: <ulink url="noot-tuner-discuss@googlegroups.com"></ulink></para><sect1 id='features' >
 <title>Features<!-- anchor id="features" --></title>
 <itemizedlist>
-<listitem><para>Easy to use (default settings will work in most cases) </para></listitem><listitem><para>It works with almost any instrument </para></listitem><listitem><para>Half-cent precision (0.005 semitones)</para></listitem><listitem><para>Octave and/or note selection</para></listitem><listitem><para>Clock correction</para></listitem><listitem><para>Transposition</para></listitem><listitem><para>Clipping detection</para></listitem><listitem><para>Selectable temperament </para></listitem><listitem><para>Internationalisation (English and Italian for now, other languages will follow)</para></listitem><listitem><para>Cross-platform (it can be compiled on virtually any OS; Windows and Ubuntu packages available now, other packages available soon)</para></listitem><listitem><para>Basic documentation included</para></listitem></itemizedlist><para>Future plans</para><itemizedlist>
-<listitem><para>Different detection algorithms</para></listitem><listitem><para>Customisable temperament</para></listitem><listitem><para>More ports (OSX, ...) and languages</para></listitem></itemizedlist></sect1><sect1 id='requirements' >
+<listitem><para>Easy to use (default settings will work in most cases) </para></listitem><listitem><para>It works with almost any instrument </para></listitem><listitem><para>Half-cent precision (0.005 semitones) or even better</para></listitem><listitem><para>Octave and/or note selection</para></listitem><listitem><para>Clock correction</para></listitem><listitem><para>Transposition</para></listitem><listitem><para>Clipping detection</para></listitem><listitem><para>Selectable temperament </para></listitem><listitem><para>Internationalisation (English and Italian for now, other languages will follow)</para></listitem><listitem><para>Cross-platform (it can be compiled on virtually any OS; Windows and Ubuntu packages available now, other packages available soon)</para></listitem><listitem><para>Basic documentation included</para></listitem><listitem><para>Two different frequency refinement algorithms</para></listitem></itemizedlist><para>Future plans</para><itemizedlist>
+<listitem><para>Customisable temperament</para></listitem><listitem><para>More ports (OSX, ...) and languages</para></listitem></itemizedlist></sect1><sect1 id='requirements' >
 <title>Minimum requirements<!-- anchor id="requirements" --></title>
 <itemizedlist>
 <listitem><para>An audio card with a configured microphone or line input</para></listitem><listitem><para>Variable disk space (10 MB for the Windows version, 1 MB for Ubuntu packages, about 40 MB for universal packages)</para></listitem></itemizedlist></sect1><sect1 id='changelog' >
 <title>Changelog<!-- anchor id="changelog" --></title>
-<para>Version 0.2.1:</para><itemizedlist>
+<para>Version 0.3.0:</para><itemizedlist>
+<listitem><para>New frequency refinement algorithm (<emphasis>Continuous power spectrum</emphasis>), more precise and efficient (now default). The old algorithm is available in the <emphasis>Other options</emphasis> menu</para></listitem><listitem><para>Sample rate option is saved separately for the two refinement algorithms</para></listitem><listitem><para>New pitch detection algorithm: pitch detection is more reliable when <emphasis>Octave</emphasis> and <emphasis>Note</emphasis> are set to Auto</para></listitem><listitem><para>Higher reactivity with low sample rates</para></listitem><listitem><para>Added option <emphasis>Window type</emphasis> (rectangular or Hanning)</para></listitem></itemizedlist><para>Version 0.2.1:</para><itemizedlist>
 <listitem><para>Support for offline analysis (sound file)</para></listitem><listitem><para>Added a text interface (for testing purposes)</para></listitem></itemizedlist><para>Version 0.2.0:</para><itemizedlist>
 <listitem><para>Volume meter, clipping detection</para></listitem><listitem><para>Clock correction</para></listitem><listitem><para>No more hangs due to excessive use of the CPU</para></listitem></itemizedlist><para>Version 0.1.3:</para><itemizedlist>
 <listitem><para>Improved documentation (new format)</para></listitem></itemizedlist><para>Version 0.1.2.3:</para><itemizedlist>
@@ -43,12 +44,11 @@
 <listitem><para>First published version</para></listitem></itemizedlist></sect1><sect1 id='credits' >
 <title>Credits<!-- anchor id="credits" --></title>
 <para>Code and Italian translation © 2010 Davide Castellone</para>
-<para>NOOT Instrument Tuner is distributed under the <xref linkend="license-gplv3." /></para>
-<para></para>
+<para>NOOT Instrument Tuner is distributed under the GNU GPLv3 (see <xref linkend="license-gplv3." />).</para>
 <para>We also thank the authors of the libraries used:</para><itemizedlist>
 <listitem><para><ulink url="http://wxwidgets.org">wxWidgets</ulink></para></listitem><listitem><para><ulink url="http://www.portaudio.com">Portaudio</ulink></para></listitem><listitem><para><ulink url="http://www.fftw.org">FFTW</ulink></para></listitem></itemizedlist><para>The libraries are redistributed according to the respective licenses.</para></sect1></chapter><chapter id='using' >
 <title>Using NOOT Instrument Tuner<!-- anchor id="using" --></title>
-<para>Before starting, you need to configure your input device. Usually this means choosing an input device and adjusting its volume in the mixer.</para>
+<para>Before starting, you need to configure your input device. Commonly this means choosing an input device and adjusting its volume in the mixer.</para>
 <para>After doing that, start NOOT. Usually there is no need for changing the default options.</para>
 <para>Click on the Start/Stop button to start the tuner.</para>
 <para>If you already know the note you are tuning and do not need to discover it, you should set the <emphasis>Note</emphasis> and <emphasis>Octave</emphasis> option (see <xref linkend="note" /> and <xref linkend="octave" />). This will make note detection easier.</para><sect1 id='mainwindow' >
@@ -62,9 +62,9 @@
 <para>The lower part of the box shows the following information: </para><variablelist>
 <varlistentry><term>Note</term><listitem><para><indexterm><primary><dummy>note</dummy></primary></indexterm>The detected note. This value depends on whether you have set the note and the octave in the control panel below. If they are note set to Auto, the note displayed will be exactly the choosen one. </para></listitem></varlistentry><varlistentry><term>Offset</term><listitem><para><indexterm><primary><dummy>offset</dummy></primary></indexterm>The offset from the expected pitch, in cents (1 cent = 0.01 semitones) </para></listitem></varlistentry><varlistentry><term>Frequency</term><listitem><para><indexterm><primary><dummy>frequency</dummy></primary></indexterm>The detected frequency in Hertz. This information is useless to most of the users. </para></listitem></varlistentry></variablelist></sect2><sect2 id='octave' >
 <title><!-- anchor id="octave" --><indexterm><primary><dummy>octave selector</dummy></primary></indexterm>Octave selector</title>
-<para>Selecting the right octaves often improves the precision of the detection algorithm. When the octave is set to Auto, the program guesses it, sometimes leading to a little accurate measure.</para>
+<para>Selecting the right octaves improves the precision of the detection and the readability of the indicator. When the octave is set to Auto, the program guesses it, sometimes leading to a note detection error.</para>
 <para>With the standard used the middle C is in octave 3.</para>
-<para>Sometimes the right octave is not the best, since every instrument produces more than one harmonic. If the detection is not precise enough (i.e. the indicator glitches too much) you can safely select an octave lower or higher than the original one. Remember that if you set the octave in the control panel, the detected octave may not correspond to that of the note.</para></sect2><sect2 id='note' >
+<para>Sometimes the right octave is not the best choice, since in some cases (especially with extreme notes) the base frequency is too soft to be detected precisely. If the detection is not precise enough (i.e. the indicator glitches or vibrates too much) you can safely select an octave lower or higher than the original one. Remember that if you set the octave in the control panel, the detected octave may not correspond to that of the note. (For other advice see <xref linkend="cha:Advanced-usage" />).</para></sect2><sect2 id='note' >
 <title><!-- anchor id="note" --><indexterm><primary><dummy>note selector</dummy></primary></indexterm>Note selector</title>
 <para>Like for the octave, specifying the note oftens improves the precision, but in most cases you should not need it.</para></sect2><sect2 id='listen' >
 <title><!-- anchor id="listen" --><indexterm><primary><dummy>listen</dummy></primary></indexterm>'Listen' button</title>
@@ -73,33 +73,39 @@
 <para>With NOOT Instrument Tuner you can choose among a variety of temperaments. The explanation of the temperaments listed is not a subject of this manual.</para></sect2><sect2 id='transpose' >
 <title><!-- anchor id="transpose" --><indexterm><primary><dummy>transpose</dummy></primary></indexterm>Transpose</title>
 <para>Use this control to transpose the input. It can be a decimal number.</para>
-<para>The frequency displayed above will not be altered.</para></sect2><sect2 id='windowsize' >
+<para>The frequency displayed above will not be altered, but the note and/or the offset in cents may be.</para></sect2><sect2 id='windowsize' >
 <title><!-- anchor id="windowsize" --><indexterm><primary><dummy>FFT</dummy></primary></indexterm><indexterm><primary><dummy>window size</dummy></primary></indexterm>Window size</title>
-<para>This option affects the note detection algorithm. It represents the number of samples on which the FFT and autocorrelation are performed.</para>
-<para>It should be set to a reasonable value (usually 4096). If too low, the precision constraint may not be satisfied. If too high, it may slow down the computer or even make the detection less precise.</para></sect2><sect2 id='threshold' >
+<para>This option affects the note detection algorithm. It represents the number of samples on which the FFT and autocorrelation (or continuous powr spectrum) are performed.</para>
+<para>The optimal window size depends on the refinement algorithm selected. Consider however that in any case a bigger window implies a more accurate measure, at the cost of reducing the reactivity of the program and increasing the CPU usage.</para>
+<para>If the default algorithm is set (<emphasis>Continuous power spectrum</emphasis>), the window size can be set at any value (at least 1/5 of the sample rate). If the alternate algorithm (<emphasis>Autocovariance</emphasis>) is selected, then when the window size is too little, the precision constraint might not be satisfied, and therefore no result is shown. The optimal window size in the latter case is between 16384 and 32768.</para></sect2><sect2 id='threshold' >
 <title><!-- anchor id="threshold" --><indexterm><primary><dummy>noise</dummy></primary></indexterm><indexterm><primary><dummy>threshold</dummy></primary></indexterm>Threshold</title>
-<para>This option is used to start the detection only if the input is loud enough, in order to avoid glitches due to the background noise.</para>
+<para>This option is used to start the detection only if the input is loud enough, in order to avoid glitches due to the background noise. The threshold is displayed graphically as a thin black line in the volume meter.</para>
 <para>A threshold of 0 dB means that the detection will never start, while a threshold of 90 dB (-90 dB, actually) will allow any input to be processed.</para></sect2><sect2 id='expectedprecision' >
 <title><!-- anchor id="expectedprecision" --><indexterm><primary><dummy>expected precision</dummy></primary></indexterm>Expected precision</title>
 <para>The lower is this number, the higher will be the precision. It represents the theoretical error in thousandths of semitone on the detected frequency.</para>
 <para>Lower values also mean slower response and CPU usage.</para></sect2><sect2 id='framerate' >
 <title><!-- anchor id="framerate" --><indexterm><primary><dummy>frame rate</dummy></primary></indexterm>Frame rate</title>
-<para>This number represents the average number of updates per second. If it is set to a too high value, the program might not fulfill the request or even slow down.</para></sect2><sect2 id='sec:Status-bar' >
+<para>This number represents the maximum number of updates per second. If it is set to a too high value, the program might not fulfill the request or even slow down.</para></sect2><sect2 id='sec:Status-bar' >
 <title>Status bar<!-- anchor id="sec:Status-bar" --><indexterm><primary><dummy>clipping detection</dummy></primary></indexterm><indexterm><primary><dummy>status bar</dummy></primary></indexterm><indexterm><primary><dummy>volume meter</dummy></primary></indexterm></title>
-<para>The status bar il composed of three boxes. The first contains information about the current status (<emphasis>Listening</emphasis>, <emphasis>Paused</emphasis>, etc.).</para>
-<para>The second box contains two numbers: sampling frequency and clock correction factor (see <xref linkend="sec:Clock-correction" />).</para>
-<para>The third box contains a volume meter. The thin black line represents the current threshold. Note detection happens only when the input volume is higher than the threshold. The volume meter turns red when possible clipping is detected. In case, the user should lower the volume, as clipping alters the frequency detection.</para></sect2></sect1><sect1>
-<title>The menus</title>
-<sect2>
-<title>Devices</title>
-<para>This menu contains options to select the input and output devices.</para></sect2><sect2>
-<title>Other options</title>
-<para>Through this menu you can change the current sampling rate and clock correction. See <xref linkend="cha:Advanced-usage" /> for detailed instructions.</para><sect3>
-<title>Change sample rate</title>
-<para>This menu item opens a window listing some of the possible sample rate for the device selected.</para></sect3><sect3>
-<title>Clock correction</title>
-<para>The clock correction factor is a number that multiplies the detected frequency. Set this option if your sound card has an inaccurate clock. Clock correction can be set as a coefficient or in terms of cents (hundredths of a semitone). (See <xref linkend="sec:Clock-correction" />.)</para></sect3></sect2><sect2>
-<title>Help</title>
+<para>The status bar is composed of three boxes. The first contains information about the current status (<emphasis>Listening</emphasis>, <emphasis>Paused</emphasis>, etc.).</para>
+<para>The second box contains two numbers: sampling frequency and clock correction factor (see <xref linkend="sec:menu-clock-correction" />).</para>
+<para>The third box contains a volume meter. The thin black line represents the current threshold. Note detection happens only when the input volume is higher than the threshold. The volume meter turns red when possible clipping is detected. In case, the user should lower the volume, as clipping alters the frequency detection.</para></sect2></sect1><sect1 id='sec:menus' >
+<title><!-- anchor id="sec:menus" -->The menus</title>
+<sect2 id='sec:Devices' >
+<title>Devices<!-- anchor id="sec:Devices" --></title>
+<para>This menu contains options to select the input and output devices.</para></sect2><sect2 id='sec:Other-options' >
+<title>Other options<!-- anchor id="sec:Other-options" --></title>
+<para>Through this menu you can change the current sampling rate and clock correction. See <xref linkend="cha:Advanced-usage" /> for detailed instructions.</para><sect3 id='sec:menu-sample-rate' >
+<title>Change sample rate<!-- anchor id="sec:menu-sample-rate" --></title>
+<para>This menu item opens a window listing some of the possible sample rate for the device selected. Sample rate should be as low as possible if the &ldquo;Continuous power spectrum&rdquo; refinement algorithm is selected, as high as possible otherwise.</para></sect3><sect3 id='sec:menu-clock-correction' >
+<title>Clock correction<!-- anchor id="sec:menu-clock-correction" --></title>
+<para>The clock correction factor is a number that multiplies the detected frequency. Set this option if your sound card has an inaccurate clock. Clock correction can be set as a coefficient or in terms of cents (hundredths of a semitone). (See <xref linkend="sec:Clock-correction" />.)</para></sect3><sect3 id='sec:Window-type' >
+<title>Window type<!-- anchor id="sec:Window-type" --></title>
+<para>This is a rather techical option. It should always be Hanning, unless you have some serious reason to change it.</para></sect3><sect3 id='sec:Refinement-algorithm' >
+<title>Refinement algorithm<!-- anchor id="sec:Refinement-algorithm" --></title>
+<para>This options define the algorithm use to increase the precision of the frequency estimated in the first step.</para><variablelist>
+<varlistentry><term>None</term><listitem><para>Don't perform any refinement (useful only for testing, it gives very bad results)</para></listitem></varlistentry><varlistentry><term>Autocovariance</term><listitem><para>The old algorithm (up to version 0.2.x)</para></listitem></varlistentry><varlistentry><term>Continuous&nbsp;power&nbsp;spectrum</term><listitem><para>The new algorithm, faster and more reliable with extreme notes.</para></listitem></varlistentry></variablelist><para>The default is <emphasis>Continuous power spectrum</emphasis>.</para></sect3></sect2><sect2 id='sec:menu-help' >
+<title>Help<!-- anchor id="sec:menu-help" --></title>
 <sect3>
 <title>Table of contents</title>
 <para>This menu item opens the table of contents of this book.</para></sect3><sect3>
@@ -115,21 +121,24 @@
 <para>Most cheap sound cards have inaccurate clocks, that lead to a bias in the frequencies detected and thus biased values in the <emphasis>Offset</emphasis> box (with biases up to a few cents). The clock correction factor is a number that multiplies the detected frequency, thus cancelling the bias.</para>
 <para>You can easily calibrate NOOT for your sound card by using a tuning fork (or an equivalent instrument). The clock correction factor in cents is the opposite of the <emphasis>Offset</emphasis> value shown when the tuning fork is struck near the microphone.</para></sect1><sect1 id='sec:The-right-sampling' >
 <title>The right sampling rate<!-- anchor id="sec:The-right-sampling" --><indexterm><primary><dummy>sample rate</dummy></primary></indexterm></title>
-<para>Currently, with the autocorrelation-based algorithm, the best sampling rate is the highest. However, if the note isn't detected correctly, or if you see glitches, you can consider lowering it, taking into account that lower sampling rates cause longer reaction times.</para></sect1><sect1 id='sec:Extreme-notes' >
+<para>With the default algorithm (<emphasis>Continuous power spectrum</emphasis>), the best sampling rate is the lowest, provided that it's at least two times the maximum frequency to be measured. Usually 8000 or 16000 Hz will go.</para>
+<para>With the autocorrelation-based algorithm, the best sampling rate is the highest. However, if the note isn't detected correctly, or if you see glitches, you can consider lowering it, taking into account that lower sampling rates cause longer reaction times.</para></sect1><sect1 id='sec:Extreme-notes' >
 <title>Tuning extremely high or low notes<!-- anchor id="sec:Extreme-notes" --></title>
-<para>Extreme notes are those below 100 Hz and above 3000 Hz. These are not easily detected by the program. In order to make the tuner work well with these notes, you should first set the <emphasis>Note </emphasis>and <emphasis>Octave</emphasis> options in the main window, to prevent NOOT from detecting a wrong note. Then, you should raise the sampling rate and raise the <emphasis>Expected precision</emphasis> option. NOOT cannot always satisfy the precision constraint with extreme notes.</para></sect1></chapter><chapter id='howitworks' >
+<para>Extreme notes are those below 100 Hz and above 3000 Hz. These are not easily detected by the program. In order to make the tuner work well with these notes, you should first set the <emphasis>Note </emphasis>and <emphasis>Octave</emphasis> options in the main window, to prevent NOOT from detecting a wrong note. Then, you should raise the <emphasis>Expected precision</emphasis> option. NOOT cannot always satisfy the precision constraint with extreme notes.</para></sect1></chapter><chapter id='howitworks' >
 <title>How it works<!-- anchor id="howitworks" --></title>
-<para>NOOT Instrument tuner uses a mix of FFT and linear autocorrelation to reach one-cent precision with relatively narrow window sizes.</para>
-<para>Every time the display is updated, the following algorithm is computed on the current window:</para><itemizedlist>
-<listitem><para>A FFT is used to find the frequency with the highest spectral density within the note and octave constraints (if selected) </para></listitem><listitem><para>From that frequency, an interval of possible frequencies is taken. </para></listitem><listitem><para>Autocorrelation is computed at the times corresponding to that frequency interval; the time lag corresponding to the highest autocorrelation is kept. </para></listitem><listitem><para>Repeatedly, the frequency is halved (the time lag is doubled) and the time lag corresponding to the highest autocorrelation among the near values is kept. </para></listitem></itemizedlist><para>The main disadvantage of this approach is that it ceases to be precise in cases when the harmonics are far less than perfect.</para></chapter><chapter>
-<title>Troubleshooting</title>
+<para>NOOT Instrument tuner implements a two-step method to estimate a frequency with one-cent precition with relatively narrow window sizes. In the first step, the program computes the FFT of the input signal, and finds an initial range in which the frequency to be measured should be. Then, a refinement algorithm improves the measure.</para>
+<para>In the first versions of NOOT, an autocovariance-based refinement algorithm were used. Now the default method computes a close approximation of the continuous power spectrum of the audio signal.</para>
+<para>With the old approach, every time the display is updated, the following algorithm is computed on the current window:</para><itemizedlist>
+<listitem><para>A FFT is used to find the frequency with the highest spectral density within the note and octave constraints (if selected) </para></listitem><listitem><para>From that frequency, an interval of possible frequencies is taken. </para></listitem><listitem><para>Autocorrelation is computed at the times corresponding to that frequency interval; the time lag corresponding to the highest autocorrelation is kept. </para></listitem><listitem><para>Repeatedly, the frequency is halved (the time lag is doubled) and the time lag corresponding to the highest autocorrelation among the near values is kept. </para></listitem></itemizedlist><para>The main disadvantage of this approach is that it ceases to be precise in cases when the harmonics are far less than perfect.</para>
+<para>With the new approach, the signal is compared with a wave having a frequency in the range detected in the first step through linear with a function similar to the linear correlation. Then the frequency of this wave is changed slightly at each step in order to find the waveform which is more similar to the signal, until the required precision is expected.</para></chapter><chapter id='cha:Troubleshooting' >
+<title>Troubleshooting<!-- anchor id="cha:Troubleshooting" --></title>
 <sect1>
 <title>No note is detected</title>
 <para>I.e. the <emphasis>Note</emphasis>, <emphasis>Frequency</emphasis>, and <emphasis>Offset</emphasis> fields do not show anything.</para><itemizedlist>
-<listitem><para>The volume may be too low or the threshold too high. Look at the volume meter in the lower-right corner and check that the gauge goes past the thin line when a note is produced. Check the input volume of your sound card.</para></listitem><listitem><para>You may have selected the wrong input device. If the volume meter does not move at all, select another input device in the <emphasis>Devices</emphasis> menu.</para></listitem><listitem><para>The expected precision could be too high for the window size selected. Select <emphasis>Auto</emphasis> as window size or raise the <emphasis>Expected precision</emphasis> value.</para></listitem></itemizedlist></sect1><sect1>
+<listitem><para>The volume may be too low or the threshold too high. Look at the volume meter in the lower-right corner and check that the gauge goes past the thin line when a note is produced. Check the input volume of your sound card.</para></listitem><listitem><para>You may have selected the wrong input device. If the volume meter does not move at all, select another input device in the <emphasis>Devices</emphasis> menu.</para></listitem><listitem><para>The expected precision could be too high for the window size selected. Select <emphasis>Auto</emphasis> as window size or raise the <emphasis>Expected precision</emphasis> value. Select <emphasis>Continuous power spectrum</emphasis> as refinement algorithm (from the <emphasis>Other options</emphasis> menu).</para></listitem></itemizedlist></sect1><sect1>
 <title>The wrong note is detected</title>
 <itemizedlist>
-<listitem><para>Facilitate the work of the program by telling what note and what octave you are tuning. (Set the <emphasis>Note</emphasis> and <emphasis>Octave</emphasis> options.)</para></listitem><listitem><para>You may need extra precision: try raising the <emphasis>Window size</emphasis>.</para></listitem></itemizedlist></sect1><sect1>
+<listitem><para>Facilitate the work of the program by telling what note or at least what octave you are tuning. (Set the <emphasis>Note</emphasis> and <emphasis>Octave</emphasis> options.)</para></listitem><listitem><para>You may need extra precision: try raising the <emphasis>Window size</emphasis>.</para></listitem></itemizedlist></sect1><sect1>
 <title>The indicator glitches</title>
 <itemizedlist>
 <listitem><para>Try setting the <emphasis>Octave</emphasis> and <emphasis>Note</emphasis> options. If the indicator does not stabilize, try raising the <emphasis>Window size</emphasis> and/or lowering the <emphasis>Expected precision</emphasis> option and/or raising the sampling rate. If you are tuning an extremely high or low note (as in the piano) follow the instructions in <xref linkend="sec:Extreme-notes" />.</para></listitem></itemizedlist></sect1><sect1>
