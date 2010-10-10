@@ -13,7 +13,7 @@ EXTRA_DIST = tunerframe.fpb noot-tuner.desktop
 bin_PROGRAMS = noot-tuner
 
 noot_tuner_SOURCES = audio_file.cpp audio_portaudio.cpp audioio.cpp \
-	wxfbtunerframe.cpp noot-tuner.cpp deviceselector.cpp notedetection.cpp options.cpp \
+	wxfbtunerframe.cpp noot-tuner.cpp notedetection.cpp options.cpp \
 	tunerframe.cpp volumemeter.cpp nogui.cpp autocov.cpp powerspectrum.cpp \
         pitchdetection.cpp
 

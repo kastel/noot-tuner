@@ -22,11 +22,16 @@
 #include <wx/utils.h>
 #include <wx/log.h>
 #include <wx/intl.h>
+#include <wx/choicdlg.h>
 #include "notedetection.h"
+#include "options.h"
 
 using namespace std;
 
 namespace noot {
+
+CREATE_OPTION_VARIABLE(int, inputDevice, "Portaudio/inputDevice", -1)
+CREATE_OPTION_VARIABLE(int, outputDevice, "Portaudio/outputDevice", -1)
 
 bool s_bIgnore = false;
 
@@ -71,7 +76,13 @@ bool PortaudioBackend::Initialise()
 	}
 
     isPortaudioInitialised = true;
-	
+
+    if (inputDevice==-1 || Pa_GetDeviceInfo(inputDevice)==NULL)
+        inputDevice = Pa_GetDefaultInputDevice();
+
+    if (outputDevice==-1 || Pa_GetDeviceInfo(outputDevice)==NULL)
+        outputDevice = Pa_GetDefaultOutputDevice();
+
 	return true;
 }
 
@@ -354,4 +365,95 @@ void PortaudioBackend::SupportedSampleRates(vector<int>& rates) {
     }
 }
 
+bool PortaudioBackend::SelectInputDevice(wxWindow* parent)
+{
+	int count = Pa_GetDeviceCount();
+	int listed = 0;
+	if (count <= 0)
+	{
+		wxLogError(_("No audio device found"));
+		return false;
+	}
+
+	void* clientdata[count];
+
+	wxArrayString names;
+    int defaultDevice = -1;
+
+	int i;
+	for (i=0; i<count; ++i)
+	{
+		const PaDeviceInfo* info;
+		info = Pa_GetDeviceInfo(i);
+		if (!info)
+			continue;
+
+		if (info->maxInputChannels > 0) {
+			names.push_back(wxString(info->name, wxConvUTF8));
+			clientdata[listed] = (void*)i;
+            if (inputDevice == i)
+                defaultDevice = listed;
+
+            listed++;
+		}
+
+	}
+
+	wxSingleChoiceDialog dlg(parent, _("Choose an input device"), _("NOOT Instrument Tuner"),
+						  names, (char**)clientdata);
+
+    if (defaultDevice>=0)
+        dlg.SetSelection(defaultDevice);
+
+    if (dlg.ShowModal()==wxID_OK)
+		inputDevice = (PaDeviceIndex)(long)(clientdata[dlg.GetSelection()]);
+
+	return true;
+}
+
+bool PortaudioBackend::SelectOutputDevice(wxWindow* parent)
+{
+	int count = Pa_GetDeviceCount();
+	int listed = 0;
+	if (count <= 0)
+	{
+		wxLogError(_("No audio device found"));
+		return false;
+	}
+
+	void* clientdata[count];
+
+	wxArrayString names;
+    int defaultDevice = -1;
+
+	int i;
+	for (i=0; i<count; ++i)
+	{
+		const PaDeviceInfo* info;
+		info = Pa_GetDeviceInfo(i);
+		if (!info)
+			continue;
+
+		if (info->maxOutputChannels > 0) {
+			names.push_back(wxString(info->name, wxConvUTF8));
+			clientdata[listed] = (void*)i;
+            if (outputDevice == i)
+                defaultDevice = listed;
+
+            listed++;
+		}
+
+	}
+
+	wxSingleChoiceDialog dlg(parent, _("Choose an output device"), _("NOOT Instrument Tuner"),
+						  names, (char**)clientdata);
+
+    if (defaultDevice>=0)
+        dlg.SetSelection(defaultDevice);
+
+    if (dlg.ShowModal()==wxID_OK)
+		outputDevice = (PaDeviceIndex)(long)(clientdata[dlg.GetSelection()]);
+
+	return true;
+}
 } //namespace

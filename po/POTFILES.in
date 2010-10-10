@@ -2,7 +2,6 @@ src/audio_file.cpp
 src/notedetection.cpp
 src/wxfbtunerframe.h
 src/wxfbtunerframe.cpp
-src/deviceselector.cpp
 src/tunerframe.h
 src/options.cpp
 src/audioio.cpp
