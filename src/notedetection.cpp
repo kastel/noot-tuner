@@ -203,7 +203,7 @@ void SetTemperament(TEMPERAMENT mode)
 			break;
 
 		default:
-			if (mode>0 && mode<=8)
+			if (mode>0 && mode<=9)
 			{
 				int oct = -6;
 				for (i=0; i<128; ++i)
