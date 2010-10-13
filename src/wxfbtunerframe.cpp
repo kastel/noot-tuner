@@ -121,7 +121,6 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	szNote1 = new wxBoxSizer( wxHORIZONTAL );
 	
 	tbStartStop = new wxToggleButton( this, ID_TBSTARTSTOP, _("Start/Stop"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxT("ch02.html#startstop") );
-	tbStartStop->SetValue( true ); 
 	szNote1->Add( tbStartStop, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxEXPAND, 5 );
 	
 	pnGauge = new wxPanel( this, ID_PNGAUGE, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL );

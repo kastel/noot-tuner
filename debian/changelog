@@ -1,3 +1,9 @@
+noot-tuner (0.3.0) lucid; urgency=low
+
+  * New upstream version 0.3.0
+
+ -- Davide Castellone <dc.kastel@gmail.com>  Thu, 14 Oct 2010 01:30:14 +0200
+
 noot-tuner (0.2.0) lucid; urgency=low
 
   * New upstream version 0.2.0
