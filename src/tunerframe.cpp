@@ -593,8 +593,6 @@ void TunerFrame::OnToolsSampleRate(wxCommandEvent& event) {
     //using char* instead of void*
     char* data[choices.size()];
 
-    data[0] = (char*)(unsigned long)(-1);
-    
     for (i=1; i<choices.size(); ++i)
         data[i] = (char*)(long)rates[i];
 
