@@ -593,10 +593,10 @@ void TunerFrame::OnToolsSampleRate(wxCommandEvent& event) {
     //using char* instead of void*
     char* data[choices.size()];
 
-    for (i=1; i<choices.size(); ++i)
+    for (i=0; i<choices.size(); ++i)
         data[i] = (char*)(long)rates[i];
 
-    wxSingleChoiceDialog dlg(this, _("Select a frame rate"),
+    wxSingleChoiceDialog dlg(this, _("Select a sample rate"),
         _("NOOT Instrument Tuner"),
         choices,
         data);

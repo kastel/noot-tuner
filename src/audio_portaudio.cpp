@@ -342,8 +342,10 @@ bool PortaudioBackend::IsSampleRateSupported(double rate) {
     parms.channelCount = 1;
     parms.device = inputDevice;
     parms.sampleFormat = paInt16;
+    parms.hostApiSpecificStreamInfo = NULL;
+    parms.suggestedLatency = 0;
 
-    bool ret = Pa_IsFormatSupported(&parms, NULL, rate);
+    bool ret = Pa_IsFormatSupported(&parms, NULL, rate) == paFormatIsSupported;
     fprintf(stderr, "Device %d supports %d Hz sample rate: %s\n", inputDevice, int(rate), ret ? "yes" : "no");
     return ret;
 }
