@@ -3,7 +3,7 @@
  [ 
 <!ENTITY graph1001 "pictures/mainwindow"> ]>
 
-<!-- XML file was created by LyX 1.6.5
+<!-- XML file was created by LyX 1.6.6.1
   See http://www.lyx.org/ for more information -->
 <book lang="en_US">
 <bookinfo>
@@ -29,7 +29,7 @@
 <para>The author can be contacted on NOOT's mailing list: <ulink url="noot-tuner-discuss@googlegroups.com"></ulink></para><sect1 id='features' >
 <title>Features<!-- anchor id="features" --></title>
 <itemizedlist>
-<listitem><para>Easy to use (default settings will work in most cases) </para></listitem><listitem><para>It works with almost any instrument </para></listitem><listitem><para>Half-cent precision (0.005 semitones) or even better</para></listitem><listitem><para>Octave and/or note selection</para></listitem><listitem><para>Clock correction</para></listitem><listitem><para>Transposition</para></listitem><listitem><para>Clipping detection</para></listitem><listitem><para>Selectable temperament </para></listitem><listitem><para>Internationalisation (English and Italian for now, other languages will follow)</para></listitem><listitem><para>Cross-platform (it can be compiled on virtually any OS; Windows and Ubuntu packages available now, other packages available soon)</para></listitem><listitem><para>Basic documentation included</para></listitem><listitem><para>Two different frequency refinement algorithms</para></listitem></itemizedlist><para>Future plans</para><itemizedlist>
+<listitem><para>Easy to use (default settings will work in most cases) </para></listitem><listitem><para>It works with almost any instrument </para></listitem><listitem><para>Half-cent precision (0.005 semitones) or even better</para></listitem><listitem><para>Octave and/or note selection</para></listitem><listitem><para>Clock correction</para></listitem><listitem><para>Transposition</para></listitem><listitem><para>Clipping detection</para></listitem><listitem><para>Selectable temperament </para></listitem><listitem><para>Internationalisation (English and Italian for now, other languages will follow)</para></listitem><listitem><para>Cross-platform (it can be compiled on virtually any OS; Windows, Ubuntu and generic Linux packages available now, other packages available soon)</para></listitem><listitem><para>Basic documentation included</para></listitem><listitem><para>Two different frequency refinement algorithms</para></listitem></itemizedlist><para>Future plans</para><itemizedlist>
 <listitem><para>Customisable temperament</para></listitem><listitem><para>More ports (OSX, ...) and languages</para></listitem></itemizedlist></sect1><sect1 id='requirements' >
 <title>Minimum requirements<!-- anchor id="requirements" --></title>
 <itemizedlist>

@@ -1,5 +1,5 @@
-AC_INIT(src/noot-tuner.cpp, 0.3.0, [dc.kastel@gmail.com])
-    AM_INIT_AUTOMAKE(noot-tuner, 0.3.0)
+AC_INIT(src/noot-tuner.cpp, 0.3.0.1, [dc.kastel@gmail.com])
+    AM_INIT_AUTOMAKE(noot-tuner, 0.3.0.1)
 
 AM_SILENT_RULES([yes])
 
@@ -41,7 +41,7 @@ if test $ac_cv_sndfile == 1; then
         PKG_CHECK_MODULES(SNDFILE, sndfile >= 1.0.2, ac_cv_sndfile=1, ac_cv_sndfile=0)
 
         if test $ac_cv_sndfile == 0; then
-            AC_MSG_ERROR([libsndfile not detected: disabling sound file support])
+            AC_MSG_WARN([libsndfile not detected: disabling sound file support])
             ac_cv_sndfile=0
         else
             CXXFLAGS="$SNDFILE_CFLAGS $CXXFLAGS"

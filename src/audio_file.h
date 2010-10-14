@@ -18,7 +18,7 @@
  ***************************************************************************/
 #ifndef __AUDIO_FILE_H__
 #define __AUDIO_FILE_H__
-#ifdef SNDFILE_SUPPORT
+#if SNDFILE_SUPPORT
 
 //Backend for reading audio from a file
 //Not multithreaded

@@ -2,7 +2,7 @@ Source: noot-tuner
 Section: misc
 Priority: optional
 Maintainer: Davide Castellone <dc.kastel@gmail.com>
-Build-Depends: debhelper (>= 7), autotools-dev, libwxgtk2.8-dev, portaudio19-dev, libfftw3-dev, zip
+Build-Depends: debhelper (>= 7), autotools-dev, libwxgtk2.8-dev, portaudio19-dev, libfftw3-dev, zip, libsndfile1-dev
 Standards-Version: 3.8.4
 Homepage: http://code.google.com/p/noot-tuner/
 

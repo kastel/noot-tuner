@@ -6,4 +6,4 @@ class Noot_tuner(target.AutoBuild):
 	dependencies = ['portaudio', 'libfftw', 'wxwidgets']
 	#how to avoid the following line?
         configure_flags = (target.AutoBuild.configure_flags +
-          ' --with-wx-config=%(targetdir)s/root/%(prefix_dir)s/bin/wx-config-replacement CXXFLAGS="-O3 -DDEBUG"')
+          ' --disable-sndfile --with-wx-config=%(targetdir)s/root/%(prefix_dir)s/bin/wx-config-replacement CXXFLAGS="-O3 -DDEBUG"')
