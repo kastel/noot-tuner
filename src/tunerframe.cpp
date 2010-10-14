@@ -604,7 +604,9 @@ void TunerFrame::OnToolsSampleRate(wxCommandEvent& event) {
     if (defaultChoice>=0)
         dlg.SetSelection(defaultChoice);
 
-    if (dlg.ShowModal()==wxNO)
+    dlg.ShowModal();
+
+    if (!dlg.GetSelectionClientData()) //cancelled
         return;
 
     ndOptions.iSampleRate = (int)(long)dlg.GetSelectionClientData();

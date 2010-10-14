@@ -343,7 +343,9 @@ bool PortaudioBackend::IsSampleRateSupported(double rate) {
     parms.device = inputDevice;
     parms.sampleFormat = paInt16;
 
-    return Pa_IsFormatSupported(&parms, NULL, rate);
+    bool ret = Pa_IsFormatSupported(&parms, NULL, rate);
+    fprintf(stderr, "Device %d supports %d Hz sample rate: %s\n", inputDevice, int(rate), ret ? "yes" : "no");
+    return ret;
 }
 
 double PortaudioBackend::GetCurrentTime() {
