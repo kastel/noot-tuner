@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: noot-tuner 0.3.0\n"
 "Report-Msgid-Bugs-To: dc.kastel@gmail.com\n"
-"POT-Creation-Date: 2010-10-14 01:30+0200\n"
+"POT-Creation-Date: 2010-10-14 02:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -516,8 +516,8 @@ msgstr ""
 msgid "Unable to launch the default browser"
 msgstr ""
 
-#: src/tunerframe.cpp:545 src/tunerframe.cpp:551 src/tunerframe.cpp:602
-#: src/audio_portaudio.cpp:402 src/audio_portaudio.cpp:448
+#: src/tunerframe.cpp:545 src/tunerframe.cpp:551 src/tunerframe.cpp:600
+#: src/audio_portaudio.cpp:406 src/audio_portaudio.cpp:452
 msgid "NOOT Instrument Tuner"
 msgstr ""
 
@@ -525,8 +525,8 @@ msgstr ""
 msgid "Calibrating..."
 msgstr ""
 
-#: src/tunerframe.cpp:601
-msgid "Select a frame rate"
+#: src/tunerframe.cpp:599
+msgid "Select a sample rate"
 msgstr ""
 
 #: src/tunerframe.cpp:619
@@ -658,14 +658,14 @@ msgstr ""
 msgid "No output device found"
 msgstr ""
 
-#: src/audio_portaudio.cpp:374 src/audio_portaudio.cpp:420
+#: src/audio_portaudio.cpp:378 src/audio_portaudio.cpp:424
 msgid "No audio device found"
 msgstr ""
 
-#: src/audio_portaudio.cpp:402
+#: src/audio_portaudio.cpp:406
 msgid "Choose an input device"
 msgstr ""
 
-#: src/audio_portaudio.cpp:448
+#: src/audio_portaudio.cpp:452
 msgid "Choose an output device"
 msgstr ""
