@@ -1,3 +1,10 @@
+noot-tuner (0.3.0.2) lucid; urgency=low
+
+  * New upstream version 0.3.0.2
+  * Solved a help loading problem
+
+ -- Davide Castellone <dc.kastel@gmail.com>  Tue, 07 Dec 2010 17:46:49 +0100
+
 noot-tuner (0.3.0) lucid; urgency=low
 
   * New upstream version 0.3.0
