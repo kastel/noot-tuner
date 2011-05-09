@@ -46,14 +46,23 @@ int paCallback(const void *inputBuffer, void *outputBuffer, unsigned long frameC
     if (s_bIgnore)
 		return 0;
 
-	wxInt16* in = (wxInt16*) inputBuffer;
+	wxInt16* inptr = (wxInt16*) inputBuffer;
 
     wxInt16 out[frameCount/sampleRateDivider];
     wxInt16* outptr = out;
 
-    for (unsigned i=0; i<frameCount; i+=sampleRateDivider, ++outptr)
-        *outptr = in[i];
-	
+    //for (unsigned i=0; i<frameCount; i+=sampleRateDivider, ++outptr)
+    //    *outptr = in[i];
+
+    //Make some interpolation
+    for (unsigned i=0; i<frameCount/sampleRateDivider; ++outptr, ++i) {
+        int sum = 0;
+        for (unsigned j=0; j<(unsigned)sampleRateDivider; ++j, ++inptr)
+            sum += *inptr;
+
+        *outptr = sum / sampleRateDivider;
+    }
+
 	buffer.Write(frameCount/sampleRateDivider, out);
 
     *currentTimePtr = timeInfo->currentTime;
