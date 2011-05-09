@@ -349,27 +349,29 @@ static wxString FindHelpFile()
 			   wxGetApp().m_locale.GetCanonicalName() + wxFileName::GetPathSeparator()
                + wxT("noot-tuner.") + HELPEXT);
 	
-	if (fn.FileExists())
+	wxPrintf(wxT("Trying %s\n"), fn.GetFullPath().c_str());
+
+    if (fn.FileExists())
 		return fn.GetFullPath();
 	
-	wxPrintf(wxT("%s does not exist\n"), fn.GetFullPath().c_str());
 
     //1 bis: with short locale name
     fn.Assign(wxStandardPaths::Get().GetResourcesDir() + wxFileName::GetPathSeparator() +
 			   wxGetApp().m_locale.GetCanonicalName().Left(2) + wxFileName::GetPathSeparator()
                + wxT("noot-tuner.") + HELPEXT);
 
-	if (fn.FileExists())
-		return fn.GetFullPath();
+	wxPrintf(wxT("Trying %s\n"), fn.GetFullPath().c_str());
 
-	wxPrintf(wxT("%s does not exist\n"), fn.GetFullPath().c_str());
+    if (fn.FileExists())
+		return fn.GetFullPath();
 
     //2: try global resource directory
 	fn.Assign(wxStandardPaths::Get().GetResourcesDir(), wxString(wxT("noot-tuner."))+HELPEXT);
-	if (fn.FileExists())
+
+   	wxPrintf(wxT("Trying %s\n"), fn.GetFullPath().c_str());
+
+    if (fn.FileExists())
 		return fn.GetFullPath();
-	
-	wxPrintf(wxT("%s does not exist\n"), fn.GetFullPath().c_str());
 	
 	//3: try binary localised path
     fn.Assign(wxFileName(wxStandardPaths::Get().GetExecutablePath()).GetPath() +
@@ -377,10 +379,10 @@ static wxString FindHelpFile()
 			   wxGetApp().m_locale.GetCanonicalName() + wxFileName::GetPathSeparator()
                + wxT("noot-tuner.") + HELPEXT);
 
-	if (fn.FileExists())
-		return fn.GetFullPath();
+	wxPrintf(wxT("Trying %s\n"), fn.GetFullPath().c_str());
 
-	wxPrintf(wxT("%s does not exist\n"), fn.GetFullPath().c_str());
+    if (fn.FileExists())
+		return fn.GetFullPath();
 
 	//3 bis: with short locale name
     fn.Assign(wxFileName(wxStandardPaths::Get().GetExecutablePath()).GetPath() +
@@ -388,18 +390,19 @@ static wxString FindHelpFile()
 			   wxGetApp().m_locale.GetCanonicalName().Left(2) + wxFileName::GetPathSeparator()
                + wxT("noot-tuner.") + HELPEXT);
 
-	if (fn.FileExists())
-		return fn.GetFullPath();
+	wxPrintf(wxT("Trying %s\n"), fn.GetFullPath().c_str());
 
-	wxPrintf(wxT("%s does not exist\n"), fn.GetFullPath().c_str());
+    if (fn.FileExists())
+		return fn.GetFullPath();
 
     //4: try binary path
 	fn.Assign(wxFileName(wxStandardPaths::Get().GetExecutablePath()).GetPath(),
         wxString(wxT("noot-tuner."))+HELPEXT);
-	if (fn.FileExists())
-		return fn.GetFullPath();
 
-	wxPrintf(wxT("%s does not exist\n"), fn.GetFullPath().c_str());
+    wxPrintf(wxT("Trying %s\n"), fn.GetFullPath().c_str());
+
+    if (fn.FileExists())
+		return fn.GetFullPath();
 
     //5: try binary-path/../share/noot-tuner/XX/
     fn.Assign(wxFileName(wxStandardPaths::Get().GetExecutablePath()).GetPath() +
@@ -409,10 +412,10 @@ static wxString FindHelpFile()
 			   wxGetApp().m_locale.GetCanonicalName() + wxFileName::GetPathSeparator()
                + wxT("noot-tuner.") + HELPEXT);
 
-	if (fn.FileExists())
-		return fn.GetFullPath();
+    wxPrintf(wxT("Trying %s\n"), fn.GetFullPath().c_str());
 
-	wxPrintf(wxT("%s does not exist\n"), fn.GetFullPath().c_str());
+    if (fn.FileExists())
+		return fn.GetFullPath();
 
     //5 bis: try binary-path/../share/noot-tuner/XX/
     fn.Assign(wxFileName(wxStandardPaths::Get().GetExecutablePath()).GetPath() +
@@ -422,10 +425,10 @@ static wxString FindHelpFile()
 			   wxGetApp().m_locale.GetCanonicalName().Left(2) + wxFileName::GetPathSeparator()
                + wxT("noot-tuner.") + HELPEXT);
 
-	if (fn.FileExists())
-		return fn.GetFullPath();
+    wxPrintf(wxT("Trying %s\n"), fn.GetFullPath().c_str());
 
-	wxPrintf(wxT("%s does not exist\n"), fn.GetFullPath().c_str());
+    if (fn.FileExists())
+		return fn.GetFullPath();
 
     //6: try binary-path/../share/noot-tuner
     fn.Assign(wxFileName(wxStandardPaths::Get().GetExecutablePath()).GetPath() +
@@ -433,10 +436,10 @@ static wxString FindHelpFile()
                wxT("share") + wxFileName::GetPathSeparator() + wxT("noot-tuner")
                +wxFileName::GetPathSeparator() + wxT("noot-tuner.") + HELPEXT);
 
-	if (fn.FileExists())
-		return fn.GetFullPath();
+    wxPrintf(wxT("Trying %s\n"), fn.GetFullPath().c_str());
 
-	wxPrintf(wxT("%s does not exist\n"), fn.GetFullPath().c_str());
+    if (fn.FileExists())
+		return fn.GetFullPath();
 
     wxLogError(_("Cannot find help file"));
 	return wxEmptyString;
