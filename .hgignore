@@ -36,3 +36,6 @@
 ^gub/gub/specs/portaudio\.py$
 ^doc/it/noot-tuner_license-gplv3\.con$
 ^setup\.~is$
+^TODO\.tasks$
+^noot-tuner\.anjuta$
+relre:^.anjuta
