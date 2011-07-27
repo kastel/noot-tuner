@@ -40,9 +40,9 @@ static double PowerSpectrum(Buffer& buffer, double frequency, NoteDetectionOptio
     int size = buffer.GetSize();
 
     double sumS=0.0, sumC=0.0;
-    for (int i=0; i<size; ++i, ++ptr) {
-        sumS += sin(2.0*M_PI*frequency*i)*(*ptr);
-        sumC += cos(2.0*M_PI*frequency*i)*(*ptr);
+    for (int i=0; i<size; ++i) {
+        sumS += sin(2.0*M_PI*frequency*i)*ptr[i];
+        sumC += cos(2.0*M_PI*frequency*i)*ptr[i];
     }
 #ifdef DEBUG
 //    fprintf(stderr, "Power spectrum at %f: %f\n", frequency*size, sumS*sumS+sumC*sumC);
