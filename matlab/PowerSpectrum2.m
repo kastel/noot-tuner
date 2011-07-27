@@ -1,14 +1,15 @@
 % This is the C function, new version
 %    x        input signal
-%    f        frequencies to test
-%    options  option struct
-function out = PowerSpectrum2(x, f, options)
-    t = (0:(length(x)-1))./options.SampleRate;
+%    f        frequencies to test (ranged in [0,1])
+function out = PowerSpectrum2(x, f)
+    t = 0:(length(x)-1);
     out = zeros(size(f));
     
     for n = 1:length(f)
-        T = floor(2*f(n)*t(end))/(2*f(n));
-        tmax = floor(T*options.SampleRate);
-        out(n) = (sum(sin(2*pi*f(n)*t(1:tmax)).*x(1:tmax))^2 + sum(cos(2*pi*f(n)*t(1:tmax)).*x(1:tmax))^2)/T^2;
+        % f is the frequency in periods/sample
+        % floor(f*samples) is the number of periods
+        % 1/F is the length of a period in samples
+        tmax = floor(floor(length(t)*f(n)*2)*(1/2/f(n)));
+        out(n) = (sum(sin(2*pi*f(n)*t(1:tmax)).*x(1:tmax))^2 + sum(cos(2*pi*f(n)*t(1:tmax)).*x(1:tmax))^2)/tmax^2*length(t)^2;
     end
 end

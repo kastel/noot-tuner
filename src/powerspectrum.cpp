@@ -84,7 +84,7 @@ bool PowerSpectrumRefinement::RefineFrequency(double* frequency, Buffer& buffer,
     rightX = relfreq + fftdd;
 
     if (leftX < 0)
-        leftX = 25.0/options.iSampleRate; //can't handle negative frequencies!
+        leftX = MIN_FREQUENCY/options.iSampleRate; //can't handle negative frequencies!
 
     centreY = PowerSpectrum(buffer, centreX, options);
     rightY = PowerSpectrum(buffer, rightX, options);
