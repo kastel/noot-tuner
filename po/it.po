@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DC Tuner 0.8\n"
 "Report-Msgid-Bugs-To: dc.kastel@gmail.com\n"
-"POT-Creation-Date: 2010-12-07 17:45+0100\n"
+"POT-Creation-Date: 2011-08-12 02:41+0200\n"
 "PO-Revision-Date: 2010-10-14 02:34+0100\n"
 "Last-Translator: Davide Castellone <kastel88@email.it>\n"
 "Language-Team: \n"
-"Language: \n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -532,7 +532,7 @@ msgid "Unable to launch the default browser"
 msgstr "Impossibile lanciare il browser predefinito"
 
 #: src/tunerframe.cpp:548 src/tunerframe.cpp:554 src/tunerframe.cpp:603
-#: src/audio_portaudio.cpp:406 src/audio_portaudio.cpp:452
+#: src/audio_portaudio.cpp:415 src/audio_portaudio.cpp:461
 msgid "NOOT Instrument Tuner"
 msgstr "NOOT Instrument tuner"
 
@@ -662,34 +662,34 @@ msgstr "Raffinamento (0=nessuno, 1=autocov, 2=CFT)"
 msgid "Error while parsing number '%s'"
 msgstr "Errore nella conversione del numero \"%s\""
 
-#: src/audio_portaudio.cpp:93
+#: src/audio_portaudio.cpp:102
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: src/audio_portaudio.cpp:152
+#: src/audio_portaudio.cpp:161
 msgid "No input device found"
 msgstr "Nessun dispositivo di input trovato"
 
-#: src/audio_portaudio.cpp:167
+#: src/audio_portaudio.cpp:176
 msgid "Couldn't find a viable sample rate. Please choose another input device"
 msgstr ""
 "Impossibile trovare una frequenza di campionamento utile. Si prega di "
 "selezionare un dispositivo di ingresso differente."
 
-#: src/audio_portaudio.cpp:301
+#: src/audio_portaudio.cpp:310
 msgid "No output device found"
 msgstr "Nessun dispositivo di output trovato"
 
-#: src/audio_portaudio.cpp:378 src/audio_portaudio.cpp:424
+#: src/audio_portaudio.cpp:387 src/audio_portaudio.cpp:433
 msgid "No audio device found"
 msgstr "Nessun dispositivo di input trovato"
 
-#: src/audio_portaudio.cpp:406
+#: src/audio_portaudio.cpp:415
 msgid "Choose an input device"
 msgstr "Seleziona un dispositivo di ingresso"
 
-#: src/audio_portaudio.cpp:452
+#: src/audio_portaudio.cpp:461
 msgid "Choose an output device"
 msgstr "Scegli un dispositivo di ingresso"
 

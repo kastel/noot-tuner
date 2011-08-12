@@ -5,9 +5,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: noot-tuner 0.3.0.2\n"
+"Project-Id-Version: noot-tuner 0.3.1\n"
 "Report-Msgid-Bugs-To: dc.kastel@gmail.com\n"
-"POT-Creation-Date: 2010-12-07 17:45+0100\n"
+"POT-Creation-Date: 2011-08-12 02:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -518,7 +518,7 @@ msgid "Unable to launch the default browser"
 msgstr ""
 
 #: src/tunerframe.cpp:548 src/tunerframe.cpp:554 src/tunerframe.cpp:603
-#: src/audio_portaudio.cpp:406 src/audio_portaudio.cpp:452
+#: src/audio_portaudio.cpp:415 src/audio_portaudio.cpp:461
 msgid "NOOT Instrument Tuner"
 msgstr ""
 
@@ -642,31 +642,31 @@ msgstr ""
 msgid "Error while parsing number '%s'"
 msgstr ""
 
-#: src/audio_portaudio.cpp:93
+#: src/audio_portaudio.cpp:102
 #, c-format
 msgid "%s"
 msgstr ""
 
-#: src/audio_portaudio.cpp:152
+#: src/audio_portaudio.cpp:161
 msgid "No input device found"
 msgstr ""
 
-#: src/audio_portaudio.cpp:167
+#: src/audio_portaudio.cpp:176
 msgid "Couldn't find a viable sample rate. Please choose another input device"
 msgstr ""
 
-#: src/audio_portaudio.cpp:301
+#: src/audio_portaudio.cpp:310
 msgid "No output device found"
 msgstr ""
 
-#: src/audio_portaudio.cpp:378 src/audio_portaudio.cpp:424
+#: src/audio_portaudio.cpp:387 src/audio_portaudio.cpp:433
 msgid "No audio device found"
 msgstr ""
 
-#: src/audio_portaudio.cpp:406
+#: src/audio_portaudio.cpp:415
 msgid "Choose an input device"
 msgstr ""
 
-#: src/audio_portaudio.cpp:452
+#: src/audio_portaudio.cpp:461
 msgid "Choose an output device"
 msgstr ""
