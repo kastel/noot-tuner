@@ -51,13 +51,27 @@ static double PowerSpectrum(Buffer& buffer, double frequency, NoteDetectionOptio
     return sumS*sumS + sumC*sumC;
 }
 
+///Copies from @c src to @c dest and remove DC offset.
+///Pre: dest.size == src.size
+static void CenterAndCopy(Buffer& dest, Buffer& src)
+{
+    int size = dest.GetSize();
+    double mean = src.GetMean();
+    
+    for (int i=0; i<size; ++i)
+        dest[i] = src[i]-mean;
+}
+
 ///@todo Split cases 1, 2, 3 & 4 and calculate two sides in cases 1 and 2
-bool PowerSpectrumRefinement::RefineFrequency(double* frequency, Buffer& buffer,
+bool PowerSpectrumRefinement::RefineFrequency(double* frequency, Buffer& buffer_orig,
     NoteDetectionOptions& options)
 {
 #ifdef DEBUG
     fprintf(stderr, "Frequency to be refined: %f\n", *frequency);
 #endif
+    Buffer buffer(buffer_orig.GetSize());
+    
+    CenterAndCopy(buffer, buffer_orig);
 
     double size = buffer.GetSize();
     //relative frequency
