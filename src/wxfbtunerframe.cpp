@@ -319,7 +319,7 @@ wxfbTunerFrame::wxfbTunerFrame( wxWindow* parent, wxWindowID id, const wxString&
 	stExpectedPrecision->Wrap( -1 );
 	szAdvancedOptions2->Add( stExpectedPrecision, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	
-	scExpectedPrecision = new wxSpinCtrl( this, ID_EXPECTEDPRECISION, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 2, 50, 2, wxT("ch02.html#expectedprecision") );
+	scExpectedPrecision = new wxSpinCtrl( this, ID_EXPECTEDPRECISION, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 50, 2, wxT("ch02.html#expectedprecision") );
 	scExpectedPrecision->SetToolTip( _("This value is used especially when Window size is set to 'Auto'") );
 	
 	szAdvancedOptions2->Add( scExpectedPrecision, 1, wxALL|wxALIGN_CENTER_VERTICAL, 3 );

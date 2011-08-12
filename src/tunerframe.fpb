@@ -2124,7 +2124,7 @@
                                         <property name="initial">2</property>
                                         <property name="max">50</property>
                                         <property name="maximum_size"></property>
-                                        <property name="min">2</property>
+                                        <property name="min">1</property>
                                         <property name="minimum_size"></property>
                                         <property name="name">scExpectedPrecision</property>
                                         <property name="permission">protected</property>
