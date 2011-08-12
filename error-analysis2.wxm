@@ -1,0 +1,109 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.5 ] */
+
+/* [wxMaxima: title   start ]
+Error Analysis with windowing
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: input   start ] */
+assume(T>0, f>0, 2*f*T-1>0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Worst case is losing half a period while correlation is maximum (x(t)=sin(2*pi*f*t + phi)).
+Calculate the C function without a period.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Hypothesis: input is a sine, Hann-windowed.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+input: sin(2*%pi*f*t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+hanning: 1/2*(1 - cos(2*%pi*t/T));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x: trigreduce(input*hanning);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cminus:integrate(sin(2*%pi*f*t)*x,t,0,T-1/2/f)^2 + integrate(cos(2*%pi*f*t)*x,t,0,T-1/2/f)^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Calculate the C function normally.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+cplus: integrate(sin(2*%pi*f*t)*x,t,0,T)^2 + integrate(cos(2*%pi*f*t)*x,t,0,T)^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Compute the relative error.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+err: cplus/cminus-1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+[f, fstar] is the the interval of acceptable frequencies, according to error eta (in semitones).
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+fstar : f*2^(%eta/12);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Calculate the C function for the same signal but at frequency fstar.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+cstarS: trigreduce(x*sin(2*%pi*fstar*t));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cstarC: trigreduce(x*cos(2*%pi*fstar*t));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cstar: integrate(cstarS, t, 0, T)^2 + integrate(cstarC, t, 0, T)^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Calculate the relative error. This will be the maximum acceptable relative error.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+estar: 1-cstar/cplus;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Helper function to compare the relative error on the C function and the acceptable relative error.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+comp(ff,TT,eta):=float(subst([f=ff,T=TT,%eta=eta],[err,estar]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+comp(440, 0.3, 0.002);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/*plot2d(comp(50, T, 0.002), [T, 0.5, 1])*/ "";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Conclusions:
+* Windowing is great! Relative error drops tremendously.
+* Error becomes problematic under 200Hz, 0.2s; 100Hz, 0.4s; 70Hz, 0.6s.
+  To achieve an acceptable performance at 50Hz, 0.85s are needed.
+   [wxMaxima: comment end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

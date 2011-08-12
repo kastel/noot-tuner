@@ -1,0 +1,145 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.5 ] */
+
+/* [wxMaxima: title   start ]
+Error Analysis with Error Correction (FIXME)
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+SUMMARY
+
+I'll try to reduce the error by integrating only on whole periods and then averaging
+with respect to the amplitude of the integration interval.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Initial assumptions.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+assume(T>0, f>0, 2*f*T-1>0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Worst case is losing half a period while correlation is maximum (x(t)=sin(2*pi*f*t + phi)).
+Calculate the C function without a period.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Hypothesis: input is a sine, Hann-windowed.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+input: sin(2*%pi*f*t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+hanning: 1/2*(1 - cos(2*%pi*t/T));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x: trigreduce(input*hanning);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Redefine the C function so as to exclude the last partial half-period.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+T_end(f, T) := floor(2*f*T)/(2*f);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+C(x, f, T) := (integrate(trigreduce(sin(2*%pi*f*t)*x), t, 0, T))^2 + (integrate(trigreduce(cos(2*%pi*f*t)*x), t, 0, T))^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+C2(x, f, T) := subst(T=T_end(f, T), C(x, f, T)/T^2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+cminus is calculated using old C with a period less
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+cminus: C(x, f, T-1/(2*f));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Calculate the old C function normally.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+cplus: C(x, f, T);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Compute the relative error.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+err: 1-cminus/cplus;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+[f, fstar] is the the interval of acceptable frequencies, according to error eta (in semitones).
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+fstar : f*2^(%eta/12);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Calculate the C function for the same signal but at frequency fstar.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+cstar: C(x, fstar, T);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Calculate the relative error. This will be the maximum acceptable relative error.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+estar: 1-cstar/cplus;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Calculate the error using the new C2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+c2: C2(x, f, T);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cstar2: C2(x, fstar, T);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+estar2: 1-cstar2/c2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Helper function to compare the relative error on the C function and the acceptable relative error.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+comp(ff,TT,eta):=float(subst([f=ff,T=TT,%eta=eta],[err,estar, estar2]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+keepfloat: true;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+comp(50, 0.3, 0.002), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot2d(comp(50, T, 0.002), [T, 0.3, 1]), numer;
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

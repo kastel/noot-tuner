@@ -15,6 +15,8 @@ function freq = RefineFrequency(oldfreq, buffer, options)
     mindd = relfreq*(power(2.0, options.ExpectedPrecision/12.0) - 1.0);
     fftdd = double(options.SampleRate)/length(buffer)^2;
     
+    buffer = buffer - mean(buffer);
+    
     if fftdd <= mindd
         freq = oldfreq;
         return
