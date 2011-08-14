@@ -189,7 +189,7 @@ bool PowerSpectrumRefinement::RefineFrequency(double* frequency, Buffer& buffer_
     if (leftY > centreY)
         centreX = leftX;
     
-    *frequency = centreX*options.iSampleRate;
+    *frequency = centreX*options.iSampleRate*options.fClockCorrection;
 #ifdef DEBUG
     fprintf(stderr, "Frequency refined: %f\n", *frequency);
 #endif
