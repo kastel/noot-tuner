@@ -1,5 +1,5 @@
 AC_INIT(src/noot-tuner.cpp, 0.3.1, [dc.kastel@gmail.com])
-    AM_INIT_AUTOMAKE(noot-tuner, 0.3.1)
+AM_INIT_AUTOMAKE
 
 AM_SILENT_RULES([yes])
 
@@ -10,7 +10,8 @@ AC_PROG_GREP
 AC_LIBTOOL_DLOPEN
 AC_PROG_LIBTOOL
 AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_FILES([version.h])
+AC_CONFIG_FILES([version.h po/Makefile.in])
+AC_CONFIG_MACRO_DIR([m4])
 
 AM_GNU_GETTEXT([external])
 
@@ -144,5 +145,5 @@ if test x$HTMLHELP_XSL == x; then
     HTMLHELP_XSL=/usr/share/xml/docbook/stylesheet/docbook-xsl/htmlhelp/htmlhelp.xsl
 fi
 
-AC_OUTPUT(Makefile po/Makefile.in po/Makefile src/Makefile doc/Makefile doc/en/Makefile
-    doc/it/Makefile)
+AC_OUTPUT(Makefile src/Makefile doc/Makefile doc/en/Makefile doc/it/Makefile)
+
