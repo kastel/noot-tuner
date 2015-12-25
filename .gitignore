@@ -1,0 +1,31 @@
+# Backup files
+*~
+setup.~is
+# Desktop cruft
+/.directory
+# Netbeans files
+nbproject/
+# Output files
+win-setup/
+# Autoconf/automake/libtool generated files
+autom4te.cache/
+m4/
+macros/
+doc/en/Makefile.in
+doc/Makefile.in
+src/Makefile.in
+install-sh
+TODO
+config.guess
+config.rpath
+depcomp
+ltmain.sh
+Makefile.in
+config.sub
+ChangeLog
+dctuner-Makefile.mk
+missing
+configure
+aclocal.m4
+compile
+
