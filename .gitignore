@@ -10,6 +10,8 @@ nbproject/
 
 # Output files
 win-setup/
+po/*.pot
+doc/*.htb
 
 # Gettextize-generated files
 po/Rules-quot
