@@ -1,4 +1,4 @@
-noot-tuner (0.3.1) lucid; urgency=low
+noot-tuner (0.3.1) trusty; urgency=low
 
   * New upstream version 0.3.1
   * Power spectrum now removes the DC offset in the input before processing

@@ -3,7 +3,7 @@ Section: misc
 Priority: optional
 Maintainer: Davide Castellone <dc.kastel@gmail.com>
 Build-Depends: debhelper (>= 7), autotools-dev, libwxgtk2.8-dev, portaudio19-dev, libfftw3-dev, zip, libsndfile1-dev
-Standards-Version: 3.8.4
+Standards-Version: 3.9.5
 Homepage: http://code.google.com/p/noot-tuner/
 
 Package: noot-tuner
