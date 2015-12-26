@@ -24,6 +24,7 @@ po/remove-potcdate.sin
 
 # Autoconf/automake/libtool generated files
 ABOUT-NLS
+INSTALL
 po/Makefile.in.in
 autom4te.cache/
 m4/
