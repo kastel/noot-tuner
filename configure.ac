@@ -1,4 +1,4 @@
-AC_INIT(src/noot-tuner.cpp, 0.3.1, [dc.kastel@gmail.com])
+AC_INIT(noot-tuner, 0.3.1, [dc.kastel@gmail.com])
 AM_INIT_AUTOMAKE
 
 AM_SILENT_RULES([yes])
