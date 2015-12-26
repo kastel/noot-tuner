@@ -4,6 +4,7 @@
 # (svn, Mercurial, git, ...)
 
 touch ChangeLog
+touch TODO
 libtoolize -cfi
 gettextize --no-changelog -f
 mv -f Makefile.am~ Makefile.am
