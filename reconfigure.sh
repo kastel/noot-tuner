@@ -5,6 +5,7 @@
 
 touch ChangeLog
 touch TODO
+touch README
 libtoolize -cfi
 gettextize --no-changelog -f
 mv -f Makefile.am~ Makefile.am
