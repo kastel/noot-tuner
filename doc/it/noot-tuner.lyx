@@ -1,21 +1,29 @@
-#LyX 1.6.6.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass docbook-book
 \use_default_options false
+\maintain_unincluded_children false
 \language italian
+\language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -23,21 +31,31 @@
 \use_geometry false
 \use_amsmath 1
 \use_esint 1
+\use_mhchem 1
+\use_mathdots 0
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Indice
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -88,7 +106,7 @@ status open
 
 \begin_layout Plain Layout
 
- <year>2009-2010</year>
+ <year>2009-2015</year>
 \end_layout
 
 \begin_layout Plain Layout
@@ -103,7 +121,7 @@ status open
 
 \begin_layout Plain Layout
 
-<date>Agosto 2010</date>
+<date>Dicembre 2015</date>
 \end_layout
 
 \begin_layout Plain Layout
@@ -144,7 +162,7 @@ L'accordatore NOOT (Never-out-of-tune Instrument Tuner) simula un accordatore
 \end_layout
 
 \begin_layout Standard
-© 2010 Davide Castellone
+© 2009-2015 Davide Castellone
 \end_layout
 
 \begin_layout Standard
@@ -421,7 +439,7 @@ name "credits"
 \end_layout
 
 \begin_layout Standard
-Codice e traduzione italiana © 2010 Davide Castellone
+Codice e traduzione italiana © 2009-2015 Davide Castellone
 \end_layout
 
 \begin_layout Standard
@@ -539,7 +557,7 @@ name "mainwindow"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -572,7 +590,7 @@ name "startstop"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -599,7 +617,7 @@ name "detectednote"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -627,7 +645,7 @@ La parte inferiore del riquadro mostra le seguenti informazioni:
 
 \begin_layout Description
 Nota 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -648,7 +666,7 @@ Auto
 
 \begin_layout Description
 Scostamento 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -662,7 +680,7 @@ Lo scostamento dalla frequenza prevista, in cent (1 cent = 0.01 semitoni).
 
 \begin_layout Description
 Frequenza 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -683,7 +701,7 @@ name "octave"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -736,7 +754,7 @@ name "note"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -761,7 +779,7 @@ name "listen"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -785,7 +803,7 @@ name "temperament"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -810,7 +828,7 @@ name "transpose"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -837,7 +855,7 @@ name "windowsize"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -847,7 +865,7 @@ FFT
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -880,7 +898,7 @@ name "threshold"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -890,7 +908,7 @@ noise
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -922,7 +940,7 @@ name "expectedprecision"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -952,7 +970,7 @@ name "framerate"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -979,7 +997,7 @@ name "sec:Status-bar"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -989,7 +1007,7 @@ clipping detection
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -999,7 +1017,7 @@ status bar
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -1288,7 +1306,7 @@ name "sec:Clock-correction"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -1331,7 +1349,7 @@ name "sec:The-right-sampling"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout

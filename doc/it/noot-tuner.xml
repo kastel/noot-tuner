@@ -3,7 +3,7 @@
  [ 
 <!ENTITY graph1001 "pictures/mainwindow-it"> ]>
 
-<!-- XML file was created by LyX 1.6.7
+<!-- XML file was created by LyX 2.0.8.1
   See http://www.lyx.org/ for more information -->
 <book lang="it_IT">
 <bookinfo>
@@ -14,15 +14,15 @@
   <email>dc.kastel@gmail.com</email>
  </author>
 <copyright>
- <year>2009-2010</year>
+ <year>2009-2015</year>
  <holder>Davide Castellone</holder>
 </copyright>
-<date>Agosto 2010</date>
+<date>Dicembre 2015</date>
 </bookinfo>
 <toc></toc><chapter id='introduction' >
 <title>Introduzione<!-- anchor id="introduction" --></title>
 <para>L'accordatore NOOT (Never-out-of-tune Instrument Tuner) simula un accordatore elettronico. Può essere usato per accordare uno strumento musicale (chitarra, pianoforte) con la precisione di un centesimo di semitono.</para>
-<para>© 2010 Davide Castellone</para>
+<para>© 2009-2015 Davide Castellone</para>
 <para>NOOT è distribuito sotto la GNU General Public License version 3 (vedi <xref linkend="license-gplv3." />)</para>
 <para>Sito web: <ulink url="http://code.google.com/p/noot-tuner/"></ulink></para>
 <para>In caso di comportamento imprevisto del programma, o nel caso vogliate dare un suggerimento o richiedere una funzionalità aggiuntiva, si prega di visitare <ulink url="http://code.google.com/p/noot-tuner/issues/entry">la pagina dei bug</ulink>.</para>
@@ -43,7 +43,7 @@
 <listitem><para>La precisione è data in millesimi, non più in centesimi</para></listitem><listitem><para>Miglioramenti vari alla grafica</para></listitem><listitem><para>PPA per gli utenti Ubuntu</para></listitem></itemizedlist><para>Version 0.1.0:</para><itemizedlist>
 <listitem><para>Prima versione pubblica</para></listitem></itemizedlist></sect1><sect1 id='credits' >
 <title>Riconoscimenti<!-- anchor id="credits" --></title>
-<para>Codice e traduzione italiana © 2010 Davide Castellone</para>
+<para>Codice e traduzione italiana © 2009-2015 Davide Castellone</para>
 <para>NOOT Instrument Tuner è distribuito sotto la GNU General Public License (vedi <xref linkend="license-gplv3." />).</para>
 <para>Si ringraziano inoltre gli autori delle librerie utilizzate:</para><itemizedlist>
 <listitem><para><ulink url="http://wxwidgets.org">wxWidgets</ulink></para></listitem><listitem><para><ulink url="http://www.portaudio.com">Portaudio</ulink></para></listitem><listitem><para><ulink url="http://www.fftw.org">FFTW</ulink></para></listitem></itemizedlist><para>Le librerie sono redistribuite secondo le rispettive licenze.</para></sect1></chapter><chapter id='using' >

@@ -3,7 +3,7 @@
  [ 
 <!ENTITY graph1001 "pictures/mainwindow"> ]>
 
-<!-- XML file was created by LyX 1.6.6.1
+<!-- XML file was created by LyX 2.0.8.1
   See http://www.lyx.org/ for more information -->
 <book lang="en_US">
 <bookinfo>
@@ -14,15 +14,15 @@
   <email>dc.kastel@gmail.com</email>
  </author>
 <copyright>
- <year>2009-2010</year>
+ <year>2009-2015</year>
  <holder>Davide Castellone</holder>
 </copyright>
-<date>August 2010</date>
+<date>December 2015</date>
 </bookinfo>
 <toc></toc><chapter id='introduction' >
 <title>Introduction<!-- anchor id="introduction" --></title>
 <para>Never-out-of-tune Instrument Tuner simulates a full-featured instrument tuner. It may be used to tune musical instruments (guitars, pianos) with a cent precision.</para>
-<para>© 2010 Davide Castellone</para>
+<para>© 2009-2015 Davide Castellone</para>
 <para>NOOT Instrument Tuner is distributed under the GNU General Public License (see <xref linkend="license-gplv3." />)</para>
 <para>Website:<ulink url="http://code.google.com/p/noot-tuner/"></ulink></para>
 <para>Should you find any unexpected behaviour or want to make a suggestion or request a feature, please go to the <ulink url="http://code.google.com/p/noot-tuner/issues/entry">bug reporting page</ulink>.</para>
@@ -43,7 +43,7 @@
 <listitem><para>Precision is now given in millis, not in cents </para></listitem><listitem><para>Minor improvements to the display </para></listitem><listitem><para>PPA for Ubuntu users</para></listitem></itemizedlist><para>Version 0.1.0:</para><itemizedlist>
 <listitem><para>First published version</para></listitem></itemizedlist></sect1><sect1 id='credits' >
 <title>Credits<!-- anchor id="credits" --></title>
-<para>Code and Italian translation © 2010 Davide Castellone</para>
+<para>Code and Italian translation © 2009-2015 Davide Castellone</para>
 <para>NOOT Instrument Tuner is distributed under the GNU GPLv3 (see <xref linkend="license-gplv3." />).</para>
 <para>We also thank the authors of the libraries used:</para><itemizedlist>
 <listitem><para><ulink url="http://wxwidgets.org">wxWidgets</ulink></para></listitem><listitem><para><ulink url="http://www.portaudio.com">Portaudio</ulink></para></listitem><listitem><para><ulink url="http://www.fftw.org">FFTW</ulink></para></listitem></itemizedlist><para>The libraries are redistributed according to the respective licenses.</para></sect1></chapter><chapter id='using' >
