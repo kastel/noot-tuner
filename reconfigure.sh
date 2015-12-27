@@ -11,6 +11,7 @@ gettextize --no-changelog -f
 mv -f Makefile.am~ Makefile.am
 mv -f configure.ac~ configure.ac
 rm po/Makevars.template
+autoheader
 aclocal
 autoconf
 automake -cfa

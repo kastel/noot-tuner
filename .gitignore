@@ -11,7 +11,6 @@ nbproject/
 # Output files
 win-setup/
 po/*.pot
-doc/*.htb
 
 # Gettextize-generated files
 po/Rules-quot
@@ -25,6 +24,7 @@ po/remove-potcdate.sin
 # Autoconf/automake/libtool generated files
 ABOUT-NLS
 INSTALL
+README
 po/Makefile.in.in
 autom4te.cache/
 m4/
@@ -46,4 +46,5 @@ missing
 configure
 aclocal.m4
 compile
+config.h.in
 
