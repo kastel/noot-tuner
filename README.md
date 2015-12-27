@@ -61,7 +61,7 @@ For more information, visit [the PPA for NOOT](https://launchpad.net/~kastel88/+
 
 ## Mac OSX and other Linux distributions ##
 
-Binary installers are not currently supported. See section on [compiling from source](#Compiling).
+Binary installers are not currently supported. See section on [compiling from source](#compiling).
 
 # Compiling #
 
