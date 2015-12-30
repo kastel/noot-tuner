@@ -2,16 +2,9 @@
 # 
 # Call this script after downloading the source from a SCM
 # (svn, Mercurial, git, ...)
+#
+# This assumes that autoconf, automake, autopoint, libtoolize, etc are
+# installed.
 
-touch ChangeLog
-touch TODO
-touch README
-libtoolize -cfi
-gettextize --no-changelog -f
-mv -f Makefile.am~ Makefile.am
-mv -f configure.ac~ configure.ac
+autoreconf --force --install
 rm po/Makevars.template
-autoheader
-aclocal
-autoconf
-automake -cfa

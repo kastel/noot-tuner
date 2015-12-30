@@ -1,5 +1,5 @@
 AC_INIT(noot-tuner, 0.3.1, [dc.kastel@gmail.com])
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([foreign])
 
 AM_SILENT_RULES([yes])
 
@@ -14,6 +14,7 @@ AC_CONFIG_FILES([version.h po/Makefile.in])
 AC_CONFIG_MACRO_DIR([m4])
 
 AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION(0.18.3)
 
 CFLAGS="-Wall -O2 -g0 $CFLAGS"
 CXXFLAGS="-Wall -O2 -g0 -fexceptions $CXXFLAGS -fno-strict-aliasing"
